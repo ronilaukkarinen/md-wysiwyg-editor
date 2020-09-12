@@ -1,7 +1,4 @@
-# HTML5 Text Editor
+# Text Editor
 
-A simple text editor designed to experiement with and demonstrate the
-new Native File System APIs.
-
-This is not an officially supported Google product.
+[TinyMCE 5](https://www.tiny.cloud/) + [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) + [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code).
 
