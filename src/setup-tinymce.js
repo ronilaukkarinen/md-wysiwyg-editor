@@ -4,40 +4,41 @@ let markdownSideBarToggleState = false;
 
 // Create new file
 function newFile() {
+
   // Is there any change/undo history?
   if (tinymce.editors[0].isDirty()) {
-    var response = confirm("Unsaved changes. Continue without saving?");
-    if (response == false) {
+    if(confirm("Unsaved changes. Continue without saving?") == false) {
       return;
     }
   // Are we sure we want to exit out of the current file?
   } else {
-    var response = confirm("Close the current file and create a new one?");
-    if (response == false) {
+    if(confirm("Close the current file and create a new one?") == false) {
       return;
     }
   }
-  // If user confirms, open file
+
   // ipcRenderer.send('call-new');
   app.newFile(); // Actually this might not make any sense
+
   tinymce.activeEditor.resetContent();
   persistFilename = "untitled";
   document.title = persistFilename;
+
+  return;
 }
 
 // Open file
 function openFile(event, filename, extension, data) {
+
   // Is there any change/undo history?
   if (tinymce.editors[0].isDirty()) {
-    var response = confirm("Unsaved changes. Continue without saving?");
-    if (response == false) {
+    if(confirm("Unsaved changes. Continue without saving?") == false) {
       return;
     }
-    // ipcRenderer.send('call-open');
-    app.openFile();
   }
 
-  // ...
+  // ipcRenderer.send('call-open');
+  app.openFile(); // Doesn't work right now
 
   // Open as HTML
   if (extension == ".html" || extension == ".htm") {
@@ -49,28 +50,34 @@ function openFile(event, filename, extension, data) {
   } else {
     tinymce.editors[0].setContent(data, {format: 'text'});
   }
+
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
   document.title = filename;
   persistFilename = filename;
+
+  return;
 }
 
 // Save file
 function saveFile(event, filename) {
-
   // Get editor content in all formats and send to save
   var editorContent = {
     html: tinymce.editors[0].getContent({format: 'html'}),
     text: tinymce.editors[0].getContent({format: 'text'}),
     markdown: tinymce.editors[0].getContent({format: 'markdown'}),
   }
+
   // ipcRenderer.send('call-save', editorContent);
+  app.saveFile();  // Doesn't work right now
 
   // ...
 
   tinymce.editors[0].setDirty(false);
   document.title = filename;
   persistentFilename = filename;
+
+  return;
 }
 
 // Save file as
@@ -82,34 +89,66 @@ function saveFileAs(event, filename) {
     text: tinymce.editors[0].getContent({format: 'text'}),
     markdown: tinymce.editors[0].getContent({format: 'markdown'}),
   }
-  // ipcRenderer.send('call-saveAs', editorContent);
 
-  // ...
+  // ipcRenderer.send('call-saveAs', editorContent);
+  app.saveFileAs(); // Doesn't work right now
 
   tinymce.editors[0].setDirty(false);
   document.title = filename;
   persistentFilename = filename;
+
+  return;
 }
 
+// Quit
 function quit() {
+
   if (tinymce.editors[0].isDirty()) {
-    var response = confirm("Unsaved changes. Continue without saving?");
-    if (response == false) {
+    if(confirm("Unsaved changes. Continue without saving?") == false) {
       return;
     }
   }
+
   // ipcRenderer.send('call-quit');
   window.close();
+
+  return;
 }
 
-// Upon fullscreen on/off
-function fullscreenChange() {
-  // Give text box focus again (NOT WORKING FOR SOME REASON...)
-  document.getElementById("editor_ifr").focus();
+// Toggle full screen
+function toggleFullscreen() {
+
+  // Is fullscreen supported for this browser?
+  if(document.fullscreenEnabled == false) {
+    alert("Fullscreen not supported for this browser.");
+    return;
+  }
+
+  // If not fullscreen, try to enter fullscreen
+  if(document.fullscreenElement == null) {
+    // Get the element that we want to fullscreen
+    var editorHandle = document.getElementsByClassName("tox")[0];
+    // Request fullscreen for different platforms
+    if (editorHandle.requestFullscreen) {
+      editorHandle.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+      editorHandle.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+      editorHandle.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+      editorHandle.msRequestFullscreen();
+    }
+  // If already fullscreen, then exit fullscreen
+  } else {
+    document.exitFullscreen();
+  }
+
+  return;
 }
 
 // Change current working directory
 function changeCWD(event, newPath) {
+
   if (tinymce.activeEditor) {
     var doc = tinymce.activeEditor.getDoc(),
       head = doc.head,
@@ -123,11 +162,14 @@ function changeCWD(event, newPath) {
     base.setAttribute("href", "file://" + newPath + "/");
     tinymce.activeEditor.documentBaseURI.setPath(newPath + "/");
   }
+
+  return;
 }
 
 tinymce.baseURL = "tinymce";
 
 tinymce.IconManager.add('custom', {
+
   icons: {
     // From here: https://apps.tiny.cloud/products/skins-and-icon-packs/ (MORE TO GET) ->
     newdoc: `<svg width="24" height="24"><path fill-rule="nonzero" d="M7 4a1 1 0 00-1 1v14c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V9l-5-5H7zm6 5V5l4 4h-4z"></path></svg>`,
@@ -151,9 +193,11 @@ tinymce.IconManager.add('custom', {
     subscript: `<svg width="24" height="24"><path fill-rule="nonzero" d="M10.4 10l4.6 4.6-1.4 1.4L9 11.4 4.4 16 3 14.6 7.6 10 3 5.4 4.4 4 9 8.6 13.6 4 15 5.4 10.4 10zM21 19h-5v-1l1-.8 1.7-1.6c.3-.4.5-.8.5-1.2 0-.3 0-.6-.2-.7-.2-.2-.5-.3-.9-.3a2 2 0 00-.8.2l-.7.3-.4-1.1 1-.6 1.2-.2c.8 0 1.4.3 1.8.7.4.4.6.9.6 1.5s-.2 1.1-.5 1.6a8 8 0 01-1.3 1.3l-.6.6h2.6V19z"></path></svg>`,
     markdown: `<?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="markdown-mark" transform="translate(2.000000, 12.000000)" fill="#5f6368" fill-rule="nonzero"><path d="M0.5,16 L0.5,0 L5.40322581,0 L10.3064516,5.88235294 L15.2096774,0 L20.1129032,0 L20.1129032,16 L15.2096774,16 L15.2096774,6.82352941 L10.3064516,12.7058824 L5.40322581,6.82352941 L5.40322581,16 L0.5,16 Z M31.1451613,16 L23.7903226,8.23529412 L28.6935484,8.23529412 L28.6935484,0 L33.5967742,0 L33.5967742,8.23529412 L38.5,8.23529412 L31.1451613,16 Z" id="Shape"></path></g></g></svg>`,
   }
+
 });
 
 tinymce.init({
+
   selector: '#textEditor',
   language: 'tooltips', // Use translations to make custom tooltips for buttons
   language_url: 'tooltips.js',
@@ -343,7 +387,7 @@ tinymce.init({
       tooltip: 'Fullscreen (Ctr+Shift+F',
       icon: 'fullscreen',
       onAction: function (_) {
-        // ipcRenderer.send('call-fullscreen');
+        toggleFullscreen();
       }
     });
 
@@ -402,23 +446,7 @@ tinymce.init({
     // OVERRIDE SHORTCUTS -> https://stackoverflow.com/questions/19791696/overriding-shortcut-assignments-in-tinymce
 
     editor.addShortcut('Ctrl+N', 'New', function () {
-      if (tinymce.editors[0].isDirty()) {
-        var response = confirm("Unsaved changes. Continue without saving?");
-        if (response == true) {
-          // ipcRenderer.send('call-new');
-          app.newFile(); // Actually this might not make any sense
-        } else {
-          return;
-        }
-      } else {
-        var response = confirm("Close the current file and create a new one?");
-        if (response == true) {
-          // ipcRenderer.send('call-new');
-          app.newFile(); // Actually this might not make any sense
-        } else {
-          return;
-        }
-      }
+      newFile();
     });
 
     editor.addShortcut('Ctrl+O', 'Open', function () {
@@ -426,23 +454,11 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+S', 'Save', function () {
-      // Get editor content in all formats and send to save
-      var editorContent = {
-        html: tinymce.editors[0].getContent({format: 'html'}),
-        text: tinymce.editors[0].getContent({format: 'text'}),
-        markdown: tinymce.editors[0].getContent({format: 'markdown'}),
-      }
-      // ipcRenderer.send('call-save', editorContent);
+      saveFile();
     });
 
     editor.addShortcut('Shift+Ctrl+S', 'Save as', function () {
-      // Get editor content in all formats and send to save
-      var editorContent = {
-        html: tinymce.editors[0].getContent({format: 'html'}),
-        text: tinymce.editors[0].getContent({format: 'text'}),
-        markdown: tinymce.editors[0].getContent({format: 'markdown'}),
-      }
-      // ipcRenderer.send('call-saveAs', editorContent);
+      saveFileAs();
     });
 
     editor.addShortcut('Ctrl+H', 'Find and replace', function () {
@@ -455,16 +471,7 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+W', 'Quit', function () {
-      if (tinymce.editors[0].isDirty()) {
-        var response = confirm("Unsaved changes. Continue without saving?");
-        if (response == true) {
-          // ipcRenderer.send('call-quit');
-        } else {
-          return;
-        }
-      } else {
-        // ipcRenderer.send('call-quit');
-      }
+      quit();
     });
 
     editor.addShortcut('Shift+Ctrl+Z', 'Redo', function () {
@@ -551,16 +558,22 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+Shift+F', 'Fullscreen', function () {
-      // ipcRenderer.send('call-fullscreen');
+      toggleFullscreen();
     });
 
     // Handle individual keyboard keys
     editor.on('keydown', function(event) {
+
       var key = event.keyCode || event.which;
+
+      // F11 key: toggle fullscreen (need to test)
+      if (key == 122) {
+        toggleFullscreen();
+      }
 
       // Escape key: hide markdown sidebar if it's open
       if (key == 27 && fullscreenToggleState == true) {
-        // ipcRenderer.send('call-fullscreen');
+        toggleFullscreen();
       } else if (key == 27 && markdownSideBarToggleState == true) {
         tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
       }
@@ -572,17 +585,22 @@ tinymce.init({
         event.stopPropagation();
         return;
       }
+
+      return;
     });
 
     // Hack to fix width of the markdown pane
     function handleResizeWindow() {
       var width = (window.innerWidth * 0.50).toString() + "px";
       document.getElementsByClassName("markdown-preview")[0].style.width = width;
+      return;
     }
     editor.on('ResizeWindow', handleResizeWindow);
+
   },
 
   init_instance_callback : function(editor) {
+
     // Hack to give text box focus at start up
     document.getElementById("textEditor").focus();
 
@@ -597,6 +615,9 @@ tinymce.init({
     document.addEventListener('markdown-sidebar-toggle-state', function (e) {
       markdownSideBarToggleState = e.detail;
     });
+
+    return;
   },
+
 });
 

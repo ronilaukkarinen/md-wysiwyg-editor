@@ -15,8 +15,6 @@ ipcMain.on('call-open', (event, arg) => open());
 ipcMain.on('call-save', (event, arg) => save(arg));
 ipcMain.on('call-saveAs', (event, arg) => saveas(arg));
 
-ipcMain.on('call-fullscreen', (event, arg) => fullscreentoggle());
-
 function open() {
   dialog.showOpenDialog({ properties: ["openFile"], defaultPath: working_directory }, function (file) {
     // Prevent error message if click cancel
@@ -89,15 +87,5 @@ function saveas(output) {
 function change_working_directory(new_path) {
   working_directory = new_path;
   mainWindow.webContents.send('change-cwd', working_directory);
-}
-
-function fullscreentoggle() {
-  if(mainWindow.isFullScreen() == false) {
-    mainWindow.setFullScreen(true);
-  } else {
-    mainWindow.setFullScreen(false);
-    mainWindow.setMenuBarVisibility(false);
-  }
-  mainWindow.webContents.send('fullscreen-change');
 }
 
