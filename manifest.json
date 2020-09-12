@@ -4,8 +4,8 @@
   "description": "Text Editor - TinyMCE + PWA + NFS.",
   "start_url": "./",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
   "icons": [
     {
       "src": "./images/icon-192.png",
