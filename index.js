@@ -215,6 +215,21 @@ tinymce.init({
   object_resizing: false,
   resize_img_proportional: true, // Disabled due to resizing off
 
+  formats: {
+    removeformat: [
+      {
+        selector: 'b,strong,em,i,font,u,strike,sub,sup,dfn,code,samp,kbd,var,cite,mark,q,del,ins',
+        remove: 'all',
+        split: true,
+        block_expand: true,
+        expand: false,
+        deep: true
+      },
+      { selector: 'span', attributes: ['style', 'class'], remove: 'empty', split: true, expand: false, deep: true },
+      { selector: '*', attributes: ['style', 'class'], split: false, expand: false, deep: true }
+    ]
+  },
+
   textpattern_patterns: [
     {start: '#', format: 'h1'},
     {start: '##', format: 'h2'},
