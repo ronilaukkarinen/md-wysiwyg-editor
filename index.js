@@ -587,7 +587,7 @@ tinymce.init({
 
   init_instance_callback : function(editor) {
 
-    editor.on('Dirty', function() {
+    editor.on('Dirty', function(event) {
       document.title = persistFilename + " * - Text Editor";
     });
 
@@ -595,7 +595,7 @@ tinymce.init({
 
     // Detect markdown sidebar toggle state open/close
     // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
-    document.addEventListener('markdown-sidebar-toggle-state', function () {
+    document.addEventListener('markdown-sidebar-toggle-state', function (event) {
       markdownSideBarToggleState = event.detail;
     });
 
