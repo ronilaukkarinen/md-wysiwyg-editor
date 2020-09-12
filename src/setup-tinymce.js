@@ -27,12 +27,6 @@ function newFile() {
   return;
 }
 
-let editorHandle = document.getElementsByClassName("tox-editor-header")[0];
-let fileHandle;
-editorHandle.addEventListener('click', async (e) => {
-  openFile();
-});
-
 // Open file
 function openFile(event, filename, extension, data) {
 
@@ -45,12 +39,6 @@ function openFile(event, filename, extension, data) {
 
   // ipcRenderer.send('call-open');
   // app.openFile(); // Doesn't work right now
-  //bnfs_open_file();
-
-  fileHandle = await window.chooseFileSystemEntries();
-  const file = await fileHandle.getFile();
-  const contents = await file.text();
-  var data = contents;
 
   // Open as HTML
   if (extension == ".html" || extension == ".htm") {
