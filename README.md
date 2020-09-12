@@ -5,3 +5,7 @@
 ## Screenshot
 
 ![Screenshot](/screenshot.png)
+
+## Launch
+
+[https://alyw234237.github.io/text-editor/](https://alyw234237.github.io/text-editor/)
