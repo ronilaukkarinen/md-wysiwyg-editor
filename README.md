@@ -1,6 +1,6 @@
 # Text Editor
 
-A constrained-rich-text and markdown editor for the web. [TinyMCE 5](https://www.tiny.cloud/) + [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) + [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code).
+A simple but modern constrained-rich-text and markdown editor. A [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://www.tiny.cloud/) and [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code).
 
 ## Screenshot
 
