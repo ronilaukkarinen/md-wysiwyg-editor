@@ -566,10 +566,11 @@ tinymce.init({
       // Tab key: insert an em dash-sized space and disable normal tab key handling
       if (key == 9) {
         editor.insertContent('&emsp;');
-        //event.preventDefault();
-        //event.stopPropagation();
         return;
       }
+
+      event.preventDefault();
+      event.stopPropagation();
 
       return;
     });
@@ -600,14 +601,17 @@ tinymce.init({
 
     // Add more keyboard shortcuts
     document.addEventListener('keydown', function (event) {
+
       console.log('???');
-      event.preventDefault();
       if (event.ctrlKey && event.key === 'q') {
         tinyMCE.execCommand('Superscript');
       }
       if (event.ctrlKey && event.key === ',') {
         tinyMCE.execCommand('Subscript');
       }
+
+      event.preventDefault();
+      event.stopPropagation();
     });
   
     // Give edit area focus at start up
