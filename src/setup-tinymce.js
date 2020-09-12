@@ -582,7 +582,7 @@ tinymce.init({
 
   init_instance_callback : function(editor) {
     // Hack to give text box focus at start up
-    document.getElementById("editor_ifr").focus();
+    document.getElementById("textEditor").focus();
 
     editor.on('Dirty', function(e) {
       titlebar.updateTitle(persistFilename + " *");
