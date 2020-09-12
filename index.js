@@ -605,7 +605,6 @@ tinymce.init({
       .then(function(response) {
         response.text().then(function(text) {
           openFile('README.md', text);
-          console.log("Success??: " + text);
         });
       });
 
