@@ -1,19 +1,19 @@
 {
   "name": "Text Editor",
   "short_name": "TextEdit",
-  "description": "Text Editor - Demo for the HTML5 Native File System.",
+  "description": "Text Editor - TinyMCE + PWA + NFS.",
   "start_url": "./",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#000000",
   "icons": [
     {
-      "src": "",
+      "src": "./images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "",
+      "src": "./images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
