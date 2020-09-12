@@ -1,5 +1,4 @@
 let persistFilename = "untitled";
-let fullscreenToggleState = false;
 let markdownSideBarToggleState = false;
 
 // Create new file
@@ -22,7 +21,7 @@ function newFile() {
 
   tinymce.activeEditor.resetContent();
   persistFilename = "untitled";
-  document.title = persistFilename;
+  document.title = persistFilename + " - Text Editor";
 
   return;
 }
@@ -52,7 +51,7 @@ function openFile(filename, data) {
 
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
-  document.title = filename;
+  document.title = filename + " - Text Editor";
   persistFilename = filename;
 
   return;
@@ -75,7 +74,7 @@ function saveFile(filename) {
   }
 
   tinymce.editors[0].setDirty(false);
-  document.title = filename;
+  document.title = filename + " - Text Editor";
   persistentFilename = filename;
 
   console.log("Save -> Filename: " + filename + " and Data: " + content);
@@ -559,8 +558,8 @@ tinymce.init({
         toggleFullscreen();
       }
 
-      // Escape key: hide markdown sidebar if it's open
-      if (key == 27 && fullscreenToggleState == true) {
+      // Escape key: exit fullscreen or hide markdown sidebar if it's open
+      if (key == 27 && document.fullscreenElement != null) {
         toggleFullscreen();
       } else if (key == 27 && markdownSideBarToggleState == true) {
         tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
@@ -593,10 +592,10 @@ tinymce.init({
     document.getElementById("textEditor").focus();
 
     editor.on('Dirty', function(e) {
-      document.title = persistFilename + " * ";
+      document.title = persistFilename + " * - Text Editor";
     });
 
-    document.title = persistFilename;
+    document.title = persistFilename + " - Text Editor";
 
     // Detect markdown sidebar toggle state open/close
     // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
