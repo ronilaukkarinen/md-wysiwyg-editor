@@ -1,7 +1,7 @@
 {
   "name": "Text Editor",
   "short_name": "TextEdit",
-  "description": "Text Editor - TinyMCE + PWA + NFS.",
+  "description": "Text Editor - PWA + TinyMCE + NFS.",
   "start_url": "./",
   "display": "standalone",
   "theme_color": "#FFFFFF",
@@ -16,6 +16,44 @@
       "src": "./images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/open-txt",
+      "accept": {
+        "text/plain": [ ".txt" ]
+      }
+    },
+    {
+      "action": "/open-txt",
+      "accept": {
+        "text/plain": ".text"
+      }
+    },
+    {
+      "action": "/open-md",
+      "accept": {
+        "text/markdown": ".md"
+      }
+    },
+    {
+      "action": "/open-md",
+      "accept": {
+        "text/markdown": ".markdown"
+      }
+    },
+    {
+      "action": "/open-html",
+      "accept": {
+        "text/html": ".html"
+      }
+    },
+    {
+      "action": "/open-html",
+      "accept": {
+        "text/html": ".htm"
+      }
     }
   ]
 }

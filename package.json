@@ -1,6 +1,6 @@
 {
   "name": "text-editor",
-  "description": "Text Editor - TinyMCE + PWA + NFS.",
+  "description": "Text Editor - PWA + TinyMCE + NFS.",
   "version": "0.0.12",
   "repository": {
     "type": "git",

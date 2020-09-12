@@ -14,12 +14,6 @@ body {
   line-height: 1.6;
 }
 
-/* New title bar + toolbar style reduce up-top spacing */
-p {
-  margin-top: 0em;
-  padding-top: 0em;
-}
-
 a {
   /*color: #8153ed;*/ /* purple */
   /*color: #0074D9;*/ /* CLRS blue */
@@ -151,7 +145,7 @@ table {
   border: 1px solid #dfe2e5 !important;
   padding: 0;
   word-break: initial;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08); /* Not working */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 table tr {
   border: 1px solid #dfe2e5 !important;
