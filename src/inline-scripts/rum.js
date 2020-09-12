@@ -29,7 +29,7 @@
  */
 function gaEvent(category, action, label, value, nonInteraction) {
   // eslint-disable-next-line no-console
-  console.log('🔔', category, action, label, value);
+  // console.log('🔔', category, action, label, value);
   if (location.hostname === 'localhost') {
     return;
   }
@@ -61,7 +61,7 @@ function gaEvent(category, action, label, value, nonInteraction) {
 function gaTiming(category, variable, value, label) {
   value = parseInt(value, 10);
   // eslint-disable-next-line no-console
-  console.log('⏱️', category, variable, value, label);
+  // console.log('⏱️', category, variable, value, label);
   if (location.hostname === 'localhost') {
     return;
   }
@@ -116,7 +116,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (window.ga) {
     window.ga('send', 'pageview', '/');
     // eslint-disable-next-line no-console
-    console.log('👀', 'pageview', '/');
+    // console.log('👀', 'pageview', '/');
   }
 });
 

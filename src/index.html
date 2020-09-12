@@ -69,11 +69,14 @@
     <meta http-equiv="origin-trial" content="ApP5hRHS+dIxGdu/1psSHsErxROE+aVFGqdUwBgrcsGuwWDpPo3iqanpH3EdEie7YHhBN0LL1sdkT89waJPbzwsAAABkeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZWxhYnMuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJOYXRpdmVGaWxlU3lzdGVtIiwiZXhwaXJ5IjoxNTg5MzI3OTk5fQ==">
     <!-- Origin Trial Token NFS API v2 (expires 2020-05-25) -->
     <meta http-equiv="origin-trial" content="AouXz9/sqzYGRIFkw8KK0QXp0HOo99+Pg8NAr/4pRA1pAlaTeQ6BngqqkBUzfjvxzPcRf15pmieR4RDhJB9bKwAAAABleyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZWxhYnMuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJOYXRpdmVGaWxlU3lzdGVtMiIsImV4cGlyeSI6MTU5MDQxNzc1NX0=">
+
+    <!-- Add TinyMCE -->
+    <script src="./tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="./tinymce-editor-styles.css" inline>
   </head>
   <body class="wordwrap">
-
     <header>
-      <h1>
+      <h1 style="display: none;">
         <span id="headerFileName">Text Editor</span><span id="modifiedHeader" class="hidden">*</span>
         <span id="headerAppName" class="hidden"> - Text Editor</span>
       </h1>
@@ -159,7 +162,7 @@
     <a id="aDownloadFile" download></a>
     <input type="file" id="filePicker">
 
-    <details id="footer" class="footer">
+    <details id="footer" class="footer" style="display: none;">
       <summary>About
         <span>
           <span id="modifiedFooter" class="hidden">*</span>
@@ -212,6 +215,9 @@
     <script src="./inline-scripts/load-sw.js" inline></script>
     <script src="./inline-scripts/app-install.js" inline></script>
     <script src="./inline-scripts/fallback.js" inline></script>
+
+    <script src="./setup-tinymce.js" inline></script>
+    <script src="./plugin-markdown.js"></script>
   </body>
 </html>
 
