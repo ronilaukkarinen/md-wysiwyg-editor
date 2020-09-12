@@ -146,3 +146,4 @@ async function verifyPermission(fileHandle, withWrite) {
   // The user did nt grant permission, return false.
   return false;
 }
+

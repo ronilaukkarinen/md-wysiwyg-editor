@@ -79,3 +79,4 @@
     modifiedFooter.classList.toggle('hidden', hidden);
   };
 })(app);
+

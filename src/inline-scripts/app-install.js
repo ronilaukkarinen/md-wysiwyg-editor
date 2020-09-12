@@ -54,3 +54,4 @@
 
   myMenus.addKeyboardShortcut(butInstall);
 })(app);
+

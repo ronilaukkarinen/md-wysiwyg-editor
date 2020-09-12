@@ -56,3 +56,4 @@
     aDownloadFile.click();
   };
 })(app);
+

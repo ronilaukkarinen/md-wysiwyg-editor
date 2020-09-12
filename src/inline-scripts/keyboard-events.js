@@ -65,3 +65,4 @@ window.addEventListener('keydown', (e) => {
     app.toggleCaptureTabs();
   }
 });
+

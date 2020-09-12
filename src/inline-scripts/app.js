@@ -202,3 +202,4 @@ app.quitApp = () => {
   gaEvent('FileAction', 'Quit');
   window.close();
 };
+

@@ -22,3 +22,4 @@ window.addEventListener('load', () => {
         .register('./service-worker.js');
   }
 });
+
