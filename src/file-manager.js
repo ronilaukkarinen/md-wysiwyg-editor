@@ -10,7 +10,7 @@ import {
   fileSave,
 } from 'https://unpkg.com/browser-nativefs';
 
-function bnfs-open-file() {
+function bnfs_open_file() {
 
   (async () => {
 
@@ -31,7 +31,7 @@ function bnfs-open-file() {
   return blob;
 }
 
-function bnfs-open-files() {
+function bnfs_open_files() {
 
   (async () => {
 
@@ -54,7 +54,7 @@ function bnfs-open-files() {
   return blobs;
 }
 
-function bnfs-open-directory() {
+function bnfs_open_directory() {
 
   (async () => {
 
@@ -72,7 +72,7 @@ function bnfs-open-directory() {
   return blobsInDirectory;
 }
 
-function bnfs-save-file() {
+function bnfs_save_file(someBlob) {
 
   (async () => {
   
@@ -97,7 +97,7 @@ function bnfs-save-file() {
   return;
 }
 
-function bnfs-save-file-as() {
+function bnfs_save_file_as(someBlob) {
 
   (async () => {
   
