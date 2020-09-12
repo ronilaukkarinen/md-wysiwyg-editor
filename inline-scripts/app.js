@@ -39,14 +39,14 @@ const app = {
 };
 
 // Verify the APIs we need are supported, show a polite warning if not.
-/*if (app.hasNativeFS) {
+if (app.hasNativeFS) {
   document.getElementById('not-supported').classList.add('hidden');
   gaEvent('File System APIs', 'Native');
 } else {
   document.getElementById('lblLegacyFS').classList.toggle('hidden', false);
   document.getElementById('butSave').classList.toggle('hidden', true);
   gaEvent('File System APIs', 'Legacy');
-}*/
+}
 
 /**
  * Creates an empty notepad with no details in it.

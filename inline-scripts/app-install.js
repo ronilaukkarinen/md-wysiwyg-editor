@@ -46,11 +46,11 @@
   });
 
   // Handle the install button click
-  /*butInstall.addEventListener('click', () => {
+  butInstall.addEventListener('click', () => {
     butInstall.setAttribute('disabled', true);
     app.installPrompt.prompt();
     gaEvent('Install', 'clicked');
-  });*/
+  });
 
   myMenus.addKeyboardShortcut(butInstall);
 })(app);

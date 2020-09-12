@@ -77,8 +77,6 @@ function saveFile(filename) {
   document.title = filename + " - Text Editor";
   persistentFilename = filename;
 
-  console.log("Save -> Filename: " + filename + " and Data: " + content);
-
   return content;
 }
 
