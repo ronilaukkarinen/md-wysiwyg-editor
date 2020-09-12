@@ -1,22 +1,49 @@
 let persistFilename = "untitled";
 let fullscreenToggleState = false;
 let markdownSideBarToggleState = false;
-let titlebarHeight, titlebarDisplay;
 
-// Upon saving file
-function newlyMadeFile() {
+// Create new file
+function newFile() {
+  // Is there any change/undo history?
+  if (tinymce.editors[0].isDirty()) {
+    var response = confirm("Unsaved changes. Continue without saving?");
+    if (response == false) {
+      return;
+    }
+  // Are we sure we want to exit out of the current file?
+  } else {
+    var response = confirm("Close the current file and create a new one?");
+    if (response == false) {
+      return;
+    }
+  }
+  // If user confirms, open file
+  // ipcRenderer.send('call-new');
+  app.newFile(); // Actually this might not make any sense
   tinymce.activeEditor.resetContent();
   persistFilename = "untitled";
-  titlebar.updateTitle(persistFilename);
+  document.title = persistFilename;
 }
 
-// Upon opening new file
-function openedFile(event, filename, extension, data) {
+// Open file
+function openFile(event, filename, extension, data) {
+  // Is there any change/undo history?
+  if (tinymce.editors[0].isDirty()) {
+    var response = confirm("Unsaved changes. Continue without saving?");
+    if (response == false) {
+      return;
+    }
+    // ipcRenderer.send('call-open');
+    app.openFile();
+  }
+
+  // ...
+
   // Open as HTML
-  if(extension == ".html" || extension == ".htm") {
+  if (extension == ".html" || extension == ".htm") {
     tinymce.editors[0].setContent(data, {format: 'html'});
   // Open as markdown
-  } else if(extension == ".md" || extension == ".markdown") {
+  } else if (extension == ".md" || extension == ".markdown") {
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
   } else {
@@ -24,33 +51,59 @@ function openedFile(event, filename, extension, data) {
   }
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
-  titlebar.updateTitle(filename);
+  document.title = filename;
   persistFilename = filename;
 }
 
-// Upon saving file
-function savedFile(event, filename) {
+// Save file
+function saveFile(event, filename) {
+
+  // Get editor content in all formats and send to save
+  var editorContent = {
+    html: tinymce.editors[0].getContent({format: 'html'}),
+    text: tinymce.editors[0].getContent({format: 'text'}),
+    markdown: tinymce.editors[0].getContent({format: 'markdown'}),
+  }
+  // ipcRenderer.send('call-save', editorContent);
+
+  // ...
+
   tinymce.editors[0].setDirty(false);
-  titlebar.updateTitle(filename);
+  document.title = filename;
   persistentFilename = filename;
+}
+
+// Save file as
+function saveFileAs(event, filename) {
+
+  // Get editor content in all formats and send to save
+  var editorContent = {
+    html: tinymce.editors[0].getContent({format: 'html'}),
+    text: tinymce.editors[0].getContent({format: 'text'}),
+    markdown: tinymce.editors[0].getContent({format: 'markdown'}),
+  }
+  // ipcRenderer.send('call-saveAs', editorContent);
+
+  // ...
+
+  tinymce.editors[0].setDirty(false);
+  document.title = filename;
+  persistentFilename = filename;
+}
+
+function quit() {
+  if (tinymce.editors[0].isDirty()) {
+    var response = confirm("Unsaved changes. Continue without saving?");
+    if (response == false) {
+      return;
+    }
+  }
+  // ipcRenderer.send('call-quit');
+  window.close();
 }
 
 // Upon fullscreen on/off
 function fullscreenChange() {
-  var titlebar = document.getElementsByClassName("titlebar")[0];
-  var bodycontainer = document.getElementsByClassName("container-after-titlebar")[0];
-  if(fullscreenToggleState == false) {
-    titlebarDisplay = titlebar.style.display;
-    titlebar.style.display = "none";
-    titlebarHeight = bodycontainer.style.top;
-    bodycontainer.style.top = "0px";
-    fullscreenToggleState = true;
-  } else {
-    titlebar.style.display = titlebarDisplay;
-    bodycontainer.style.top = titlebarHeight;
-    fullscreenToggleState = false;
-  }
-
   // Give text box focus again (NOT WORKING FOR SOME REASON...)
   document.getElementById("editor_ifr").focus();
 }
@@ -188,21 +241,7 @@ tinymce.init({
             icon: 'new-document',
             text: 'New (Ctrl+N)',
             onAction: function () {
-              if(tinymce.editors[0].isDirty()) {
-                var response = confirm("Unsaved changes. Continue without saving?");
-                if (response == true) {
-                  // ipcRenderer.send('call-new');
-                } else {
-                  return;
-                }
-              } else {
-                var response = confirm("Close the current file and create a new one?");
-                if (response == true) {
-                  // ipcRenderer.send('call-new');
-                } else {
-                  return;
-                }
-              }
+              newFile();
             }
           },
           {
@@ -210,16 +249,7 @@ tinymce.init({
             icon: 'browse',
             text: 'Open (Ctrl+O)',
             onAction: function () {
-              if(tinymce.editors[0].isDirty()) {
-                var response = confirm("Unsaved changes. Continue without saving?");
-                if (response == true) {
-                  // ipcRenderer.send('call-open');
-                } else {
-                  return;
-                }
-              } else {
-                // ipcRenderer.send('call-open');
-              }
+              openFile();
             }
           },
           {
@@ -227,13 +257,7 @@ tinymce.init({
             icon: 'save',
             text: 'Save (Ctrl+S)',
             onAction: function () {
-              // Get editor content in all formats and send to save
-              var editorContent = {
-                html: tinymce.editors[0].getContent({format: 'html'}),
-                text: tinymce.editors[0].getContent({format: 'text'}),
-                markdown: tinymce.editors[0].getContent({format: 'markdown'}),
-              }
-              // ipcRenderer.send('call-save', editorContent);
+              saveFile();
             }
           },
           {
@@ -241,13 +265,7 @@ tinymce.init({
             icon: 'save',
             text: 'Save as (Shift+Ctrl+S)',
             onAction: function () {
-              // Get editor content in all formats and send to save
-              var editorContent = {
-                html: tinymce.editors[0].getContent({format: 'html'}),
-                text: tinymce.editors[0].getContent({format: 'text'}),
-                markdown: tinymce.editors[0].getContent({format: 'markdown'}),
-              }
-              // ipcRenderer.send('call-saveAs', editorContent);
+              saveFileAs();
             }
           },
           {
@@ -255,16 +273,7 @@ tinymce.init({
             icon: 'close',
             text: 'Quit (Ctrl+W)',
             onAction: function () {
-              if(tinymce.editors[0].isDirty()) {
-                var response = confirm("Unsaved changes. Continue without saving?");
-                if (response == true) {
-                  // ipcRenderer.send('call-quit');
-                } else {
-                  return;
-                }
-              } else {
-                // ipcRenderer.send('call-quit');
-              }
+              quit();
             }
           },
         ];
@@ -393,10 +402,11 @@ tinymce.init({
     // OVERRIDE SHORTCUTS -> https://stackoverflow.com/questions/19791696/overriding-shortcut-assignments-in-tinymce
 
     editor.addShortcut('Ctrl+N', 'New', function () {
-      if(tinymce.editors[0].isDirty()) {
+      if (tinymce.editors[0].isDirty()) {
         var response = confirm("Unsaved changes. Continue without saving?");
         if (response == true) {
           // ipcRenderer.send('call-new');
+          app.newFile(); // Actually this might not make any sense
         } else {
           return;
         }
@@ -404,6 +414,7 @@ tinymce.init({
         var response = confirm("Close the current file and create a new one?");
         if (response == true) {
           // ipcRenderer.send('call-new');
+          app.newFile(); // Actually this might not make any sense
         } else {
           return;
         }
@@ -411,16 +422,7 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+O', 'Open', function () {
-      if(tinymce.editors[0].isDirty()) {
-        var response = confirm("Unsaved changes. Continue without saving?");
-        if (response == true) {
-          // ipcRenderer.send('call-open');
-        } else {
-          return;
-        }
-      } else {
-        // ipcRenderer.send('call-open');
-      }
+      openFile();
     });
 
     editor.addShortcut('Ctrl+S', 'Save', function () {
@@ -453,7 +455,7 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+W', 'Quit', function () {
-      if(tinymce.editors[0].isDirty()) {
+      if (tinymce.editors[0].isDirty()) {
         var response = confirm("Unsaved changes. Continue without saving?");
         if (response == true) {
           // ipcRenderer.send('call-quit');
@@ -585,10 +587,10 @@ tinymce.init({
     document.getElementById("textEditor").focus();
 
     editor.on('Dirty', function(e) {
-      titlebar.updateTitle(persistFilename + " *");
+      document.title = persistFilename + " * ";
     });
 
-    titlebar.updateTitle(persistFilename);
+    document.title = persistFilename;
 
     // Detect markdown sidebar toggle state open/close
     // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
