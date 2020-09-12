@@ -464,10 +464,10 @@ tinymce.init({
     });
 
     function copyToClipboard(html, text) {
-      function listener(e) {
-        e.clipboardData.setData("text/html", html);
-        e.clipboardData.setData("text/plain", text);
-        e.preventDefault();
+      function listener(event) {
+        event.clipboardData.setData("text/html", html);
+        event.clipboardData.setData("text/plain", text);
+        event.preventDefault();
       }
       document.addEventListener("copy", listener);
       document.execCommand("copy");
@@ -514,32 +514,12 @@ tinymce.init({
       tinyMCE.execCommand('Strikethrough');
     });
 
-    // NOT WORKING RIGHT NOW! (TINYMCE DOESN'T LIKE THE SHORTCUT...)
-    editor.addShortcut('Ctrl+.', 'Superscript', function () {
-      tinyMCE.execCommand('Superscript');
-    });
-
-    // BREAKS PROGRAM RIGHT NOW SO COMMENTED OUT
-    /*editor.addShortcut('Ctrl+,', 'Subscript', function () {
-      tinyMCE.execCommand('Subscript');
-    });*/
-
     editor.addShortcut('Ctrl+Shift+7', 'Numbered list', function () {
       tinyMCE.execCommand('InsertOrderedList');
     });
 
     editor.addShortcut('Ctrl+Shift+8', 'Bullet list', function () {
       tinyMCE.execCommand('InsertUnorderedList');
-    });
-
-    // NOT WORKING RIGHT NOW! (TINYMCE DOESN'T LIKE THE SHORTCUT...)
-    editor.addShortcut('Ctrl+]', 'Blockquote', function () {
-      tinymce.execCommand('mceBlockQuote');
-    });
-
-    // NOT WORKING RIGHT NOW! (TINYMCE DOESN'T LIKE THE SHORTCUT...)
-    editor.addShortcut('Ctrl+\\', 'Clear formatting', function () {
-      tinyMCE.execCommand('RemoveFormat');
     });
 
     editor.addShortcut('Ctrl+Shift+F', 'Fullscreen', function () {
@@ -564,13 +544,26 @@ tinymce.init({
       }
 
       // Tab key: insert an em dash-sized space and disable normal tab key handling
-      if (key == 9) {
+      if (event.key === 'Tab') {
         editor.insertContent('&emsp;');
+        event.preventDefault();
         return;
       }
 
-      event.preventDefault();
-      event.stopPropagation();
+      // TinyMCE doesn't like to handle these for some reason
+      if (event.ctrlKey && event.key === '.') {
+        tinyMCE.execCommand('Superscript');
+      }
+      if (event.ctrlKey && event.key === ',') {
+        tinyMCE.execCommand('Subscript');
+      }
+      if (event.ctrlKey && event.key === ']') {
+        tinyMCE.execCommand('mceBlockQuote');
+      }
+      if (event.ctrlKey && event.key === '\\') {
+        tinyMCE.execCommand('RemoveFormat');
+        event.preventDefault();
+      }
 
       return;
     });
@@ -599,21 +592,6 @@ tinymce.init({
       markdownSideBarToggleState = event.detail;
     });
 
-    // Add more keyboard shortcuts
-    document.addEventListener('keydown', function (event) {
-
-      console.log('???');
-      if (event.ctrlKey && event.key === 'q') {
-        tinyMCE.execCommand('Superscript');
-      }
-      if (event.ctrlKey && event.key === ',') {
-        tinyMCE.execCommand('Subscript');
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-    });
-  
     // Give edit area focus at start up
     tinyMCE.get('textEditor').getBody().focus();
 
