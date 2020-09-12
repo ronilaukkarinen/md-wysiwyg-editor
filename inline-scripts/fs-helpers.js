@@ -42,7 +42,13 @@ function getNewFileHandle() {
   // For Chrome 86 and later...
   if ('showSaveFilePicker' in window) {
     const opts = {
-      types: [{
+      types: [{ // Added
+        description: 'Markdown file',
+        accept: {'text/markdown': ['md', 'markdown']},
+      },{ // Added
+        description: 'HTML file',
+        accept: {'text/html': ['html', 'htm']},
+      },{
         description: 'Text file',
         accept: {'text/plain': ['txt']},
       }],
@@ -52,7 +58,15 @@ function getNewFileHandle() {
   // For Chrome 85 and earlier...
   const opts = {
     type: 'save-file',
-    accepts: [{
+    accepts: [{ // Added
+      description: 'Markdown file',
+      extensions: ['md', 'markdown'],
+      mimeTypes: ['text/markdown'],
+    },{ // Added
+      description: 'HTML file',
+      extensions: ['htm', 'html'],
+      mimeTypes: ['text/html'],
+    },{
       description: 'Text file',
       extensions: ['txt'],
       mimeTypes: ['text/plain'],

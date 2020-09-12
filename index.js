@@ -566,8 +566,8 @@ tinymce.init({
       // Tab key: insert an em dash-sized space and disable normal tab key handling
       if (key == 9) {
         editor.insertContent('&emsp;');
-        event.preventDefault();
-        event.stopPropagation();
+        //event.preventDefault();
+        //event.stopPropagation();
         return;
       }
 
@@ -586,10 +586,7 @@ tinymce.init({
 
   init_instance_callback : function(editor) {
 
-    // Hack to give text box focus at start up
-    document.getElementById("textEditor").focus();
-
-    editor.on('Dirty', function(e) {
+    editor.on('Dirty', function() {
       document.title = persistFilename + " * - Text Editor";
     });
 
@@ -597,12 +594,34 @@ tinymce.init({
 
     // Detect markdown sidebar toggle state open/close
     // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
-    document.addEventListener('markdown-sidebar-toggle-state', function (e) {
-      markdownSideBarToggleState = e.detail;
+    document.addEventListener('markdown-sidebar-toggle-state', function () {
+      markdownSideBarToggleState = event.detail;
     });
+
+    // Add more keyboard shortcuts
+    document.addEventListener('keydown', function (event) {
+      console.log('???');
+      event.preventDefault();
+      if (event.ctrlKey && event.key === 'q') {
+        tinyMCE.execCommand('Superscript');
+      }
+      if (event.ctrlKey && event.key === ',') {
+        tinyMCE.execCommand('Subscript');
+      }
+    });
+  
+    // Give edit area focus at start up
+    tinyMCE.get('textEditor').getBody().focus();
 
     return;
   },
 
 });
+
+// Retrieve relevant URL parameters if any
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const startFile = urlParams.get('file');
+const startMarkdownView = urlParams.get('mdv');
+
 
