@@ -593,6 +593,22 @@ tinymce.init({
       markdownSideBarToggleState = event.detail;
     });
 
+    // Retrieve relevant URL parameters if any
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const startFile = urlParams.get('file');
+    const startMarkdownView = urlParams.get('mdv');
+
+    // Set the starting document
+    let url = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/README.md';
+    fetch(url)
+      .then(function(response) {
+        response.text().then(function(text) {
+          openFile('README.md', text);
+          console.log("Success??: " + text);
+        });
+      });
+
     // Give edit area focus at start up
     tinyMCE.get('textEditor').getBody().focus();
 
@@ -600,20 +616,4 @@ tinymce.init({
   },
 
 });
-
-// Retrieve relevant URL parameters if any
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const startFile = urlParams.get('file');
-const startMarkdownView = urlParams.get('mdv');
-
-let url = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/README.md';
-
-fetch(url)
-  .then(function(response) {
-    response.text().then(function(text) {
-      openFile('README.md', text);
-      console.log("Success??: " + text);
-    });
-  });
 
