@@ -38,7 +38,16 @@ function openFile(event, filename, extension, data) {
   }
 
   // ipcRenderer.send('call-open');
-  app.openFile(); // Doesn't work right now
+  // app.openFile(); // Doesn't work right now
+  //bnfs_open_file();
+
+  let fileHandle;
+  butOpenFile.addEventListener('click', async (e) => {
+    fileHandle = await window.chooseFileSystemEntries();
+    const file = await fileHandle.getFile();
+    const contents = await file.text();
+    var data = contents;
+  });
 
   // Open as HTML
   if (extension == ".html" || extension == ".htm") {
