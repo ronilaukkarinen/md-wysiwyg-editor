@@ -544,6 +544,7 @@ tinymce.init({
       }
 
       // Tab key: insert an em dash-sized space and disable normal tab key handling
+      // https://www.tiny.cloud/docs/plugins/nonbreaking/#nonbreaking_force_tab
       if (event.key === 'Tab') {
         editor.insertContent('&emsp;');
         event.preventDefault();
@@ -606,4 +607,13 @@ const urlParams = new URLSearchParams(queryString);
 const startFile = urlParams.get('file');
 const startMarkdownView = urlParams.get('mdv');
 
+let url = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/README.md';
+
+fetch(url)
+  .then(function(response) {
+    response.text().then(function(text) {
+      openFile('README.md', text);
+      console.log("Success??: " + text);
+    });
+  });
 
