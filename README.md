@@ -4,6 +4,8 @@ Text Editor is a simple constrained-rich-text and markdown editor. It is a [Prog
 
 ## Launch
 
+Visit this link to launch the application:
+
 [https://alyw234237.github.io/text-editor/](https://alyw234237.github.io/text-editor/)
 
 ## Screenshot
@@ -12,17 +14,16 @@ Text Editor is a simple constrained-rich-text and markdown editor. It is a [Prog
 
 ## Features
 
-* Open and save files as markdown (MD), plain text (TXT), or restricted rich-text (HTML).
-* Views to edit the document as rich-text, markdown, or HTML code. Bidirectional live editing between rich-text and markdown views.
-* Rich-text is constrained. Only headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines are included. All other styling—e.g. font size, font color, spacing, alignment, etc.—is automatically filtered.
-* Rich-text is displayed with a fixed appearance. Modifiable via stylesheet (or in preferences in the future).
-* Partial support for live conversion of markdown into rich-text in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `**This text is bold.**` will give bolded text. This feature does not currently work for links, tables, or images (use the formatting buttons, keyboard shorcuts, or markdown editing pane instead for these). Also includes live conversions for en (--) and em dashes (---).
-* Editing and formatting keyboard shortcuts in rich-text mode (e.g., ctrl+o = open, ctrl+v = paste, ctrl+b = bold, etc.).
-* Find and replace functionality in the rich-text view.
+* Open and save files as markdown (MD), constrained rich-text (HTML), or plain text (TXT).
+* Bidirectional live editing between rich-text, markdown, and HTML code views.
+* Rich-text is constrained essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically sanitized and filtered as soon as it enters the editor.
+* Automatic conversion of typed markdown syntax into rich text in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `**This text is bold.**` will give bolded text. Does not work for links, images, or tables. In addition to markdown syntax, certain strings will automatically convert to special characters (e.g., `--` to en dash and `---` to em dash).
+* The rich-text display appearance is modifiable via stylesheet and this will be available in preferences in the future.
+* Keyboard shortcuts for editing, formatting, etc.
 
 ## Related
 
-Similar live/rich-text markdown editors (all desktop applications—mostly [Electron](https://www.electronjs.org/)-based):
+Similar live rich-text-oriented markdown editors (all desktop applications—mostly [Electron](https://www.electronjs.org/)-based):
 
 * [Typora](https://typora.io/)
 * [Mark Text](https://github.com/marktext/marktext)
@@ -31,5 +32,5 @@ Similar live/rich-text markdown editors (all desktop applications—mostly [Elec
 * [Abricotine](http://abricotine.brrd.fr/)
 * [ghostwriter](https://wereturtle.github.io/ghostwriter/)
 * [VNote](https://github.com/tamlok/vnote)
-* [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) for [VSCode](https://github.com/microsoft/vscode)
+* [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) extension for [VSCode](https://github.com/microsoft/vscode)
 
