@@ -15685,6 +15685,9 @@
             "min-width": "100%",
             "max-width": "100%"
           },
+          inputAttributes: {
+            "spellcheck": "false",
+          },
           selectOnFocus: false,
           inputBehaviours: Behaviour_derive([
             AddEventsBehaviour_config("markdown-input-events", [
