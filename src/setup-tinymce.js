@@ -28,7 +28,7 @@ function newFile() {
 }
 
 // Open file
-function openFile(event, filename, extension, data) {
+function openFile(filename, data) {
 
   // Is there any change/undo history?
   if (tinymce.editors[0].isDirty()) {
@@ -38,13 +38,15 @@ function openFile(event, filename, extension, data) {
   }
 
   // ipcRenderer.send('call-open');
-  // app.openFile(); // Doesn't work right now
+  //app.openFile(); // Doesn't work right now
 
+  var extension = filename.split('.').pop();
+  console.log("Filename: " + filename + " and Extension: " + extension + " and Data: " + data);
   // Open as HTML
-  if (extension == ".html" || extension == ".htm") {
+  if (extension == "html" || extension == "htm") {
     tinymce.editors[0].setContent(data, {format: 'html'});
   // Open as markdown
-  } else if (extension == ".md" || extension == ".markdown") {
+  } else if (extension == "md" || extension == "markdown") {
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
   } else {
@@ -60,7 +62,7 @@ function openFile(event, filename, extension, data) {
 }
 
 // Save file
-function saveFile(event, filename) {
+function saveFile(filename) {
   // Get editor content in all formats and send to save
   var editorContent = {
     html: tinymce.editors[0].getContent({format: 'html'}),
@@ -81,7 +83,7 @@ function saveFile(event, filename) {
 }
 
 // Save file as
-function saveFileAs(event, filename) {
+function saveFileAs(filename) {
 
   // Get editor content in all formats and send to save
   var editorContent = {
@@ -293,7 +295,8 @@ tinymce.init({
             icon: 'browse',
             text: 'Open (Ctrl+O)',
             onAction: function () {
-              openFile();
+              // openFile();
+              app.openFile();
             }
           },
           {
@@ -450,7 +453,8 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+O', 'Open', function () {
-      openFile();
+      // openFile();
+      app.openFile();
     });
 
     editor.addShortcut('Ctrl+S', 'Save', function () {

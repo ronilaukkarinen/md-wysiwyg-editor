@@ -11,24 +11,8 @@ function createWindow() {
   // width=x, height=y, spellcheck=false, devtools on/off, menubar on/off, keyboard shortcuts on/off, etc.
 }
 
-ipcMain.on('call-open', (event, arg) => open());
 ipcMain.on('call-save', (event, arg) => save(arg));
 ipcMain.on('call-saveAs', (event, arg) => saveas(arg));
-
-function open() {
-  dialog.showOpenDialog({ properties: ["openFile"], defaultPath: working_directory }, function (file) {
-    // Prevent error message if click cancel
-    if(!file[0]) {
-      return;
-    }
-    fs.readFile(file[0], 'utf8', (err, data) => {
-      if (err) throw err;
-      change_working_directory(path.dirname(file[0]));
-      filename = path.basename(file[0]);
-      mainWindow.webContents.send('opened-file', filename, path.extname(filename), data);
-    });
-  });
-}
 
 function save(output) {
   if (filename == null) {

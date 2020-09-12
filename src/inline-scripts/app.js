@@ -109,6 +109,7 @@ app.openFile = async (fileHandle) => {
   if (!fileHandle) {
     return;
   }
+  console.log("File handle: " + fileHandle.extension);
   const file = await fileHandle.getFile();
   app.readFile(file, fileHandle);
 };
@@ -124,7 +125,10 @@ app.readFile = async (file, fileHandle) => {
     app.setText(await readFile(file));
     app.setFile(fileHandle || file.name);
     app.setModified(false);
-    app.setFocus(true);
+    //app.setFocus(true);
+
+    // TinyMCE ->
+    openFile(file.name, await readFile(file));
   } catch (ex) {
     gaEvent('Error', 'FileRead', ex.name);
     const msg = `An error occured reading ${app.fileName}`;
