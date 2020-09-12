@@ -37,11 +37,8 @@ function openFile(filename, data) {
     }
   }
 
-  // ipcRenderer.send('call-open');
-  //app.openFile(); // Doesn't work right now
-
+  // Get file extension/type from filename
   var extension = filename.split('.').pop();
-  console.log("Filename: " + filename + " and Extension: " + extension + " and Data: " + data);
   // Open as HTML
   if (extension == "html" || extension == "htm") {
     tinymce.editors[0].setContent(data, {format: 'html'});
@@ -63,43 +60,27 @@ function openFile(filename, data) {
 
 // Save file
 function saveFile(filename) {
-  // Get editor content in all formats and send to save
-  var editorContent = {
-    html: tinymce.editors[0].getContent({format: 'html'}),
-    text: tinymce.editors[0].getContent({format: 'text'}),
-    markdown: tinymce.editors[0].getContent({format: 'markdown'}),
+
+  // Get file extension/type from filename
+  var extension = filename.split('.').pop();
+  // Save as text
+  if(extension == "txt" || extension == "text") {
+    var content = tinymce.editors[0].getContent({format: 'text'});
+  // Save as markdown
+  } else if(extension == "md" || extension == "markdown") {
+    var content = tinymce.editors[0].getContent({format: 'markdown'});
+  // Save as HTML (HTML or other extension)
+  } else {
+    var content = tinymce.editors[0].getContent({format: 'html'});
   }
-
-  // ipcRenderer.send('call-save', editorContent);
-  app.saveFile();  // Doesn't work right now
-
-  // ...
 
   tinymce.editors[0].setDirty(false);
   document.title = filename;
   persistentFilename = filename;
 
-  return;
-}
+  console.log("Save -> Filename: " + filename + " and Data: " + content);
 
-// Save file as
-function saveFileAs(filename) {
-
-  // Get editor content in all formats and send to save
-  var editorContent = {
-    html: tinymce.editors[0].getContent({format: 'html'}),
-    text: tinymce.editors[0].getContent({format: 'text'}),
-    markdown: tinymce.editors[0].getContent({format: 'markdown'}),
-  }
-
-  // ipcRenderer.send('call-saveAs', editorContent);
-  app.saveFileAs(); // Doesn't work right now
-
-  tinymce.editors[0].setDirty(false);
-  document.title = filename;
-  persistentFilename = filename;
-
-  return;
+  return content;
 }
 
 // Quit
@@ -209,7 +190,7 @@ tinymce.init({
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table image hr searchreplace markdown code fullscreen', // preferences (ADD BACK LATER)
   toolbar_mode: 'floating', // NOT WORKING!
-  plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print fullpage',
+  plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
@@ -236,7 +217,6 @@ tinymce.init({
   image_dimensions: false,
   object_resizing: false,
   resize_img_proportional: true, // Disabled due to resizing off
-  fullpage_hide_in_source_view: false,
 
   textpattern_patterns: [
     {start: '#', format: 'h1'},
@@ -304,7 +284,8 @@ tinymce.init({
             icon: 'save',
             text: 'Save (Ctrl+S)',
             onAction: function () {
-              saveFile();
+              // saveFile();
+              app.saveFile();
             }
           },
           {
@@ -312,7 +293,8 @@ tinymce.init({
             icon: 'save',
             text: 'Save as (Shift+Ctrl+S)',
             onAction: function () {
-              saveFileAs();
+              // saveFileAs();
+              app.saveFileAs();
             }
           },
           {
@@ -458,11 +440,13 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+S', 'Save', function () {
-      saveFile();
+      // saveFile();
+      app.saveFile();
     });
 
     editor.addShortcut('Shift+Ctrl+S', 'Save as', function () {
-      saveFileAs();
+      // saveFileAs();
+      app.saveFileAs();
     });
 
     editor.addShortcut('Ctrl+H', 'Find and replace', function () {

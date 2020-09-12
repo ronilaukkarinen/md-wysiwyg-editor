@@ -109,7 +109,6 @@ app.openFile = async (fileHandle) => {
   if (!fileHandle) {
     return;
   }
-  console.log("File handle: " + fileHandle.extension);
   const file = await fileHandle.getFile();
   app.readFile(file, fileHandle);
 };
@@ -129,6 +128,8 @@ app.readFile = async (file, fileHandle) => {
 
     // TinyMCE ->
     openFile(file.name, await readFile(file));
+    app.fileName = file.name;
+    // <- End TinyMCE
   } catch (ex) {
     gaEvent('Error', 'FileRead', ex.name);
     const msg = `An error occured reading ${app.fileName}`;
@@ -146,7 +147,10 @@ app.saveFile = async () => {
       return await app.saveFileAs();
     }
     gaEvent('FileAction', 'Save');
-    await writeFile(app.file.handle, app.getText());
+    // TinyMCE ->
+    // await writeFile(app.file.handle, app.getText());
+    await writeFile(app.file.handle, saveFile(app.fileName));
+    // <- End TinyMCE
     app.setModified(false);
   } catch (ex) {
     gaEvent('Error', 'FileSave', ex.name);
@@ -154,7 +158,7 @@ app.saveFile = async () => {
     console.error(msg, ex);
     alert(msg);
   }
-  app.setFocus();
+  // app.setFocus();
 };
 
 /**
@@ -163,8 +167,13 @@ app.saveFile = async () => {
 app.saveFileAs = async () => {
   if (!app.hasNativeFS) {
     gaEvent('FileAction', 'Save As', 'Legacy');
-    app.saveAsLegacy(app.file.name, app.getText());
-    app.setFocus();
+    // TinyMCE ->
+    // app.saveAsLegacy(app.file.name, app.getText());
+    app.saveAsLegacy(app.file.name, saveFile(app.fileName));
+    app.fileName = fileHandle.name;
+    // <- End TinyMCE
+
+    // app.setFocus();
     return;
   }
   gaEvent('FileAction', 'Save As', 'Native');
@@ -182,7 +191,12 @@ app.saveFileAs = async () => {
     return;
   }
   try {
-    await writeFile(fileHandle, app.getText());
+    // TinyMCE ->
+    // await writeFile(fileHandle, app.getText());
+    await writeFile(fileHandle, saveFile(fileHandle.name));
+    app.fileName = fileHandle.name;
+    // <- End TinyMCE
+
     app.setFile(fileHandle);
     app.setModified(false);
   } catch (ex) {
@@ -193,7 +207,7 @@ app.saveFileAs = async () => {
     gaEvent('Error', 'Unable to write file', 'Native');
     return;
   }
-  app.setFocus();
+  // app.setFocus();
 };
 
 /**

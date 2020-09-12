@@ -11,32 +11,7 @@ function createWindow() {
   // width=x, height=y, spellcheck=false, devtools on/off, menubar on/off, keyboard shortcuts on/off, etc.
 }
 
-ipcMain.on('call-save', (event, arg) => save(arg));
 ipcMain.on('call-saveAs', (event, arg) => saveas(arg));
-
-function save(output) {
-  if (filename == null) {
-    saveas(output);
-  } else {
-    var fullpath = path.join(working_directory, filename);
-    // Save as text
-    if(path.extname(filename) == ".txt" || path.extname(filename) == ".text") {
-      output = output.text;
-    // Save as markdown
-    } else if(path.extname(filename) == ".md" || path.extname(filename) == ".markdown") {
-      output = output.markdown;
-    // Save as HTML (HTML or other extension)
-    } else {
-      output = output.html;
-    }
-    fs.writeFile(fullpath, beautify(output, { indent_size: 2 }), (err) => {
-      if (err) {
-        throw err;
-      }
-      mainWindow.webContents.send('saved-file', filename);
-    });
-  }
-}
 
 function saveas(output) {
   var fullPath = '';
