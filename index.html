@@ -44,8 +44,9 @@
     <!-- Origin Trial Token NFS API v2 (expires 2020-05-25) -->
     <meta http-equiv="origin-trial" content="AouXz9/sqzYGRIFkw8KK0QXp0HOo99+Pg8NAr/4pRA1pAlaTeQ6BngqqkBUzfjvxzPcRf15pmieR4RDhJB9bKwAAAABleyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZWxhYnMuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJOYXRpdmVGaWxlU3lzdGVtMiIsImV4cGlyeSI6MTU5MDQxNzc1NX0=">
 
-    <!-- Add TinyMCE editor stylesheet -->
-    <link rel="stylesheet" href="editor-styles.css" inline>
+    <!-- Include TinyMCE stylesheets -->
+    <link href="css/editor-styles-light.css" type="text/css" rel="stylesheet">
+    <!--<link href="css/editor-styles-dark.css" type="text/css" rel="stylesheet">-->
   </head>
   <body>
     <div id="textEditor" aria-label="Text Editor"></div>
@@ -54,9 +55,10 @@
     <input type="file" id="filePicker" style="display: none;">
 
     <!-- Import libraries -->
-    <script src="native-fs.js" inline></script> <!-- File handling -->
-    <script src="tinymce/tinymce.min.js" referrerpolicy="origin"></script> <!-- TinyMCE -->
-    <script src="plugin-markdown.js"></script> <!-- TinyMCE markdown plugin (Showdown) -->
+    <script src="libs/native-fs.js" inline></script> <!-- File handling -->
+    <script src="libs/tinymce/tinymce.min.js" referrerpolicy="origin"></script> <!-- TinyMCE -->
+    <script src="libs/plugin-markdown.js"></script> <!-- TinyMCE markdown plugin (Showdown) -->
+    <script src="libs/jquery-3.5.1.min.js" inline></script> <!-- jQuery -->
 
     <!-- Import application main script -->
     <script src="index.js" inline></script>

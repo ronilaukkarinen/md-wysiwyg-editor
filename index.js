@@ -145,7 +145,7 @@ function changeWorkingDirectory(event, newPath) {
   return;
 }
 
-tinymce.baseURL = "tinymce";
+tinymce.baseURL = "libs/tinymce";
 
 tinymce.IconManager.add('custom', {
 
@@ -170,7 +170,13 @@ tinymce.IconManager.add('custom', {
     blockquote: `<svg width="24" height="24"><path fill-rule="nonzero" d="M13 8v5h2.8L14 16h2.3l1.7-3V8h-5zm-7 5h2.8L7 16h2.3l1.7-3V8H6v5z"></path></svg>`,
     superscript: `<svg width="24" height="24"><path fill-rule="nonzero" d="M15 9.4L10.4 14l4.6 4.6-1.4 1.4L9 15.4 4.4 20 3 18.6 7.6 14 3 9.4 4.4 8 9 12.6 13.6 8 15 9.4zm5.9 1.6h-5v-1l1-.8 1.7-1.6c.3-.5.5-.9.5-1.3 0-.3 0-.5-.2-.7-.2-.2-.5-.3-.9-.3l-.8.2-.7.4-.4-1.2c.2-.2.5-.4 1-.5.3-.2.8-.2 1.2-.2.8 0 1.4.2 1.8.6.4.4.6 1 .6 1.6 0 .5-.2 1-.5 1.5l-1.3 1.4-.6.5h2.6V11z"></path></svg>`,
     subscript: `<svg width="24" height="24"><path fill-rule="nonzero" d="M10.4 10l4.6 4.6-1.4 1.4L9 11.4 4.4 16 3 14.6 7.6 10 3 5.4 4.4 4 9 8.6 13.6 4 15 5.4 10.4 10zM21 19h-5v-1l1-.8 1.7-1.6c.3-.4.5-.8.5-1.2 0-.3 0-.6-.2-.7-.2-.2-.5-.3-.9-.3a2 2 0 00-.8.2l-.7.3-.4-1.1 1-.6 1.2-.2c.8 0 1.4.3 1.8.7.4.4.6.9.6 1.5s-.2 1.1-.5 1.6a8 8 0 01-1.3 1.3l-.6.6h2.6V19z"></path></svg>`,
-    markdown: `<?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="markdown-mark" transform="translate(2.000000, 12.000000)" fill="#5f6368" fill-rule="nonzero"><path d="M0.5,16 L0.5,0 L5.40322581,0 L10.3064516,5.88235294 L15.2096774,0 L20.1129032,0 L20.1129032,16 L15.2096774,16 L15.2096774,6.82352941 L10.3064516,12.7058824 L5.40322581,6.82352941 L5.40322581,16 L0.5,16 Z M31.1451613,16 L23.7903226,8.23529412 L28.6935484,8.23529412 L28.6935484,0 L33.5967742,0 L33.5967742,8.23529412 L38.5,8.23529412 L31.1451613,16 Z" id="Shape"></path></g></g></svg>`,
+    markdown: `<svg width="24" height="24" viewBox="0 -4 40 24"><path d="M0.5,16 L0.5,0 L5.40322581,0 L10.3064516,5.88235294 L15.2096774,0 L20.1129032,0 L20.1129032,16 L15.2096774,16 L15.2096774,6.82352941 L10.3064516,12.7058824 L5.40322581,6.82352941 L5.40322581,16 L0.5,16 Z M31.1451613,16 L23.7903226,8.23529412 L28.6935484,8.23529412 L28.6935484,0 L33.5967742,0 L33.5967742,8.23529412 L38.5,8.23529412 L31.1451613,16 Z"></path></svg>`,
+    darkmode: /*`<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18" height="18"
+	 viewBox="0 0 486.883 486.883" style="enable-background:new 0 0 486.883 486.883;" xml:space="preserve">
+<path d="M243.451,0C109.226,0,0.001,109.191,0.001,243.417c0,134.244,109.226,243.466,243.45,243.466
+s243.431-109.222,243.431-243.466C486.882,109.191,377.676,0,243.451,0z M243.451,437.958c-0.237,0-0.479-0.033-0.716-0.033V48.96
+  c0.237,0,0.479-0.035,0.716-0.035c107.247,0,194.506,87.246,194.506,194.492C437.957,350.682,350.698,437.958,243.451,437.958z" />`,*/
+      `<svg version="1.0" width="18" height="18" viewBox="0 0 981.000000 988.000000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs> <pattern x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse" viewBox="0 0 100 100" id="pattern-0"> <rect x="0" y="0" width="50" height="100""></rect> </pattern> <pattern id="pattern-0-0" patternTransform="matrix(1, 0, 0, 1, 2974.191772, 8030.287354)" xlink:href="#pattern-0"></pattern> <pattern id="pattern-0-1" patternTransform="matrix(1, 0, 0, 1, 4889.624394, 4889.736084)" xlink:href="#pattern-0"></pattern> <pattern id="pattern-0-2" patternTransform="matrix(1, 0, 0, 1, 4388.941284, 5335.855957)" xlink:href="#pattern-0"></pattern> <pattern id="pattern-0-3" patternTransform="matrix(1, 0, 0, 1, 1833.005493, 4627.5)" xlink:href="#pattern-0"></pattern> </defs> <g transform="matrix(-0.1, 0, 0, -0.1, 980.424866, 988)" stroke="none"> <path d="M2641 9188 c-68 -370 -127 -676 -130 -680 -3 -3 -303 -61 -666 -127 -363 -67 -668 -125 -678 -129 -12 -5 146 -96 580 -331 329 -178 603 -328 609 -335 9 -8 -11 -181 -77 -676 -49 -366 -88 -673 -86 -683 1 -14 100 74 352 314 193 182 418 397 502 476 l151 144 622 -297 c341 -163 623 -294 626 -292 2 3 -129 283 -291 623 -163 340 -294 622 -293 626 2 3 216 231 476 504 260 274 471 500 469 501 -2 2 -311 -37 -687 -87 -547 -72 -685 -87 -692 -77 -4 7 -152 280 -329 606 -177 325 -324 592 -328 592 -3 0 -62 -303 -130 -672z" style=""></path> <path d="M6796 9763 c149 -347 265 -714 333 -1058 62 -313 89 -559 98 -895 17 -691 -101 -1357 -354 -2005 -77 -197 -285 -612 -397 -793 -755 -1218 -1958 -2059 -3341 -2337 -363 -73 -631 -99 -1020 -99 -368 0 -641 25 -980 90 -307 59 -719 183 -992 298 -73 31 -135 56 -138 56 -3 0 35 -80 84 -177 255 -511 537 -906 925 -1301 546 -555 1157 -952 1881 -1222 805 -299 1714 -389 2575 -255 1264 198 2412 867 3213 1872 1077 1352 1399 3147 860 4798 -103 317 -301 751 -470 1030 -504 832 -1197 1479 -2054 1920 -91 46 -182 91 -202 100 l-37 15 16 -37z" style=""></path> <path d="M4190 5893 c0 -12 7 -105 16 -208 8 -103 12 -191 7 -196 -4 -4 -87 -44 -183 -89 -96 -45 -178 -85 -183 -89 -4 -4 85 -29 197 -56 196 -47 205 -50 210 -74 3 -14 14 -102 26 -196 12 -93 23 -176 26 -184 2 -7 53 65 112 160 75 121 115 175 129 177 11 2 107 -13 214 -32 106 -19 194 -34 195 -33 1 1 -60 74 -137 161 l-138 160 49 92 c28 50 72 131 99 180 28 49 48 90 46 93 -3 2 -91 -31 -197 -75 l-192 -78 -148 154 c-107 111 -148 148 -148 133z" style=""></path> <path d="M1540 5443 c0 -21 9 -144 19 -273 11 -129 21 -255 23 -278 l2 -44 -289 -135 c-160 -74 -291 -136 -292 -137 -2 -2 139 -36 311 -76 277 -65 315 -77 320 -95 2 -11 22 -152 43 -312 21 -161 40 -293 43 -293 3 0 67 100 143 223 75 122 150 243 166 268 l29 46 314 -58 c172 -32 314 -56 316 -54 2 1 -90 109 -203 238 -113 130 -205 240 -205 245 0 5 67 130 149 278 82 148 146 270 143 272 -4 1 -138 -51 -297 -117 l-290 -119 -65 66 c-35 37 -136 140 -222 230 l-158 162 0 -37z" style=""></path> </g> </svg>`
   }
 
 });
@@ -182,9 +188,10 @@ tinymce.init({
   language_url: 'tooltips.js',
   height: "100%",
   theme: 'silver',
-  content_css: 'editor-area-styles.css',
+  content_css: ['css/editor-area-styles-light.css'],
+  // content_css: ['css/editor-area-styles-light.css', 'css/editor-area-styles-dark.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table quickimage image hr searchreplace markdown code fullscreen', // preferences (ADD BACK LATER)
+  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table quickimage image hr searchreplace markdown code fullscreen darkmode', // preferences (ADD BACK LATER)
   toolbar_mode: 'floating', // NOT WORKING!
   plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
@@ -390,15 +397,26 @@ tinymce.init({
     editor.ui.registry.addButton('fullscreen', {
       tooltip: 'Fullscreen (Ctr+Shift+F or F11)',
       icon: 'fullscreen',
-      onAction: function (_) {
+      onAction: function () {
         toggleFullscreen();
+      }
+    });
+
+    editor.ui.registry.addButton('darkmode', {
+      tooltip: 'Dark mode on/off',
+      icon: 'darkmode',
+      onAction: function () {
+        // Look into this in the future:
+        // https://web.dev/prefers-color-scheme/
+        theme_switch();
+        alert("Sorry, dark mode isn't available just yet...");
       }
     });
 
     editor.ui.registry.addButton('preferences', {
       tooltip: 'Preferences',
       icon: 'preferences',
-      onAction: function (_) {
+      onAction: function () {
         // Add action here
       }
     });
@@ -685,4 +703,47 @@ tinymce.init({
   },
 
 });
+
+var theme = 'light';
+if (localStorage.getItem('theme')) {
+  if (localStorage.getItem('theme') === 'dark') {
+    theme = 'dark';
+  }
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  theme = 'dark';
+}
+
+function theme_apply() {
+  'use strict';
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+theme_apply();
+
+function theme_switch() {
+  'use strict';
+  if (theme === 'light') {
+    theme = 'dark';
+  } else {
+    theme = 'light';
+  }
+  theme_apply();
+}
+
+/*var theme_OS = window.matchMedia('(prefers-color-scheme: light)');
+theme_OS.addEventListener('change', function (e) {
+  'use strict';
+  if (e.matches) {
+    theme = 'light';
+  } else {
+    theme = 'dark';
+  }
+  theme_apply();
+});*/
 

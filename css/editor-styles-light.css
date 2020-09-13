@@ -1,5 +1,9 @@
-/* I don't think that this does anything */
-/*html, body, #editor { height: 100%; margin: 0px; }
+:root {
+  --main-bg-color: rgb(255, 255, 255);
+  --main-border-transparent: rgba(0, 0, 0, 0);
+}
+
+html, body, #editor { height: 100%; margin: 0px; }
 .mce-edit-area { display: flex !important; flex-flow: column; }
 .mce-edit-area iframe { flex: 1 1 auto; }
 .mce-tinymce { height: 100%; }
@@ -7,17 +11,24 @@
 .mce-panel { border: 0; }
 .mce-container-body.mce-stack-layout { display: flex; flex-flow: column; height: 100%; }
 .mce-stack-layout-item { flex: 0 0 auto; }
-.mce-edit-area { flex:1 1 auto; }*/
+.mce-edit-area { flex:1 1 auto; }
+
+/* Whole window area border */
+.tox-tinymce {
+  border: 0px solid var(--main-border-color) !important;
+}
 
 /* Remove toolbar top border */
 .tox-tinymce {
   border-top-color: #FFFFFF !important;
-  border: 0 !important;
+  border: 100 !important;
 }
 
-/* Remove toolbar top border */
+/* Toolbar bottom border */
 .tox-toolbar__primary {
-  background-image:none !important;
+  background-image: none !important;
+  background-color: var(--main-bg-color);
+  border-bottom: 1px rgb(235, 235, 235) solid !important;
 }
 
 /* Change toolbar icon colors */
@@ -25,12 +36,10 @@
   fill: #5f6368 !important;
 }
 
-/* Change dialogue box button colors (e.g., link, image, find/replace, etc. */
-/* NOT WORKING... */
-.tox .tox-button .tox-button--secondary {
-  color: #000000 !important;
-  background-color: #f0f0f0 !important;
-  border-color: #f0f0f0 !important;
+/* Context menu dividers */
+.tox .tox-collection--list .tox-collection__group {
+  border-color: var(--main-border-transparent) !important;
+  border-width: 0px;
 }
 
 /* Customize scrollbar appearance (for markdown editor area) */
