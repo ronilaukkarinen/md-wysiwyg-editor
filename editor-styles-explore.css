@@ -1,0 +1,154 @@
+/* The recommended dark theme surface color is #121212. Or maybe #212121. */
+/* Font colors for dark: #FFFFFF but alpha set to 87% for high, 60% for medium, and 38% for disabled */
+
+/* White transparency overlay of 5 to 16% for background color for dark mode */
+
+
+:root {
+  --main-bg-color: brown;
+}
+
+/* background-color: var(--main-bg-color); */
+
+/* I don't think that this does anything */
+/*html, body, #editor { height: 100%; margin: 0px; }
+.mce-edit-area { display: flex !important; flex-flow: column; }
+.mce-edit-area iframe { flex: 1 1 auto; }
+.mce-tinymce { height: 100%; }
+.mce-tinymce.mce-container { height: 100%; border: 0; }
+.mce-panel { border: 0; }
+.mce-container-body.mce-stack-layout { display: flex; flex-flow: column; height: 100%; }
+.mce-stack-layout-item { flex: 0 0 auto; }
+.mce-edit-area { flex:1 1 auto; }*/
+
+/* Remove toolbar top border */
+.tox-tinymce {
+  border-top-color: #FFFFFF !important;
+  border: 0 !important;
+}
+
+/* Remove toolbar top border */
+.tox-toolbar__primary {
+  background-image:none !important;
+}
+
+/* Toolbar */
+.tox-toolbar__primary {
+  background-color: blue !important;
+}
+
+/* Toolbar buttons */
+.tox .tox-tbtn:hover svg {
+  background-color: red !important;
+}
+.tox .tox-tbtn:hover {
+  background-color: red !important;
+}
+
+/* Toolbar icon fill colors */
+/* Also search bar options button fill color */
+.tox-tbtn svg {
+  fill: #5f6368 !important;
+}
+
+/* Menu items */
+.tox .tox-menu {
+  background-color: green !important;
+}
+
+/* Dropdown menu items */
+.tox .tox-collection--list .tox-collection__item--active {
+  background-color: orange !important;
+}
+
+/* Dropdown menu item icons and colors */
+.tox .tox-collection__item {
+  color: white !important;
+}
+
+/* Dialogue box */
+.tox-dialog, .tox-dialog__header, .tox-dialog__footer {
+  background-color: pink !important;
+}
+
+/* Dialogue box titles */
+.tox-dialog__title {
+  color: white !important; /* Text color */
+}
+
+/* Dialogue box labels */
+.tox-label {
+  color: white !important; /* Text color */
+}
+
+/* Dialogue box text fields */
+.tox-textfield {
+  background-color: green !important;
+  border-color: orange !important;
+}
+
+/* Dialogue box dropdown menus */
+.tox-selectfield select {
+  color: white !important; /* Text color */
+  background-color: red !important;
+}
+
+/* Dialogue box buttons */
+.tox .tox-button {
+  color: white !important; /* Text color */
+	background-color: purple !important;
+	border-color: purple !important;
+}
+
+/* Dialogue box backdrop */
+.tox .tox-dialog-wrap__backdrop {
+  background-color: yellow !important; /* Use 75% alpha */
+}
+
+/* Text areas (e.g., source code view */
+.tox .tox-textarea, .tox .tox-textfield, .tox .tox-toolbar-textfield {
+  color: gray !important; /* Text color */
+  background-color: brown !important;
+}
+
+/* Markdown sidebar */
+.tox .tox-sidebar {
+  color: red !important;
+  background-color: aliceblue !important;
+}
+
+/* Quick inline pop-up box */
+.tox .tox-pop__dialog {
+  background-color: brown !important;
+  border: 1px solid #ccc !important;
+}
+
+/* Quick inline pop-up box bottom pointed part */
+.tox .tox-pop.tox-pop--bottom::before {
+  background-color: brown !important;
+  border: 1px solid #ccc !important;
+}
+
+
+/* Change dialogue box button colors (e.g., link, image, find/replace, etc. */
+/* NOT WORKING... */
+.tox .tox-button .tox-button--secondary {
+  color: #000000 !important;
+  background-color: #f0f0f0 !important;
+  border-color: #f0f0f0 !important;
+}
+
+/* Customize scrollbar appearance (for markdown editor area) */
+::-webkit-scrollbar {
+  width: 7px !important;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #aaabab !important;
+}
+::-webkit-scrollbar-track:hover {
+  background: #f2f2f2 !important;
+}
+

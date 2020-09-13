@@ -224,6 +224,7 @@ tinymce.init({
   // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
   quickbars_insert_toolbar: false,
   quickbars_selection_toolbar: 'cut copy paste | heading bold italic underline strikethrough superscript subscript link blockquote codeformat',
+  quickbars_image_toolbar: false,
 
   formats: {
     removeformat: [
