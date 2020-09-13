@@ -23,18 +23,25 @@ const app = {
     handle: null,
     name: null,
   },
-  hasNativeFS: 'chooseFileSystemEntries' in window ||
-               'showOpenFilePicker' in window,
+  hasNativeFS: 'chooseFileSystemEntries' in window || 'showOpenFilePicker' in window,
   isMac: navigator.userAgent.includes('Mac OS X'),
 };
 
 // Verify the APIs we need are supported, show a polite warning if not.
 /*if (app.hasNativeFS) {
+  alert("No native file system. Switched to legacy mode.")
   document.getElementById('not-supported').classList.add('hidden');
 } else {
   document.getElementById('lblLegacyFS').classList.toggle('hidden', false);
   document.getElementById('butSave').classList.toggle('hidden', true);
 }*/
+
+/**
+ * Creates an empty notepad with no details in it.
+ */
+app.newFile = () => {
+  app.setFile();
+};
 
 /**
  * Opens a file for reading.
