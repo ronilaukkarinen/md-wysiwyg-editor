@@ -677,3 +677,4 @@ tinymce.init({
 window.onload = () => {
   alert("Hello world");
 }
+
