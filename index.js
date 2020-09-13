@@ -637,7 +637,7 @@ tinymce.init({
         document.title = "untitled - Text Editor";
       }
 
-      "use strict";
+      alert("Hello?");
       // Handle "open with"
       if ("launchQueue" in window) {
         if ("LaunchParams" in window) {
