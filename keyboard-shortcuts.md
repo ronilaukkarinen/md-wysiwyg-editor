@@ -10,11 +10,13 @@ Text Editor keyboard shortcuts:
 | Ctrl + W | Quit | ✓ |
 | Ctrl + Z | Undo | ✓ |
 | Ctrl + Y | Redo | ✓ |
+| Ctrl + Shift + Z | Redo | ✓ |
 | Ctrl + X | Cut | ✓ |
 | Ctrl + C | Copy | ✓ |
 | Shift + Ctrl + C | Copy as markdown | X |
 | Ctrl + V | Paste | ✓ |
-| Ctrl + Shift + Z | Redo | ✓ |
+| Shift + Ctrl + V | Paste as text | ✓ |
+| Ctrl + A | Select all | ✓ |
 | Ctrl + Alt + 1 | H1 | ✓ |
 | Ctrl + Alt + 2 | H2 | ✓ |
 | Ctrl + Alt + 3 | H3 | ✓ |
