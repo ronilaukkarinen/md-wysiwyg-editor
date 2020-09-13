@@ -1,7 +1,7 @@
 # Text Editor Keyboard Shortcuts
 
 | Shortcut | Action |
-| --- | --- | --- |
+| --- | --- |
 | Ctrl + N | New file |
 | Ctrl + O | Open file |
 | Ctrl + C | Copy |
