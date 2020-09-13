@@ -26,6 +26,7 @@ Make sure that your web browser is up to date and you have Native File System en
 * Rich-text is constrained essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically sanitized and filtered as soon as it enters the editor.
 * Automatic conversion of typed markdown syntax into rich text in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `**This text is bold.**` will give bolded text. Does not work for links, images, task lists, or tables. In addition to markdown syntax, certain strings will automatically convert to special characters (e.g., `--` to en dash and `---` to em dash).
 * Keyboard shortcuts for editing, formatting, etc. ([list](keyboard-shortcuts.md)) (except where prevented by browser—e.g., Ctrl+N for new file in non-app mode).
+* Works offline when installed as a PWA and will have "open with" / file association support.
 
 ## Notes
 

@@ -613,6 +613,16 @@ tinymce.init({
       document.title = persistFilename + " * - Text Editor";
     });
 
+    // If there are unsaved changes, ask before closing window
+    window.addEventListener('beforeunload', function (event) {
+      if (tinymce.editors[0].isDirty()) {
+        event.preventDefault();
+        event.returnValue = "Unsaved changes. Continue without saving?";
+        return;
+      }
+      delete event['returnValue'];
+    });
+
     editor.on('Init', function(event) {
 
       // Retrieve relevant URL parameters if any
@@ -624,6 +634,7 @@ tinymce.init({
       // Open a starting markdown file if the relevant URL parameter is set
       if(startFileName) {
         var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFileName;
+        // Fetch the file and open it
         fetch(startFileURL)
           .then(function(response) {
             response.text().then(function(content) {
