@@ -651,7 +651,7 @@ tinymce.init({
           });
         }
       } else {
-        console.log("Please enable chrome://flags/#file-handling-api"); // What about launch params??
+        console.log("Please enable chrome://flags/#file-handling-api");
       }
 
       if (!"chooseFileSystemEntries" in window) {
