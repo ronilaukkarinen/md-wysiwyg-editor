@@ -1,4 +1,4 @@
-Text Editor keyboard shortcuts:
+# Text Editor Keyboard Shortcuts
 
 | Shortcut | Action | Status |
 | --- | --- | --- |
@@ -6,16 +6,16 @@ Text Editor keyboard shortcuts:
 | Ctrl + O | Open file | ✓ |
 | Ctrl + C | Copy | ✓ |
 | Ctrl + S | Save | ✓ |
-| Shift + Ctrl + S | Save As | ✓ |
+| Ctrl + Shift + S | Save As | ✓ |
 | Ctrl + W | Quit | ✓ |
 | Ctrl + Z | Undo | ✓ |
 | Ctrl + Y | Redo | ✓ |
 | Ctrl + Shift + Z | Redo | ✓ |
 | Ctrl + X | Cut | ✓ |
 | Ctrl + C | Copy | ✓ |
-| Shift + Ctrl + C | Copy as markdown | X |
+| Ctrl + Shift + C | Copy as markdown | X |
 | Ctrl + V | Paste | ✓ |
-| Shift + Ctrl + V | Paste as text | ✓ |
+| Ctrl + Shift + V | Paste as text | ✓ |
 | Ctrl + A | Select all | ✓ |
 | Ctrl + Alt + 1 | H1 | ✓ |
 | Ctrl + Alt + 2 | H2 | ✓ |
@@ -41,7 +41,7 @@ Text Editor keyboard shortcuts:
 | Ctrl + F | Find | ✓ |
 | Ctrl + H | Find and replace | ✓ |
 | Ctrl + M | Markdown pane | ✓ |
-| Shift + Ctrl + F | Fullscreen | ✓ |
+| Ctrl + Shift + F | Fullscreen | ✓ |
 | F11 | Fullscreen | ✓ |
 | Fullscreen key (Chrome OS) | Fullscreen | ✓ |
 

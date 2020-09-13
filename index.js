@@ -127,12 +127,11 @@ function toggleFullscreen() {
 }
 
 // Change current working directory
-function changeCWD(event, newPath) {
+function changeWorkingDirectory(event, newPath) {
 
   if (tinymce.activeEditor) {
     var doc = tinymce.activeEditor.getDoc(),
-      head = doc.head,
-      base;
+      head = doc.head, base;
     if (head.getElementsByTagName("base").length == 0) {
       base = document.createElement("base");
       head.appendChild(base);

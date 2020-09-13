@@ -27,6 +27,10 @@ Make sure that your web browser is up to date and you have Native File System en
 * Automatic conversion of typed markdown syntax into rich text in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `**This text is bold.**` will give bolded text. Does not work for links, images, or tables. In addition to markdown syntax, certain strings will automatically convert to special characters (e.g., `--` to en dash and `---` to em dash).
 * Keyboard shortcuts for editing, formatting, etc. ([list](keyboard-shortcuts.md)) (except where prevented by browser—e.g., Ctrl+N for new file).
 
+## Notes
+
+Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter your markdown files. For instance, certain special characters may be escaped. Most importantly however, right now there's a limitation that causes front matter (e.g., YAML) to be automatically removed from markdown files.
+
 ### Future
 
 * Preferences menu.
