@@ -17,7 +17,7 @@ function newFile() {
   }
 
   // ipcRenderer.send('call-new');
-  app.newFile(); // Actually this might not make any sense
+  app.newFile(); // Unnecessary but keeping for consistency for now
 
   tinymce.activeEditor.resetContent();
   persistFilename = "untitled";
@@ -381,7 +381,7 @@ tinymce.init({
     });
 
     editor.ui.registry.addButton('fullscreen', {
-      tooltip: 'Fullscreen (Ctr+Shift+F',
+      tooltip: 'Fullscreen (Ctr+Shift+F or F11)',
       icon: 'fullscreen',
       onAction: function (_) {
         toggleFullscreen();
@@ -544,17 +544,15 @@ tinymce.init({
     // Handle individual keyboard keys
     editor.on('keydown', function(event) {
 
-      var key = event.keyCode || event.which;
-
       // F11 key: toggle fullscreen (need to test)
-      if (key == 122) {
+      if (event.key == 'F11') {
         toggleFullscreen();
       }
 
       // Escape key: exit fullscreen or hide markdown sidebar if it's open
-      if (key == 27 && document.fullscreenElement != null) {
+      if (event.key == 'Esc' && document.fullscreenElement != null) {
         toggleFullscreen();
-      } else if (key == 27 && markdownSideBarToggleState == true) {
+      } else if (event.key == 'Esc' && markdownSideBarToggleState == true) {
         tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
       }
 
@@ -585,22 +583,11 @@ tinymce.init({
     });
 
     // Hack to fix width of the markdown pane
-    function handleResizeWindow() {
+    editor.on('ResizeWindow', function(event) {
       var width = (window.innerWidth * 0.50).toString() + "px";
       document.getElementsByClassName("markdown-preview")[0].style.width = width;
       return;
-    }
-    editor.on('ResizeWindow', handleResizeWindow);
-
-  },
-
-  init_instance_callback : function(editor) {
-
-    editor.on('Dirty', function(event) {
-      document.title = persistFilename + " * - Text Editor";
     });
-
-    document.title = persistFilename + " - Text Editor";
 
     // Detect markdown sidebar toggle state open/close
     // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
@@ -608,23 +595,49 @@ tinymce.init({
       markdownSideBarToggleState = event.detail;
     });
 
-    // Retrieve relevant URL parameters if any
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const startFile = urlParams.get('file');
-    const startMarkdownView = urlParams.get('mdv');
+    editor.on('init', function(e) {
 
-    // Set the starting document
-    let url = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/README.md';
-    fetch(url)
-      .then(function(response) {
-        response.text().then(function(text) {
-          openFile('README.md', text);
-        });
-      });
+      // Retrieve relevant URL parameters if any
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const startFileName = urlParams.get('mdf');
+      const startMarkdownView = urlParams.get('mdv');
 
-    // Give edit area focus at start up
-    tinyMCE.get('textEditor').getBody().focus();
+      // Open a starting markdown file if the relevant URL parameter is set
+      if(startFileName) {
+        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFileName;
+        fetch(startFileURL)
+          .then(function(response) {
+            response.text().then(function(content) {
+              openFile(startFileURL, content);
+            });
+          });
+        // Set the application title based on the starting document
+        //document.title = persistFilename + " - Text Editor";
+        document.title = urlParams + " - Text Editor";
+      } else {
+        document.title = "untitled - Text Editor";
+      }
+
+      // Open markdown pane if the relevant URL parameter is set
+      if(startMarkdownView) {
+        tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
+      }
+
+      // Give edit area focus at start up
+      tinyMCE.get('textEditor').getBody().focus();
+
+      return;
+    });
+
+  },
+
+  // When commands are executed
+  init_instance_callback: function(editor) {
+
+    editor.on('Dirty', function(event) {
+      document.title = persistFilename + " * - Text Editor";
+    });
 
     return;
   },
