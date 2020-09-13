@@ -45,22 +45,21 @@
     <meta http-equiv="origin-trial" content="AouXz9/sqzYGRIFkw8KK0QXp0HOo99+Pg8NAr/4pRA1pAlaTeQ6BngqqkBUzfjvxzPcRf15pmieR4RDhJB9bKwAAAABleyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZWxhYnMuZ2l0aHViLmlvOjQ0MyIsImZlYXR1cmUiOiJOYXRpdmVGaWxlU3lzdGVtMiIsImV4cGlyeSI6MTU5MDQxNzc1NX0=">
 
     <!-- Add TinyMCE editor stylesheet -->
-    <link rel="stylesheet" href="./editor-styles.css" inline>
+    <link rel="stylesheet" href="editor-styles.css" inline>
   </head>
   <body>
-    <div id="textEditor" class="syncscroll" aria-label="Text Editor"></div>
+    <div id="textEditor" aria-label="Text Editor"></div>
 
     <a id="aDownloadFile" style="display: none;" download></a>
     <input type="file" id="filePicker" style="display: none;">
 
     <!-- Import libraries -->
-    <script src="./native-fs.js" inline></script> <!-- File handling -->
-    <script src="./tinymce/tinymce.min.js" referrerpolicy="origin"></script> <!-- TinyMCE -->
-    <script src="./plugin-markdown.js"></script> <!-- TinyMCE markdown plugin (Showdown) -->
-    <script src="./syncscroll.js" inline></script> <!-- Syncscroll -->
+    <script src="native-fs.js" inline></script> <!-- File handling -->
+    <script src="tinymce/tinymce.min.js" referrerpolicy="origin"></script> <!-- TinyMCE -->
+    <script src="plugin-markdown.js"></script> <!-- TinyMCE markdown plugin (Showdown) -->
 
     <!-- Import application main script -->
-    <script src="./index.js" inline></script>
+    <script src="index.js" inline></script>
   </body>
 </html>
 

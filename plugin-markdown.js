@@ -15685,7 +15685,6 @@
             "min-width": "100%",
             "max-width": "100%"
           },
-          inputClasses: ["syncscroll"],
           inputAttributes: {
             "spellcheck": "false",
           },
