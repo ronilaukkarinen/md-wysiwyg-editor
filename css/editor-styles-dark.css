@@ -209,3 +209,9 @@ html, body, #editor { height: 100%; margin: 0px; }
   background: #f2f2f2 !important;
 }
 
+/* Get ride of the markdown sidebar slide in/out animation */
+.tox .tox-sidebar--sliding-growing,
+.tox .tox-sidebar--sliding-shrinking {
+  transition: none !important;
+}
+

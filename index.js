@@ -747,3 +747,5 @@ theme_OS.addEventListener('change', function (e) {
   theme_apply();
 });*/
 
+// ^ https://stackoverflow.com/questions/56300132/how-to-override-css-prefers-color-scheme-setting
+
