@@ -33,10 +33,10 @@
 | Ctrl + Shift + 7 | Numbered list | ✓ |
 | Ctrl + K | Link | ✓ |
 | Ctrl + L | Link | X |
-| Ctrl + ] | Block quote | X |
-| None | Table | X |
-| None | Image | X |
-| None | Horizontal line | X |
+| Ctrl + ] | Block quote | ✓ |
+| None | Table | – |
+| None | Image | – |
+| None | Horizontal line | – |
 | Ctrl + \ | Clear formatting | ✓ |
 | Ctrl + F | Find | ✓ |
 | Ctrl + H | Find and replace | ✓ |

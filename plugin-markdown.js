@@ -16633,7 +16633,10 @@
         updateMarkdown(converter, editor, content);
         Decoration.forHtml(converter, node_Element.fromDom(editor.getBody()));
       };
-      editor.on("change", editorChangeHandler);
+      // Update more regularly
+      editor.on("SetContent", editorChangeHandler);
+      editor.on("Change", editorChangeHandler);
+      editor.on("KeyDown", editorChangeHandler);
       editorChangeHandler();
       onMarkdownChange.throttle(converter, editor, markdownEditor, sink, hintMenu);
       var onConvertedMarkdownToHtml = function(e) {
@@ -16651,7 +16654,10 @@
       mothership.add(sink);
       var destroy = function() {
         detachSystem(mothership);
-        editor.off("change", editorChangeHandler);
+        // Update more regularly end
+        editor.off("SetContent", editorChangeHandler);
+        editor.off("Change", editorChangeHandler);
+        editor.on("KeyDown", editorChangeHandler);
         editor.off("markdown->html", onConvertedMarkdownToHtml);
         editor.off("html->markdown", onConvertedHtmlToMarkdown);
       };
@@ -16659,13 +16665,13 @@
         destroy: destroy
       };
     };
+    // Add Markdown plugin to TinyMCE
     tinymce.PluginManager.add("markdown", function(editor, pluginUrl) {
       addMenuItems(editor);
       var converter = createJs();
       var syncConverter = createSync();
       editor.on("init", function(e) {
-
-        // Add css file
+        // Include that CSS file this way instead
         var cssText = `
           [data-ephox-redpen-violation] {
             outline-color: rgba(200, 0, 0, 0.2);

@@ -184,9 +184,9 @@ tinymce.init({
   theme: 'silver',
   content_css: 'editor-area-styles.css',
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table image hr searchreplace markdown code fullscreen', // preferences (ADD BACK LATER)
+  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table quickimage image hr searchreplace markdown code fullscreen', // preferences (ADD BACK LATER)
   toolbar_mode: 'floating', // NOT WORKING!
-  plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print',
+  plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
@@ -204,15 +204,26 @@ tinymce.init({
   link_quicklink: true,
   target_list: false,
   convert_urls: false,
+  table_toolbar: 'tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | tabledelete',
   table_appearance_options: false,
+  table_tab_navigation: false,
   table_advtab: false,
   table_cell_advtab: false,
   table_row_advtab: false,
   table_resize_bars: false,
+  table_default_attributes: {},
+  table_default_styles: {},
   visual: false,
   image_dimensions: false,
   object_resizing: false,
   resize_img_proportional: true, // Disabled due to resizing off
+  // remove_trailing_brs: false, // Doesn't do what I want (don't remove end of document lines)
+  toolbar_sticky: true,
+  resize: false,
+  statusbar: false,
+  // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
+  quickbars_insert_toolbar: false,
+  quickbars_selection_toolbar: 'cut copy paste | heading bold italic underline strikethrough superscript subscript link blockquote codeformat',
 
   formats: {
     removeformat: [
@@ -258,10 +269,6 @@ tinymce.init({
     //{start: '***', replacement: '<hr />'},
     // Missing: link, image, multi-line code, others
   ],
-  toolbar_sticky: true,
-  resize: false,
-  statusbar: false,
-  // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
 
   // Save button callback function (JUST TO PREVENT THAT ERROR UPON CTRL+S)
   save_onsavecallback: function () { },
@@ -465,7 +472,7 @@ tinymce.init({
     });
 
     editor.addShortcut('Ctrl+M', 'Markdown', function () {
-      tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
+      tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       // ^ -> https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
     });
 
@@ -552,13 +559,15 @@ tinymce.init({
       if (event.key == 'Esc' && document.fullscreenElement != null) {
         toggleFullscreen();
       } else if (event.key == 'Esc' && markdownSideBarToggleState == true) {
-        tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
+        tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       }
 
       // Tab key: insert an em dash-sized space and disable normal tab key handling
       // https://www.tiny.cloud/docs/plugins/nonbreaking/#nonbreaking_force_tab
       if (event.key === 'Tab') {
         editor.insertContent('&emsp;');
+        // On to something with this but not working right...
+        //tinyMCE.execCommand('mceInsertRawHTML', false, '<pre>&#09;TABS&#09;</pre>'); // Or \t instead of &#09;
         event.preventDefault();
         return;
       }
@@ -594,7 +603,12 @@ tinymce.init({
       markdownSideBarToggleState = event.detail;
     });
 
-    editor.on('init', function(e) {
+    // Update to unsaved changes filename if editor becomes dirty
+    editor.on('Dirty', function(event) {
+      document.title = persistFilename + " * - Text Editor";
+    });
+
+    editor.on('Init', function(event) {
 
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
@@ -620,7 +634,7 @@ tinymce.init({
 
       // Open markdown pane if the relevant URL parameter is set
       if(startMarkdownView) {
-        tinymce.activeEditor.execCommand('togglesidebar', false, 'markdown');
+        tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       }
 
       // Give edit area focus at start up
@@ -629,16 +643,6 @@ tinymce.init({
       return;
     });
 
-  },
-
-  // When commands are executed
-  init_instance_callback: function(editor) {
-
-    editor.on('Dirty', function(event) {
-      document.title = persistFilename + " * - Text Editor";
-    });
-
-    return;
   },
 
 });
