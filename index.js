@@ -637,6 +637,28 @@ tinymce.init({
         document.title = "untitled - Text Editor";
       }
 
+      "use strict";
+      // Handle "open with"
+      if ("launchQueue" in window) {
+        if ("LaunchParams" in window) {
+          window.launchQueue.setConsumer(async (launchParams) => {
+            if (!launchParams.files.length) {
+              return;
+            }
+            const fileHandle = launchParams.files[0];
+            const blob = await fileHandle.getFile();
+            // loadFromBlob(blob);
+          });
+        }
+      } else {
+        console.log("Please enable chrome://flags/#file-handling-api"); // What about launch params??
+      }
+
+      if (!"chooseFileSystemEntries" in window) {
+        // document.getElementById("enable-native-file-system").hidden = false;
+        console.log("Please enable chrome://flags/#native-file-system-api");
+      }
+
       // Open markdown pane if the relevant URL parameter is set
       if(startMarkdownView) {
         tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');

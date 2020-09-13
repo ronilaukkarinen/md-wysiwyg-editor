@@ -4,6 +4,7 @@
   "description": "Text Editor - PWA + TinyMCE + NFS.",
   "start_url": "./",
   "display": "standalone",
+  "lang": "en-US",
   "theme_color": "#FFFFFF",
   "background_color": "#FFFFFF",
   "icons": [
@@ -20,39 +21,21 @@
   ],
   "file_handlers": [
     {
-      "action": "/open-txt",
+      "action": "/",
       "accept": {
-        "text/plain": [ ".txt" ]
+        "text/markdown": [".md", ".markdown"]
       }
     },
     {
-      "action": "/open-txt",
+      "action": "/",
       "accept": {
-        "text/plain": ".text"
+        "text/plain": [ ".txt", ".text" ]
       }
     },
     {
-      "action": "/open-md",
+      "action": "/",
       "accept": {
-        "text/markdown": ".md"
-      }
-    },
-    {
-      "action": "/open-md",
-      "accept": {
-        "text/markdown": ".markdown"
-      }
-    },
-    {
-      "action": "/open-html",
-      "accept": {
-        "text/html": ".html"
-      }
-    },
-    {
-      "action": "/open-html",
-      "accept": {
-        "text/html": ".htm"
+        "text/html": [".html", ".htm"]
       }
     }
   ]
