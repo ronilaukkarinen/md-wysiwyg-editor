@@ -2,7 +2,7 @@
 
 | Shortcut | Action | Status |
 | --- | --- | --- |
-| Ctrl + N | New file | X |
+| Ctrl + N | New file | 🗙 |
 | Ctrl + O | Open file | ✓ |
 | Ctrl + C | Copy | ✓ |
 | Ctrl + S | Save | ✓ |
@@ -13,7 +13,7 @@
 | Ctrl + Shift + Z | Redo | ✓ |
 | Ctrl + X | Cut | ✓ |
 | Ctrl + C | Copy | ✓ |
-| Ctrl + Shift + C | Copy as markdown | X |
+| Ctrl + Shift + C | Copy as markdown | ✓ |
 | Ctrl + V | Paste | ✓ |
 | Ctrl + Shift + V | Paste as text | ✓ |
 | Ctrl + A | Select all | ✓ |
@@ -32,7 +32,6 @@
 | Ctrl + Shift + 8 | Bulleted list | ✓ |
 | Ctrl + Shift + 7 | Numbered list | ✓ |
 | Ctrl + K | Link | ✓ |
-| Ctrl + L | Link | X |
 | Ctrl + ] | Block quote | ✓ |
 | None | Table | – |
 | None | Image | – |

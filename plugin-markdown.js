@@ -16634,7 +16634,7 @@
         Decoration.forHtml(converter, node_Element.fromDom(editor.getBody()));
       };
       // Update more regularly
-      editor.on("SetContent", editorChangeHandler);
+      //editor.on("SetContent", editorChangeHandler); // Fixes startup render but breaks markdown editor...
       editor.on("Change", editorChangeHandler);
       editor.on("KeyDown", editorChangeHandler);
       editorChangeHandler();
@@ -16655,7 +16655,7 @@
       var destroy = function() {
         detachSystem(mothership);
         // Update more regularly end
-        editor.off("SetContent", editorChangeHandler);
+        //editor.off("SetContent", editorChangeHandler);  // Fixes startup render but breaks markdown editor...
         editor.off("Change", editorChangeHandler);
         editor.on("KeyDown", editorChangeHandler);
         editor.off("markdown->html", onConvertedMarkdownToHtml);

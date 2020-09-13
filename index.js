@@ -501,7 +501,12 @@ tinymce.init({
       copyToClipboard(html, text);
     });
 
-    editor.addShortcut('Shift+Ctrl+V', 'Paste text', function () {
+    editor.addShortcut('Shift+Ctrl+C', 'Copy as markdown', function () {
+      var markdown = tinymce.editors[0].selection.getContent({format: 'markdown'});
+      navigator.clipboard.writeText(markdown);
+    });
+
+    editor.addShortcut('Shift+Ctrl+V', 'Paste as text', function () {
       navigator.clipboard.readText().then(text => {
         tinyMCE.execCommand('mceInsertClipboardContent', false, { content: text});
       });
