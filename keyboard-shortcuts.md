@@ -33,9 +33,9 @@
 | Ctrl + Shift + 7 | Numbered list |
 | Ctrl + K | Link |
 | Ctrl + ] | Block quote |
-| None | Table | – |
-| None | Image | – |
-| None | Horizontal line | – |
+| None | Table |
+| None | Image |
+| None | Horizontal line |
 | Ctrl + \ | Clear formatting |
 | Ctrl + F | Find |
 | Ctrl + H | Find and replace |
