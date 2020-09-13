@@ -637,7 +637,6 @@ tinymce.init({
         document.title = "untitled - Text Editor";
       }
 
-      alert("Hello?");
       // Handle "open with"
       if ("launchQueue" in window) {
         if ("LaunchParams" in window) {
@@ -675,3 +674,6 @@ tinymce.init({
 
 });
 
+window.onload = () => {
+  alert("Hello world");
+}
