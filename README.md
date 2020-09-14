@@ -25,7 +25,7 @@ Make sure that your web browser is up to date and you have Native File System en
 * Bidirectional live editing between rich-text, markdown, and HTML code views.
 * Rich-text is constrained essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically sanitized and filtered as soon as it enters the editor.
 * Automatic conversion of typed markdown syntax into rich text in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `**This text is bold.**` will give bolded text. Links, images, task lists, and tables are not supported. In addition to markdown syntax, certain strings will convert to special characters (e.g., `--` to en dash and `---` to em dash).
-* Keyboard shortcuts for editing, formatting, etc. (except where prevented by browser—e.g., Ctrl+N for new file in non-app mode). See ([keyboard-shortcuts.md](keyboard-shortcuts.md)) for a list.
+* Keyboard shortcuts for editing, formatting, etc. (except where prevented by browser—e.g., Ctrl+N for new file in non-app mode). See [keyboard-shortcuts.md](keyboard-shortcuts.md) for a list.
 * Works offline when installed as a PWA.
 * Full, automatically detected dark mode.
 
@@ -50,5 +50,5 @@ Similar live rich-text-oriented markdown editors (all desktop applications—mos
 * [Abricotine](http://abricotine.brrd.fr/)
 * [ghostwriter](https://wereturtle.github.io/ghostwriter/)
 * [VNote](https://github.com/tamlok/vnote)
-* [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) extension for [VSCode](https://github.com/microsoft/vscode)
+* [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) (extension for [VSCode](https://github.com/microsoft/vscode))
 
