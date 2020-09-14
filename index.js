@@ -192,7 +192,7 @@ tinymce.init({
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table image hr searchreplace markdown code fullscreen darkmode', // quickimage, preferences (ADD BACK LATER)
   toolbar_mode: 'floating', // NOT WORKING!
-  plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
+  plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',

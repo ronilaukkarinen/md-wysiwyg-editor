@@ -38,6 +38,7 @@ Due to the bidirectional conversion between rich text/HTML and markdown, the edi
 * Preferences menu.
 * "Open with" / file association support (in-progress).
 * Customization of rich-text appearance via stylesheet in preferences.
+* Lots of bug fixes.
 
 ## Related
 
