@@ -190,7 +190,7 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table image hr searchreplace markdown code fullscreen darkmode', // quickimage, preferences (ADD BACK LATER)
+  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode', // quickimage, preferences (ADD BACK LATER)
   toolbar_mode: 'floating', // NOT WORKING!
   plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
@@ -258,23 +258,21 @@ tinymce.init({
     {start: '_', end: '_', format: 'italic'},
     {start: '**', end: '**', format: 'bold'},
     {start: '__', end: '__', format: 'bold'},
-    {start: '***', end: '***', format: 'bold+italic'}, // Custom
-    {start: '___', end: '___', format: 'bold+italic'}, // Custom
+    {start: '***', end: '***', format: 'bold+italic'}, // Non-standard
+    {start: '___', end: '___', format: 'bold+italic'}, // Non-standard
     {start: '~~', end: '~~', format: 'strikethrough'},
-    {start: '^', end: '^', format: 'superscript'}, // Custom
+    {start: '^', end: '^', format: 'superscript'}, // Non-standard
     {start: '1. ', cmd: 'InsertOrderedList'},
     {start: '* ', cmd: 'InsertUnorderedList'},
     {start: '+ ', cmd: 'InsertUnorderedList' },
     {start: '- ', cmd: 'InsertUnorderedList' },
     {start: '> ', cmd: 'mceBlockQuote'},
     {start: '`', end: '`', format: 'code'},
-    {start: '```', end: '```', format: 'code'}, // DOESN'T WORK ON MULTI-LINE
-    {start: '---', replacement: '—'},
-    {start: '--', replacement: '–'},
-    {start: '===', replacement: '<hr />'},
-    // Conflicts with bold + italic above
-    //{start: '***', replacement: '<hr />'},
-    // Missing: link, image, multi-line code, others
+    {start: '```', cmd: 'CodeSample'},
+    {start: '---', replacement: '—'}, // Non-standard
+    {start: '--', replacement: '–'}, // Non-standard
+    {start: '===', replacement: '<hr />'}, // Non-standard
+    //{start: '***', replacement: '<hr />'}, // Conflicts with bold + italic above
   ],
 
   // Save button callback function (JUST TO PREVENT THAT ERROR UPON CTRL+S)
@@ -505,7 +503,7 @@ tinymce.init({
       function listener(event) {
         event.clipboardData.setData("text/html", html);
         event.clipboardData.setData("text/plain", text);
-        event.preventDefault();
+        // event.preventDefault();
       }
       document.addEventListener("copy", listener);
       document.execCommand("copy");
@@ -723,10 +721,16 @@ function theme_apply() {
     document.documentElement.setAttribute('data-theme', 'light');
     localStorage.setItem('theme', 'light');
     iframeHTML.setAttribute('data-theme', 'light');
+
+    // Experiment
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#212121');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', 'dark');
     iframeHTML.setAttribute('data-theme', 'dark');
+
+    // Experiment
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF');
   }
 }
 
