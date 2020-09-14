@@ -1,0 +1,247 @@
+[data-theme='light'] {
+  --general-background-color: rgb(255, 255, 255);
+  --blockquote-background-color: rgb(252, 252, 252);
+  --blockquote-left-border-color: rgb(221, 221, 221);
+  --code-background-color: rgba(27, 31, 35, 0.05);
+
+  --general-text-color: rgb(92, 89, 98);
+  /* --link-color: rgb(129, 83, 237) */ /* Purple */
+  --link-color: rgb(8, 122, 204);
+  --link-underline-gradient-color: rgb(238, 235, 238);
+  --heading-text-color: rgb(39, 38, 43);
+  --heading-bottom-color: rgb(238, 238, 238);
+
+  --horizontal-line-color: rgb(231, 231, 231);
+  --table-border-color: rgb(223, 226, 229);
+
+  --scrollbar-track-color: var(--general-background-color);
+  --scrollbar-thumb-color: rgb(170, 171, 171);
+  --scrollbar-track-hover-color: rgb(242, 242, 242);
+}
+
+[data-theme='dark'] {
+  --general-background-color: rgb(44, 44, 44);
+  --blockquote-background-color: rgb(65, 65, 65);
+  --blockquote-left-border-color: rgb(39, 39, 39);
+  --code-background-color: rgb(85, 85, 85);
+
+  --general-text-color: rgb(250, 250, 250);
+  --link-color: rgb(150, 215, 255);
+  --link-underline-gradient-color: rgb(50, 50, 50);
+  --heading-text-color: var(--general-text-color);
+  --heading-bottom-color: rgba(238, 238, 238, 0.5);
+
+  --horizontal-line-color: rgb(115, 115, 115);
+  --table-border-color: rgb(115, 115, 115);
+
+  --scrollbar-track-color: var(--general-background-color);
+  --scrollbar-thumb-color: rgb(33, 33, 33);
+  --scrollbar-track-hover-color: rgb(53, 53, 53);
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--general-background-color);
+  
+  /* Prevent white flicker when scrolling */
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif;
+  color: var(--general-text-color);
+  max-width: 750px;
+	margin: 0 auto;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 30px;
+	padding-right: 30px;
+  line-height: 1.6;
+  /*margin-top: -1.0em;*/
+  margin-bottom: 2.0em;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:visited, a:hover, a:active {
+  color: var(--link-color);
+}
+
+a:not([class]) {
+  text-decoration: none;
+  background-image: linear-gradient( 0%, rgb(50, 50, 50) 100%);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 1px 1px;
+
+  /* This isn't working -> */
+  &:hover {
+    background-image: linear-gradient(
+      rgba(129, 83, 237, 0.45) 0%,
+      rgba(129, 83, 237, 0.45) 100%
+    );
+    background-size: 1px 1px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /*font-weight: bold;*/
+  font-weight: normal;
+  line-height: 1.4;
+  cursor: text;
+  color: var(--general-text-color);
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  text-decoration: none;
+}
+h1 tt,
+h1 code {
+  font-size: inherit;
+}
+h2 tt,
+h2 code {
+  font-size: inherit;
+}
+h3 tt,
+h3 code {
+  font-size: inherit;
+}
+h4 tt,
+h4 code {
+  font-size: inherit;
+}
+h5 tt,
+h5 code {
+  font-size: inherit;
+}
+h6 tt,
+h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+  color: var(--heading-text-color);
+  border-bottom: 1px var(--heading-bottom-color);
+}
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+  color: var(--heading-text-color);
+  border-bottom: 1px var(--heading-bottom-color);
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+  color: var(--heading-text-color);
+}
+h4 {
+  font-size: 1.25em;
+  color: var(--heading-text-color);
+}
+h5 {
+  color: var(--heading-text-color);
+  font-size: 1em;
+}
+h6 {
+ font-size: 0.75em;
+  color: var(--heading-text-color);
+}
+
+hr {
+  height: 2px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: var(--horizontal-line-color);
+  border: 0 none;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+blockquote {
+  color: var(--general-text-color);
+  border-left: 4px solid var(--blockquote-left-border-color);
+  margin-left: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: var(--blockquote-background-color);
+
+  > p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+code {
+  color: var(--general-text-color);
+  font-size: 14px;
+  background: var(--code-background-color);
+}
+
+table {
+  border: 1px solid var(--table-border-color) !important;
+  padding: 0;
+  word-break: initial;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+table tr {
+  border: 1px solid var(--table-border-color) !important;
+  margin: 0;
+  padding: 0;
+}
+table tr th {
+  font-weight: bold;
+  border: 1px solid var(--table-border-color) !important;
+  margin: 0;
+  padding: 6px 13px;
+}
+table tr td {
+  border: 1px solid var(--table-border-color) !important;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+th, td {
+  font-size: 14px;
+}
+
+/* Make images always 100% width */
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Customize scrollbar appearance (for main text editor area) */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+}
+::-webkit-scrollbar-track:hover {
+  background: var(--scrollbar-track-hover-color);
+}
+

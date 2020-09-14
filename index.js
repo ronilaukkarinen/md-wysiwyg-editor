@@ -188,10 +188,9 @@ tinymce.init({
   language_url: 'tooltips.js',
   height: "100%",
   theme: 'silver',
-  content_css: ['css/editor-area-styles-light.css'],
-  // content_css: ['css/editor-area-styles-light.css', 'css/editor-area-styles-dark.css'],
+  content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table quickimage image hr searchreplace markdown code fullscreen darkmode', // preferences (ADD BACK LATER)
+  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat table image hr searchreplace markdown code fullscreen darkmode', // quickimage, preferences (ADD BACK LATER)
   toolbar_mode: 'floating', // NOT WORKING!
   plugins: 'code link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
@@ -409,7 +408,6 @@ tinymce.init({
         // Look into this in the future:
         // https://web.dev/prefers-color-scheme/
         theme_switch();
-        alert("Sorry, dark mode isn't available just yet...");
       }
     });
 
@@ -697,6 +695,9 @@ tinymce.init({
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
 
+      // Apply the theme
+      theme_apply();
+
       return;
     });
 
@@ -704,6 +705,7 @@ tinymce.init({
 
 });
 
+// Find out what the theme should be
 var theme = 'light';
 if (localStorage.getItem('theme')) {
   if (localStorage.getItem('theme') === 'dark') {
@@ -715,16 +717,18 @@ if (localStorage.getItem('theme')) {
 
 function theme_apply() {
   'use strict';
+  var iframe = document.getElementById('textEditor_ifr');
+  var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
   if (theme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
     localStorage.setItem('theme', 'light');
+    iframeHTML.setAttribute('data-theme', 'light');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', 'dark');
+    iframeHTML.setAttribute('data-theme', 'dark');
   }
 }
-
-theme_apply();
 
 function theme_switch() {
   'use strict';
@@ -735,17 +739,4 @@ function theme_switch() {
   }
   theme_apply();
 }
-
-/*var theme_OS = window.matchMedia('(prefers-color-scheme: light)');
-theme_OS.addEventListener('change', function (e) {
-  'use strict';
-  if (e.matches) {
-    theme = 'light';
-  } else {
-    theme = 'dark';
-  }
-  theme_apply();
-});*/
-
-// ^ https://stackoverflow.com/questions/56300132/how-to-override-css-prefers-color-scheme-setting
 

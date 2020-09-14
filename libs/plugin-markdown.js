@@ -15683,7 +15683,8 @@
             "white-space": "pre-wrap",
             "box-sizing": "border-box",
             "min-width": "100%",
-            "max-width": "100%"
+            "max-width": "100%",
+            "resize": "none",
           },
           inputAttributes: {
             "spellcheck": "false",
