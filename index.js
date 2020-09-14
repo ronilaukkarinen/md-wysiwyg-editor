@@ -721,16 +721,10 @@ function theme_apply() {
     document.documentElement.setAttribute('data-theme', 'light');
     localStorage.setItem('theme', 'light');
     iframeHTML.setAttribute('data-theme', 'light');
-
-    // Experiment
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#212121');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', 'dark');
     iframeHTML.setAttribute('data-theme', 'dark');
-
-    // Experiment
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF');
   }
 }
 

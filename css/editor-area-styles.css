@@ -10,13 +10,20 @@
   --link-underline-gradient-color: rgb(238, 235, 238);
   --heading-text-color: rgb(39, 38, 43);
   --heading-bottom-color: rgb(238, 238, 238);
-
   --horizontal-line-color: rgb(231, 231, 231);
+
+  --table-background-color: var(--general-background-color);
   --table-border-color: rgb(223, 226, 229);
+  --table-shadow-color-1: rgba(0, 0, 0, 0.12);
+  --table-shadow-color-2: rgba(0, 0, 0, 0.08);
+
+  --active-link-table-image-color: rgb(180, 215, 255); /* Disabled */
 
   --scrollbar-track-color: var(--general-background-color);
   --scrollbar-thumb-color: rgb(170, 171, 171);
   --scrollbar-track-hover-color: rgb(242, 242, 242);
+
+  --transparent-color: rgb(255, 255, 255, 0);
 }
 
 [data-theme='dark'] {
@@ -32,11 +39,19 @@
   --heading-bottom-color: rgba(238, 238, 238, 0.5);
 
   --horizontal-line-color: rgb(115, 115, 115);
-  --table-border-color: rgb(115, 115, 115);
+  --table-background-color: rgb(38, 38, 38);
+  --table-border-color: rgb(22, 22, 22);
+  --table-shadow-color-1: rgba(0, 0, 0, 0.32);
+  --table-shadow-color-2: rgba(0, 0, 0, 0.24);
+
+  --active-link-table-image-color: rgb(64, 160, 255); /* Disabled */
 
   --scrollbar-track-color: var(--general-background-color);
   --scrollbar-thumb-color: rgb(33, 33, 33);
   --scrollbar-track-hover-color: rgb(53, 53, 53);
+
+  --transparent-color: rgb(0, 0, 0, 0);
+
 }
 
 html {
@@ -200,43 +215,70 @@ code {
   background: var(--code-background-color);
 }
 
+/* Tables */
 table {
-  border: 1px solid rgb(22, 22, 22);
   padding: 0;
   word-break: initial;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.32), 0 3px 10px rgba(0, 0, 0, 0.24);
-  border-radius: 14px; /* Rounded corners */
-  background-color: rgb(38, 38, 38);
+  box-shadow: 0 1px 2px var(--table-shadow-color-1), 0 3px 10px var(--table-shadow-color-2);
+  border-radius: 10px;
+  background-color: var(--table-background-color);
+  font-size: 14px;
+  width: 100%;
 }
 table tr {
-  border: 1px solid rgb(22, 22, 22);
   margin: 0;
   padding: 0;
-  border-radius: 14px; /* Rounded corners */
 }
 table tr th {
   font-weight: bold;
-  border: 1px solid rgb(22, 22, 22);
   margin: 0;
   padding: 6px 13px;
-  border-radius: 14px; /* Rounded corners */
 }
 table tr td {
-  border: 1px solid rgb(22, 22, 22);
   margin: 0;
   padding: 6px 13px;
-  border-radius: 14px; /* Rounded corners */
 }
 
-th, td {
-  font-size: 14px;
+/* Remove outer borders on tables */
+table td, table th {
+  border: 1px solid var(--table-border-color);
+}
+table tr:first-child td {
+  border-top: 0;
+}
+table tr td:first-child {
+  border-left: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:last-child {
+  border-right: 0;
+}
+
+table tr:first-child th {
+  border-top: 0;
+}
+table tr th:first-child {
+  border-left: 0;
+}
+table tr th:last-child {
+  border-right: 0;
 }
 
 /* Make images always 100% width */
-
 img {
   width: 100%;
   height: auto;
+}
+
+/* Disable TinyMCE active color outline/background for links, tables, and images */
+.mce-content-body [data-mce-selected=inline-boundary] {
+  background-color: var(--transparent-color) !important;
+}
+.mce-content-body img[data-mce-selected], .mce-content-body table[data-mce-selected] {
+	outline: 0px solid var(--transparent-color);
+	border: 0px solid var(--transparent-color);
 }
 
 /* Customize scrollbar appearance (for main text editor area) */
