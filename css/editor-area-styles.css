@@ -70,7 +70,7 @@ body {
 	padding-left: 30px;
 	padding-right: 30px;
   line-height: 1.6;
-  margin-bottom: 2.0em;
+  /*margin-bottom: 2.0em;*/
 }
 
 /* Select and style only the first child element of every body tag (remove top spacing) */
