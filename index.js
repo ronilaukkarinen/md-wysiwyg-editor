@@ -1,7 +1,8 @@
 let persistFilename = "untitled.md";
 let markdownSideBarToggleState = false;
 let fullscreenTracker = false;
-let updateMarkdownLessOften = false;
+let updateMarkdownLessOften;
+let customCSS;
 
 // Create new file
 function newFile() {
@@ -204,7 +205,7 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode filename', // quickimage, preferences (ADD BACK LATER)
+  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences filename', // quickimage
   toolbar_mode: 'scrolling',
   plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
@@ -296,6 +297,21 @@ tinymce.init({
 
   // https://www.tiny.cloud/docs/demo/custom-toolbar-button/
   setup: function (editor) {
+
+    // Change how often we update markdown pane based on settings
+    updateMarkdownLessOften = Boolean(localStorage.getItem('updateMarkdownLessOften'));
+    if (updateMarkdownLessOften == true) {
+      var characterData = false; // Update on every change
+    } else {
+      var characterData = true; // Update on some changes
+    }
+
+    // Retrieve custom styles if any
+    customCSS = localStorage.getItem('customCSS');
+    if (customCSS == null) {
+      customCSS = '';
+    }
+
     editor.ui.registry.addMenuButton('file', {
       tooltip: 'File',
       icon: 'edit-block',
@@ -429,14 +445,6 @@ tinymce.init({
       }
     });
 
-    editor.ui.registry.addButton('preferences', {
-      tooltip: 'Preferences',
-      icon: 'preferences',
-      onAction: function () {
-        // Add action here
-      }
-    });
-
     editor.ui.registry.addButton('filename', {
       text: "<span id='filename'>" + persistFilename + "</span>",
       onAction: function () {
@@ -485,6 +493,75 @@ tinymce.init({
     editor.ui.registry.addContextMenu('copyasmarkdown', {
       update: function (element) {
         return 'copyasmarkdown';
+      }
+    });
+
+    var prefsConfig = {
+      title: 'Preferences',
+      size: 'large',
+      body: {
+        type: 'panel',
+        items: [
+          {
+            type: 'checkbox',
+            name: 'updateMarkdownLessOften',
+            label: 'Update markdown panel less often—only when new elements are created (uses less CPU)',
+          },
+          {
+            type: 'textarea',
+            name: 'customCSS',
+            label: '<br /><span style="font-size: 16px !important;">Custom CSS stylesheet for editing area (default/template <a href="https://github.com/Alyw234237/text-editor/blob/main/css/editor-area-styles.css">here</a>—copy here and modify</span>):',
+            maximized: true,
+          }
+        ]
+      },
+      buttons: [
+        {
+          type: 'submit',
+          name: 'submitButton',
+          text: 'Save',
+          primary: true
+        },
+        {
+          type: 'cancel',
+          name: 'closeButton',
+          text: 'Cancel'
+        }
+      ],
+      initialData: {
+        customCSS: customCSS,
+        updateMarkdownLessOften: updateMarkdownLessOften
+      },
+      onSubmit: function (api) {
+
+        var data = api.getData();
+
+        // Switch between default and custom CSS depending on preferences
+        if (data.customCSS != null && data.customCSS != '') {
+          customEditorAreaCSS(true, data.customCSS);
+          localStorage.setItem('customCSS', data.customCSS);
+        } else {
+          customEditorAreaCSS(false);
+          localStorage.removeItem('customCSS');
+        }
+
+        // Switch markdown update frequency depending on preferences
+        if (data.updateMarkdownLessOften == true) {
+          localStorage.setItem('updateMarkdownLessOften', true);
+          updateMarkdownLessOften = true;
+        } else {
+          localStorage.removeItem('updateMarkdownLessOften');
+          updateMarkdownLessOften = false;
+        }
+
+        api.close();
+      }
+    };
+
+    editor.ui.registry.addButton('preferences', {
+      icon: 'preferences',
+      onAction: function () {
+        editor.windowManager.open(prefsConfig)
       }
     });
 
@@ -698,6 +775,13 @@ tinymce.init({
       // Apply the theme
       theme_apply();
 
+      // Apply custom CSS styles if applicable
+      if (customCSS != null && customCSS != '') {
+        customEditorAreaCSS(true, customCSS);
+      }
+
+      adjustEditorSpacing();
+
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
@@ -750,13 +834,6 @@ tinymce.init({
       // Update markdown pane when the editor area changes
       var iframe = document.getElementById('textEditor_ifr');
       var editorPane = iframe.contentWindow.document.getElementById('tinymce'); // body tag of iframe
-
-      // Change how often we update based on settings
-      if (updateMarkdownLessOften == true) {
-        characterData = false; // Update on every change
-      } else {
-        characterData = true; // Update on some changes
-      }
 
       // Set up configuration for watching changes to the editor area
       const mutationConfig = {
@@ -844,6 +921,34 @@ function adjustEditorSpacing() {
     editorPane.style.paddingBottom = "30px";
     editorPane.style.paddingLeft = "30px";
     editorPane.style.paddingRight = "30px";
+  }
+
+  return;
+}
+
+// Apply or remove custom styles
+function customEditorAreaCSS(apply, customCSS) {
+  
+  if (apply == true) {
+    var iframeDocument = document.getElementById('textEditor_ifr').contentWindow.document;
+    var style = iframeDocument.getElementById('customCSS');
+    if (!style) {
+      style = iframeDocument.createElement('style');
+      style.setAttribute("id", 'customCSS');
+    }
+    style.textContent = customCSS;
+    if (!iframeDocument.getElementById('customCSS')) {
+      iframeDocument.head.append(style);
+    } else {
+      iframeDocument.getElementById('customCSS').disabled = false;
+    }
+    iframeDocument.getElementById('u1').disabled = true;
+  } else {
+    var iframeDocument = document.getElementById('textEditor_ifr').contentWindow.document;
+    if (iframeDocument.getElementById('customCSS')) {
+      iframeDocument.getElementById('customCSS').disabled = true;
+    }
+    iframeDocument.getElementById('u1').disabled = false;
   }
 
   return;

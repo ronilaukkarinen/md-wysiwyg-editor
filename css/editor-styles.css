@@ -1,49 +1,55 @@
 /* Set colors for light theme */
 [data-theme='light'] {
-  --general-background-color: rgb(255, 255, 255);
-  --lesser-background-color: var(--general-background-color);
-  --backdrop-background-color: rgb(255, 255, 255, 0.75);
-  --dialogue-box-background-color: var(--general-background-color);
-  --text-area-background-color: var(--general-background-color);
-  --inline-pop-top-color: var(--general-background-color);
+	--general-background-color: rgb(255, 255, 255);
+	--lesser-background-color: var(--general-background-color);
+	--backdrop-background-color: rgb(255, 255, 255, 0.75);
+	--dialogue-box-background-color: var(--general-background-color);
+	--text-area-background-color: var(--general-background-color);
+	--inline-pop-top-color: var(--general-background-color);
 
-  --general-text-color: rgb(34, 47, 62);
-  --lesser-text-color: rgba(34, 47, 62, 0.7);
-  --much-lesser-text-color: rgba(34, 47, 62, 0.5);
-  --icon-fill-color: rgb(95, 100, 105);
+	--general-text-color: rgb(34, 47, 62);
+	--lesser-text-color: rgba(34, 47, 62, 0.7);
+	--much-lesser-text-color: rgba(34, 47, 62, 0.5);
+	--link-color: rgb(8, 122, 204);
+	--icon-fill-color: rgb(95, 100, 105);
 
-  --general-border-color: rgb(235, 235, 235);
-  --toolbar-bottom-color: rgb(235, 235, 235);
+	--general-border-color: rgb(235, 235, 235);
+	--toolbar-bottom-color: rgb(235, 235, 235);
 
-  --menu-item-button-hover-color: rgb(222, 224, 226);
+	--menu-item-button-hover-color: rgb(222, 224, 226);
 
-  --scrollbar-track-color: var(--general-background-color);
-  --scrollbar-thumb-color: rgb(170, 171, 171);
-  --scrollbar-track-hover-color: rgb(242, 242, 242);
+	--checked-check-box-fill-color: var(--link-color);
+
+	--scrollbar-track-color: var(--general-background-color);
+	--scrollbar-thumb-color: rgb(170, 171, 171);
+	--scrollbar-track-hover-color: rgb(242, 242, 242);
 }
 
 /* Set colors for dark theme */
 [data-theme='dark'] {
-  --general-background-color: rgb(33, 33, 33);
-  --lesser-background-color: rgb(44, 44, 44);
-  --backdrop-background-color: rgb(33, 33, 33, 0.75);
-  --dialogue-box-background-color: rgb(38, 38, 38);
-  --text-area-background-color: rgb(53, 53, 53);
+	--general-background-color: rgb(33, 33, 33);
+	--lesser-background-color: rgb(44, 44, 44);
+	--backdrop-background-color: rgb(33, 33, 33, 0.95);
+	--dialogue-box-background-color: rgb(38, 38, 38);
+	--text-area-background-color: rgb(53, 53, 53);
 
-  --general-text-color: rgb(250, 250, 250);
-  --lesser-text-color: rgb(209, 209, 209);
-  --much-lesser-text-color: rgb(140, 140, 140);
-  --icon-fill-color: var(--general-text-color);
+	--general-text-color: rgb(250, 250, 250);
+	--lesser-text-color: rgb(209, 209, 209);
+	--much-lesser-text-color: rgb(140, 140, 140);
+	--link-color: rgb(150, 215, 255);
+	--icon-fill-color: var(--general-text-color);
 
-  --general-border-color: rgb(22, 22, 22);
-  --toolbar-bottom-color: rgb(22, 22, 22);
-  --inline-pop-top-color: var(--general-background-color);
+	--general-border-color: rgb(22, 22, 22);
+	--toolbar-bottom-color: rgb(22, 22, 22);
+	--inline-pop-top-color: var(--general-background-color);
 
-  --menu-item-button-hover-color: rgb(73, 73, 73); /* 80% */
+	--menu-item-button-hover-color: rgb(73, 73, 73);
 
-  --scrollbar-track-color: var(--lesser-background-color);
-  --scrollbar-thumb-color: rgb(33, 33, 33);
-  --scrollbar-track-hover-color: rgb(53, 53, 53);
+	--checked-check-box-fill-color: var(--link-color);
+
+	--scrollbar-track-color: var(--lesser-background-color);
+	--scrollbar-thumb-color: rgb(33, 33, 33);
+	--scrollbar-track-hover-color: rgb(53, 53, 53);
 }
 
 /* Basic editor configuration */
@@ -59,224 +65,257 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 
 /* Whole window area border */
 .tox-tinymce {
-  border: 0px solid var(--general-border-color) !important;
+	border: 0px solid var(--general-border-color) !important;
 }
 
 /* Toolbar bottom border */
 .tox .tox-toolbar, .tox .tox-toolbar__primary, .tox-toolbar__overflow {
-  background-image: none !important;
-  border-bottom: 1px var(--toolbar-bottom-color) solid !important;
+	background-image: none !important;
+	border-bottom: 1px var(--toolbar-bottom-color) solid !important;
 }
 
 /*** Main styling ***/
 
 /* Toolbar (default mode) */
 .tox-toolbar__primary, .tox .tox-toolbar-overlord {
-  background-color: var(--general-background-color) !important;
+	background-color: var(--general-background-color) !important;
 }
 
 /* Toolbar (scrolling mode) */
 .tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
-  background-color: var(--general-background-color) !important;
+	background-color: var(--general-background-color) !important;
 }
 
 /* Toolbar (for centering filename toolbar button) */
 .tox-editor-header .tox-toolbar__group {
-  width: 100% !important;
+	width: 100% !important;
 }
 
 /* For centering filename toolbar button */
 .tox-editor-header .tox-toolbar__group button:last-of-type {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  background-color: transparent !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	background-color: transparent !important;
 }
 
 /* Style the filename toolbar button text */
 #filename {
-  color: var(--lesser-text-color) !important;
+	color: var(--lesser-text-color) !important;
 }
 
 /* Toolbar and quick inline pop-up box dividers */
 .tox-toolbar__group {
-  border-right: 1px solid transparent !important;
+	border-right: 1px solid transparent !important;
 }
 
 /* Toolbar buttons hover/activated */
 .tox .tox-tbtn:hover, .tox .tox-tbtn:focus, .tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover, .tox-tbtn .tox-tbtn--select {
-  background-color: var(--menu-item-button-hover-color) !important;
+	background-color: var(--menu-item-button-hover-color) !important;
 }
 
 /* Toolbar button icons */
 .tox .tox-tbtn:hover svg {
-  background-color: var(--menu-item-button-hover-color) !important;
+	background-color: var(--menu-item-button-hover-color) !important;
 }
 
 /* Toolbar button text */
 .tox .tox-tbtn__select-label {
-  color: var(--general-text-color) !important;
+	color: var(--general-text-color) !important;
 }
 
 /* Toolbar icon fill colors */
 /* Also search bar options button fill color */
 .tox-tbtn svg {
-  fill: var(--icon-fill-color) !important;
+	fill: var(--icon-fill-color) !important;
 }
 
 /* Menu items */
 .tox .tox-menu {
-  background-color: var(--general-background-color) !important;
-  border: 1px solid var(--general-border-color) !important;
-  border-radius: 6px !important; /* Rounded corners */
+	background-color: var(--general-background-color) !important;
+	border: 1px solid var(--general-border-color) !important;
+	border-radius: 6px !important; /* Rounded corners */
 }
 
 /* Dropdown menu items hover/active */
 .tox .tox-collection--list .tox-collection__item--active {
-  color: var(--general-text-color) !important;
-  background-color: var(--menu-item-button-hover-color) !important;
+	color: var(--general-text-color) !important;
+	background-color: var(--menu-item-button-hover-color) !important;
 }
 
 /* To alow for lesser/much lesser text for menu items */
 .tox .tox-collection__item {
-  color: var(--general-text-color) !important;
+	color: var(--general-text-color) !important;
 }
 
 /* Lesser text for menu items */
 .tox .tox-collection__item-accessory, .tox .tox-insert-table-picker__label {
-  color: var(--lesser-text-color) !important;
+	color: var(--lesser-text-color) !important;
 }
 
 /* Much lesser color for text and icons in menu items */
 .tox .tox-collection__item--state-disabled {
-  color: var(--much-lesser-text-color) !important;
+	color: var(--much-lesser-text-color) !important;
 }
 
 /* Menu item caret icons */
 .tox .tox-collection__item-caret svg {
-  fill: var(--icon-fill-color) !important;
+	fill: var(--icon-fill-color) !important;
 }
 
 /* Dialogue box */
 .tox-dialog {
-  background-color: var(--dialogue-box-background-color) !important;
-  border-color: var(--general-border-color) !important;
-  border-radius: 8px !important; /* Rounded corners */
-  border-style: solid !important;
-  border-width: 1px !important;
-  box-shadow: 0 16px 16px -10px rgba(34, 47, 62, 0.15), 0 0 40px 1px rgba(34, 47, 62, 0.15) !important;
+	background-color: var(--dialogue-box-background-color) !important;
+	border-color: var(--general-border-color) !important;
+	border-radius: 8px !important; /* Rounded corners */
+	border-style: solid !important;
+	border-width: 1px !important;
+	box-shadow: 0 16px 16px -10px rgba(34, 47, 62, 0.15), 0 0 40px 1px rgba(34, 47, 62, 0.15) !important;
 }
 
 /* Dialogue box headers and footers */
 .tox-dialog__header, .tox-dialog__footer {
-  background-color: var(--dialogue-box-background-color) !important;
-  border-style: none !important;
-  border-width: 0px !important;
+	background-color: var(--dialogue-box-background-color) !important;
+	border-style: none !important;
+	border-width: 0px !important;
 }
 
 /* Dialogue box titles */
 .tox-dialog__title {
-  color: var(--general-text-color) !important;
+	color: var(--general-text-color) !important;
 }
 
 /* Dialogue box labels */
 .tox-label {
-  color: var(--general-text-color) !important;
+	color: var(--general-text-color) !important;
+}
+
+/* Dialogue box bodies */
+.tox-dialog__body {
+	color: var(--general-text-color) !important;
 }
 
 /* Dialogue box dropdown menus */
 .tox-selectfield select {
-  color: var(--general-text-color) !important;
-  background-color: var(--general-background-color) !important;
+	color: var(--general-text-color) !important;
+	background-color: var(--general-background-color) !important;
 }
 
 /* Dialogue box buttons */
 .tox .tox-button {
-  color: var(--general-text-color) !important;
+	color: var(--general-text-color) !important;
 	background-color: var(--general-background-color) !important;
 	border-color: var(--general-border-color) !important;
 }
 
 /* Dialogue box backdrop */
 .tox .tox-dialog-wrap__backdrop {
-  background-color: var(--backdrop-background-color) !important;
+	background-color: var(--backdrop-background-color) !important;
+}
+
+/* Dialogue box links */
+.tox .tox-dialog__body-content a:link, a:visited, a:hover, a:active {
+	color: var(--link-color) !important;
+	text-decoration: none;
+}
+
+/* Dialogue box check box styling */
+.tox .tox-checkbox__icons .tox-checkbox-icon__checked svg {
+	fill: var(--checked-check-box-fill-color) !important;
+}
+
+/* Dialogue box check box styling */
+.tox .tox-checkbox__icons .tox-checkbox-icon__indeterminate {
+	fill: transparent !important;
+}
+
+/* Dialogue box check box outer border styling */
+.tox input.tox-checkbox__input:focus + .tox-checkbox__icons {
+	border-radius: 0px !important;
+	box-shadow: inset 0 0 0 0 transparent !important;
+	padding: calc(4px - 1px) !important;
+}
+
+
+.tox .tox-checkbox__icons .tox-checkbox-icon__unchecked svg {
+	fill: var(--icon-fill-color) !important;
 }
 
 /* Text areas (e.g., dialogue boxes, source code view */
 .tox .tox-textarea, .tox .tox-textfield, .tox .tox-toolbar-textfield {
-  color: var(--general-text-color) !important;
-  background-color: var(--text-area-background-color) !important;
-  border-color: var(--general-border-color) !important;
+	color: var(--general-text-color) !important;
+	background-color: var(--text-area-background-color) !important;
+	border-color: var(--general-border-color) !important;
 }
 
 /* Markdown sidebar */
 .tox .tox-sidebar {
-  color: var(--general-text-color) !important;
-  background-color: var(--lesser-background-color) !important;
+	color: var(--general-text-color) !important;
+	background-color: var(--lesser-background-color) !important;
 }
 
 /* Markdown sidebar left border */
 .markdown-preview {
-  border-left: 1px solid var(--general-border-color) !important;
+	border-left: 1px solid var(--general-border-color) !important;
 }
 
 /* Quick inline pop-up box */
 .tox .tox-pop__dialog {
-  background-color: var(--general-background-color) !important;
-  border: 1px solid var(--general-border-color) !important;
+	background-color: var(--general-background-color) !important;
+	border: 1px solid var(--general-border-color) !important;
 }
 
 /* Quick inline pop-up box bottom line */
 .tox .tox-pop__dialog .tox-toolbar {
-  margin-bottom: -2px !important;
+	margin-bottom: -2px !important;
 }
 
 /* Quick inline pop-up box bottom pointed part background color upward view */
 .tox .tox-pop.tox-pop--top::after {
-  border-color: transparent transparent var(--inline-pop-top-color) transparent !important;
+	border-color: transparent transparent var(--inline-pop-top-color) transparent !important;
 }
 
 /* Quick inline pop-up box bottom pointed part border color upward view */
 .tox .tox-pop.tox-pop--bottom::before {
-  border-color: var(--general-border-color) transparent transparent transparent !important;
+	border-color: var(--general-border-color) transparent transparent transparent !important;
 }
 
 /* Quick inline pop-up box bottom pointed part border color downward view */
 .tox .tox-pop.tox-pop--bottom, .tox .tox-pop.tox-pop--bottom::after {
-  border-color: var(--general-background-color) transparent transparent transparent !important;
+	border-color: var(--general-background-color) transparent transparent transparent !important;
 }
 
 /* Context menu dividers */
 .tox .tox-collection--list .tox-collection__group {
-  border-color: transparent !important;
-  border-width: 0px !important;
+	border-color: transparent !important;
+	border-width: 0px !important;
 }
 
 /* Disable the markdown sidebar slide in/out animation */
 /* At least a short transition is needed or it'll break the sidebar for some reason */
 .tox .tox-sidebar--sliding-growing,
 .tox .tox-sidebar--sliding-shrinking {
-  transition: width 0.01s ease-out !important;
+	transition: width 0.01s ease-out !important;
 }
 
 /* Customize scrollbar appearance (for text areas—markdown editor area and source code editor area) */
 ::-webkit-scrollbar {
-  width: 7px !important;
+	width: 7px !important;
 }
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-color) !important;
+	background: var(--scrollbar-track-color) !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-color) !important;
+	background: var(--scrollbar-thumb-color) !important;
 }
 ::-webkit-scrollbar-track:hover {
-  background: var(--scrollbar-track-hover-color) !important;
+	background: var(--scrollbar-track-hover-color) !important;
 }
 ::-webkit-scrollbar-corner {
-  background: var(--scrollbar-thumb-color) !important;
+	background: var(--scrollbar-thumb-color) !important;
 }
 
 /* Toolbar in scrolling mode */
 .tox-toolbar--scrolling::-webkit-scrollbar {
-  height: 3px !important;
+	height: 3px !important;
 }
 
