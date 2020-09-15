@@ -21,8 +21,8 @@
 | `- ` | Numbered list |
 | `1. ` | Numbered list |
 | `> ` | Block quote |
-| `\\`...\\`` | Code |
-| `\\`\\`\\` | Code block |
+| ` ```` | Code |
+| `\``\` | Code block |
 | `--` | En dash |
 | `---` | Em dash |
 | `===` | Horizontal line |
