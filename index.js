@@ -751,6 +751,7 @@ tinymce.init({
       var iframe = document.getElementById('textEditor_ifr');
       var editorPane = iframe.contentWindow.document.getElementById('tinymce'); // body tag of iframe
 
+      // Change how often we update based on settings
       if (updateMarkdownLessOften == true) {
         characterData = false; // Update on every change
       } else {
