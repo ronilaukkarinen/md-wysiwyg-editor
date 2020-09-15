@@ -16703,17 +16703,8 @@
             sidebar.destroy();
           };
         },
-        onShow: function(api) {
-          var event = new CustomEvent('markdown-sidebar-toggle-state', {'detail': true});
-          window.parent.document.dispatchEvent(event);
-          // Hack to fix width of the markdown pane
-          var width = (window.innerWidth * 0.50).toString() + "px";
-          document.getElementsByClassName("markdown-preview")[0].style.width = width;
-        },
-        onHide: function(api) {
-          var event = new CustomEvent('markdown-sidebar-toggle-state', {'detail': false});
-          window.parent.document.dispatchEvent(event);
-        },
+        onShow: function(api) { },
+        onHide: function(api) { },
       });
     });
     var Plugin = (__webpack_exports__["default"] = function() {});

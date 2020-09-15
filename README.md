@@ -1,6 +1,6 @@
 # Text Editor
 
-Text Editor is a simple constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown) (via a modified [TinyMCE labs plugin](https://www.tiny.cloud/labs/markdown/)), and the emerging [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code).
+Text Editor is a simple online constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown) (via a modified [TinyMCE labs plugin](https://www.tiny.cloud/labs/markdown/)), and the emerging [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code).
 
 ## Launch
 
@@ -34,8 +34,8 @@ Due to the bidirectional conversion between rich text/HTML and markdown, the edi
 ### Future
 
 * Preferences menu.
-* "Open with" / file association support (in-progress).
-* Customization of rich-text appearance via stylesheet in preferences.
+* "Open with" / file association support.
+* Customization of rich-text appearance via stylesheet.
 * Lots of bug fixes.
 
 ## Support
@@ -44,14 +44,18 @@ If you like this application, consider [buying Aly W. a cup of boba tea](https:/
 
 ## Related
 
-Similar live rich-text-oriented markdown editors (all desktop applications—mostly [Electron](https://www.electronjs.org/)-based):
+A number of similar editors exist. These are either rich-text-oriented markdown editors (mostly [Electron](https://www.electronjs.org/)-based desktop applications) or online markdown editors:
 
-* [Typora](https://typora.io/)
-* [Mark Text](https://github.com/marktext/marktext)
-* [Zettlr](https://github.com/Zettlr/Zettlr)
-* [Uncolored](https://github.com/n457/Uncolored)
-* [Abricotine](http://abricotine.brrd.fr/)
-* [ghostwriter](https://wereturtle.github.io/ghostwriter/)
-* [VNote](https://github.com/tamlok/vnote)
-* [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) (extension for [VSCode](https://github.com/microsoft/vscode))
+| Desktop | Web |
+| --- | --- |
+| [Typora](https://typora.io/) | * [StackEdit](https://stackedit.io/) |
+* [Mark Text](https://github.com/marktext/marktext) | * [SimpleMDE](https://simplemde.com/)
+* [Zettlr](https://github.com/Zettlr/Zettlr) | * [Dillinger](https://dillinger.io/) |
+* [Uncolored](https://github.com/n457/Uncolored) | * [Editor.md](http://editor.md/)
+* [Abricotine](http://abricotine.brrd.fr/) | * [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/)
+* [ghostwriter](https://wereturtle.github.io/ghostwriter/) |
+* [VNote](https://github.com/tamlok/vnote) |
+* [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
+
+These editors, with the exception of UNOTES, don't provide a pure rich-text experience. Typora, Mark Text, and Zettlr provide a near-pure-rich-text experience. However, they will automatically expand markdown when the editing caret is within it, and this can, for some (like me), provide a jarring editing experience. There is unfornately no option to disable this feature. The online editors aren't rich-text-oriented and don't have native-file-system integration at this time. Hence the place for an editor like Text Editor.
 

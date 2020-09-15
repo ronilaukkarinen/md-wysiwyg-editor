@@ -1,5 +1,6 @@
 let persistFilename = "untitled";
 let markdownSideBarToggleState = false;
+let fullscreenTracker = false;
 
 // Create new file
 function newFile() {
@@ -105,11 +106,11 @@ function toggleFullscreen() {
     // Request fullscreen for different platforms
     if (editorHandle.requestFullscreen) {
       editorHandle.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { // Firefox
+    } else if (editorHandle.mozRequestFullScreen) { // Firefox
       editorHandle.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+    } else if (editorHandle.webkitRequestFullscreen) { // Chrome, Safari and Opera
       editorHandle.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { // IE/Edge
+    } else if (editorHandle.msRequestFullscreen) { // IE/Edge
       editorHandle.msRequestFullscreen();
     }
   // If already fullscreen, then exit fullscreen
@@ -564,9 +565,9 @@ tinymce.init({
       }
 
       // Escape key: exit fullscreen or hide markdown sidebar if it's open
-      if (event.key == 'Esc' && document.fullscreenElement != null) {
+      if (event.key == 'Escape' && fullscreenTracker == true) {
         toggleFullscreen();
-      } else if (event.key == 'Esc' && markdownSideBarToggleState == true) {
+      } else if (event.key == 'Escape' && markdownSideBarToggleState == true) {
         tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       }
 
@@ -598,17 +599,37 @@ tinymce.init({
       return;
     });
 
-    // Hack to fix width of the markdown pane
+    // Adjust padding if applicable + hack to fix width of the markdown pane
     editor.on('ResizeWindow', function(event) {
-      var width = (window.innerWidth * 0.50).toString() + "px";
-      document.getElementsByClassName("markdown-preview")[0].style.width = width;
+
+      var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + "px";
+      document.getElementsByClassName("markdown-preview")[0].style.width = markdownSidebarWidth;
+
+      adjustEditorSpacing();
+
       return;
     });
 
-    // Detect markdown sidebar toggle state open/close
+    // Track fullscreen
+    // Doesn't fire in Chrome if fullscreen was entered with fullscreen key or via Chrome hamburger menu...
+    // This would work though: https://stackoverflow.com/questions/34422052/how-to-detect-browser-has-gone-to-full-screen
+    document.addEventListener("fullscreenchange", function () {
+      fullscreenTracker = !fullscreenTracker;
+    }, false);
+
+    // When markdown pane is opened/closed
     // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
-    document.addEventListener('markdown-sidebar-toggle-state', function (event) {
-      markdownSideBarToggleState = event.detail;
+    editor.on('ToggleSidebar', function(event) {
+
+      markdownSideBarToggleState = !markdownSideBarToggleState;
+
+      // Hack to fix width of the markdown pane
+      var width = (window.innerWidth * 0.50).toString() + "px";
+      document.getElementsByClassName("markdown-preview")[0].style.width = width;
+
+      adjustEditorSpacing();
+
+      return;
     });
 
     // Update to unsaved changes filename if editor becomes dirty
@@ -728,5 +749,28 @@ function theme_switch() {
     theme = 'light';
   }
   theme_apply();
+}
+
+// Loosen padding/margins if editor pane width is small (e.g., when editor isn't maximized and markdown pane is open)
+function adjustEditorSpacing() {
+
+  var iframe = document.getElementById('textEditor_ifr');
+  var editorPane = iframe.contentWindow.document.getElementById('tinymce'); // body tag of iframe
+
+  // Hardcoded... un-hardcode this in the future
+  if(editorPane.offsetWidth < 750) {
+    console.log("Offset width: " + editorPane.offsetWidth);
+    editorPane.style.paddingTop = "5px";
+    editorPane.style.paddingBottom = "5px";
+    editorPane.style.paddingLeft = "5px";
+    editorPane.style.paddingRight = "5px";
+  } else {
+    editorPane.style.paddingTop = "30px";
+    editorPane.style.paddingBottom = "30px";
+    editorPane.style.paddingLeft = "30px";
+    editorPane.style.paddingRight = "30px";
+  }
+
+  return;
 }
 

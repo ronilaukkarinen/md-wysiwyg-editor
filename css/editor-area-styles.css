@@ -68,13 +68,24 @@ body {
   color: var(--general-text-color);
   max-width: 750px;
 	margin: 0 auto;
-	padding-top: 12px;
-	padding-bottom: 12px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 	padding-left: 30px;
 	padding-right: 30px;
   line-height: 1.6;
-  /*margin-top: -1.0em;*/
   margin-bottom: 2.0em;
+}
+
+/* Select and style only the first child element of every body tag (remove top spacing) */
+body > :first-child {
+  margin-top: 0em !important;
+  padding-top: 0px !important;
+}
+
+/* Select and style only the last child element of every body tag (remove bottom spacing) */
+body > :last-child {
+  margin-bottom: 0em !important;
+  padding-bottom: 0px !important;
 }
 
 a {
