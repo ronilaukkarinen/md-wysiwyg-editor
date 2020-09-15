@@ -1,3 +1,4 @@
+/* Set colors for light theme */
 [data-theme='light'] {
   --general-background-color: rgb(255, 255, 255);
   --lesser-background-color: var(--general-background-color);
@@ -19,10 +20,9 @@
   --scrollbar-track-color: var(--general-background-color);
   --scrollbar-thumb-color: rgb(170, 171, 171);
   --scrollbar-track-hover-color: rgb(242, 242, 242);
-
-  --transparent-color: rgb(255, 255, 255, 0);
 }
 
+/* Set colors for dark theme */
 [data-theme='dark'] {
   --general-background-color: rgb(33, 33, 33);
   --lesser-background-color: rgb(44, 44, 44);
@@ -44,10 +44,9 @@
   --scrollbar-track-color: var(--lesser-background-color);
   --scrollbar-thumb-color: rgb(33, 33, 33);
   --scrollbar-track-hover-color: rgb(53, 53, 53);
-
-  --transparent-color: rgb(0, 0, 0, 0);
 }
 
+/* Basic editor configuration */
 html, body, #textEditor { height: 100%; margin: 0px; }
 .mce-edit-area { display: flex !important; flex-flow: column; }
 .mce-edit-area iframe { flex: 1 1 auto; }
@@ -64,22 +63,43 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 }
 
 /* Toolbar bottom border */
-.tox-toolbar__primary {
+.tox .tox-toolbar, .tox .tox-toolbar__primary, .tox-toolbar__overflow {
   background-image: none !important;
-  background-color: var(--general-background-color);
   border-bottom: 1px var(--toolbar-bottom-color) solid !important;
 }
 
 /*** Main styling ***/
 
-/* Toolbar */
+/* Toolbar (default mode) */
 .tox-toolbar__primary, .tox .tox-toolbar-overlord {
   background-color: var(--general-background-color) !important;
 }
 
+/* Toolbar (scrolling mode) */
+.tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
+  background-color: var(--general-background-color) !important;
+}
+
+/* Toolbar (for centering filename toolbar button) */
+.tox-editor-header .tox-toolbar__group {
+  width: 100% !important;
+}
+
+/* For centering filename toolbar button */
+.tox-editor-header .tox-toolbar__group button:last-of-type {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: transparent !important;
+}
+
+/* Style the filename toolbar button text */
+#filename {
+  color: var(--lesser-text-color) !important;
+}
+
 /* Toolbar and quick inline pop-up box dividers */
 .tox-toolbar__group {
-  border-right: 1px solid var(--transparent-color) !important
+  border-right: 1px solid transparent !important;
 }
 
 /* Toolbar buttons hover/activated */
@@ -90,6 +110,11 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 /* Toolbar button icons */
 .tox .tox-tbtn:hover svg {
   background-color: var(--menu-item-button-hover-color) !important;
+}
+
+/* Toolbar button text */
+.tox .tox-tbtn__select-label {
+  color: var(--general-text-color) !important;
 }
 
 /* Toolbar icon fill colors */
@@ -141,6 +166,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
   box-shadow: 0 16px 16px -10px rgba(34, 47, 62, 0.15), 0 0 40px 1px rgba(34, 47, 62, 0.15) !important;
 }
 
+/* Dialogue box headers and footers */
 .tox-dialog__header, .tox-dialog__footer {
   background-color: var(--dialogue-box-background-color) !important;
   border-style: none !important;
@@ -188,6 +214,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
   background-color: var(--lesser-background-color) !important;
 }
 
+/* Markdown sidebar left border */
 .markdown-preview {
   border-left: 1px solid var(--general-border-color) !important;
 }
@@ -220,7 +247,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 
 /* Context menu dividers */
 .tox .tox-collection--list .tox-collection__group {
-  border-color: var(--transparent-color) !important;
+  border-color: transparent !important;
   border-width: 0px !important;
 }
 
@@ -231,20 +258,25 @@ html, body, #textEditor { height: 100%; margin: 0px; }
   transition: width 0.01s ease-out !important;
 }
 
-/* Customize scrollbar appearance (for markdown editor area) */
+/* Customize scrollbar appearance (for text areas—markdown editor area and source code editor area) */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 7px !important;
 }
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-color);
+  background: var(--scrollbar-track-color) !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-color);
+  background: var(--scrollbar-thumb-color) !important;
 }
 ::-webkit-scrollbar-track:hover {
-  background: var(--scrollbar-track-hover-color);
+  background: var(--scrollbar-track-hover-color) !important;
 }
 ::-webkit-scrollbar-corner {
-  background: var(--scrollbar-thumb-color);
+  background: var(--scrollbar-thumb-color) !important;
+}
+
+/* Toolbar in scrolling mode */
+.tox-toolbar--scrolling::-webkit-scrollbar {
+  height: 3px !important;
 }
 

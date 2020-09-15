@@ -1,4 +1,4 @@
-let persistFilename = "untitled";
+let persistFilename = "untitled.md";
 let markdownSideBarToggleState = false;
 let fullscreenTracker = false;
 
@@ -21,8 +21,7 @@ function newFile() {
   app.newFile(); // Unnecessary but keeping for consistency for now
 
   tinymce.activeEditor.resetContent();
-  persistFilename = "untitled";
-  document.title = persistFilename + " - Text Editor";
+  updateFilename("untitled.md", false);
 
   return;
 }
@@ -50,10 +49,9 @@ function openFile(filename, data) {
     tinymce.editors[0].setContent(data, {format: 'text'});
   }
 
+  updateFilename(filename, false);
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
-  document.title = filename + " - Text Editor";
-  persistFilename = filename;
 
   return;
 }
@@ -74,9 +72,8 @@ function saveFile(filename) {
     var content = tinymce.editors[0].getContent({format: 'html'});
   }
 
+  updateFilename(filename, false);
   tinymce.editors[0].setDirty(false);
-  document.title = filename + " - Text Editor";
-  persistentFilename = filename;
 
   return content;
 }
@@ -92,6 +89,8 @@ function quit() {
 
 // Toggle full screen
 function toggleFullscreen() {
+
+  console.log("Got here");
 
   // Is fullscreen supported for this browser?
   if(document.fullscreenEnabled == false) {
@@ -116,6 +115,27 @@ function toggleFullscreen() {
   // If already fullscreen, then exit fullscreen
   } else {
     document.exitFullscreen();
+  }
+
+  return;
+}
+
+// Update filename
+function updateFilename(filename, dirty) {
+
+  var filenameElement = document.getElementById('filename');
+
+  if (filename != null) {
+    persistFilename = filename;
+    document.title = persistFilename + " - Text Editor";
+    filenameElement.innerHTML = "&emsp;" + persistFilename + "&emsp;";
+  }
+
+  // Doesn't work the first time on save for some reason... fix [to-do]
+  if (dirty == false) {
+    filenameElement.style.fontStyle = "";
+  } else {
+    filenameElement.style.fontStyle = "italic";
   }
 
   return;
@@ -179,8 +199,8 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode', // quickimage, preferences (ADD BACK LATER)
-  toolbar_mode: 'floating', // NOT WORKING!
+  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode filename', // quickimage, preferences (ADD BACK LATER)
+  toolbar_mode: 'scrolling',
   plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
@@ -264,8 +284,10 @@ tinymce.init({
     //{start: '***', replacement: '<hr />'}, // Conflicts with bold + italic above
   ],
 
-  // Save button callback function (JUST TO PREVENT THAT ERROR UPON CTRL+S)
-  save_onsavecallback: function () { },
+  // Save button callback function (necessary or will cause problems)
+  save_onsavecallback: function () {
+    app.saveFile();
+  },
 
   // https://www.tiny.cloud/docs/demo/custom-toolbar-button/
   setup: function (editor) {
@@ -385,6 +407,8 @@ tinymce.init({
       icon: 'fullscreen',
       onAction: function () {
         toggleFullscreen();
+        // Give focus back to editor area
+        tinyMCE.get('textEditor').getBody().focus();
       }
     });
 
@@ -395,6 +419,8 @@ tinymce.init({
         // Look into this in the future:
         // https://web.dev/prefers-color-scheme/
         theme_switch();
+        // Give focus back to editor area
+        tinyMCE.get('textEditor').getBody().focus();
       }
     });
 
@@ -403,6 +429,14 @@ tinymce.init({
       icon: 'preferences',
       onAction: function () {
         // Add action here
+      }
+    });
+
+    editor.ui.registry.addButton('filename', {
+      text: "<span id='filename'>" + persistFilename + "</span>",
+      onAction: function () {
+        // Give focus back to editor area
+        tinyMCE.get('textEditor').getBody().focus();
       }
     });
 
@@ -471,6 +505,7 @@ tinymce.init({
       app.saveFileAs();
     });
 
+    // Ctrl+F also triggers find and replace
     editor.addShortcut('Ctrl+H', 'Find and replace', function () {
       tinymce.activeEditor.execCommand('SearchReplace');
     });
@@ -636,7 +671,7 @@ tinymce.init({
 
     // Update to unsaved changes filename if editor becomes dirty
     editor.on('Dirty', function(event) {
-      document.title = persistFilename + " * - Text Editor";
+      updateFilename(null, true);
     });
 
     // If there are unsaved changes, ask before closing window
@@ -668,10 +703,9 @@ tinymce.init({
             });
           });
         // Set the application title based on the starting document
-        //document.title = persistFilename + " - Text Editor";
-        document.title = urlParams + " - Text Editor";
+        updateFilename(startFilename, true);
       } else {
-        document.title = "untitled - Text Editor";
+        updateFilename(persistFilename, true);
       }
 
       // Handle "open with" (doesn't work yet)

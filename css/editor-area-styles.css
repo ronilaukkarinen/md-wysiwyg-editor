@@ -1,3 +1,4 @@
+/* Set colors for light theme */
 [data-theme='light'] {
   --general-background-color: rgb(255, 255, 255);
   --blockquote-background-color: rgb(252, 252, 252);
@@ -22,10 +23,9 @@
   --scrollbar-track-color: var(--general-background-color);
   --scrollbar-thumb-color: rgb(170, 171, 171);
   --scrollbar-track-hover-color: rgb(242, 242, 242);
-
-  --transparent-color: rgb(255, 255, 255, 0);
 }
 
+/* Set colors for dark theme */
 [data-theme='dark'] {
   --general-background-color: rgb(44, 44, 44);
   --blockquote-background-color: rgb(65, 65, 65);
@@ -49,9 +49,6 @@
   --scrollbar-track-color: var(--general-background-color);
   --scrollbar-thumb-color: rgb(33, 33, 33);
   --scrollbar-track-hover-color: rgb(53, 53, 53);
-
-  --transparent-color: rgb(0, 0, 0, 0);
-
 }
 
 html {
@@ -285,11 +282,11 @@ img {
 
 /* Disable TinyMCE active color outline/background for links, tables, and images */
 .mce-content-body [data-mce-selected=inline-boundary] {
-  background-color: var(--transparent-color) !important;
+  background-color: transparent !important;
 }
 .mce-content-body img[data-mce-selected], .mce-content-body table[data-mce-selected] {
-	outline: 0px solid var(--transparent-color);
-	border: 0px solid var(--transparent-color);
+	outline: 0px solid transparent;
+	border: 0px solid transparent;
 }
 
 /* Customize scrollbar appearance (for main text editor area) */
