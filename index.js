@@ -1,6 +1,7 @@
 let persistFilename = "untitled.md";
 let markdownSideBarToggleState = false;
 let fullscreenTracker = false;
+let updateMarkdownLessOften = false;
 
 // Create new file
 function newFile() {
@@ -22,6 +23,9 @@ function newFile() {
 
   tinymce.activeEditor.resetContent();
   updateFilename("untitled.md", false);
+
+  tinyMCE.execCommand("UpdateMarkdown");
+  setTimeout(tinyMCE.execCommand("UpdateMarkdown"), 100); // Do it again if didn't work the first time... (temporary hack)
 
   return;
 }
@@ -52,6 +56,9 @@ function openFile(filename, data) {
   updateFilename(filename, false);
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
+
+  tinyMCE.execCommand("UpdateMarkdown");
+  setTimeout(tinyMCE.execCommand("UpdateMarkdown"), 100); // Do it again if didn't work the first time... (temporary hack)
 
   return;
 }
@@ -590,7 +597,7 @@ tinymce.init({
     });
 
     // Handle individual keyboard keys
-    editor.on('keydown', function(event) {
+    editor.on('KeyDown', function(event) {
 
       // F11 key: toggle fullscreen (need to test)
       if (event.key == 'F11') {
@@ -682,6 +689,10 @@ tinymce.init({
       delete event['returnValue'];
     });
 
+    editor.addCommand('UpdateMarkdown', function() {
+      return;
+    });
+
     editor.on('Init', function(event) {
 
       // Apply the theme
@@ -690,12 +701,12 @@ tinymce.init({
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const startFileName = urlParams.get('mdf');
+      const startFilename = urlParams.get('mdf');
       const startMarkdownView = urlParams.get('mdv');
 
       // Open a starting markdown file if the relevant URL parameter is set
-      if(startFileName) {
-        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFileName;
+      if(startFilename) {
+        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFilename;
         // Fetch the file and open it
         fetch(startFileURL)
           .then(function(response) {
@@ -705,8 +716,6 @@ tinymce.init({
           });
         // Set the application title based on the starting document
         updateFilename(startFilename, true);
-      } else {
-        updateFilename(persistFilename, true);
       }
 
       // Check if native file system is enabled and alert if not
@@ -737,6 +746,36 @@ tinymce.init({
       if(startMarkdownView) {
         tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       }
+
+      // Update markdown pane when the editor area changes
+      var iframe = document.getElementById('textEditor_ifr');
+      var editorPane = iframe.contentWindow.document.getElementById('tinymce'); // body tag of iframe
+
+      if (updateMarkdownLessOften == true) {
+        characterData = false; // Update on every change
+      } else {
+        characterData = true; // Update on some changes
+      }
+
+      // Set up configuration for watching changes to the editor area
+      const mutationConfig = {
+        /*attributes: true,*/
+        characterData: characterData,
+        childList: true,
+        subtree: true
+      };
+
+      // Function to execute when changes in the editor area are observed
+      const mutationCallback = function(mutationsList, observer) {
+        // Stop it from updating markdown pane if we're editing in the markdown pane
+        if (tinymce.activeEditor.hasFocus() == true) {
+          tinyMCE.execCommand("UpdateMarkdown");
+        }
+      };
+      
+      // Watch editor area for changes
+      const observer = new MutationObserver(mutationCallback);
+      observer.observe(editorPane, mutationConfig);
 
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
