@@ -707,6 +707,7 @@ if (localStorage.getItem('theme')) {
   theme = 'dark';
 }
 
+// Apply the theme
 function theme_apply() {
   'use strict';
   var iframe = document.getElementById('textEditor_ifr');
@@ -724,6 +725,7 @@ function theme_apply() {
   }
 }
 
+// Switch the theme
 function theme_switch() {
   'use strict';
   if (theme === 'light') {
