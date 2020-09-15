@@ -633,7 +633,6 @@ tinymce.init({
     });
 
     editor.on('Init', function(event) {
-
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
