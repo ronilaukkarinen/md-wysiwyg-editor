@@ -14,7 +14,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ## Screenshot
 
-![Screenshot](screenshot-light-mode.png)
+![Screenshot](images/screenshot-light-mode.png)
 
 ![Screenshot](images/screenshot-dark-mode.png)
 
