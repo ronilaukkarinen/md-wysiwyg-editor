@@ -12,11 +12,17 @@ Make sure that your web browser is up to date and you have Native File System en
 
 <ul><li><a href="chrome://flags/#native-file-system-api">chrome://flags/#native-file-system-api</a></li><li><a href="chrome://flags/#file-handling-api">chrome://flags/#file-handling-api</a></li></ul>
 
-## Screenshot
+## Screenshots
+
+### Light Mode
 
 ![Screenshot](images/screenshot-light-mode.png)
 
+### Dark Mode
+
 ![Screenshot](images/screenshot-dark-mode.png)
+
+### Dual-Pane Markdown View
 
 ![Screenshot](images/screenshot-markdown.png)
 
