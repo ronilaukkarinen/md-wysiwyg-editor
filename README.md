@@ -18,7 +18,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ![Screenshot](images/screenshot-dark-mode.png)
 
-![Screenshot](images/screenshot-markdown.png)
+![Screenshot](images/screenshot-markdown.jpg)
 
 ## Features
 
