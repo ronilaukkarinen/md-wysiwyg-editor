@@ -244,4 +244,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 ::-webkit-scrollbar-track:hover {
   background: var(--scrollbar-track-hover-color);
 }
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-thumb-color);
+}
 

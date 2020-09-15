@@ -294,4 +294,7 @@ img {
 ::-webkit-scrollbar-track:hover {
   background: var(--scrollbar-track-hover-color);
 }
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-thumb-color);
+}
 
