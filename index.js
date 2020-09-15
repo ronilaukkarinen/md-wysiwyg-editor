@@ -606,6 +606,7 @@ tinymce.init({
       document.getElementsByClassName("markdown-preview")[0].style.width = markdownSidebarWidth;
 
       adjustEditorSpacing();
+      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
 
       return;
     });
@@ -628,6 +629,7 @@ tinymce.init({
       document.getElementsByClassName("markdown-preview")[0].style.width = width;
 
       adjustEditorSpacing();
+      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
 
       return;
     });
