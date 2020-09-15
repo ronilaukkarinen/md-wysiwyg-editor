@@ -708,14 +708,14 @@ tinymce.init({
       if(startFilename) {
         var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFilename;
         // Fetch the file and open it
-        fetch(startFileURL)
-          .then(function(response) {
-            response.text().then(function(content) {
-              openFile(startFileURL, content);
-            });
-          });
-        // Set the application title based on the starting document
-        updateFilename(startFilename, true);
+        async function request() {
+          const response = await fetch(startFileURL);
+          const content = await response.text();
+          setTimeout(function() {
+            openFile(startFilename, content);
+          }, 100);
+        };
+        request();
       }
 
       // Check if native file system is enabled and alert if not
