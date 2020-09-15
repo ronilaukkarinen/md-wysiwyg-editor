@@ -634,11 +634,6 @@ tinymce.init({
 
     editor.on('Init', function(event) {
 
-      // Disable resize block in bottom-right corner (important for dark mode)
-      var iframe = document.getElementById('textEditor_ifr');
-      var iframeTextarea = iframe.contentWindow.document.getElementsByTagName('textarea')[0];
-      iframeTextareadocument.style.resize = "none";
-
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
