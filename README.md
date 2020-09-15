@@ -57,5 +57,5 @@ A number of similar editors exist. These are either rich-text-oriented markdown 
 * [VNote](https://github.com/tamlok/vnote) |
 * [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
 
-These editors, with the exception of UNOTES, don't provide a pure rich-text experience. Typora, Mark Text, and Zettlr provide a near-pure-rich-text experience. However, they will automatically expand markdown when the editing caret is within it, and this can, for some (like me), provide a jarring editing experience. There is unfornately no option to disable this feature. The online editors aren't rich-text-oriented and don't have native-file-system integration at this time. Hence the place for an editor like Text Editor.
+These editors, with the exception of UNOTES, don't provide a pure rich-text experience. Typora, Mark Text, and Zettlr provide a near-pure-rich-text experience. However, they will automatically expand markdown when the editing caret is within it, and this can, for some, provide a jarring editing experience. There is unfornately no option to disable this feature. The online editors aren't rich-text-oriented and don't have native-file-system integration at this time. Hence the place for an editor like Text Editor.
 
