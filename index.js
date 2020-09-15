@@ -83,12 +83,6 @@ function saveFile(filename) {
 // Quit
 function quit() {
 
-  if (tinymce.editors[0].isDirty()) {
-    if(confirm("Unsaved changes. Continue without saving?") == false) {
-      return;
-    }
-  }
-
   // ipcRenderer.send('call-quit');
   window.close();
 
