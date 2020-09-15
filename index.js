@@ -686,12 +686,12 @@ tinymce.init({
           });
         }
       } else {
-        console.log("Please enable chrome://flags/#file-handling-api");
+        alert("Please enable chrome://flags/#file-handling-api");
       }
 
       if (!"chooseFileSystemEntries" in window) {
         // document.getElementById("enable-native-file-system").hidden = false;
-        console.log("Please enable chrome://flags/#native-file-system-api");
+        alert("Please enable chrome://flags/#native-file-system-api");
       }
 
       // Open markdown pane if the relevant URL parameter is set
@@ -759,7 +759,6 @@ function adjustEditorSpacing() {
 
   // Hardcoded... un-hardcode this in the future
   if(editorPane.offsetWidth < 750) {
-    console.log("Offset width: " + editorPane.offsetWidth);
     editorPane.style.paddingTop = "5px";
     editorPane.style.paddingBottom = "5px";
     editorPane.style.paddingLeft = "5px";
