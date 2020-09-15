@@ -48,11 +48,11 @@ A number of similar editors exist. These are either rich-text-oriented markdown 
 
 | Desktop | Web |
 | --- | --- |
-| [Typora](https://typora.io/) | * [StackEdit](https://stackedit.io/) |
-| [Mark Text](https://github.com/marktext/marktext) | * [SimpleMDE](https://simplemde.com/) |
-| [Zettlr](https://github.com/Zettlr/Zettlr) | * [Dillinger](https://dillinger.io/) |
-| [Uncolored](https://github.com/n457/Uncolored) | * [Editor.md](http://editor.md/) |
-| [Abricotine](http://abricotine.brrd.fr/) | * [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
+| [Typora](https://typora.io/) | [StackEdit](https://stackedit.io/) |
+| [Mark Text](https://github.com/marktext/marktext) | [SimpleMDE](https://simplemde.com/) |
+| [Zettlr](https://github.com/Zettlr/Zettlr) | [Dillinger](https://dillinger.io/) |
+| [Uncolored](https://github.com/n457/Uncolored) | [Editor.md](http://editor.md/) |
+| [Abricotine](http://abricotine.brrd.fr/) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
 | [ghostwriter](https://wereturtle.github.io/ghostwriter/) |  |
 | [VNote](https://github.com/tamlok/vnote) |  |
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |  |
