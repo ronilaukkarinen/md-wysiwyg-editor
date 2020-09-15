@@ -90,8 +90,6 @@ function quit() {
 // Toggle full screen
 function toggleFullscreen() {
 
-  console.log("Got here");
-
   // Is fullscreen supported for this browser?
   if(document.fullscreenEnabled == false) {
     alert("Fullscreen not supported for this browser.");
@@ -686,6 +684,9 @@ tinymce.init({
 
     editor.on('Init', function(event) {
 
+      // Apply the theme
+      theme_apply();
+
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
@@ -737,9 +738,6 @@ tinymce.init({
 
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
-
-      // Apply the theme
-      theme_apply();
 
       return;
     });
