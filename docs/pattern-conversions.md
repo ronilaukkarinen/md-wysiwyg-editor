@@ -1,5 +1,7 @@
 # Text Pattern Conversions
 
+| Pattern | Conversion |
+| --- | --- |
 | `# ` | H1 |
 | `## ` | H2 |
 | `### ` | H3 |
