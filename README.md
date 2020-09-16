@@ -29,7 +29,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ![Screenshot](images/screenshot-dark-mode.png)
 
-### Dual-Pane Markdown View
+### Dual-Pane Markdown View (Dark Mode)
 
 ![Screenshot](images/screenshot-markdown.png)
 
