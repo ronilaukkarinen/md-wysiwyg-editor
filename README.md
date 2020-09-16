@@ -74,7 +74,7 @@ A number of similar editors exist. These are either rich-text-oriented markdown 
 | [VNote](https://github.com/tamlok/vnote) |  |
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |  |
 
-## Support
+<!--## Support
 
-If you like this application, consider [buying Aly W. a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋
+If you like this application, consider [buying Aly W. a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋-->
 

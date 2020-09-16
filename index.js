@@ -300,6 +300,7 @@ tinymce.init({
 
     // Change how often we update markdown pane based on settings
     updateMarkdownLessOften = Boolean(localStorage.getItem('updateMarkdownLessOften'));
+    console.log("UMLO #1: " + updateMarkdownLessOften);
     if (updateMarkdownLessOften == true) {
       var characterData = false; // Update on every change
     } else {
@@ -548,6 +549,7 @@ tinymce.init({
         }
 
         // Switch markdown update frequency depending on preferences
+        console.log("UMLO #2: " + data.updateMarkdownLessOften);
         if (data.updateMarkdownLessOften == true) {
           localStorage.setItem('updateMarkdownLessOften', true);
           updateMarkdownLessOften = true;
