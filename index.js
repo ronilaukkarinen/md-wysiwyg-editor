@@ -299,12 +299,13 @@ tinymce.init({
   setup: function (editor) {
 
     // Change how often we update markdown pane based on settings
-    updateMarkdownLessOften = Boolean(localStorage.getItem('updateMarkdownLessOften'));
-    console.log("UMLO #1: " + updateMarkdownLessOften);
-    if (updateMarkdownLessOften == true) {
+    updateMarkdownLessOften = localStorage.getItem('updateMarkdownLessOften');
+    if (updateMarkdownLessOften == 'true') {
       var characterData = false; // Update on every change
+      updateMarkdownLessOften = true;
     } else {
       var characterData = true; // Update on some changes
+      updateMarkdownLessOften = false;
     }
 
     // Retrieve custom styles if any
@@ -549,7 +550,6 @@ tinymce.init({
         }
 
         // Switch markdown update frequency depending on preferences
-        console.log("UMLO #2: " + data.updateMarkdownLessOften);
         if (data.updateMarkdownLessOften == true) {
           localStorage.setItem('updateMarkdownLessOften', true);
           updateMarkdownLessOften = true;
@@ -563,6 +563,8 @@ tinymce.init({
     };
 
     editor.ui.registry.addButton('preferences', {
+      name: 'Preferences',
+      tooltip: 'Preferences',
       icon: 'preferences',
       onAction: function () {
         editor.windowManager.open(prefsConfig)
