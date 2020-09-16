@@ -45,7 +45,7 @@ The editor is still under development and is very buggy.
 
 Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter your markdown files in unanticipated and/or undesirable ways. For instance, right now there's a bug that causes front matter (e.g., YAML) to be removed from markdown files. These are because of the internal Showdown conversion engine.
 
-Use at your own risk.
+You've been warned—use at your own risk.
 
 ### Future
 
