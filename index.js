@@ -552,7 +552,7 @@ tinymce.init({
           localStorage.setItem('updateMarkdownLessOften', true);
           updateMarkdownLessOften = true;
         } else {
-          localStorage.removeItem('updateMarkdownLessOften');
+          localStorage.setItem('updateMarkdownLessOften', false);
           updateMarkdownLessOften = false;
         }
 
