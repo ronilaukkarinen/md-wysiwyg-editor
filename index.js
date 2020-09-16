@@ -540,9 +540,11 @@ tinymce.init({
         if (data.customCSS != null && data.customCSS != '') {
           customEditorAreaCSS(true, data.customCSS);
           localStorage.setItem('customCSS', data.customCSS);
+          customCSS = data.customCSS;
         } else {
           customEditorAreaCSS(false);
           localStorage.removeItem('customCSS');
+          customCSS = data.customCSS;
         }
 
         // Switch markdown update frequency depending on preferences
