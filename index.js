@@ -577,7 +577,7 @@ tinymce.init({
       tooltip: 'GitHub',
       icon: 'github',
       onAction: function () {
-        if(confirm("This will open the GitHub repo in a new tab. Continue?") == false) {
+        if(confirm("This will open the GitHub home page/repository in a new tab. Continue?") == false) {
           return;
         } else {
           window.open('https://github.com/Alyw234237/text-editor/', '_blank');
