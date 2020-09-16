@@ -577,7 +577,11 @@ tinymce.init({
       tooltip: 'GitHub',
       icon: 'github',
       onAction: function () {
-        window.open('https://github.com/Alyw234237/text-editor/', '_blank');
+        if(confirm("This will open GitHub in a new tab. Continue?") == false) {
+          return;
+        } else {
+          window.open('https://github.com/Alyw234237/text-editor/', '_blank');
+        }
       }
     });
 
