@@ -51,16 +51,20 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ## Notes
 
-The editor is still under development and is very buggy.
+The editor is still under development and has various bugs.
 
-Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter your markdown files in unanticipated and/or undesirable ways. For instance, right now there's a bug that causes front matter (e.g., YAML) to be removed from markdown files. The editor will also sometimes turn markdown into HTML in places.
+Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files. For instance, it'll add escapes (`\`) to certain characters that aren't part of markdown (e.g., `~`, `\`). The editor can also change markdown files in unanticipated and/or undesirable was. For instance, right now there's a bug that causes front matter (e.g., YAML) to be removed from markdown files. It'll also convert markdown within HTML tags into HTML code. And it doesn't handle header-less tables (i.e., no `---`) at this time.
 
-You've been warned—use the markdown functionality at your own risk.
+The rich-text editing is good but the markdown support has some issues. Hence, you've been warned—use at your own risk!
 
 ### Future
 
 * "Open with" / file association support.
 * Lots of bug fixes and minor features.
+* Documentation views for keyboard shortcuts and markdown-to-rich-text conversions?
+* Support for other markdown conversion engines (e.g., [Turndown](https://github.com/laurent22/joplin-turndown))?
+* Pane for files and table of contents?
+* Tabs for multiple documents at once?
 * Other things...
 
 ## Related
