@@ -246,10 +246,20 @@ tinymce.init({
   quickbars_insert_toolbar: false,
   quickbars_selection_toolbar: 'cut copy paste | heading bold italic underline strikethrough superscript subscript link blockquote codeformat',
   quickbars_image_toolbar: false,
-  valid_elements: 'html,head,title,body,meta[name|content|charset],div,span,p,a[href],br,strong/b,i/em,u,strike/s/del,sup,sub,small,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,img[src|alt],blockquote,code,pre,samp,table,thead,tbody,tfoot,th,tr,td,hr',
-  // ^ More: https://stackoverflow.com/questions/21281161/tinymce-4-valid-elements-default-rule-set
   fullpage_hide_in_source_view: false,
+  // All HTML elements (attributs) except for these will be filtered:
+  valid_elements:
+    'html,head,title,body,meta[name|content|charset],' +
+    'p,a[href],br,strong/b,i/em,u,strike/s/del,sup,sub,small,' +
+    'h1,h2,h3,h4,h5,h6,' +
+    'ul,ol,li,dl,dt,dd,' +
+    'figure,figcaption,img[src|alt],video[*],source[*],audio[*]' +
+    'blockquote,code,pre,samp,var,tt,kbd,dfn,cite,mark,q,ins,' +
+    'table[colspan|rowspan],thead[colspan|rowspan],tbody[colspan|rowspan],tfoot[colspan|rowspan],th[colspan|rowspan],tr[colspan|rowspan],td[colspan|rowspan],colgroup[span],col[span],caption,' +
+    'hr,math[*]',
+  // ^ More: https://stackoverflow.com/questions/21281161/tinymce-4-valid-elements-default-rule-set
 
+  // For "remove formatting" keyboard shortcut (I think)
   formats: {
     removeformat: [
       {
