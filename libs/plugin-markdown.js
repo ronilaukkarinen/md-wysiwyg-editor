@@ -3929,7 +3929,8 @@
               };
               var wrapAsUnsupported = function(node) {
                 var identifier = node.nodeType === 1 ? node.nodeName : "Type=" + node.nodeType;
-                return "\n\x3c!-- UNSUPPORTED-HTML:begin(" + identifier + ") --\x3e\n" + node.outerHTML + "\n\x3c!-- UNSUPPORTED-HTML:end(" + identifier + ") --\x3e\n";
+                // return "\n\x3c!-- UNSUPPORTED-HTML:begin(" + identifier + ") --\x3e\n" + node.outerHTML + "\n\x3c!-- UNSUPPORTED-HTML:end(" + identifier + ") --\x3e\n";
+                return "\x3c!-- UNSUPPORTED-HTML:begin(" + identifier + ") --\x3e\n" + node.outerHTML + "\n\x3c!-- UNSUPPORTED-HTML:end(" + identifier + ") --\x3e";
               };
               var outputNode = function(node) {
                 return node.outerHTML;
