@@ -2499,7 +2499,9 @@
         var doctype = "html",
           doctypeParsed = "<!DOCTYPE HTML>\n",
           title = "",
-          charset = '<meta charset="utf-8">\n',
+          // Don't automatically add charset (shows in markdown pane with TinyMCE)
+          //charset = '<meta charset="utf-8">\n',
+          charset = "",
           lang = "",
           metadata = "";
         if (typeof globals.metadata.parsed.doctype !== "undefined") {
