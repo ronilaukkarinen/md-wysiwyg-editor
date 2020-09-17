@@ -225,7 +225,8 @@
             type: "boolean",
           },
           completeHTMLDocument: {
-            defaultValue: false,
+            defaultValue: true,
+            //defaultValue: false,
             description: "Outputs a complete html document, including `<html>`, `<head>` and `<body>` tags",
             type: "boolean"
           },

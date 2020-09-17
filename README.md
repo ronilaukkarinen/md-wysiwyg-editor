@@ -53,7 +53,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 The editor is still under development and has various bugs.
 
-Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files. For instance, it'll add escapes (`\`) to certain characters that aren't part of markdown (e.g., `~`, `\`). The editor can also change markdown files in unanticipated and/or undesirable was. For instance, right now there's a bug that causes front matter (e.g., YAML) to be removed from markdown files. It'll also convert markdown within HTML tags into HTML code. And it doesn't handle header-less tables (i.e., tables without `---` headers) at this time—causing all the `|`'s to be escaped.
+Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files. For instance, it'll add escapes (`\`) to certain characters that aren't part of markdown (e.g., `~`, `\`). The editor can also change markdown files in unanticipated and/or undesirable was. For instance, right now there's an issue that causes front matter (e.g., YAML) in markdown files to be converted into HTML. The editor will also convert markdown within HTML tags into HTML code. And it doesn't handle header-less tables (i.e., tables without `---` headers) at this time—causing all the `|`'s to be escaped.
 
 The rich-text editing is good but the markdown support has some issues. Hence, you've been warned—use at your own risk!
 

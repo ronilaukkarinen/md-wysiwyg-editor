@@ -208,7 +208,7 @@ tinymce.init({
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // quickimage
   toolbar_mode: 'scrolling',
-  plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars',
+  plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars fullpage',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
@@ -219,7 +219,6 @@ tinymce.init({
   paste_block_drop: true,
   paste_data_images: true,
   paste_remove_styles_if_webkit: true,
-  //paste_word_valid_elements: "p,br,b,strong,i,em,u,strike,s,del,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,a,img,blockquote,code,pre,samp,table,tr,td,th,thread,tbody,hr",
   smart_paste: false,
   link_context_toolbar: true,
   link_title: false,
@@ -247,6 +246,9 @@ tinymce.init({
   quickbars_insert_toolbar: false,
   quickbars_selection_toolbar: 'cut copy paste | heading bold italic underline strikethrough superscript subscript link blockquote codeformat',
   quickbars_image_toolbar: false,
+  valid_elements: 'html,head,title,body,meta[name|content|charset],div,span,p,a[href],br,strong/b,i/em,u,strike/s/del,sup,sub,small,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,img,blockquote,code,pre,samp,table,thead,tbody,tfoot,th,tr,td,hr',
+  // ^ More: https://stackoverflow.com/questions/21281161/tinymce-4-valid-elements-default-rule-set
+  fullpage_hide_in_source_view: false,
 
   formats: {
     removeformat: [
@@ -513,7 +515,7 @@ tinymce.init({
           {
             type: 'textarea',
             name: 'customCSS',
-            label: '<br /><span style="font-size: 16px !important;">Custom CSS stylesheet for editing area (default/template <a href="https://github.com/Alyw234237/text-editor/blob/main/css/editor-area-styles.css">here</a>—copy here and modify</span>):',
+            label: '<br /><span style="font-size: 16px !important;">Custom CSS stylesheet for editing area (default/template <a href="https://github.com/Alyw234237/text-editor/blob/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
             maximized: true,
           }
         ]
