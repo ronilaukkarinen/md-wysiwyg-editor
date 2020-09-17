@@ -76,7 +76,7 @@ A number of similar editors exist. These are either rich-text-oriented markdown 
 | [Abricotine](http://abricotine.brrd.fr/) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
 | [ghostwriter](https://wereturtle.github.io/ghostwriter/) |  |
 | [VNote](https://github.com/tamlok/vnote) |  |
-| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |  |
+| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
 
 <!--## Support
 
