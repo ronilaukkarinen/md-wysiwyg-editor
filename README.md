@@ -1,6 +1,6 @@
 # Text Editor
 
-"Text Editor" (placeholder name) is a simple online constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown) (via a modified [TinyMCE labs plugin](https://www.tiny.cloud/labs/markdown/)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in developmental stage—[use at your own risk!](#Notes)
+"Text Editor" (placeholder name) is a simple online constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown) (via a modified [TinyMCE labs plugin](https://www.tiny.cloud/labs/markdown/)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in developmental stage—[use cautiously!](#Notes)
 
 Home page and GitHub repository:
 
@@ -53,7 +53,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 The editor is still under development and has various bugs.
 
-Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files. For instance, it'll add escapes (`\`) to certain characters that aren't part of markdown (e.g., `~`, `\`). The editor can also change markdown files in unanticipated and/or undesirable was. For instance, right now there's a bug that causes front matter (e.g., YAML) to be removed from markdown files. It'll also convert markdown within HTML tags into HTML code. And it doesn't handle header-less tables (i.e., no `---`) at this time.
+Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files. For instance, it'll add escapes (`\`) to certain characters that aren't part of markdown (e.g., `~`, `\`). The editor can also change markdown files in unanticipated and/or undesirable was. For instance, right now there's a bug that causes front matter (e.g., YAML) to be removed from markdown files. It'll also convert markdown within HTML tags into HTML code. And it doesn't handle header-less tables (i.e., tables without `---` headers) at this time—causing all the `|`'s to be escaped.
 
 The rich-text editing is good but the markdown support has some issues. Hence, you've been warned—use at your own risk!
 
