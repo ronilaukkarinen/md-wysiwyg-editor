@@ -3237,7 +3237,8 @@
         text = showdown.subParser("underline")(text, options, globals);
         text = showdown.subParser("italicsAndBold")(text, options, globals);
         text = showdown.subParser("strikethrough")(text, options, globals);
-        text = showdown.subParser("ellipsis")(text, options, globals);
+        // Disabled—turns ... into â€¦
+        // text = showdown.subParser("ellipsis")(text, options, globals);
         text = showdown.subParser("hashHTMLSpans")(text, options, globals);
         text = showdown.subParser("encodeAmpsAndAngles")(text, options, globals);
         if (options.simpleLineBreaks) {
@@ -19963,7 +19964,8 @@
         text = showdown.subParser("underline")(text, options, globals);
         text = showdown.subParser("italicsAndBold")(text, options, globals);
         text = showdown.subParser("strikethrough")(text, options, globals);
-        text = showdown.subParser("ellipsis")(text, options, globals);
+        // Disabled—turns ... into â€¦
+        // text = showdown.subParser("ellipsis")(text, options, globals);
         text = showdown.subParser("hashHTMLSpans")(text, options, globals);
         text = showdown.subParser("encodeAmpsAndAngles")(text, options, globals);
         if (options.simpleLineBreaks) {
