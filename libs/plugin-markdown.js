@@ -5741,9 +5741,10 @@
       var converter = new showdown_default.a.Converter(showdownSettings);
       var send = function(conversion) {
         return function(value) {
-          modifiers.switchToOutput();
+          // Disabling this stuff fixes the bullet list conversion problem
+          //modifiers.switchToOutput();
           var content = conversion === ConversionType.HtmlToMarkdown ? converter.makeMarkdown(value) : converter.makeHtml(value);
-          modifiers.switchToTagging();
+          //modifiers.switchToTagging();
           return {
             type: conversion,
             content: content
@@ -5751,6 +5752,7 @@
         };
       };
       return {
+        doesNotSupport: modifiers.doesNotSupport, // Part of above
         markdownToHtml: send(ConversionType.MarkdownToHtml),
         htmlToMarkdown: send(ConversionType.HtmlToMarkdown)
       };
