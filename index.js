@@ -180,19 +180,18 @@ tinymce.IconManager.add('custom', {
     underline: `<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24"><path fill-rule="nonzero" d="M12 16a5 5 0 005-5V4h-2.5v7a2.5 2.5 0 01-5 0V4H7v7a5 5 0 005 5zm-6 2v2h12v-2H6z"></path></svg>`,
     link: `<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24"><path fill-rule="nonzero" d="M4.9 12c0-1.2 1-2.1 2.1-2.1h4V8H7a4 4 0 100 8h4v-1.9H7c-1.2 0-2.1-1-2.1-2.1zM17 8h-4v1.9h4a2.1 2.1 0 110 4.2h-4V16h4a4 4 0 100-8zm-8 5h6v-2H9v2z"></path></svg>`,
     image: `<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24"><path fill-rule="nonzero" d="M19 4H5a1 1 0 00-1 1v14c0 .6.5 1 1 1h14c.6 0 1-.4 1-1V5c0-.5-.4-1-1-1zM6.5 16l2.8-3.5 2 2.3 2.7-3.5 3.5 4.7h-11z"></path></svg>`,
-    code: `<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24"><path fill-rule="nonzero" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg>`,
+    "code-sample": `<svg width="18" height="18" viewBox="0 0 1000 1000"><path fill-rule="nonzero" d="M10,599.7l307.5,197.7V654.7L134.4,541.7l183.1-113.1V284.9L10,483.6V599.7L10,599.7z M382.6,867.5h105.8l155.1-735H537L382.6,867.5z M682.5,284.9v143.7l183,113.1l-183,113v142.7L990,599.7V483.6L682.5,284.9z"></path></svg>`,
     bullist: `<?xml version="1.0" encoding="UTF-8"?><path fill-rule="nonzero" d="M10 13h9v-2h-9v2zm0-7v2h9V6h-9zm0 12h9v-2h-9v2zm-4-5h2v-2H6v2zm0-7v2h2V6H6zm0 12h2v-2H6v2z"></path>`,
     numlist: `<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24"><path fill-rule="nonzero" d="M5 16h2v.5H6v1h1v.5H5v1h3v-4H5v1zm0-5h1.8L5 13.1v.9h3v-1H6.2L8 10.9V10H5v1zm1-2h1V5H5v1h1v3zm4-3v2h9V6h-9zm0 12h9v-2h-9v2zm0-5h9v-2h-9v2z"></path></svg>`,
     table: `<svg width="24" height="24"><path fill-rule="nonzero" d="M5 5v14h14V5H5zm6 12H7v-4h4v4zm0-6H7V7h4v4zm6 6h-4v-4h4v4zm0-6h-4V7h4v4z"></path></svg>`,
-    // Ugly
-    //strikethrough: `<svg width="24" height="24"><path fill-rule="nonzero" d="M11 18h2v-4h-2v4zM7 5v2h4v3h2V7h4V5H7zm-1 8h12v-2H6v2z"></path></svg>`,
     hr: `<svg width="24" height="24"><path d="M4 11h16v2H4z" fill-rule="evenodd"></path></svg>`,
     blockquote: `<svg width="24" height="24"><path fill-rule="nonzero" d="M13 8v5h2.8L14 16h2.3l1.7-3V8h-5zm-7 5h2.8L7 16h2.3l1.7-3V8H6v5z"></path></svg>`,
     superscript: `<svg width="24" height="24"><path fill-rule="nonzero" d="M15 9.4L10.4 14l4.6 4.6-1.4 1.4L9 15.4 4.4 20 3 18.6 7.6 14 3 9.4 4.4 8 9 12.6 13.6 8 15 9.4zm5.9 1.6h-5v-1l1-.8 1.7-1.6c.3-.5.5-.9.5-1.3 0-.3 0-.5-.2-.7-.2-.2-.5-.3-.9-.3l-.8.2-.7.4-.4-1.2c.2-.2.5-.4 1-.5.3-.2.8-.2 1.2-.2.8 0 1.4.2 1.8.6.4.4.6 1 .6 1.6 0 .5-.2 1-.5 1.5l-1.3 1.4-.6.5h2.6V11z"></path></svg>`,
     subscript: `<svg width="24" height="24"><path fill-rule="nonzero" d="M10.4 10l4.6 4.6-1.4 1.4L9 11.4 4.4 16 3 14.6 7.6 10 3 5.4 4.4 4 9 8.6 13.6 4 15 5.4 10.4 10zM21 19h-5v-1l1-.8 1.7-1.6c.3-.4.5-.8.5-1.2 0-.3 0-.6-.2-.7-.2-.2-.5-.3-.9-.3a2 2 0 00-.8.2l-.7.3-.4-1.1 1-.6 1.2-.2c.8 0 1.4.3 1.8.7.4.4.6.9.6 1.5s-.2 1.1-.5 1.6a8 8 0 01-1.3 1.3l-.6.6h2.6V19z"></path></svg>`,
+    sourcecode: `<svg width="38" height="40" viewBox="-6 0 38 24"><path transform="scale (-1, -1)" transform-origin="center" d="M0.3 12.14L17.22 12.14L17.22 7.2L20.16 7.2L20.16 12.14L23.1 12.14L18.69 16.8L14.27 12.14Z"></path><path d="M9.01 7.2L12.01 7.2L12.01 16.8L9.01 16.8L9.01 7.2Z"></path><path d="M2.8 7.2L5.8 7.2L5.8 16.8L2.8 16.8L2.8 7.2Z"></path><path d="M12.01 10.5L12.01 13.5L2.8 13.5L2.8 10.5L12.01 10.5Z"></path></svg>`,
     markdown: `<svg width="24" height="24" viewBox="0 -4 40 24"><path d="M0.5,16 L0.5,0 L5.40322581,0 L10.3064516,5.88235294 L15.2096774,0 L20.1129032,0 L20.1129032,16 L15.2096774,16 L15.2096774,6.82352941 L10.3064516,12.7058824 L5.40322581,6.82352941 L5.40322581,16 L0.5,16 Z M31.1451613,16 L23.7903226,8.23529412 L28.6935484,8.23529412 L28.6935484,0 L33.5967742,0 L33.5967742,8.23529412 L38.5,8.23529412 L31.1451613,16 Z"></path></svg>`,
     darkmode: `<svg version="1.0" width="18" height="18" viewBox="0 0 981.000000 988.000000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs> <pattern x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse" viewBox="0 0 100 100" id="pattern-0"> <rect x="0" y="0" width="50" height="100""></rect> </pattern> <pattern id="pattern-0-0" patternTransform="matrix(1, 0, 0, 1, 2974.191772, 8030.287354)" xlink:href="#pattern-0"></pattern> <pattern id="pattern-0-1" patternTransform="matrix(1, 0, 0, 1, 4889.624394, 4889.736084)" xlink:href="#pattern-0"></pattern> <pattern id="pattern-0-2" patternTransform="matrix(1, 0, 0, 1, 4388.941284, 5335.855957)" xlink:href="#pattern-0"></pattern> <pattern id="pattern-0-3" patternTransform="matrix(1, 0, 0, 1, 1833.005493, 4627.5)" xlink:href="#pattern-0"></pattern> </defs> <g transform="matrix(-0.1, 0, 0, -0.1, 980.424866, 988)" stroke="none"> <path d="M2641 9188 c-68 -370 -127 -676 -130 -680 -3 -3 -303 -61 -666 -127 -363 -67 -668 -125 -678 -129 -12 -5 146 -96 580 -331 329 -178 603 -328 609 -335 9 -8 -11 -181 -77 -676 -49 -366 -88 -673 -86 -683 1 -14 100 74 352 314 193 182 418 397 502 476 l151 144 622 -297 c341 -163 623 -294 626 -292 2 3 -129 283 -291 623 -163 340 -294 622 -293 626 2 3 216 231 476 504 260 274 471 500 469 501 -2 2 -311 -37 -687 -87 -547 -72 -685 -87 -692 -77 -4 7 -152 280 -329 606 -177 325 -324 592 -328 592 -3 0 -62 -303 -130 -672z" style=""></path> <path d="M6796 9763 c149 -347 265 -714 333 -1058 62 -313 89 -559 98 -895 17 -691 -101 -1357 -354 -2005 -77 -197 -285 -612 -397 -793 -755 -1218 -1958 -2059 -3341 -2337 -363 -73 -631 -99 -1020 -99 -368 0 -641 25 -980 90 -307 59 -719 183 -992 298 -73 31 -135 56 -138 56 -3 0 35 -80 84 -177 255 -511 537 -906 925 -1301 546 -555 1157 -952 1881 -1222 805 -299 1714 -389 2575 -255 1264 198 2412 867 3213 1872 1077 1352 1399 3147 860 4798 -103 317 -301 751 -470 1030 -504 832 -1197 1479 -2054 1920 -91 46 -182 91 -202 100 l-37 15 16 -37z" style=""></path> <path d="M4190 5893 c0 -12 7 -105 16 -208 8 -103 12 -191 7 -196 -4 -4 -87 -44 -183 -89 -96 -45 -178 -85 -183 -89 -4 -4 85 -29 197 -56 196 -47 205 -50 210 -74 3 -14 14 -102 26 -196 12 -93 23 -176 26 -184 2 -7 53 65 112 160 75 121 115 175 129 177 11 2 107 -13 214 -32 106 -19 194 -34 195 -33 1 1 -60 74 -137 161 l-138 160 49 92 c28 50 72 131 99 180 28 49 48 90 46 93 -3 2 -91 -31 -197 -75 l-192 -78 -148 154 c-107 111 -148 148 -148 133z" style=""></path> <path d="M1540 5443 c0 -21 9 -144 19 -273 11 -129 21 -255 23 -278 l2 -44 -289 -135 c-160 -74 -291 -136 -292 -137 -2 -2 139 -36 311 -76 277 -65 315 -77 320 -95 2 -11 22 -152 43 -312 21 -161 40 -293 43 -293 3 0 67 100 143 223 75 122 150 243 166 268 l29 46 314 -58 c172 -32 314 -56 316 -54 2 1 -90 109 -203 238 -113 130 -205 240 -205 245 0 5 67 130 149 278 82 148 146 270 143 272 -4 1 -138 -51 -297 -117 l-290 -119 -65 66 c-35 37 -136 140 -222 230 l-158 162 0 -37z" style=""></path> </g> </svg>`,
-    github: `<svg class="octicon octicon-mark-github v-align-middle" width=18" height="18" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>`
+    github: `<svg width="18" height="18" viewBox="0 0 16 16" version="1.1"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>`
   }
 
 });
@@ -225,6 +224,20 @@ tinymce.init({
   link_quicklink: true,
   target_list: false,
   convert_urls: false,
+  codesample_global_prismjs: true,
+  codesample_languages: [
+    { text: 'Markdown', value: 'markdown' },
+    { text: 'HTML/XML', value: 'markup' },
+    { text: 'JavaScript', value: 'javascript' },
+    { text: 'CSS', value: 'css' },
+    { text: 'PHP', value: 'php' },
+    { text: 'Ruby', value: 'ruby' },
+    { text: 'Python', value: 'python' },
+    { text: 'Java', value: 'java' },
+    { text: 'C', value: 'c' },
+    { text: 'C#', value: 'csharp' },
+    { text: 'C++', value: 'cpp' },
+  ],
   table_toolbar: 'tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | tabledelete',
   table_appearance_options: false,
   table_tab_navigation: false,
@@ -250,20 +263,24 @@ tinymce.init({
   // All HTML elements (attributs) except for these will be filtered:
   valid_elements:
     'html,head,title,body,meta[name|content|charset],' +
-    'p,a[href],br,strong/b,i/em,u,strike/s/del,sup,sub,small,' +
+    'span[style],p,a[href],br,strong,b,i,em,u,strike,s,del,sup,sub,small,' +
     'h1,h2,h3,h4,h5,h6,' +
     'ul,ol,li,dl,dt,dd,' +
-    'figure,figcaption,img[src|alt],video[*],source[*],audio[*]' +
-    'blockquote,code,pre,samp,var,tt,kbd,dfn,cite,mark,q,ins,' +
+    'figure,figcaption,img[src|alt],video[*],source[*],audio[*],' +
+    'blockquote,code,pre[class],samp,var,tt,kbd,dfn,cite,mark,q,ins,' +
     'table[colspan|rowspan],thead[colspan|rowspan],tbody[colspan|rowspan],tfoot[colspan|rowspan],th[colspan|rowspan],tr[colspan|rowspan],td[colspan|rowspan],colgroup[span],col[span],caption,' +
-    'hr,math[*]',
+    'hr,math[*],',
   // ^ More: https://stackoverflow.com/questions/21281161/tinymce-4-valid-elements-default-rule-set
+  valid_styles: {
+    'p': 'text-decoration,text-decoration-line',
+    'span': 'text-decoration,text-decoration-line',
+  },
 
   // For "remove formatting" keyboard shortcut (I think)
   formats: {
     removeformat: [
       {
-        selector: 'b,strong,em,i,font,u,strike,sub,sup,dfn,code,samp,kbd,var,cite,mark,q,del,ins',
+        selector: 'b,strong,em,i,font,u,strike,sub,sup,dfn,blockquote,code,samp,kbd,var,cite,mark,q,del,ins',
         remove: 'all',
         split: true,
         block_expand: true,
@@ -296,7 +313,7 @@ tinymce.init({
     {start: '- ', cmd: 'InsertUnorderedList' },
     {start: '> ', cmd: 'mceBlockQuote'},
     {start: '`', end: '`', format: 'code'},
-    {start: '```', cmd: 'CodeSample'},
+    {start: '```', end: '```', format: 'pre'}, // Different from intended behavior...
     {start: '---', replacement: '—'}, // Non-standard
     {start: '--', replacement: '–'}, // Non-standard
     {start: '===', replacement: '<hr />'}, // Non-standard
@@ -837,7 +854,7 @@ tinymce.init({
       // Check if native file system is enabled and alert if not
       if (!"chooseFileSystemEntries" in window) {
         // document.getElementById("enable-native-file-system").hidden = false;
-        alert("Please enable chrome://flags/#native-file-system-api");
+        alert("Please enable the Native File System.\r\nOn Google Chrome, this can be found at:\r\nchrome://flags/#native-file-system-api");
       }
 
       // Handle "open with" (doesn't work yet)
@@ -855,7 +872,7 @@ tinymce.init({
         }
       // Alert if native file handling API isn't enabled
       } else {
-        alert("Please enable chrome://flags/#file-handling-api");
+        alert("Please enable the Native File System file handling API.\r\nOn Google Chrome, this can be found at:\r\nchrome://flags/#file-handling-api");
       }
 
       // Open markdown pane if the relevant URL parameter is set

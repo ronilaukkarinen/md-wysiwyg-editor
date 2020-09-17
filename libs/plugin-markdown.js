@@ -16571,6 +16571,7 @@
       var value = markdownEditor.getApis().getContent(markdownEditor);
       updateHtml(converter, editor, value);
       updateHintTip(value, markdownEditor, sink, hintMenu);
+      adjustEditorSpacing();
     }, 100);
     var Sidebar = function(editor, converter, elem) {
       var mothership = createMothership({
@@ -16659,6 +16660,8 @@
         var unsupportedHtmlRegex = /\n?<!-- (UNSUPPORTED-HTML:(begin|end)\(\w*\)|Comment ends this list) -->\n?/g;
         var strippedContent = e.content.replace(unsupportedHtmlRegex, "");
         editor.setContent(strippedContent);
+        // Fix spacing after update
+        adjustEditorSpacing()
       };
       var onConvertedHtmlToMarkdown = function(e) {
         markdownEditor.getApis().setContent(markdownEditor, e.content);

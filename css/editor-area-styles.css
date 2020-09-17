@@ -215,13 +215,22 @@ blockquote {
 	}
 }
 
-code {
+code, pre {
 	padding-top: 2px;
 	padding-left: 2px;
 	padding-right: 2px;
 	color: var(--general-text-color);
-	font-size: 14px;
+	font-size: 14px !important;
 	background: var(--code-background-color);
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }
 
 /* Tables */
