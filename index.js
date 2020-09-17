@@ -854,7 +854,7 @@ tinymce.init({
       // Check if native file system is enabled and alert if not
       if (!"chooseFileSystemEntries" in window) {
         // document.getElementById("enable-native-file-system").hidden = false;
-        alert("Please enable the Native File System.\r\nOn Google Chrome, this can be found at:\r\nchrome://flags/#native-file-system-api");
+        alert("Please enable the Native File System.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#native-file-system-api");
       }
 
       // Handle "open with" (doesn't work yet)
@@ -872,7 +872,7 @@ tinymce.init({
         }
       // Alert if native file handling API isn't enabled
       } else {
-        alert("Please enable the Native File System file handling API.\r\nOn Google Chrome, this can be found at:\r\nchrome://flags/#file-handling-api");
+        alert("Please enable the Native File System file handling API.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#file-handling-api");
       }
 
       // Open markdown pane if the relevant URL parameter is set
