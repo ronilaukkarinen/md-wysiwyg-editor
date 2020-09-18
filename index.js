@@ -149,7 +149,7 @@ function updateFilename(filename, dirty) {
   if (filename != null) {
     persistFilename = filename;
     document.title = persistFilename + " - Text Editor";
-    filenameElement.innerHTML = "&emsp;" + persistFilename + "&emsp;";
+    filenameElement.innerHTML = persistFilename;
   }
 
   // Doesn't work the first time on save for some reason... fix [to-do]
@@ -211,7 +211,6 @@ tinymce.init({
   toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
   toolbar_mode: 'floating',
   plugins: 'code codesample, link image table lists paste searchreplace autolink hr textpattern quickbars',
-  // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
   icons: 'custom',
@@ -262,7 +261,7 @@ tinymce.init({
   statusbar: false,
   // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
   quickbars_insert_toolbar: false,
-  quickbars_selection_toolbar: 'cut copy paste | heading bold italic underline strikethrough superscript subscript link blockquote codeformat',
+  quickbars_selection_toolbar: 'cut copy paste | styleselect bold italic underline strikethrough superscript subscript link blockquote codeformat removeformat',
   quickbars_image_toolbar: false,
   fullpage_hide_in_source_view: false,
   // All HTML elements (attributs) except for these will be filtered:
@@ -635,7 +634,8 @@ tinymce.init({
 
     // Set up filename display in toolbar (fake button)
     editor.ui.registry.addButton('filename', {
-      text: "<span id='filename'>" + persistFilename + "</span>",
+      text: '<span id="filename">' + persistFilename + '</span>',
+      tooltip: 'Filename',
       onAction: function () {
         // Give focus back to editor area
         tinyMCE.get('textEditor').getBody().focus();
@@ -652,7 +652,7 @@ tinymce.init({
           {
             type: 'checkbox',
             name: 'reverseShiftEnterBehavior',
-            label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter)',
+            label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter) (may cause bugs)',
           },
           {
             type: 'checkbox',
@@ -811,44 +811,44 @@ tinymce.init({
     // ADD CUSTOM SHORCUTS -> https://www.tiny.cloud/docs/advanced/keyboard-shortcuts/
     // OVERRIDE SHORTCUTS -> https://stackoverflow.com/questions/19791696/overriding-shortcut-assignments-in-tinymce
 
-    editor.addShortcut('Ctrl+N', 'New', function () {
+    editor.addShortcut('Meta+N', 'New', function () {
       newFile();
     });
 
-    editor.addShortcut('Ctrl+O', 'Open', function () {
+    editor.addShortcut('Meta+O', 'Open', function () {
       // openFile();
       app.openFile();
     });
 
-    editor.addShortcut('Ctrl+S', 'Save', function () {
+    editor.addShortcut('Meta+S', 'Save', function () {
       // saveFile();
       app.saveFile();
     });
 
-    editor.addShortcut('Shift+Ctrl+S', 'Save as', function () {
+    editor.addShortcut('Shift+Meta+S', 'Save as', function () {
       // saveFileAs();
       app.saveFileAs();
     });
 
     // Ctrl+F also triggers find and replace
-    editor.addShortcut('Ctrl+H', 'Find and replace', function () {
+    editor.addShortcut('Meta+H', 'Find and replace', function () {
       tinymce.activeEditor.execCommand('SearchReplace');
     });
 
-    editor.addShortcut('Ctrl+M', 'Markdown', function () {
+    editor.addShortcut('Meta+M', 'Markdown', function () {
       tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       // ^ -> https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
     });
 
-    editor.addShortcut('Ctrl+W', 'Quit', function () {
+    editor.addShortcut('Meta+W', 'Quit', function () {
       quit();
     });
 
-    editor.addShortcut('Ctrl+Q', 'Quit', function () {
+    editor.addShortcut('Meta+Q', 'Quit', function () {
       quit();
     });
 
-    editor.addShortcut('Shift+Ctrl+Z', 'Redo', function () {
+    editor.addShortcut('Shift+Meta+Z', 'Redo', function () {
       tinyMCE.execCommand('Redo');
     });
 
@@ -864,44 +864,44 @@ tinymce.init({
       document.removeEventListener("copy", listener);
     };
 
-    editor.addShortcut('Ctrl+C', 'Copy', function () {
+    editor.addShortcut('Meta+C', 'Copy', function () {
       var html = tinymce.editors[0].selection.getContent({format: 'html'});
       var text = tinymce.editors[0].selection.getContent({format: 'text'});
       copyToClipboard(html, text);
     });*/
 
-    editor.addShortcut('Shift+Ctrl+C', 'Copy as markdown', function () {
+    editor.addShortcut('Shift+Meta+C', 'Copy as markdown', function () {
       var markdown = tinymce.editors[0].selection.getContent({format: 'markdown'});
       navigator.clipboard.writeText(markdown);
     });
 
-    editor.addShortcut('Shift+Ctrl+V', 'Paste as text', function () {
+    editor.addShortcut('Shift+Meta+V', 'Paste as text', function () {
       navigator.clipboard.readText().then(text => {
         tinyMCE.execCommand('mceInsertClipboardContent', false, { content: text});
       });
     });
 
-    editor.addShortcut('Ctrl+Alt+1', 'Heading 1', function () {
+    editor.addShortcut('Meta+Alt+1', 'Heading 1', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h1');
     });
 
-    editor.addShortcut('Ctrl+Alt+2', 'Heading 2', function () {
+    editor.addShortcut('Meta+Alt+2', 'Heading 2', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h2');
     });
 
-    editor.addShortcut('Ctrl+Alt+3', 'Heading 3', function () {
+    editor.addShortcut('Meta+Alt+3', 'Heading 3', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h3');
     });
 
-    editor.addShortcut('Ctrl+Alt+4', 'Heading 4', function () {
+    editor.addShortcut('Meta+Alt+4', 'Heading 4', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h4');
     });
 
-    editor.addShortcut('Ctrl+Alt+5', 'Heading 5', function () {
+    editor.addShortcut('Meta+Alt+5', 'Heading 5', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h5');
     });
 
-    editor.addShortcut('Ctrl+Alt+6', 'Heading 6', function () {
+    editor.addShortcut('Meta+Alt+6', 'Heading 6', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h6');
     });
 
@@ -909,15 +909,15 @@ tinymce.init({
       tinyMCE.execCommand('Strikethrough');
     });
 
-    editor.addShortcut('Ctrl+Shift+7', 'Numbered list', function () {
+    editor.addShortcut('Meta+Shift+7', 'Numbered list', function () {
       tinyMCE.execCommand('InsertOrderedList');
     });
 
-    editor.addShortcut('Ctrl+Shift+8', 'Bullet list', function () {
+    editor.addShortcut('Meta+Shift+8', 'Bullet list', function () {
       tinyMCE.execCommand('InsertUnorderedList');
     });
 
-    editor.addShortcut('Ctrl+Shift+F', 'Fullscreen', function () {
+    editor.addShortcut('Meta+Shift+F', 'Fullscreen', function () {
       toggleFullscreen();
     });
 
@@ -947,16 +947,16 @@ tinymce.init({
       }
 
       // TinyMCE doesn't like to handle these for some reason
-      if (event.ctrlKey && event.key === '.') {
+      if ((event.ctrlKey || event.metaKey) && event.key === '.') {
         tinyMCE.execCommand('Superscript');
       }
-      if (event.ctrlKey && event.key === ',') {
+      if ((event.ctrlKey || event.metaKey) && event.key === ',') {
         tinyMCE.execCommand('Subscript');
       }
-      if (event.ctrlKey && event.key === ']') {
+      if ((event.ctrlKey || event.metaKey) && event.key === ']') {
         tinyMCE.execCommand('mceBlockQuote');
       }
-      if (event.ctrlKey && event.key === '\\') {
+      if ((event.ctrlKey || event.metaKey) && event.key === '\\') {
         tinyMCE.execCommand('RemoveFormat');
         event.preventDefault();
       }
