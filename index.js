@@ -210,7 +210,7 @@ tinymce.init({
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
   toolbar_mode: 'floating',
-  plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern quickbars',
+  plugins: 'code codesample, link image table lists paste searchreplace autolink hr textpattern quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
@@ -337,11 +337,6 @@ tinymce.init({
     {start: '===', replacement: '<hr />'}, // Non-standard
     //{start: '***', replacement: '<hr />'}, // Conflicts with bold + italic above
   ],
-
-  // Save button callback function (necessary or will cause problems)
-  save_onsavecallback: function () {
-    app.saveFile();
-  },
 
   // https://www.tiny.cloud/docs/demo/custom-toolbar-button/
   setup: function (editor) {
