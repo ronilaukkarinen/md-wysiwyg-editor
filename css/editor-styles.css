@@ -129,6 +129,11 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 	fill: var(--icon-fill-color) !important;
 }
 
+/* Make formats toolbar menu button narrow */
+button[title="Formats"] {
+  width: 50px !important;
+}
+
 /* Menu items */
 .tox .tox-menu {
 	background-color: var(--general-background-color) !important;

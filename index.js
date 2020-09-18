@@ -218,7 +218,7 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // quickimage
+  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
   toolbar_mode: 'floating',
   plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
@@ -289,6 +289,19 @@ tinymce.init({
     'p': 'text-decoration,text-decoration-line',
     'span': 'text-decoration,text-decoration-line',
   },
+
+  style_formats_merge: false,
+  style_formats_autohide: true,
+  // For style formats toolbar
+  style_formats: [
+    {title: 'P',  block: 'p'},
+    {title: 'H1', block: 'h1'},
+    {title: 'H2', block: 'h2'},
+    {title: 'H3', block: 'h3'},
+    {title: 'H4', block: 'h4'},
+    {title: 'H5', block: 'h5'},
+    {title: 'H6', block: 'h6'},
+  ],
 
   // For "remove formatting" keyboard shortcut (I think)
   formats: {
