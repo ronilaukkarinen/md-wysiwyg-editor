@@ -228,7 +228,7 @@ tinymce.init({
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
-  toolbar_mode: 'sliding',
+  toolbar_mode: 'floating',
   plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
@@ -732,28 +732,28 @@ tinymce.init({
 
         // Switch markdown update frequency depending on preferences
         if (data.updateMarkdownLessOften == true) {
-          localStorage.setItem('updateMarkdownLessOften', true);
+          localStorage.setItem('updateMarkdownLessOften', 'true');
           updateMarkdownLessOften = true;
         } else {
-          localStorage.setItem('updateMarkdownLessOften', false);
+          localStorage.setItem('updateMarkdownLessOften', 'false');
           updateMarkdownLessOften = false;
         }
 
         // Switch between Turndown and Showdown depending on preferences
         if (data.useTurndownInsteadOfShowdown == true) {
-          localStorage.setItem('useTurndownInsteadOfShowdown', true);
+          localStorage.setItem('useTurndownInsteadOfShowdown', 'true');
           useTurndownInsteadOfShowdown = true;
         } else {
-          localStorage.setItem('useTurndownInsteadOfShowdown', false);
+          localStorage.setItem('useTurndownInsteadOfShowdown', 'false');
           useTurndownInsteadOfShowdown = false;
         }
 
         // Change Shift+Enter behavior depending on preferences
         if (data.reverseShiftEnterBehavior == true) {
-          localStorage.setItem('reverseShiftEnterBehavior', true);
+          localStorage.setItem('reverseShiftEnterBehavior', 'true');
           reverseShiftEnterBehavior = true;
         } else {
-          localStorage.setItem('reverseShiftEnterBehavior', false);
+          localStorage.setItem('reverseShiftEnterBehavior', 'false');
           reverseShiftEnterBehavior = false;
         }
 
@@ -1045,8 +1045,10 @@ tinymce.init({
 
       // Check if native file system is enabled and alert if not
       if (!"chooseFileSystemEntries" in window) {
-        // document.getElementById("enable-native-file-system").hidden = false;
-        alert("Please enable the Native File System.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#native-file-system-api");
+        if (localStorage.getItem('showedEnableNFSPrompt') === null) {
+          alert("Please enable the Native File System.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#native-file-system-api");
+          localStorage.setItem('showedEnableNFSPrompt', 'true');
+        }
       }
 
       // Handle "open with" (doesn't work yet)
@@ -1064,7 +1066,10 @@ tinymce.init({
         }
       // Alert if native file handling API isn't enabled
       } else {
-        alert("Please enable the Native File System file handling API.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#file-handling-api");
+        if (localStorage.getItem('showedEnableFileHandlingAPI') === null) {
+          alert("Please enable the Native File System file handling API.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#file-handling-api");
+          localStorage.setItem('showedEnableFileHandlingAPI', 'true');
+        }
       }
 
       // Open markdown pane if the relevant URL parameter is set
