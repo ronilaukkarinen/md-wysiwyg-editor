@@ -304,7 +304,7 @@ tinymce.init({
   style_formats_autohide: true,
   // For style formats toolbar
   style_formats: [
-    {title: 'P',  block: 'p'},
+    {title: 'P&thinsp;…',  block: 'p'},
     {title: 'H1', block: 'h1'},
     {title: 'H2', block: 'h2'},
     {title: 'H3', block: 'h3'},
