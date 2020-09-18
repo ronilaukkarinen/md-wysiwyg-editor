@@ -1059,8 +1059,6 @@ tinymce.init({
               return;
             }
             const fileHandle = launchParams.files[0];
-            // const blob = await fileHandle.getFile();
-            // loadFromBlob(blob);
             app.openFile(fileHandle);
           });
         }
