@@ -152,7 +152,7 @@ function updateFilename(filename, dirty) {
     if (persistFilename.length <= 20) {
       filenameElement.innerHTML = persistFilename;
     } else {
-      filenameElement.innerHTML = filename.slice(0, 40) + '…';
+      filenameElement.innerHTML = filename.slice(0, 19) + '…';
     }
   }
 
@@ -265,7 +265,7 @@ tinymce.init({
   statusbar: false,
   // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
   quickbars_insert_toolbar: false,
-  quickbars_selection_toolbar: 'cut copy paste | styleselect bold italic underline strikethrough superscript subscript link blockquote codeformat removeformat',
+  quickbars_selection_toolbar: 'cut copy paste | styleselect bold italic underline strikethrough superscript subscript link blockquote codeformat',
   quickbars_image_toolbar: false,
   fullpage_hide_in_source_view: false,
   // All HTML elements (attributs) except for these will be filtered:
@@ -562,7 +562,7 @@ tinymce.init({
     editor.ui.registry.addGroupToolbarButton('extraformat', {
       icon: 'more-drawer',
       tooltip: 'Additional formatting options',
-      items: 'underline strikethrough superscript subscript removeformat'
+      items: 'underline strikethrough superscript subscript'
     });
 
     // Set up markdown pane and toolbar button
