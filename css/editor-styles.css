@@ -99,7 +99,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 }
 
 /* Hide username if window width is narrow */
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
   .tox-editor-header .tox-toolbar__group button[title="Filename"] {
     display: none !important;
   }
