@@ -162,25 +162,6 @@ function updateFilename(filename, dirty) {
   return;
 }
 
-// Change current working directory (not currently used)
-function changeWorkingDirectory(event, newPath) {
-
-  if (tinymce.activeEditor) {
-    var doc = tinymce.activeEditor.getDoc(),
-      head = doc.head, base;
-    if (head.getElementsByTagName("base").length == 0) {
-      base = document.createElement("base");
-      head.appendChild(base);
-    } else {
-      base = head.getElementsByTagName("base")[0]
-    }
-    base.setAttribute("href", "file://" + newPath + "/");
-    tinymce.activeEditor.documentBaseURI.setPath(newPath + "/");
-  }
-
-  return;
-}
-
 reverseShiftEnterBehavior = localStorage.getItem('reverseShiftEnterBehavior');
 if (reverseShiftEnterBehavior == 'true') {
   reverseShiftEnterBehavior = true;
@@ -1432,4 +1413,9 @@ function setupMarkdown(api) {
 
   return;
 }
+
+// Disable right-click
+window.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+}, false);
 
