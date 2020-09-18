@@ -251,6 +251,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 .tox .tox-sidebar {
 	color: var(--general-text-color) !important;
 	background-color: var(--lesser-background-color) !important;
+	border-left: 1px solid var(--general-border-color) !important;
 }
 
 /* Markdown sidebar left border */

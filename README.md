@@ -1,6 +1,6 @@
 # Text Editor
 
-"Text Editor" (placeholder name) is a simple online constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown) (via a modified [TinyMCE labs plugin](https://www.tiny.cloud/labs/markdown/)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in developmental stage—[use cautiously!](#Notes)
+"Text Editor" (placeholder name) is a simple online constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown), [Turndown](https://github.com/domchristie/turndown), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
 
 Home page and GitHub repository:
 
@@ -47,22 +47,22 @@ Make sure that your web browser is up to date and you have Native File System en
 * Works offline when installed as a PWA.
 * Mobile-friendly.
 * Dark mode.
+* Option to switch between HTML-to-markdown conversion engines (Turndown and Showdown) in preferences. The Turndown engine is better for this conversion and is set to default. Markdown-to-HTML conversion is always handled by Showdown.
 * Optional customization of rich-text appearance via CSS in preferences.
 
 ## Notes
 
-The editor is still under development and has various bugs.
+The editor is still under development and has many bugs.
 
-Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files. For instance, it'll add escapes (`\`) to certain characters that aren't part of markdown (e.g., `~`, `\`). The editor can also change markdown files in unanticipated and/or undesirable was. For instance, right now there's an issue that causes front matter (e.g., YAML) in markdown files to be converted into HTML. The editor will also convert markdown within HTML tags into HTML code. And it doesn't handle header-less tables (i.e., tables without `---` headers) at this time—causing all the `|`'s to be escaped.
+Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files—sometimes in undesirable ways. A number of examples are illustrative. Escapes (`\`) may be added to certain markdown syntax characters that aren't part of the markdown (e.g., `~`, `|`). Headerless markdown tables will be escaped and thereby broken with Showdown as the HTML-to-markdown engine. YAML and TOML front matter is automatically put inside of a markdown code block ('```') to prevent it from being parsed by the HTML-to-markdown engines. Changes to markdown files will vary depending on whether Turndown or Showdown is selected as the HTML-to-markdown conversion engine. For example, Showdown doesn't handle headerless tables, whereas Turndown does via a plugin although it adds an empty header row to the tables and doesn't always work.
 
-The rich-text editing is good but the markdown support has some issues. Hence, you've been warned—use at your own risk!
+Rich-text editing is dependable but as described the markdown functionality has issues here and there. Hence, you've been warned—use the markdown features (bidirectional HTML↔markdown conversion via markdown pane and open/save files as markdown) at your own risk!
 
 ### Future
 
 * "Open with" / file association support.
 * Lots of bug fixes and minor features.
 * Documentation views for keyboard shortcuts and markdown-to-rich-text conversions?
-* Support for other markdown conversion engines (e.g., [Turndown](https://github.com/laurent22/joplin-turndown))?
 * Pane for files and table of contents?
 * Tabs for multiple documents at once?
 * Other things...

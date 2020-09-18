@@ -2561,7 +2561,7 @@
       showdown.subParser("ellipsis", function(text, options, globals) {
         "use strict";
         text = globals.converter._dispatch("ellipsis.before", text, options, globals);
-        text = text.replace(/\.\.\./g, "â€¦");
+        text = text.replace(/\.\.\./g, "…");
         text = globals.converter._dispatch("ellipsis.after", text, options, globals);
         return text;
       });
@@ -16661,10 +16661,18 @@
         var strippedContent = e.content.replace(unsupportedHtmlRegex, "");
         editor.setContent(strippedContent);
         // Fix spacing after update
-        adjustEditorSpacing()
+        adjustEditorSpacing();
       };
       var onConvertedHtmlToMarkdown = function(e) {
-        markdownEditor.getApis().setContent(markdownEditor, e.content);
+        if (useTurndownInsteadOfShowdown == false) {
+          markdownEditor.getApis().setContent(markdownEditor, e.content);
+        } else {
+          var html = tinymce.editors[0].getContent({format: 'html'});
+          var markdown = turndownService.turndown(html);
+          markdownEditor.getApis().setContent(markdownEditor, markdown);
+        }
+        // Fix spacing after update
+        adjustEditorSpacing();
       };
       editor.on("markdown->html", onConvertedMarkdownToHtml);
       editor.on("html->markdown", onConvertedHtmlToMarkdown);
@@ -16708,7 +16716,11 @@
       // tinymce.getContent() format handler for 'markdown'
       editor.on("GetContent", function(e) {
         if (e.format === "markdown") {
-          e.content = syncConverter.htmlToMarkdown(e.content).content;
+          if (useTurndownInsteadOfShowdown == false) {
+            e.content = syncConverter.htmlToMarkdown(e.content).content;
+          } else {
+            e.content = turndownService.turndown(e.content);
+          }
         }
       });
       // tinymce.setContent() format handler for 'markdown'

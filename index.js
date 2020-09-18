@@ -1,8 +1,9 @@
 let persistFilename = "untitled.md";
-let markdownSideBarToggleState = false;
+let markdownSidebarToggleState = false;
 let fullscreenTracker = false;
 let updateMarkdownLessOften;
 let customCSS;
+let useTurndownInsteadOfShowdown;
 
 // Create new file
 function newFile() {
@@ -25,7 +26,7 @@ function newFile() {
   tinymce.activeEditor.resetContent();
   updateFilename("untitled.md", false);
 
-  tinyMCE.execCommand("UpdateMarkdown");
+  tinyMCE.execCommand("UpdateMarkdown", false, undefined, true);
   setTimeout(tinyMCE.execCommand("UpdateMarkdown"), 100); // Do it again if didn't work the first time... (temporary hack)
 
   return;
@@ -48,6 +49,18 @@ function openFile(filename, data) {
     tinymce.editors[0].setContent(data, {format: 'html'});
   // Open as markdown
   } else if (extension == "md" || extension == "markdown") {
+
+    // Put YAML/TOML front matter into a markdown code block so it isn't parsed
+    if (data.match(/^((---)\n)/) != null) {
+      data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
+        return '```\n' + match + '```';
+      });
+  	} else if (data.match(/^((\+\+\+)\n)/) != null) {
+  	  data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
+  	    return '```\n' + match + '```';
+  	  });
+  	}
+
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
   } else {
@@ -58,8 +71,8 @@ function openFile(filename, data) {
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
 
-  tinyMCE.execCommand("UpdateMarkdown");
-  setTimeout(tinyMCE.execCommand("UpdateMarkdown"), 100); // Do it again if didn't work the first time... (temporary hack)
+  tinyMCE.execCommand("UpdateMarkdown", false, undefined, true);
+  setTimeout(tinyMCE.execCommand("UpdateMarkdown", false, undefined, true), 100); // Do it again if didn't work the first time... (temporary hack)
 
   return;
 }
@@ -207,7 +220,7 @@ tinymce.init({
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // quickimage
   toolbar_mode: 'scrolling',
-  plugins: 'code codesample, link image table markdown lists paste save searchreplace autolink hr textpattern print quickbars fullpage',
+  plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern print quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
@@ -344,6 +357,7 @@ tinymce.init({
       customCSS = '';
     }
 
+    // Set up files menu button
     editor.ui.registry.addMenuButton('file', {
       tooltip: 'File',
       icon: 'edit-block',
@@ -397,6 +411,7 @@ tinymce.init({
       }
     });
 
+    // Set up headings formatting button
     editor.ui.registry.addMenuButton('heading', {
       tooltip: 'Heading',
       icon: 'heading',
@@ -455,6 +470,53 @@ tinymce.init({
       }
     });
 
+    // Set up markdown pane and toolbar button
+    editor.ui.registry.addSidebar('markdown', {
+      tooltip: "Markdown (Ctrl+M)",
+      icon: "markdown",
+      onSetup: function (api) {
+        setupMarkdown(api);
+      },
+      onShow: function (api) {
+        // Update the markdown editor via conversion of the main editor HTML to markdown
+        updateMarkdownWithEditorHTML();
+        return;
+      },
+      onHide: function (api) {
+        return;
+      },
+    });
+
+    // Adjust padding if applicable + hack to fix width of the markdown pane
+    editor.on('ResizeWindow', function(event) {
+
+      var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + "px";
+      markdownSidebar.style.width = markdownSidebarWidth;
+
+      adjustEditorSpacing();
+      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
+
+      return;
+    });
+
+    // When markdown pane is opened/closed
+    editor.on('ToggleSidebar', function(event) {
+
+      markdownSidebarToggleState = !markdownSidebarToggleState;
+
+      // Hack to fix width of the markdown pane
+      var width = (window.innerWidth * 0.50).toString() + "px";
+      markdownSidebar.style.width = width;
+
+      adjustEditorSpacing();
+      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
+
+      return;
+    });
+
+    editor.addCommand('UpdateMarkdown', function() { return; });
+
+    // Set up fullscreen toolbar button
     editor.ui.registry.addButton('fullscreen', {
       tooltip: 'Fullscreen (Ctr+Shift+F or F11)',
       icon: 'fullscreen',
@@ -465,6 +527,7 @@ tinymce.init({
       }
     });
 
+    // Set up dark mode toolar button
     editor.ui.registry.addButton('darkmode', {
       tooltip: 'Dark mode on/off',
       icon: 'darkmode',
@@ -477,6 +540,7 @@ tinymce.init({
       }
     });
 
+    // Set up filename display in toolbar (fake button)
     editor.ui.registry.addButton('filename', {
       text: "<span id='filename'>" + persistFilename + "</span>",
       onAction: function () {
@@ -485,49 +549,7 @@ tinymce.init({
       }
     });
 
-    // ADD CUSTOM CONTEXT MENU ITEMS ->
-
-    editor.ui.registry.addMenuItem('pasteastext', {
-      icon: 'paste-text',
-      text: 'Paste as text',
-      onAction: function () {
-        navigator.clipboard.readText().then(text => {
-          tinyMCE.execCommand('mceInsertClipboardContent', false, { content: text});
-        });
-      }
-    });
-
-    editor.ui.registry.addContextMenu('pasteastext', {
-      update: function (element) {
-        return 'pasteastext';
-      }
-    });
-
-    editor.ui.registry.addMenuItem('copy', {
-      icon: 'copy',
-      text: 'Copy',
-      onAction: function () {
-        var html = tinymce.editors[0].selection.getContent({format: 'html'});
-        var text = tinymce.editors[0].selection.getContent({format: 'text'});
-        copyToClipboard(html, text);
-      }
-    });
-
-    editor.ui.registry.addMenuItem('copyasmarkdown', {
-      icon: 'copy',
-      text: 'Copy as markdown',
-      onAction: function () {
-        var markdown = tinymce.editors[0].selection.getContent({format: 'markdown'});
-        navigator.clipboard.writeText(markdown);
-      }
-    });
-
-    editor.ui.registry.addContextMenu('copyasmarkdown', {
-      update: function (element) {
-        return 'copyasmarkdown';
-      }
-    });
-
+    // Set up preferences dialog menu
     var prefsConfig = {
       title: 'Preferences',
       size: 'large',
@@ -536,8 +558,13 @@ tinymce.init({
         items: [
           {
             type: 'checkbox',
+            name: 'useTurndownInsteadOfShowdown',
+            label: 'Use <a href="https://github.com/domchristie/turndown" target="_blank">Turndown</a> instead of <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a> for HTML-to-markdown conversion (less buggy)',
+          },
+          {
+            type: 'checkbox',
             name: 'updateMarkdownLessOften',
-            label: 'Update markdown panel less often—only when new elements are created (uses less CPU)',
+            label: 'When open, update markdown panel less often—only when new elements are created (uses less CPU)',
           },
           {
             type: 'textarea',
@@ -562,7 +589,8 @@ tinymce.init({
       ],
       initialData: {
         customCSS: customCSS,
-        updateMarkdownLessOften: updateMarkdownLessOften
+        updateMarkdownLessOften: updateMarkdownLessOften,
+        useTurndownInsteadOfShowdown: useTurndownInsteadOfShowdown
       },
       onSubmit: function (api) {
 
@@ -588,10 +616,23 @@ tinymce.init({
           updateMarkdownLessOften = false;
         }
 
+        // Switch between Turndown and Showdown depending on preferences
+        if (data.useTurndownInsteadOfShowdown == true) {
+          localStorage.setItem('useTurndownInsteadOfShowdown', true);
+          useTurndownInsteadOfShowdown = true;
+        } else {
+          localStorage.setItem('useTurndownInsteadOfShowdown', false);
+          useTurndownInsteadOfShowdown = false;
+        }
+
+        // Needed as preferences menu otherwise won't have updated initial values for settings if reopened
+        location.reload();
+
         api.close();
       }
     };
 
+    // Add preferences toolbar button and dialogue menu
     editor.ui.registry.addButton('preferences', {
       name: 'Preferences',
       tooltip: 'Preferences',
@@ -601,6 +642,7 @@ tinymce.init({
       }
     });
 
+    // Set up GitHub home page/repository toolbar button
     editor.ui.registry.addButton('github', {
       name: 'GitHub',
       tooltip: 'GitHub',
@@ -611,6 +653,50 @@ tinymce.init({
         } else {
           window.open('https://github.com/Alyw234237/text-editor/', '_blank');
         }
+      }
+    });
+
+    // ADD CUSTOM CONTEXT MENU ITEMS ->
+
+    editor.ui.registry.addMenuItem('pasteastext', {
+      icon: 'paste-text',
+      text: 'Paste as text',
+      onAction: function () {
+        navigator.clipboard.readText().then(text => {
+          tinyMCE.execCommand('mceInsertClipboardContent', false, { content: text});
+        });
+      }
+    });
+
+    editor.ui.registry.addContextMenu('pasteastext', {
+      update: function (element) {
+        return 'pasteastext';
+      }
+    });
+
+    /* Broken... (and not used) */
+    /*editor.ui.registry.addMenuItem('copy', {
+      icon: 'copy',
+      text: 'Copy',
+      onAction: function () {
+        var html = tinymce.editors[0].selection.getContent({format: 'html'});
+        var text = tinymce.editors[0].selection.getContent({format: 'text'});
+        copyToClipboard(html, text);
+      }
+    });*/
+
+    editor.ui.registry.addMenuItem('copyasmarkdown', {
+      icon: 'copy',
+      text: 'Copy as markdown',
+      onAction: function () {
+        var markdown = tinymce.editors[0].selection.getContent({format: 'markdown'});
+        navigator.clipboard.writeText(markdown);
+      }
+    });
+
+    editor.ui.registry.addContextMenu('copyasmarkdown', {
+      update: function (element) {
+        return 'copyasmarkdown';
       }
     });
 
@@ -650,11 +736,16 @@ tinymce.init({
       quit();
     });
 
+    editor.addShortcut('Ctrl+Q', 'Quit', function () {
+      quit();
+    });
+
     editor.addShortcut('Shift+Ctrl+Z', 'Redo', function () {
       tinyMCE.execCommand('Redo');
     });
 
-    function copyToClipboard(html, text) {
+    /* Broken... */
+    /*function copyToClipboard(html, text) {
       function listener(event) {
         event.clipboardData.setData("text/html", html);
         event.clipboardData.setData("text/plain", text);
@@ -669,7 +760,7 @@ tinymce.init({
       var html = tinymce.editors[0].selection.getContent({format: 'html'});
       var text = tinymce.editors[0].selection.getContent({format: 'text'});
       copyToClipboard(html, text);
-    });
+    });*/
 
     editor.addShortcut('Shift+Ctrl+C', 'Copy as markdown', function () {
       var markdown = tinymce.editors[0].selection.getContent({format: 'markdown'});
@@ -733,7 +824,7 @@ tinymce.init({
       // Escape key: exit fullscreen or hide markdown sidebar if it's open
       if (event.key == 'Escape' && fullscreenTracker == true) {
         toggleFullscreen();
-      } else if (event.key == 'Escape' && markdownSideBarToggleState == true) {
+      } else if (event.key == 'Escape' && markdownSidebarToggleState == true) {
         tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       }
 
@@ -765,40 +856,12 @@ tinymce.init({
       return;
     });
 
-    // Adjust padding if applicable + hack to fix width of the markdown pane
-    editor.on('ResizeWindow', function(event) {
-
-      var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + "px";
-      document.getElementsByClassName("markdown-preview")[0].style.width = markdownSidebarWidth;
-
-      adjustEditorSpacing();
-      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
-
-      return;
-    });
-
     // Track fullscreen
     // Doesn't fire in Chrome if fullscreen was entered with fullscreen key or via Chrome hamburger menu...
     // This would work though: https://stackoverflow.com/questions/34422052/how-to-detect-browser-has-gone-to-full-screen
     document.addEventListener("fullscreenchange", function () {
       fullscreenTracker = !fullscreenTracker;
     }, false);
-
-    // When markdown pane is opened/closed
-    // https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
-    editor.on('ToggleSidebar', function(event) {
-
-      markdownSideBarToggleState = !markdownSideBarToggleState;
-
-      // Hack to fix width of the markdown pane
-      var width = (window.innerWidth * 0.50).toString() + "px";
-      document.getElementsByClassName("markdown-preview")[0].style.width = width;
-
-      adjustEditorSpacing();
-      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
-
-      return;
-    });
 
     // Update to unsaved changes filename if editor becomes dirty
     editor.on('Dirty', function(event) {
@@ -813,10 +876,6 @@ tinymce.init({
         return;
       }
       delete event['returnValue'];
-    });
-
-    editor.addCommand('UpdateMarkdown', function() {
-      return;
     });
 
     editor.on('Init', function(event) {
@@ -844,6 +903,7 @@ tinymce.init({
         async function request() {
           const response = await fetch(startFileURL);
           const content = await response.text();
+          // setTimeout() -> Temporary hack fix
           setTimeout(function() {
             openFile(startFilename, content);
           }, 100);
@@ -999,6 +1059,241 @@ function customEditorAreaCSS(apply, customCSS) {
     }
     iframeDocument.getElementById('u1').disabled = false;
   }
+
+  return;
+}
+
+/* Markdown */
+
+var lastMarkdownToHTMLUpdate = Date.now();
+var markdownToHTMLPending = false;
+var lastHTMLToMarkdownUpdate = Date.now();
+var HTMLtoMarkdownPending = false;
+
+function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
+
+  // Don't update if markdown pane isn't open (unless opening or saving a file)
+  if (markdownSidebarToggleState == false && force != true) {
+    return;
+  }
+
+  // Don't update the pane if we're editing within it (unless opening or saving a file)
+  if (tinymce.activeEditor.hasFocus() == true && force != true) {
+    return;
+  }
+
+  // Throttle updating to limit CPU usage—no more than once every 100 ms
+  if (force != true) {
+    var currentTime = new Date().getTime();
+    var timeDifference = currentTime - lastMarkdownToHTMLUpdate;
+    if (timeDifference < 100) {
+      if (markdownToHTMLPending == false) {
+        markdownToHTMLPending = true;
+        setTimeout(function (markdownToConvert) {
+          updateEditorHTMLWithMarkdown(markdownToConvert);
+        }, 100 - timeDifference + 1);
+        return;
+      } else {
+        return;
+      }
+    }
+  }
+
+  // Get markdown editor contents if no markdown to convert was passed
+  if (!markdownToConvert) {
+    markdownToConvert = document.getElementById("markdown-editor").value;
+  }
+  
+  // Convert markdown to HTML
+  var HTMLfromMarkdown = ShowdownConverter.makeHtml(markdownToConvert);
+
+  // Update main editor HTML with the new HTML
+  tinymce.activeEditor.setContent(HTMLfromMarkdown);
+
+  // Fix spacing after update
+  adjustEditorSpacing();
+  setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
+
+  // For update throttling
+  lastMarkdownToHTMLUpdate = currentTime;
+  markdownToHTMLPending = false;
+
+  return HTMLfromMarkdown;
+}
+
+function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
+
+  // Don't update if markdown pane isn't open (unless opening or saving a file)
+  if (markdownSidebarToggleState == false && force != true) {
+    return;
+  }
+
+  // Don't update the pane if we're editing within it (unless opening or saving a file)
+  if (tinymce.activeEditor.hasFocus() == false && force != true) {
+    return;
+  }
+
+  // Throttle updating to limit CPU usage—no more than once every 100 ms
+  if (force != true) {
+    var currentTime = new Date().getTime();
+    var timeDifference = currentTime - lastHTMLToMarkdownUpdate;
+    if (timeDifference < 100) {
+      if (HTMLtoMarkdownPending == true) {
+        return;
+      } else {
+        HTMLtoMarkdownPending = true;
+        setTimeout(function(HTMLtoConvert) {
+          updateMarkdownWithEditorHTML(HTMLtoConvert);
+        }, 100 - timeDifference + 1);
+        return;
+      }
+    }
+  }
+
+  // Get main editor HTML contents if no HTML to convert was passed
+  if (!HTMLtoConvert) {
+    HTMLtoConvert = tinymce.activeEditor.getContent({format: 'html'});
+  }
+
+  // Convert HTML to markdown
+  if (useTurndownInsteadOfShowdown == false) {
+    var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
+  } else {
+    var MarkdownFromHTML = TurndownConverter.turndown(HTMLtoConvert);
+  }
+
+  // Update markdown editor text with the new markdown
+  markdownTextarea.value = MarkdownFromHTML;
+
+  // For update throttling
+  lastHTMLToMarkdownUpdate = currentTime;
+  HTMLtoMarkdownPending = false;
+
+  return MarkdownFromHTML;
+}
+
+// Define Showdown options
+var ShowdownOptions = {
+  omitExtraWLInCodeBlocks: true,
+  simplifiedAutoLink: false, // GH: true
+  ghCompatibleHeaderId: true,
+  parseImgDimensions: true, // Implement
+  excludeTrailingPunctuationFromURLs: false, // GH: true
+  literalMidWordUnderscores: true,
+  strikethrough: true,
+  tables: true,
+  tablesHeaderId: true,
+  ghCodeBlocks: true,
+  tasklists: true,
+  smoothLivePreview: true, // Maybe?
+  disableForced4SpacesIndentedSublists: true,
+  simpleLineBreaks: true,
+  requireSpaceBeforeHeadingText: true,
+  ghCompatibleHeaderId: true,
+  ghMentions: false, // GH: true
+  openLinksInNewWindow: true,
+  backslashEscapesHTMLTags: true,
+  emoji: true,
+  underline: true, // MAYBE? TEST... (UNDERSCORES NO LONGER -> EM AND STRONG)
+  splitAdjacentBlockquotes: true,
+  completeHTMLDocument: false,
+  metadata: false,
+  encodeEmails: true,
+}
+
+// Create Showdown converter instance with options
+var ShowdownConverter = new showdown.Converter(ShowdownOptions);
+
+// Use Turndown instead of Showdown?
+useTurndownInsteadOfShowdown = localStorage.getItem('useTurndownInsteadOfShowdown');
+if (useTurndownInsteadOfShowdown == 'true') {
+  useTurndownInsteadOfShowdown = true;
+} else {
+  useTurndownInsteadOfShowdown = false;
+}
+
+// Define Turndown settings
+var TurndownOptions = {
+  headingStyle: 'atx',
+  hr: '---',
+  bulletListMarker: '*',
+  codeBlockStyle: 'fenced',
+  fence: '```',
+  emDelimiter: '*',
+  strongDelimiter: '**',
+}
+
+// Define Turndown HTML tags to not be removed
+var TurndownKeepList = [
+  'html','head','title','body','meta',
+  'span','strike','s','del','sup','sub','small',
+  'figure','figcaption','video','source','audio','math'
+];
+
+// Create Turndown converter instance with options and plugins
+var TurndownConverter = new TurndownService(TurndownOptions);
+var TurndownGFM = turndownPluginGfm.gfm;
+TurndownConverter.use(TurndownGFM);
+// https://github.com/domchristie/turndown-plugin-gfm ^
+// https://github.com/laurent22/joplin-turndown-plugin-gfm ^
+// ^ Adds strikethrough, tables, headerless tables, table col spans, task lists, and bug fixes
+TurndownConverter.keep(TurndownKeepList);
+
+// Markdown pane element handles
+var markdownSidebar;
+var markdownTextarea;
+
+function setupMarkdown(api) {
+  // Set the sidebar HTML code
+  markdownSidebar = api.element();
+  var sidebarSetupCode = `<textarea id="markdown-editor" class="markdown-editor" oninput="updateEditorHTMLWithMarkdown();" spellcheck="false"></textarea>`;
+  markdownSidebar.innerHTML = sidebarSetupCode;
+
+  markdownTextarea = document.getElementById('markdown-editor');
+  markdownTextarea.style.flexGrow = '1';
+  markdownTextarea.style.padding = '50x !important';
+  markdownTextarea.style.fontSize = '14px';
+  markdownTextarea.style.fontFamily = 'monospace';
+  markdownTextarea.style.whiteSpace = 'pre-wrap';
+  markdownTextarea.style.boxSizing = 'border-box';
+
+  // For updating more regularly
+  tinymce.activeEditor.on('ExecCommand', function(event) {
+    if(event.command == "UpdateMarkdown") {
+      updateMarkdownWithEditorHTML();
+    }
+  });
+
+  if (updateMarkdownLessOften == true) {
+    tinymce.activeEditor.on("Change", updateMarkdownWithEditorHTML(event.content));
+  }
+
+  // On convert editor contents from markdown to html
+  // ...
+  // editor.fire("markdown->html", { content: content });
+
+  // On convert editor contents from markdown to html
+  // ...
+  // editor.fire("html->markdown", { content: content });
+
+  tinymce.activeEditor.on("markdown->html", updateEditorHTMLWithMarkdown(event.content, true));
+  tinymce.activeEditor.on("html->markdown", updateMarkdownWithEditorHTML(event.content, true));
+
+  // tinymce.getContent() format handler for 'markdown'
+  tinymce.activeEditor.on("GetContent", function(event) {
+    if (event.format === "markdown") {
+      event.content = updateMarkdownWithEditorHTML(event.content, true);
+    }
+    return event.content;
+  });
+  
+  // tinymce.setContent() format handler for 'markdown'
+  tinymce.activeEditor.on("BeforeSetContent", function(event) {
+    if (event.format === "markdown") {
+      event.content = updateEditorHTMLWithMarkdown(event.content, true);
+    }
+    return event.content;
+  });
 
   return;
 }
