@@ -149,7 +149,11 @@ function updateFilename(filename, dirty) {
   if (filename != null) {
     persistFilename = filename;
     document.title = persistFilename + " - Text Editor";
-    filenameElement.innerHTML = persistFilename;
+    if (persistFilename.length <= 20) {
+      filenameElement.innerHTML = persistFilename;
+    } else {
+      filenameElement.innerHTML = filename.slice(0, 40) + '…';
+    }
   }
 
   // Doesn't work the first time on save for some reason... fix [to-do]

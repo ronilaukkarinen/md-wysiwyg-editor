@@ -107,7 +107,11 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 
 /* Style the filename toolbar button text */
 #filename {
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Courier New", monospace !important;
 	color: var(--lesser-text-color) !important;
+
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
 /* Toolbar and quick inline pop-up box dividers */
