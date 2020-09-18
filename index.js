@@ -662,7 +662,7 @@ tinymce.init({
           {
             type: 'checkbox',
             name: 'updateMarkdownLessOften',
-            label: 'When it\'s open, update markdown panel less often—only when new elements are created (uses less CPU)',
+            label: 'Update the markdown panel less often when open—only when new elements are created (uses less CPU)',
           },
           {
             type: 'textarea',
@@ -1384,17 +1384,6 @@ function setupMarkdown(api) {
   if (updateMarkdownLessOften == true) {
     tinymce.activeEditor.on("Change", updateMarkdownWithEditorHTML(event.content));
   }
-
-  // On convert editor contents from markdown to html
-  // ...
-  // editor.fire("markdown->html", { content: content });
-
-  // On convert editor contents from markdown to html
-  // ...
-  // editor.fire("html->markdown", { content: content });
-
-  tinymce.activeEditor.on("markdown->html", updateEditorHTMLWithMarkdown(event.content, true));
-  tinymce.activeEditor.on("html->markdown", updateMarkdownWithEditorHTML(event.content, true));
 
   // tinymce.getContent() format handler for 'markdown'
   tinymce.activeEditor.on("GetContent", function(event) {
