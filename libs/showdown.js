@@ -4346,7 +4346,8 @@ showdown.subParser('spanGamut', function (text, options, globals) {
   text = showdown.subParser('underline')(text, options, globals);
   text = showdown.subParser('italicsAndBold')(text, options, globals);
   text = showdown.subParser('strikethrough')(text, options, globals);
-  text = showdown.subParser('ellipsis')(text, options, globals);
+  // Showdown patch: don't automatically convert '...' into ellipsis ('…')
+  //text = showdown.subParser('ellipsis')(text, options, globals);
 
   // we need to hash HTML tags inside spans
   text = showdown.subParser('hashHTMLSpans')(text, options, globals);
@@ -4718,7 +4719,9 @@ showdown.subParser('makeMarkdown.image', function (node) {
   var txt = '';
   if (node.hasAttribute('src')) {
     txt += '![' + node.getAttribute('alt') + '](';
-    txt += '<' + node.getAttribute('src') + '>';
+    // Showdown patch: don't automatically add '<' and '>' to image URLs
+    //txt += '<' + node.getAttribute('src') + '>';
+    txt += node.getAttribute('src');
     if (node.hasAttribute('width') && node.hasAttribute('height')) {
       txt += ' =' + node.getAttribute('width') + 'x' + node.getAttribute('height');
     }
@@ -4743,7 +4746,9 @@ showdown.subParser('makeMarkdown.links', function (node, globals) {
       txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
     }
     txt += '](';
-    txt += '<' + node.getAttribute('href') + '>';
+    // Showdown patch: don't automatically add '<' and '>' to link URLs
+    //txt += '<' + node.getAttribute('href') + '>';
+    txt += node.getAttribute('href');
     if (node.hasAttribute('title')) {
       txt += ' "' + node.getAttribute('title') + '"';
     }
@@ -4773,7 +4778,9 @@ showdown.subParser('makeMarkdown.list', function (node, globals, type) {
     if (type === 'ol') {
       bullet = listNum.toString() + '. ';
     } else {
-      bullet = '- ';
+      // Showdown patch: '*' instead of '-' for lists
+      //bullet = '- ';
+      bullet = '* ';
     }
 
     // parse list item
@@ -4782,7 +4789,9 @@ showdown.subParser('makeMarkdown.list', function (node, globals, type) {
   }
 
   // add comment at the end to prevent consecutive lists to be parsed as one
-  txt += '\n<!-- -->\n';
+  // Showdown patch: don't automatically add this comment (does it even if unnecessary)
+  //txt += '\n<!-- -->\n';
+
   return txt.trim();
 });
 
@@ -5033,15 +5042,17 @@ showdown.subParser('makeMarkdown.table', function (node, globals) {
     }
   }
 
-  var cellSpacesCount = 3;
-  for (i = 0; i < tableArray.length; ++i) {
+  // Showdown patch: disable table cell padding with extra spaces and dashes
+  //var cellSpacesCount = 3;
+  var cellSpacesCount = 0;
+  /*for (i = 0; i < tableArray.length; ++i) {
     for (ii = 0; ii < tableArray[i].length; ++ii) {
       var strLen = tableArray[i][ii].length;
       if (strLen > cellSpacesCount) {
         cellSpacesCount = strLen;
       }
     }
-  }
+  }*/
 
   for (i = 0; i < tableArray.length; ++i) {
     for (ii = 0; ii < tableArray[i].length; ++ii) {
