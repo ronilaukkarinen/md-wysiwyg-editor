@@ -241,7 +241,7 @@ button[title="Formats"] {
 	padding: calc(4px - 1px) !important;
 }
 
-
+/* Dialogue box check box styling */
 .tox .tox-checkbox__icons .tox-checkbox-icon__unchecked svg {
 	fill: var(--icon-fill-color) !important;
 }
@@ -251,6 +251,25 @@ button[title="Formats"] {
 	color: var(--general-text-color) !important;
 	background-color: var(--text-area-background-color) !important;
 	border-color: var(--general-border-color) !important;
+}
+
+/* Notification boxes */
+.tox-notifications-container, .tox-notification .tox-notification--in, .tox-notification__body {
+	color: var(--general-text-color) !important;
+	background-color: var(--general-background-color) !important;
+	cursor: default !important;
+}
+
+/* Notification box icons */
+.tox-notification__icon {
+	fill: var(--icon-fill-color) !important;
+}
+
+/* Notification box links */
+.tox .tox-dialog__body-content a:link, a:visited, a:hover, a:active {
+	color: var(--link-color) !important;
+	text-decoration: none !important;
+	cursor: default !important;
 }
 
 /* Markdown sidebar */

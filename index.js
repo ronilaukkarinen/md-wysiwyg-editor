@@ -1022,7 +1022,10 @@ tinymce.init({
       // Check if native file system is enabled and alert if not
       if (!"chooseFileSystemEntries" in window) {
         if (localStorage.getItem('showedEnableNFSPrompt') === null) {
-          alert("Please enable the Native File System.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#native-file-system-api");
+          editor.notificationManager.open({
+            text: 'Please enable the <a href="https://web.dev/native-file-system/" target="_blank">Native File System</a> for full functionality. On Google Chrome, this can be found at: <a href="chrome://flags/#native-file-system-api" target="_blank">chrome://flags/#native-file-system-api</a>',
+            icon: 'notice',
+          });
           localStorage.setItem('showedEnableNFSPrompt', 'true');
         }
       }
@@ -1041,7 +1044,10 @@ tinymce.init({
       // Alert if native file handling API isn't enabled
       } else {
         if (localStorage.getItem('showedEnableFileHandlingAPI') === null) {
-          alert("Please enable the Native File System file handling API.\r\n\r\nOn Google Chrome, this can be found at:\r\n\r\nchrome://flags/#file-handling-api");
+          editor.notificationManager.open({
+            text: 'Please enable the <a href="https://web.dev/native-file-system/" target="_blank">Native File System</a> <a href="https://github.com/WICG/file-handling/blob/master/explainer.md" target="_blank">file handling API</a> for full functionality. On Google Chrome, this can be found at: <a href="chrome://flags/#file-handling-api" target="_blank">chrome://flags/#file-handling-api</a>',
+            icon: 'notice',
+          });
           localStorage.setItem('showedEnableFileHandlingAPI', 'true');
         }
       }
