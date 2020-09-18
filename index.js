@@ -1,6 +1,8 @@
 let persistFilename = "untitled.md";
 let markdownSidebarToggleState = false;
 let fullscreenTracker = false;
+
+let reverseShiftEnterBehavior;
 let updateMarkdownLessOften;
 let customCSS;
 let useTurndownInsteadOfShowdown;
@@ -179,6 +181,13 @@ function changeWorkingDirectory(event, newPath) {
   return;
 }
 
+reverseShiftEnterBehavior = localStorage.getItem('reverseShiftEnterBehavior');
+if (reverseShiftEnterBehavior == 'true') {
+  reverseShiftEnterBehavior = true;
+} else {
+  reverseShiftEnterBehavior = false;
+}
+
 tinymce.baseURL = "libs/tinymce";
 
 tinymce.IconManager.add('custom', {
@@ -219,7 +228,7 @@ tinymce.init({
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
-  toolbar_mode: 'floating',
+  toolbar_mode: 'sliding',
   plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
@@ -228,6 +237,7 @@ tinymce.init({
   elementpath: false, // Disable e.g. "table > tbody > tr > td > p" in status bar when status bar enabled
   branding: false, // Disable TinyMCE branding in status bar
   menubar: false, // Hide menu bar
+  forced_root_block: !reverseShiftEnterBehavior, // Reverse Shift+Enter behavior (<br /> for Enter and <p> for Shift+Enter)
   paste_block_drop: true,
   paste_data_images: true,
   paste_remove_styles_if_webkit: true,
@@ -665,13 +675,18 @@ tinymce.init({
         items: [
           {
             type: 'checkbox',
+            name: 'reverseShiftEnterBehavior',
+            label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter)',
+          },
+          {
+            type: 'checkbox',
             name: 'useTurndownInsteadOfShowdown',
             label: 'Use <a href="https://github.com/domchristie/turndown" target="_blank">Turndown</a> instead of <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a> for HTML-to-markdown conversion (less buggy)',
           },
           {
             type: 'checkbox',
             name: 'updateMarkdownLessOften',
-            label: 'When open, update markdown panel less often—only when new elements are created (uses less CPU)',
+            label: 'When it\'s open, update markdown panel less often—only when new elements are created (uses less CPU)',
           },
           {
             type: 'textarea',
@@ -697,7 +712,8 @@ tinymce.init({
       initialData: {
         customCSS: customCSS,
         updateMarkdownLessOften: updateMarkdownLessOften,
-        useTurndownInsteadOfShowdown: useTurndownInsteadOfShowdown
+        useTurndownInsteadOfShowdown: useTurndownInsteadOfShowdown,
+        reverseShiftEnterBehavior: reverseShiftEnterBehavior
       },
       onSubmit: function (api) {
 
@@ -730,6 +746,15 @@ tinymce.init({
         } else {
           localStorage.setItem('useTurndownInsteadOfShowdown', false);
           useTurndownInsteadOfShowdown = false;
+        }
+
+        // Change Shift+Enter behavior depending on preferences
+        if (data.reverseShiftEnterBehavior == true) {
+          localStorage.setItem('reverseShiftEnterBehavior', true);
+          reverseShiftEnterBehavior = true;
+        } else {
+          localStorage.setItem('reverseShiftEnterBehavior', false);
+          reverseShiftEnterBehavior = false;
         }
 
         // Needed as preferences menu otherwise won't have updated initial values for settings if reopened

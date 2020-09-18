@@ -192,6 +192,7 @@ button[title="Formats"] {
 /* Dialogue box labels */
 .tox-label {
 	color: var(--general-text-color) !important;
+	white-space: normal !important;
 }
 
 /* Dialogue box bodies */
