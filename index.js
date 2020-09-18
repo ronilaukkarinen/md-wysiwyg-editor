@@ -218,9 +218,9 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo heading bold italic underline strikethrough superscript subscript bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // quickimage
-  toolbar_mode: 'scrolling',
-  plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern print quickbars',
+  toolbar: 'file undo redo heading bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // quickimage
+  toolbar_mode: 'floating',
+  plugins: 'code codesample, link image table lists paste save searchreplace autolink hr textpattern quickbars',
   // ^ Note: Print seems to break the editor (buttons/menus and shortcuts) by giving focus to the OS somehow
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
@@ -261,6 +261,7 @@ tinymce.init({
   table_default_attributes: {},
   table_default_styles: {},
   visual: false,
+  image_caption: false,
   image_dimensions: false,
   object_resizing: false,
   resize_img_proportional: true, // Disabled due to resizing off
@@ -412,7 +413,7 @@ tinymce.init({
     });
 
     // Set up headings formatting button
-    editor.ui.registry.addMenuButton('heading', {
+    /*editor.ui.registry.addMenuButton('heading', {
       tooltip: 'Heading',
       icon: 'heading',
       fetch: function (callback) {
@@ -468,6 +469,98 @@ tinymce.init({
         ];
         callback(items);
       }
+    });*/
+
+    editor.ui.registry.addToggleButton('H1', {
+      text: 'H1',
+      onAction: function (api) {
+        editor.execCommand('mceToggleFormat', false, 'h1');
+        api.setActive(!api.isActive());
+      },
+      onSetup: function (api) {
+        editor.formatter.formatChanged('h1', function (state) {
+          api.setActive(state);
+        });
+      }
+    });
+
+    editor.ui.registry.addToggleButton('H2', {
+      text: 'H2',
+      onAction: function (api) {
+        editor.execCommand('mceToggleFormat', false, 'h2');
+        api.setActive(!api.isActive());
+      },
+      onSetup: function (api) {
+        editor.formatter.formatChanged('h2', function (state) {
+          api.setActive(state);
+        });
+      }
+    });
+
+    editor.ui.registry.addToggleButton('H3', {
+      text: 'H3',
+      onAction: function (api) {
+        editor.execCommand('mceToggleFormat', false, 'h3');
+        api.setActive(!api.isActive());
+      },
+      onSetup: function (api) {
+        editor.formatter.formatChanged('h3', function (state) {
+          api.setActive(state);
+        });
+      }
+    });
+
+    editor.ui.registry.addToggleButton('H4', {
+      text: 'H4',
+      onAction: function (api) {
+        editor.execCommand('mceToggleFormat', false, 'h4');
+        api.setActive(!api.isActive());
+      },
+      onSetup: function (api) {
+        editor.formatter.formatChanged('h4', function (state) {
+          api.setActive(state);
+        });
+      }
+    });
+
+    editor.ui.registry.addToggleButton('H5', {
+      text: 'H5',
+      onAction: function (api) {
+        editor.execCommand('mceToggleFormat', false, 'h5');
+        api.setActive(!api.isActive());
+      },
+      onSetup: function (api) {
+        editor.formatter.formatChanged('h5', function (state) {
+          api.setActive(state);
+        });
+      }
+    });
+
+    editor.ui.registry.addToggleButton('H6', {
+      text: 'H6',
+      onAction: function (api) {
+        editor.execCommand('mceToggleFormat', false, 'h6');
+        api.setActive(!api.isActive());
+      },
+      onSetup: function (api) {
+        editor.formatter.formatChanged('h6', function (state) {
+          api.setActive(state);
+        });
+      }
+    });
+
+    // Add heading group toolbar button
+    editor.ui.registry.addGroupToolbarButton('heading', {
+      icon: 'heading',
+      tooltip: 'Heading',
+      items: 'h1 h2 h3 h4 h5 h6'
+    });
+
+    // Add additional formatting group toolbar button
+    editor.ui.registry.addGroupToolbarButton('extraformat', {
+      icon: 'more-drawer',
+      tooltip: 'Additional formatting options',
+      items: 'underline strikethrough superscript subscript removeformat'
     });
 
     // Set up markdown pane and toolbar button
@@ -479,10 +572,11 @@ tinymce.init({
       },
       onShow: function (api) {
         // Update the markdown editor via conversion of the main editor HTML to markdown
-        updateMarkdownWithEditorHTML();
+        updateMarkdownWithEditorHTML(undefined, true);
         return;
       },
       onHide: function (api) {
+        // Not really necessary to update editor HTML with markdown here
         return;
       },
     });
@@ -1089,7 +1183,7 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
     if (timeDifference < 100) {
       if (markdownToHTMLPending == false) {
         markdownToHTMLPending = true;
-        setTimeout(function (markdownToConvert) {
+        setTimeout(function(markdownToConvert) {
           updateEditorHTMLWithMarkdown(markdownToConvert);
         }, 100 - timeDifference + 1);
         return;
