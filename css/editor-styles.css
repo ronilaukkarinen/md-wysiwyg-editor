@@ -153,7 +153,7 @@ button[title="Formats"] {
 }
 
 /* Dropdown menu items hover/active */
-.tox .tox-collection--list .tox-collection__item--active {
+.tox .tox-collection--list .tox-collection__item--active, .tox .tox-collection--list .tox-collection__item--enabled {
 	color: var(--general-text-color) !important;
 	background-color: var(--menu-item-button-hover-color) !important;
 }
@@ -176,6 +176,11 @@ button[title="Formats"] {
 /* Menu item caret icons */
 .tox .tox-collection__item-caret svg {
 	fill: var(--icon-fill-color) !important;
+}
+
+/* Toolbar overflow (floating) */
+.tox-toolbar__overflow {
+	border: 1px solid var(--general-border-color) !important;
 }
 
 /* Dialogue box */

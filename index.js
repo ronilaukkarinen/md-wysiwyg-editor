@@ -2,6 +2,8 @@ let persistFilename = "untitled.md";
 let markdownSidebarToggleState = false;
 let fullscreenTracker = false;
 
+let disableRightClick = false;
+
 let reverseShiftEnterBehavior;
 let updateMarkdownLessOften;
 let customCSS;
@@ -212,7 +214,7 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
+  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample tableinsertdialog image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
   toolbar_mode: 'floating',
   plugins: 'code codesample, link image table lists paste searchreplace autolink hr textpattern quickbars',
   contextmenu_never_use_native: true,
@@ -680,7 +682,7 @@ tinymce.init({
         {
           type: 'submit',
           name: 'submitButton',
-          text: 'Save',
+          text: 'Save and reload',
           primary: true
         },
         {
@@ -841,7 +843,6 @@ tinymce.init({
 
     editor.addShortcut('Meta+M', 'Markdown', function () {
       tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
-      // ^ -> https://stackoverflow.com/questions/46825012/how-to-open-close-sidebar-in-tinymce
     });
 
     editor.addShortcut('Meta+W', 'Quit', function () {
@@ -1409,7 +1410,81 @@ function setupMarkdown(api) {
 }
 
 // Disable right-click
-window.addEventListener('contextmenu', function(event) {
-  event.preventDefault();
-}, false);
+if (disableRightClick == true) {
+  window.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  }, false);
+}
+
+// Keyboard shortcuts for when focus is not in main TinyMCE editor
+window.addEventListener('keydown', function(event) {
+
+  // Ctrl/Cmd + N -> New file
+  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyN') {
+    event.preventDefault();
+    newFile();
+  }
+  
+  // Ctrl/Cmd + O -> Open file
+  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyO') {
+    event.preventDefault();
+    // openFile();
+    app.openFile();
+  }
+
+  // Ctrl/Cmd + S -> Save file
+  if (!event.shiftKey && (event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
+    event.preventDefault();
+    // saveFile();
+    app.saveFile();
+  }
+  
+  // Shift + Ctrl/Cmd + S -> Save file as
+  if (event.shiftKey && (event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
+    event.preventDefault();
+    // saveFileAs();
+    app.saveFileAs();
+  }
+
+  // Ctrl/Cmd + M -> Markdown pane toggle
+  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyM') {
+    event.preventDefault();
+    tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+  }
+  
+  // Ctrl/Cmd + W -> Quit
+  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyW') {
+    event.preventDefault();
+    quit();
+  }
+  
+  // Ctrl/Cmd + Q -> Quit
+  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyQ') {
+    event.preventDefault();
+    quit();
+  }
+  
+  // Shift + Ctrl/Cmd + F -> Fullscreen toggle
+  if (event.shiftKey && (event.ctrlKey || event.metaKey) && event.code === 'KeyF') {
+    event.preventDefault();
+    toggleFullscreen();
+  }
+
+  // F11 -> Fullscreen toggle
+  if (event.key == 'F11') {
+    event.preventDefault();
+    toggleFullscreen();
+  }
+  
+  // Esc -> Exit fullscreen if it's open and if not close markdown sidebar if it's open
+  if (event.key == 'Escape' && fullscreenTracker == true) {
+    event.preventDefault();
+    toggleFullscreen();
+  } else if (event.key == 'Escape' && markdownSidebarToggleState == true) {
+    event.preventDefault();
+    tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+  }
+
+  return;
+});
 

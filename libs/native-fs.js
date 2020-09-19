@@ -24,7 +24,6 @@ const app = {
     name: null,
   },
   hasNativeFS: 'chooseFileSystemEntries' in window || 'showOpenFilePicker' in window,
-  isMac: navigator.userAgent.includes('Mac OS X'),
 };
 
 // Verify the APIs we need are supported, show a polite warning if not.
