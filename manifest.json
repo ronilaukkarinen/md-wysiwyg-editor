@@ -2,7 +2,7 @@
   "name": "Text Editor",
   "short_name": "TextEdit",
   "description": "Text Editor - PWA + TinyMCE + NFS.",
-  "start_url": "./",
+  "start_url": "./text-editor/",
   "display": "standalone",
   "lang": "en-US",
   "theme_color": "#FFFFFF",
