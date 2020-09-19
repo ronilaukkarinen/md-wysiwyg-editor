@@ -21,19 +21,19 @@
   ],
   "file_handlers": [
     {
-      "action": "/",
+      "action": "/open-md/",
       "accept": {
         "text/markdown": [".md", ".markdown"]
       }
     },
     {
-      "action": "/",
+      "action": "/open-txt/",
       "accept": {
         "text/plain": [ ".txt", ".text" ]
       }
     },
     {
-      "action": "/",
+      "action": "/open-html/",
       "accept": {
         "text/html": [".html", ".htm"]
       }
