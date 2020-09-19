@@ -2,7 +2,7 @@
   "name": "Text Editor",
   "short_name": "TextEdit",
   "description": "Text Editor - PWA + TinyMCE + NFS.",
-  "start_url": "./text-editor/",
+  "start_url": "./",
   "display": "standalone",
   "lang": "en-US",
   "theme_color": "#FFFFFF",
@@ -21,19 +21,19 @@
   ],
   "file_handlers": [
     {
-      "action": "/open-md/",
+      "action": "/text-editor/",
       "accept": {
         "text/markdown": [".md", ".markdown"]
       }
     },
     {
-      "action": "/open-txt/",
+      "action": "/text-editor/",
       "accept": {
         "text/plain": [ ".txt", ".text" ]
       }
     },
     {
-      "action": "/open-html/",
+      "action": "/text-editor/",
       "accept": {
         "text/html": [".html", ".htm"]
       }
