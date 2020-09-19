@@ -59,24 +59,24 @@ function openFile(filename, data) {
       data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
         return '```\n' + match + '```';
       });
-  	} else if (data.match(/^((\+\+\+)\n)/) != null) {
-  	  data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
-  	    return '```\n' + match + '```';
-  	  });
-  	}
+    } else if (data.match(/^((\+\+\+)\n)/) != null) {
+      data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
+        return '```\n' + match + '```';
+      });
+    }
 
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
   } else {
-  	// Replace newlines with HTML so read correctly by TinyMCE
-  	//data = data.replace(/(\n)/g, '<br />');
-  	data = data.replace(/\n.*\n/g, function(match) {
-  	    return '<p>' + match + '</p>';
-  	  });
-  	// Replace tabs with em spaces (otherwise will be dropped)
-  	data = data.replace(/\t/g, function(match) {
-  	    return '&emsp;';
-  	  });
+    // Replace newlines with HTML so read correctly by TinyMCE
+    //data = data.replace(/(\n)/g, '<br />');
+    data = data.replace(/\n.*\n/g, function(match) {
+        return '<p>' + match + '</p>';
+      });
+    // Replace tabs with em spaces (otherwise will be dropped)
+    data = data.replace(/\t/g, function(match) {
+        return '&emsp;';
+      });
     tinymce.editors[0].setContent(data, {format: 'text'});
   }
 
@@ -87,7 +87,7 @@ function openFile(filename, data) {
   tinyMCE.execCommand("UpdateMarkdown", false, undefined, true);
   setTimeout(tinyMCE.execCommand("UpdateMarkdown", false, undefined, true), 100); // Do it again if didn't work the first time... (temporary hack)
 
-	// cacheFileHandle();
+  // cacheFileHandle();
 
   return;
 }
@@ -111,7 +111,7 @@ function saveFile(filename) {
   updateFilename(filename, false);
   tinymce.editors[0].setDirty(false);
 
-	// cacheFileHandle();
+  // cacheFileHandle();
 
   return content;
 }
@@ -119,11 +119,11 @@ function saveFile(filename) {
 // Save file handle in local storage
 /*function cacheFileHandle() {
 
-	if (app.file.handle) {
-		localStorage.setItem('fileHandle', JSON.stringify(app.file.handle));
-	}
+  if (app.file.handle) {
+    localStorage.setItem('fileHandle', JSON.stringify(app.file.handle));
+  }
 
-	return;
+  return;
 }*/
 
 // Quit
@@ -654,7 +654,7 @@ tinymce.init({
       onAction: function () {
         // Look into this in the future:
         // https://web.dev/prefers-color-scheme/
-        theme_switch();
+        switchTheme();
         // Give focus back to editor area
         tinyMCE.get('textEditor').getBody().focus();
       }
@@ -1016,14 +1016,14 @@ tinymce.init({
     editor.on('Init', function(event) {
 
       // Apply the theme
-      theme_apply();
+      applyTheme();
 
       // Apply custom CSS styles if applicable
       if (customCSS != null && customCSS != '') {
         customEditorAreaCSS(true, customCSS);
       }
 
-			// Adjust editor spacing if narrow window width
+      // Adjust editor spacing if narrow window width
       adjustEditorSpacing();
 
       // Check if native file system is enabled and alert if not
@@ -1045,7 +1045,12 @@ tinymce.init({
             if (!launchParams.files.length) {
               return;
             }
-            app.openFile(launchParams.files[0]);
+            // app.openFile(launchParams.files[0]);
+            const fileHandle = launchParams.files[0];
+            var getFileName = launchParams.files[0].name;
+            const getFileBlob = await fileHandle.getFile();
+            console.log("Filename: " + getFileName);
+            console.log("File blob: " + getFileBlob);
             openWith = true;
           });
         }
@@ -1081,10 +1086,10 @@ tinymce.init({
         request();
       }
 
-			// Retrieve last worked-on file if file handle saved in local storage
-			/*if (openWith == false && !startFilename) {
-				app.openFile(JSON.parse(localStorage.getItem('fileHandle')));
-			}*/
+      // Retrieve last worked-on file if file handle saved in local storage
+      /*if (openWith == false && !startFilename) {
+        app.openFile(JSON.parse(localStorage.getItem('fileHandle')));
+      }*/
 
       // Open markdown pane if the relevant URL parameter is set
       if(startMarkdownView) {
@@ -1115,32 +1120,32 @@ tinymce.init({
       const observer = new MutationObserver(mutationCallback);
       observer.observe(editorPane, mutationConfig);
 
-			// Synchronize scrolling between editing panes
-			var markdownEditor = document.getElementById('markdown-editor');
+      // Synchronize scrolling between editing panes
+      var markdownEditor = document.getElementById('markdown-editor');
       var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
 
-		  let scrolledPane;
-	    editorPane.addEventListener("mouseenter", function(event) {
-	      scrolledPane = 'editorPane';
-	    });
+      let scrolledPane;
+      editorPane.addEventListener("mouseenter", function(event) {
+        scrolledPane = 'editorPane';
+      });
 
-	    markdownEditor.addEventListener("mouseenter", function(event) {
-	      scrolledPane = 'markdownPane';
-	    });
+      markdownEditor.addEventListener("mouseenter", function(event) {
+        scrolledPane = 'markdownPane';
+      });
 
-			markdownEditor.addEventListener("scroll", function(event) {
-				if (scrolledPane == 'markdownPane') {
-					var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
-					iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
-				}
-			});
+      markdownEditor.addEventListener("scroll", function(event) {
+        if (scrolledPane == 'markdownPane') {
+          var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
+          iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
+        }
+      });
 
-	    iframe.contentWindow.document.addEventListener("scroll", function(event) {
-				if (scrolledPane == 'editorPane') {
-					var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
-					markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
-				}
-	    });
+      iframe.contentWindow.document.addEventListener("scroll", function(event) {
+        if (scrolledPane == 'editorPane') {
+          var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
+          markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+        }
+      });
 
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
@@ -1163,8 +1168,7 @@ if (localStorage.getItem('theme')) {
 }
 
 // Apply the theme
-function theme_apply() {
-  'use strict';
+function applyTheme() {
   var iframe = document.getElementById('textEditor_ifr');
   var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
   if (theme === 'light') {
@@ -1181,14 +1185,13 @@ function theme_apply() {
 }
 
 // Switch the theme
-function theme_switch() {
-  'use strict';
+function switchTheme() {
   if (theme === 'light') {
     theme = 'dark';
   } else {
     theme = 'light';
   }
-  theme_apply();
+  applyTheme();
 }
 
 // Loosen padding/margins if editor pane width is small (e.g., when editor isn't maximized and markdown pane is open)
@@ -1445,11 +1448,11 @@ function setupMarkdown(api) {
 
   tinymce.activeEditor.on("Change", function() {
 
-	  if (updateMarkdownLessOften == true) {
-	  	updateMarkdownWithEditorHTML(event.content);
-	  }
+    if (updateMarkdownLessOften == true) {
+      updateMarkdownWithEditorHTML(event.content);
+    }
 
-		return;
+    return;
   });
 
   // tinymce.getContent() format handler for 'markdown'

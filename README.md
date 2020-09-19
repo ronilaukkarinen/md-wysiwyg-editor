@@ -39,14 +39,15 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ## Features
 
+* Rich-text/WYSIWIG markdown editor.
 * Open and save files as markdown (MD), constrained rich-text (HTML), and plain text (TXT).
-* Bidirectional live editing between rich-text and markdown views. Also an HTML code view and editor.
+* Bidirectional live editing between rich-text and markdown views (as well as an HTML view).
 * Rich-text is constrained essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically sanitized and filtered as soon as it enters the editor.
 * In rich-text editing mode, automatic conversion of typed markdown syntax into rich-text formatting. For example, typing `# Header title` will make an H1 header and typing `This text is bold.` will give bolded text. These conversions for links, images, task lists, and tables are not supported. In addition to markdown syntax, certain strings will convert to special characters (e.g., `--` to en dash and `---` to em dash). See [pattern-conversions.md](docs/pattern-conversions.md) for a list of conversions.
 * Keyboard shortcuts for editing, formatting, etc. (except where prevented by browser—e.g., Ctrl+N for new file in non-app mode). See [keyboard-shortcuts.md](docs/keyboard-shortcuts.md) for a list.
 * Works offline when installed as a PWA.
 * Mobile-friendly.
-* Dark mode.
+* Light and dark modes.
 * Option to switch between HTML-to-markdown conversion engines (Turndown and Showdown) in preferences. The Turndown engine is better for this conversion and is set to default. Markdown-to-HTML conversion is always handled by Showdown.
 * Optional customization of rich-text appearance via CSS in preferences.
 
