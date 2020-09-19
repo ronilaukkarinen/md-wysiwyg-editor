@@ -295,9 +295,13 @@ button[title="Formats"] {
 	border-left: 1px solid var(--general-border-color) !important;
 }
 
-/* Markdown sidebar left border */
-.markdown-preview {
-	border-left: 1px solid var(--general-border-color) !important;
+/* Markdown editing area */
+#markdown-editor {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	line-height: 1.4 !important;
 }
 
 /* Quick inline pop-up box */

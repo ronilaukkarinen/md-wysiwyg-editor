@@ -48,6 +48,7 @@ app.newFile = () => {
  * @param {FileSystemFileHandle} fileHandle File handle to read from.
  */
 app.openFile = async (fileHandle) => {
+
   // If the Native File System API is not supported, use the legacy file apis.
   if (!app.hasNativeFS) {
     const file = await app.getFileLegacy();
@@ -291,7 +292,7 @@ async function verifyPermission(fileHandle, withWrite) {
   if (await fileHandle.requestPermission(opts) === 'granted') {
     return true;
   }
-  // The user did nt grant permission, return false.
+  // The user didn't grant permission, return false.
   return false;
 }
 

@@ -68,6 +68,15 @@ function openFile(filename, data) {
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
   } else {
+  	// Replace newlines with HTML so read correctly by TinyMCE
+  	//data = data.replace(/(\n)/g, '<br />');
+  	data = data.replace(/\n.*\n/g, function(match) {
+  	    return '<p>' + match + '</p>';
+  	  });
+  	// Replace tabs with em spaces (otherwise will be dropped)
+  	data = data.replace(/\t/g, function(match) {
+  	    return '&emsp;';
+  	  });
     tinymce.editors[0].setContent(data, {format: 'text'});
   }
 
@@ -77,6 +86,8 @@ function openFile(filename, data) {
 
   tinyMCE.execCommand("UpdateMarkdown", false, undefined, true);
   setTimeout(tinyMCE.execCommand("UpdateMarkdown", false, undefined, true), 100); // Do it again if didn't work the first time... (temporary hack)
+
+	// cacheFileHandle();
 
   return;
 }
@@ -100,13 +111,24 @@ function saveFile(filename) {
   updateFilename(filename, false);
   tinymce.editors[0].setDirty(false);
 
+	// cacheFileHandle();
+
   return content;
 }
+
+// Save file handle in local storage
+/*function cacheFileHandle() {
+
+	if (app.file.handle) {
+		localStorage.setItem('fileHandle', JSON.stringify(app.file.handle));
+	}
+
+	return;
+}*/
 
 // Quit
 function quit() {
 
-  // ipcRenderer.send('call-quit');
   window.close();
 
   return;
@@ -1001,28 +1023,8 @@ tinymce.init({
         customEditorAreaCSS(true, customCSS);
       }
 
+			// Adjust editor spacing if narrow window width
       adjustEditorSpacing();
-
-      // Retrieve relevant URL parameters if any
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const startFilename = urlParams.get('mdf');
-      const startMarkdownView = urlParams.get('mdv');
-
-      // Open a starting markdown file if the relevant URL parameter is set
-      if(startFilename) {
-        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFilename;
-        // Fetch the file and open it
-        async function request() {
-          const response = await fetch(startFileURL);
-          const content = await response.text();
-          // setTimeout() -> Temporary hack fix
-          setTimeout(function() {
-            openFile(startFilename, content);
-          }, 100);
-        };
-        request();
-      }
 
       // Check if native file system is enabled and alert if not
       if (!"chooseFileSystemEntries" in window) {
@@ -1036,14 +1038,15 @@ tinymce.init({
       }
 
       // Handle "open with" (doesn't work yet)
+      var openWith = false;
       if ("launchQueue" in window) {
         if ("LaunchParams" in window) {
           window.launchQueue.setConsumer(async (launchParams) => {
             if (!launchParams.files.length) {
               return;
             }
-            const fileHandle = launchParams.files[0];
-            app.openFile(fileHandle);
+            app.openFile(launchParams.files[0]);
+            openWith = true;
           });
         }
       // Alert if native file handling API isn't enabled
@@ -1056,6 +1059,32 @@ tinymce.init({
           localStorage.setItem('showedEnableFileHandlingAPI', 'true');
         }
       }
+
+      // Retrieve relevant URL parameters if any
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const startFilename = urlParams.get('mdf');
+      const startMarkdownView = urlParams.get('mdv');
+
+      // Open a starting markdown file if the relevant URL parameter is set
+      if (openWith == false && startFilename) {
+        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFilename;
+        // Fetch the file and open it
+        async function request() {
+          const response = await fetch(startFileURL);
+          const content = await response.text();
+          // setTimeout() -> Temporary hack fix
+          setTimeout(function() {
+            openFile(startFilename, content);
+          }, 100);
+        };
+        request();
+      }
+
+			// Retrieve last worked-on file if file handle saved in local storage
+			/*if (openWith == false && !startFilename) {
+				app.openFile(JSON.parse(localStorage.getItem('fileHandle')));
+			}*/
 
       // Open markdown pane if the relevant URL parameter is set
       if(startMarkdownView) {
@@ -1076,7 +1105,7 @@ tinymce.init({
 
       // Function to execute when changes in the editor area are observed
       const mutationCallback = function(mutationsList, observer) {
-        // Stop it from updating markdown pane if we're editing in the markdown pane
+        // Don't update markdown if we're editing in the markdown pane
         if (tinymce.activeEditor.hasFocus() == true) {
           tinyMCE.execCommand("UpdateMarkdown");
         }
@@ -1085,6 +1114,33 @@ tinymce.init({
       // Watch editor area for changes
       const observer = new MutationObserver(mutationCallback);
       observer.observe(editorPane, mutationConfig);
+
+			// Synchronize scrolling between editing panes
+			var markdownEditor = document.getElementById('markdown-editor');
+      var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
+
+		  let scrolledPane;
+	    editorPane.addEventListener("mouseenter", function(event) {
+	      scrolledPane = 'editorPane';
+	    });
+
+	    markdownEditor.addEventListener("mouseenter", function(event) {
+	      scrolledPane = 'markdownPane';
+	    });
+
+			markdownEditor.addEventListener("scroll", function(event) {
+				if (scrolledPane == 'markdownPane') {
+					var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
+					iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
+				}
+			});
+
+	    iframe.contentWindow.document.addEventListener("scroll", function(event) {
+				if (scrolledPane == 'editorPane') {
+					var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
+					markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+				}
+	    });
 
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
@@ -1143,10 +1199,10 @@ function adjustEditorSpacing() {
 
   // Hardcoded... un-hardcode this in the future
   if(editorPane.offsetWidth < 750) {
-    editorPane.style.paddingTop = "5px";
-    editorPane.style.paddingBottom = "5px";
-    editorPane.style.paddingLeft = "5px";
-    editorPane.style.paddingRight = "5px";
+    editorPane.style.paddingTop = "10px";
+    editorPane.style.paddingBottom = "10px";
+    editorPane.style.paddingLeft = "10px";
+    editorPane.style.paddingRight = "10px";
   } else {
     editorPane.style.paddingTop = "30px";
     editorPane.style.paddingBottom = "30px";
@@ -1386,9 +1442,15 @@ function setupMarkdown(api) {
     }
   });
 
-  if (updateMarkdownLessOften == true) {
-    tinymce.activeEditor.on("Change", updateMarkdownWithEditorHTML(event.content));
-  }
+
+  tinymce.activeEditor.on("Change", function() {
+
+	  if (updateMarkdownLessOften == true) {
+	  	updateMarkdownWithEditorHTML(event.content);
+	  }
+
+		return;
+  });
 
   // tinymce.getContent() format handler for 'markdown'
   tinymce.activeEditor.on("GetContent", function(event) {

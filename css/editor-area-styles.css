@@ -70,6 +70,7 @@ body {
 	padding-left: 30px;
 	padding-right: 30px;
 	line-height: 1.6;
+	/*line-height: 1.4;*/
 	/*margin-bottom: 2.0em;*/
 }
 
@@ -84,6 +85,12 @@ body > :last-child {
 	margin-bottom: 0em !important;
 	padding-bottom: 0px !important;
 }
+
+/* For no space between lines */
+/*p {
+	padding: 0px;
+	margin: 0px;
+}*/
 
 a {
 	color: var(--link-color);
@@ -110,12 +117,7 @@ a:not([class]) {
 	}
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
 	position: relative;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -125,36 +127,27 @@ h6 {
 	cursor: text;
 	color: var(--general-text-color);
 }
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
 	text-decoration: none;
 }
-h1 tt,
-h1 code {
+
+h1 tt, h1 code {
 	font-size: inherit;
 }
-h2 tt,
-h2 code {
+h2 tt, h2 code {
 	font-size: inherit;
 }
-h3 tt,
-h3 code {
+h3 tt, h3 code {
 	font-size: inherit;
 }
-h4 tt,
-h4 code {
+h4 tt, h4 code {
 	font-size: inherit;
 }
-h5 tt,
-h5 code {
+h5 tt, h5 code {
 	font-size: inherit;
 }
-h6 tt,
-h6 code {
+h6 tt, h6 code {
 	font-size: inherit;
 }
 
@@ -216,13 +209,13 @@ blockquote {
 }
 
 code, pre {
+	color: var(--general-text-color);
+	font-size: 14px !important;
+	background: var(--code-background-color) !important;
+	text-shadow: 0 0px transparent !important;
 	padding-top: 2px;
 	padding-left: 2px;
 	padding-right: 2px;
-	color: var(--general-text-color);
-	font-size: 14px !important;
-	/*background: var(--code-background-color) !important;
-	text-shadow: 0 0px transparent !important;*/
 }
 
 pre {
