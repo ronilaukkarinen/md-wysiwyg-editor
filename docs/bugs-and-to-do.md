@@ -77,7 +77,7 @@ var editorChangeHandler = function() {
 ** Showdown did this escape also:
 *** `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like` -> `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like`
 * Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
-* Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` -> 
+* Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
 ** `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
 ** ^ Breaks after the second parenthesis -> "199605)28" (that parenthesis)
 * Showdown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`)

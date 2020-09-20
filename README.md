@@ -51,7 +51,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ## Notes
 
-The editor is still under development and has [many bugs](docs/known-bugs).
+The editor is still under development and has [many bugs](docs/bugs-and-to-do.md).
 
 Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files—sometimes in undesirable ways. A number of examples are illustrative. Escapes (`\`) may be added to certain markdown syntax characters that aren't part of the markdown (e.g., `~`, `|`). Headerless markdown tables will be escaped and thereby broken with Showdown as the HTML-to-markdown engine. YAML and TOML front matter is automatically put inside of a markdown code block (<code>```</code>) to prevent it from being parsed by the HTML-to-markdown engines. Changes to markdown files will vary depending on whether Turndown or Showdown is selected as the HTML-to-markdown conversion engine. For example, Showdown doesn't handle headerless tables, whereas Turndown does via a plugin although it adds an empty header row to the tables and doesn't always work.
 
@@ -59,7 +59,7 @@ Rich-text editing is dependable but as described the markdown functionality has 
 
 ### Future
 
-* Lots of [bug fixes](docs/known-bugs) and minor features.
+* Lots of [bug fixes](docs/bugs-and-to-do.md) and minor features.
 * Tabs for multiple documents at once?
 * Pane for files and table of contents?
 * Other things...
