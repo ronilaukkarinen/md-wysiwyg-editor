@@ -117,5 +117,12 @@ var editorChangeHandler = function() {
 * Decide on a name.
 * Move to new repository + username.
 * Make new screenshots with shadows.
+* Add app install/add to homescreen prompt stuff.
+** https://github.com/pwa-builder/pwa-install
+** https://love2dev.com/pwa/add-to-homescreen-library/
+** https://github.com/docluv/add-to-homescreen
+* Add app update stuff?
+** https://github.com/pwa-builder/pwa-update
+* Service worker and caching dependencies/etc.
+** https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/
 * Whatever else that's missing...
-

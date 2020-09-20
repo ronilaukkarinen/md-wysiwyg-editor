@@ -34,6 +34,7 @@
 | Ctrl or Cmd + Shift + 7 | Numbered list |
 | Ctrl or Cmd + K | Link |
 | Ctrl or Cmd + ] | Block quote |
+| Shift + Enter | Insert `<br />`-type new line |
 | None | Table |
 | None | Image |
 | None | Horizontal line |
