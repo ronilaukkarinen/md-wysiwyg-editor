@@ -2,7 +2,6 @@ build/
 bower_components/
 node_modules/
 scratch/
-docs/
 .firebase/
 
 .DS_Store
