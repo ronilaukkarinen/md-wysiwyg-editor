@@ -1037,28 +1037,31 @@ tinymce.init({
         }
       }
 
-      // Handle "open with" (doesn't work yet)
+      // Handle "open with" / file association
       var openWith = false;
-      if ("launchQueue" in window) {
-        if ("LaunchParams" in window) {
-          window.launchQueue.setConsumer(async (launchParams) => {
-            if (!launchParams.files.length) {
-              return;
-            }
-            // Doens't work due to permission error
-            // app.openFile(launchParams.files[0]);
-            // Instead, do the following to open ->
-            var fileHandle = launchParams.files[0];
-            var getFileName = launchParams.files[0].name;
-            const getFileBlob = await fileHandle.getFile();
-            getFileBlob.text().then(getFileText => {
-              openFile(getFileName, getFileText);
-              app.file.handle = launchParams.files[0];
-              app.file.name = getFileName;
-              openWith = true;
-            });
+      if ("launchQueue" in window && "LaunchParams" in window) {
+        window.launchQueue.setConsumer(async (launchParams) => {
+
+          // If no files passed
+          if (!launchParams.files.length) {
+            return;
+          }
+
+          // Doesn't work due to permission error
+          // app.openFile(launchParams.files[0]);
+
+          // Instead, do the following to open ->
+          var fileHandle = launchParams.files[0];
+          var getFileName = launchParams.files[0].name;
+          var getFileBlob = await fileHandle.getFile();
+          getFileBlob.text().then(getFileText => {
+            openFile(getFileName, getFileText);
+            // Breaks save... not compatible file handle type probably
+            // app.file.handle = launchParams.files[0];
+            // app.file.name = getFileName;
+            openWith = true;
           });
-        }
+        });
       // Alert if native file handling API isn't enabled
       } else {
         if (localStorage.getItem('showedEnableFileHandlingAPI') === null) {

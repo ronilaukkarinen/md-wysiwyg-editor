@@ -8,6 +8,7 @@
 | Ctrl or Cmd + S | Save |
 | Ctrl or Cmd + Shift + S | Save As |
 | Ctrl or Cmd + W | Quit |
+| Ctrl or Cmd + Q | Quit |
 | Ctrl or Cmd + Z | Undo |
 | Ctrl or Cmd + Y | Redo |
 | Ctrl or Cmd + Shift + Z | Redo |

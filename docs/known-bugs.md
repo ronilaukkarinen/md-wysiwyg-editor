@@ -102,6 +102,7 @@
 * addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
 ** https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
 * addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
+** ^ "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
 
 * ``` `...` ``` pattern -> Converts to <span><code></span></code> in markdown with Turndown (but converts correctly with Showdown)
 * ` ```...``` ` pattern -> Converts to <pre></pre> in markdown with Showdown (but converts correctly with Turndown)
@@ -118,4 +119,39 @@
 * Scrollbar sync doesn't scroll at bottom completely for the other scrollbar if smaller.
 
 * Tabs are converted into &emsp; with open .txt file (otherwise tabs removed completely).
+** Maybe helpful: https://stackoverflow.com/questions/2237497/
+
+* Open with doesn't allow use of file handle for subsequent save without prompt at this time.
+* Can't re-open last open file on start due to inability to store file handle.
+
+* Markdown editor isn't updating HTML editor on new lines or spaces... only characters.
+
+* Fullscreen button broken in non-app mode (sometimes?).
+
+* Service worker bug causing it to eat CPU/RAM?
+
+* Turndown should drop empty links for headings with copy + paste HTML.
+
+* Turndown is removing extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
+* Neither Turndown nor Showdown parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8`
+
+* Headers are added to headerless tables with Turndown so they aren't removed although this doesn't always work/happen.
+
+* Need to re-implement this maybe (delay before updating):
+
+```
+var editorChangeHandler = function() {
+  // Wait 200 ms before updating...
+  setTimeout(function () {
+    var content = editor.getContent();
+    updateMarkdown(converter, editor, content);
+    Decoration.forHtml(converter, node_Element.fromDom(editor.getBody()));
+  }, 200);
+};
+```
+* This might be useful for something:
+** tinymce.activeEditor.queryCommandValue('ToggleSidebar');
+** ^ Returns the current state of sidebar (open or closed).
+
+* Original copy wasn't working (remove extra HTML styling) so had to disable.
 

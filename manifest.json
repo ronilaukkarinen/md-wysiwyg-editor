@@ -29,7 +29,7 @@
     {
       "action": "/text-editor/",
       "accept": {
-        "text/plain": [ ".txt", ".text" ]
+        "text/plain": [".txt", ".text"]
       }
     },
     {

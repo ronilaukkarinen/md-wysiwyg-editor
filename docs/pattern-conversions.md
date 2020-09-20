@@ -29,3 +29,5 @@
 
 Where `...` is the text that you want to be affected.
 
+Not supported at this time: links, images, task lists, and tables.
+
