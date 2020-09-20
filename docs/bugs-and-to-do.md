@@ -114,7 +114,8 @@ var editorChangeHandler = function() {
 ## Miscellaneous
 
 * Service worker bug causing app to eat CPU/RAM?
-* Whatever else that's missing...
 * Decide on a name.
 * Move to new repository + username.
+* Make new screenshots with shadows.
+* Whatever else that's missing...
 
