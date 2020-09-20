@@ -7,9 +7,12 @@
 * Toolbar wrap on narrow width not working.
 * Image insert -> puts URL. Do custom images dialogue menu with both URL and file -> blob options.
 * Can fix tables with custom dialog menu + insert table (instead of tableInsertDialog menu).
+* Formatting button is non-ideal... change back to heading button/menu?
 * With heading toolbar button and extra formats drop-down buttons the buttons aren't highlighted when formats are active.
 ** Option?: addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
 *** https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
+* Preferences option to hide menu bar? (With alternatives for interaction)
+* Preferences option to disable pop-up/quick toolbar—sometimes annoying/problematic (plus redundant).
 
 ## Custom UI
 
@@ -110,7 +113,6 @@ var editorChangeHandler = function() {
 
 ## Miscellaneous
 
-* Preferences option to hide menu bar?
 * Service worker bug causing it to eat CPU/RAM?
 * Whatever else that's missing...
 
