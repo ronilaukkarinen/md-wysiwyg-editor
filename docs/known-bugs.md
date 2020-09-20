@@ -1,144 +1,28 @@
-`* No default filename with NFS:
-** Not currently supported:
-*** https://github.com/WICG/native-file-system/issues/80
+# Known Bugs and To-Do List
 
+## TinyMCE UI
 
-- If focus not in editor, keyboard shortcuts don't work
-
-
-- More shortcuts?:
-	- Alt+Ctrl+- -> HR
-	- Ctrl+` -> Code
-	- Ctrl+Shift+O -> Open folder (later)
-	- Headings: Ctrl+1-6 (?)
-	- Image: Ctrl+Shift+I
-	- Strikethrough: Ctrl+D
-	- Link: Ctrl+L (?)
-
-- Markdown editor isn't updating as often
-
-
-- Add app to open with context menu in file browser and handle.
-
-- Tab not working properly needs fix.
-
-- Format -> Code missing from toolbar.
-
-- Remove extra styling on copy.
-
-- Add Alt + F -> open file menu.
-
-- Markdown front matter is fenced with code block
-
-- Toolbar wrap on narrow width not working.
-
-- Live-typing markdown-to-rich-text conversion of link, image, multi-line code, others not working.
-
-- Disable Ctrl+R, dev tools, and other keyboard shortcuts?
-
-- Use Chrome search for Ctrl+F? Remove TinyMCE shortcut?
-
-- Hide menu bar option?
-
-- Paste rich text is including spacing/etc... need to restrict more like plain text paste with new lines? Filters/postprocessing?
-
-- Get this sometimes: Scripts may only close windows that were opened by them
-
-- Image blobs: Copy image from paint -> paste + saving and opening files DOES WORK!
-- Copy image in Chrome or copy HTML page contents including image -> converts into image URL instead of blob.
-
-- Image insert -> puts URL but should be URL AND file -> blob options.
-
-- Replace markdown pane textarea with a lightweight code editor library:
-  - https://github.com/kazzkiq/CodeFlask / https://kazzkiq.github.io/CodeFlask/
-  - https://github.com/antonmedv/codejar / https://medv.io/codejar/
-  - https://ourcodeworld.com/articles/read/309/top-5-best-code-editor-plugins-written-in-javascript
-
-- Code blocks in rich-text mode need work.
-
-- Modify copy -> copy as HTML code then turn into HTML (remove excess formatting).
-- Fullscreen button / shortcut doesn't work sometimes?
-
-- Rich text (md->html converter) is misdisplaying: "(Stege et al., 199628:5<307::AID-PROS6>3.0.CO;2-8))."
-	^ "([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8))."
-	^ Breaks after the second parenthesis -> "199605)28" (that parenthesis)
-
-
-- Showdown can't handle headerless tables
-
-- Showdown escapes various things. Markdown characters (e.g., "~", "|", "0.5" -> 0.\5). Happens even in URLs.
-- Showdown did this:
-	"[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like" ->
-	"[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like"
-
-- Showdown replaced markdown in HTML with HTML (changed ** to <em></em> and []() to <a...)
-
-- Showdown removed trailing whitespace at end from a line
-
-
-
-* p vs. br behavior... option...
-** Set padding and margin for p, headers, other elements to 0
-** Change Showdown and Turndown conversions for these elements from two linebreaks (\n\n) to one (\n)
-** Adjust line height (default 1.6, maybe change to 1.4)
-** Reduce empty line height if possible (?)
-
-
-
+* Code toolbar button needs rework.
+* Format -> Code missing from pop-up toolbar.
+* Toolbar wrap on narrow width not working.
+* Image insert -> puts URL. Do custom images dialogue menu with both URL and file -> blob options.
 * Can fix tables with custom dialog menu + insert table (instead of tableInsertDialog menu).
-* Look into custom images dialog menu with both upload as blob and URL options.
+* With heading toolbar button and extra formats drop-down buttons the buttons aren't highlighted when formats are active.
+** Option?: addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
+*** https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
 
-
-* Nice-looking client-side file save library ->
-** https://github.com/eligrey/FileSaver.js
-
-
-* Another JS HTML-to-markdown converter to look at (but node.js):
-** https://github.com/breakdance/breakdance
-
-* Add keyboard shorcut for files menu if possible (Alt + F)
-* 
-
-* addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
-** https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
-* addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
-** ^ "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
-
-* ``` `...` ``` pattern -> Converts to <span><code></span></code> in markdown with Turndown (but converts correctly with Showdown)
-* ` ```...``` ` pattern -> Converts to <pre></pre> in markdown with Showdown (but converts correctly with Turndown)
-
-* No default filename with save file as—not possible to fix due to current Native File System limitations.
-
-* Neither Turndown nor Showdown handle Shift+Enter behavior... both just collapse the newlines.
-
-* .txt files don't open right... all line breaks lost.
-
-* Turndown (but not Showdown) is dropping extra line breaks.
-** But Showdown markdown to HTML is dropping extra line breaks...
+## Custom UI
 
 * Scrollbar sync doesn't scroll at bottom completely for the other scrollbar if smaller.
-
-* Tabs are converted into &emsp; with open .txt file (otherwise tabs removed completely).
-** Maybe helpful: https://stackoverflow.com/questions/2237497/
-
-* Open with doesn't allow use of file handle for subsequent save without prompt at this time.
-* Can't re-open last open file on start due to inability to store file handle.
-
 * Markdown editor isn't updating HTML editor on new lines or spaces... only characters.
-
-* Fullscreen button broken in non-app mode (sometimes?).
-
-* Service worker bug causing it to eat CPU/RAM?
-
-* Turndown should drop empty links for headings with copy + paste HTML.
-
-* Turndown is removing extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
-* Neither Turndown nor Showdown parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8`
-
-* Headers are added to headerless tables with Turndown so they aren't removed although this doesn't always work/happen.
-
+* Replace markdown pane textarea with a lightweight code editor library:
+** https://github.com/kazzkiq/CodeFlask / https://kazzkiq.github.io/CodeFlask/
+** https://github.com/antonmedv/codejar / https://medv.io/codejar/
+** https://ourcodeworld.com/articles/read/309/top-5-best-code-editor-plugins-written-in-javascript
+* Maybe use this instead of saving the info in variable (but would conflict if additional sidebars in future):
+** tinymce.activeEditor.queryCommandValue('ToggleSidebar');
+** ^ Returns the current state of sidebar (open or closed).
 * Need to re-implement this maybe (delay before updating):
-
 ```
 var editorChangeHandler = function() {
   // Wait 200 ms before updating...
@@ -149,9 +33,84 @@ var editorChangeHandler = function() {
   }, 200);
 };
 ```
-* This might be useful for something:
-** tinymce.activeEditor.queryCommandValue('ToggleSidebar');
-** ^ Returns the current state of sidebar (open or closed).
+* Help views for keyboard shortcuts and typed markdown-to-rich-text conversions?
 
-* Original copy wasn't working (remove extra HTML styling) so had to disable.
+## Editing
+
+* p vs. br behavior... option...
+** Set padding and margin for p, headers, other elements to 0
+** Change Showdown and Turndown conversions for these elements from two linebreaks (\n\n) to one (\n)
+** Adjust line height (default 1.6, maybe change to 1.4)
+** Reduce empty line height if possible (?)
+* Code blocks in rich-text mode need work.
+* Live-typing markdown-to-rich-text conversion of link, image, multi-line code, others not added.
+* Tabs are converted into &emsp; with open .txt file (otherwise tabs removed completely).
+** Maybe helpful: https://stackoverflow.com/questions/2237497/
+* Code block autocomplete needs work... maybe helpful:
+** addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
+*** ^ "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
+
+## User Input
+
+* More keyboard shortcuts?:
+** Alt+Ctrl+- -> HR
+** Ctrl+` -> Code
+** Ctrl+Shift+O -> Open folder (later?)
+** Headings: Ctrl+1-6 (?)
+** Image: Ctrl+Shift+I
+** Strikethrough: Ctrl+D
+** Link: Ctrl+L (?)
+** Ctrl+_ -> Horizontal line
+* Add Alt + F keyboard shortcut to open File menu if possible.
+* Use Chrome search for Ctrl+F? Disable TinyMCE shortcut?
+** Tried but couldn't remove/override TinyMCE's Ctrl+F.
+* Disable Ctrl+R, dev tools, and other keyboard shortcuts?
+* Encounter this sometimes: "Scripts may only close windows that were opened by them".
+* Fullscreen button and/or keyboard shortcut doesn't work in non-app mode (sometimes?).
+
+## HTML–Markdown Conversion
+
+* Markdown front matter is fenced with code block to prevent removal/alteration.
+* Headers are added to headerless tables with Turndown so they aren't removed (although this doesn't always work/happen).
+* Showdown can't handle headerless tables.
+* Showdown escapes various things. Markdown characters (e.g., "~", "|", "0.5" -> 0.\5). Happens even in URLs.
+** Showdown did this escape also:
+*** `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like` -> `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like`
+* Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
+* Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` -> 
+** `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
+** ^ Breaks after the second parenthesis -> "199605)28" (that parenthesis)
+* Showdown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`)
+* Another JS HTML-to-markdown converter to look at (but node.js):
+** https://github.com/breakdance/breakdance
+* Neither Turndown nor Showdown handle Shift+Enter behavior... both just collapse the newlines.
+* Turndown (but not Showdown) HTML-to-markdown is dropping extra line breaks.
+** But Showdown markdown-to-HTML is dropping extra line breaks...
+* ``` `...` ``` pattern -> Converts to <span><code></span></code> in markdown with Turndown (but converts correctly with Showdown)
+* ` ```...``` ` pattern -> Converts to <pre></pre> in markdown with Showdown (but converts correctly with Turndown)
+* Turndown should drop empty links for headings with copy + paste HTML.
+
+## File Handling
+
+* No default filename with save file as.
+** Not possible to fix due to current Native File System limitations—not currently supported.
+*** https://github.com/WICG/native-file-system/issues/80
+* Open with doesn't allow use of file handle for subsequent save without prompt at this time.
+* Can't re-open last open file on start due to inability to store file handle.
+* Nice-looking client-side file save library ->
+** https://github.com/eligrey/FileSaver.js
+
+## Cut/Copy/Paste Behavior
+
+* Change copy action to copy as HTML (remove the excess formatting and get the pure *intended* rich-text—not the displayed styling).
+** Special copy button/shortcut code wasn't working in some contexts so had to disable and revert back to original.
+* Copy image in Chrome or copy HTML page contents including image -> converts into image URL instead of blob.
+** Should be applied to cut as well.
+* Image blobs: copy image from paint -> paste + saving and opening files DOES WORK!
+
+## Miscellaneous
+
+* Preferences option to hide menu bar?
+* Service worker bug causing it to eat CPU/RAM?
+* Whatever else that's missing...
 
