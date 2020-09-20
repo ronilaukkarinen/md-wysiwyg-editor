@@ -1045,14 +1045,16 @@ tinymce.init({
             if (!launchParams.files.length) {
               return;
             }
-            app.openFile(launchParams.files[0]);
-            const fileHandle = launchParams.files[0];
+            // Doens't work due to permission error
+            // app.openFile(launchParams.files[0]);
+            // Instead, do the following to open ->
+            var fileHandle = launchParams.files[0];
             var getFileName = launchParams.files[0].name;
             const getFileBlob = await fileHandle.getFile();
             getFileBlob.text().then(getFileText => {
-              console.log("Filename: " + getFileName);
-              console.log("File blob: " + getFileText);
               openFile(getFileName, getFileText);
+              app.file.handle = launchParams.files[0];
+              app.file.name = getFileName;
               openWith = true;
             });
           });
