@@ -113,6 +113,6 @@ var editorChangeHandler = function() {
 
 ## Miscellaneous
 
-* Service worker bug causing it to eat CPU/RAM?
+* Service worker bug causing app to eat CPU/RAM?
 * Whatever else that's missing...
 
