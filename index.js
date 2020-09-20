@@ -1046,12 +1046,13 @@ tinymce.init({
               return;
             }
             app.openFile(launchParams.files[0]);
-            /*const fileHandle = launchParams.files[0];
+            const fileHandle = launchParams.files[0];
             var getFileName = launchParams.files[0].name;
             const getFileBlob = await fileHandle.getFile();
             var getFileText = getFileBlob.text();
             console.log("Filename: " + getFileName);
-            console.log("File blob: " + getFileText);*/
+            console.log("File blob: " + getFileText);
+            openFile(getFileName, getFileText);
             openWith = true;
           });
         }
