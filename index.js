@@ -1049,11 +1049,12 @@ tinymce.init({
             const fileHandle = launchParams.files[0];
             var getFileName = launchParams.files[0].name;
             const getFileBlob = await fileHandle.getFile();
-            var getFileText = await getFileBlob.text();
-            console.log("Filename: " + getFileName);
-            console.log("File blob: " + getFileText);
-            openFile(getFileName, getFileText);
-            openWith = true;
+            getFileBlob.text().then(getFileText => {
+              console.log("Filename: " + getFileName);
+              console.log("File blob: " + getFileText);
+              openFile(getFileName, getFileText);
+              openWith = true;
+            });
           });
         }
       // Alert if native file handling API isn't enabled
