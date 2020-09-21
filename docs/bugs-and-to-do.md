@@ -85,11 +85,11 @@ var editorChangeHandler = function() {
 * Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
   * https://github.com/breakdance/breakdance
-* Neither Turndown nor Showdown handle Shift+Enter behavior (<br >'s)... both just collapse the newlines.
+* Neither Turndown nor Showdown handle Shift+Enter behavior (`<br >`'s)... both just collapse the newlines.
 * Turndown (but not Showdown) HTML-to-markdown is dropping extra line breaks.
   * But Showdown markdown-to-HTML is dropping extra line breaks...
-* ``` `...` ``` pattern -> Converts to <span><code></span></code> in markdown with Turndown (but converts correctly with Showdown)
-* ` ```...``` ` pattern -> Converts to <pre></pre> in markdown with Showdown (but converts correctly with Turndown)
+* ``` `...` ``` pattern -> Converts to `<span><code></span></code>` in markdown with Turndown (but converts correctly with Showdown)
+* ` ```...``` ` pattern -> Converts to `<pre></pre>` in markdown with Showdown (but converts correctly with Turndown)
 * Turndown should drop empty links for headings with copy + paste HTML.
 
 ## File Handling
