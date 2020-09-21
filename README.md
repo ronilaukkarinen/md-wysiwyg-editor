@@ -53,7 +53,7 @@ Make sure that your web browser is up to date and you have the Native File Syste
 * Works on mobile and addable to homescreen (simulates an app).
 * Light and dark modes.
 * Option to switch between HTML-to-markdown conversion engines ([Turndown](https://github.com/domchristie/turndown) and [Showdown](https://github.com/showdownjs/showdown)). The Turndown engine generally seems to produce better output and is set to default. Some plugins for additional markdown syntax (e.g., tables) are included with the engines.
-* Option to switch between markdown-to-HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it) and [Showdown](https://github.com/showdownjs/showdown)). The markdown-it engine is set to default. Some plugins for additional markdown syntax (e.g., tables) are included with the engines.
+* Option to switch between markdown-to-HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it) and [Showdown](https://github.com/showdownjs/showdown)). Some plugins for additional markdown syntax (e.g., tables) are included with the engines.
 * Optional customization of rich-text appearance via CSS in preferences. You can use this feature to make your markdown files look/render just like they would on your own website.
 
 ## Notes
