@@ -18,7 +18,7 @@ Or this link to open this README.md file in the editor with the markdown pane op
 
 ### Requirements
 
-Make sure that your web browser is up to date and you have Native File System enabled (e.g., in Google Chrome flags—not enabled by default at this time):
+Make sure that your web browser is up to date and you have the Native File System API enabled (e.g., in Google Chrome flags—not enabled by default at this time):
 
 * [chrome://flags/#native-file-system-api](chrome://flags/#native-file-system-api)
 * [chrome://flags/#file-handling-api](chrome://flags/#file-handling-api)
