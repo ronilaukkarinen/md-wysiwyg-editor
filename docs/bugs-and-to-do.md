@@ -56,7 +56,7 @@ var editorChangeHandler = function() {
 ## User Input
 
 * More keyboard shortcuts?:
-** Ctrl+` -\> Code
+** Ctrl+\` -\> Code
 ** Ctrl+Shift+O -\> Open folder (later?)
 ** Headings: Ctrl+1-6 (?)
 ** Image: Ctrl+Shift+I
