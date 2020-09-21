@@ -200,7 +200,9 @@ rules.table = {
     var columnCount = tableColCount(node);
     var emptyHeader = ''
     if (columnCount && !secondLineIsDivider) {
-      emptyHeader = '|' + ' |'.repeat(columnCount) + '\n' + '|' + ' --- |'.repeat(columnCount)
+      // Patch: don't add empty row, just add header row
+      // emptyHeader = '|' + ' |'.repeat(columnCount) + '\n' + '|' + ' --- |'.repeat(columnCount)
+      emptyHeader = /* '|' + ' |'.repeat(columnCount) + '\n' + */ '|' + ' --- |'.repeat(columnCount)
     }
 
     return '\n\n' + emptyHeader + content + '\n\n'

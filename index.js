@@ -7,7 +7,8 @@ let disableRightClick = false;
 let reverseShiftEnterBehavior;
 let updateMarkdownLessOften;
 let customCSS;
-let markdownToHTMLEngine = 'Turndown';
+let markdownToHTMLEngine = 'markdown-it';
+let HTMLtoMarkdownEngine = 'Turndown';
 
 // Create new file
 function newFile() {
@@ -685,15 +686,23 @@ tinymce.init({
           {
             type: 'selectbox',
             name: 'markdownToHTMLEngine',
-            label: 'Change HTML-to-markdown engine (<a href="https://github.com/domchristie/turndown" target="_blank">Turndown</a> is default and is less buggy than <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a>):',
-            disabled: false, // disabled state
+            label: 'Change markdown-to-HTML engine (<a href="https://github.com/markdown-it/markdown-it" target="_blank">markdown-it</a> is default):',
+            size: 1,
+            items: [
+              { value: 'markdown-it', text: 'markdown-it' },
+              { value: 'Showdown', text: 'Showdown' },
+            ]
+          },
+          {
+            type: 'selectbox',
+            name: 'HTMLtoMarkdownEngine',
+            label: 'Change HTML-to-markdown engine (<a href="https://github.com/domchristie/turndown" target="_blank">Turndown</a> is default and seems to give better output than <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a>):',
             size: 1,
             items: [
               { value: 'Turndown', text: 'Turndown' },
-              { value: 'Showdown', text: 'Showdown' }
+              { value: 'Showdown', text: 'Showdown' },
             ]
           },
-
           {
             type: 'checkbox',
             name: 'updateMarkdownLessOften',
@@ -724,6 +733,7 @@ tinymce.init({
         customCSS: customCSS,
         updateMarkdownLessOften: updateMarkdownLessOften,
         markdownToHTMLEngine: markdownToHTMLEngine,
+        HTMLtoMarkdownEngine: HTMLtoMarkdownEngine,
         reverseShiftEnterBehavior: reverseShiftEnterBehavior
       },
       onSubmit: function (api) {
@@ -750,13 +760,22 @@ tinymce.init({
           updateMarkdownLessOften = false;
         }
 
-        // Switch between Turndown and Showdown depending on preferences
-        if (data.markdownToHTMLEngine == 'Turndown') {
-          localStorage.setItem('markdownToHTMLEngine', 'Turndown');
-          markdownToHTMLEngine = 'Turndown';
+        // Change markdown-to-HTML engine depending on preferences
+        if (data.markdownToHTMLEngine == 'markdown-it') {
+          localStorage.setItem('markdownToHTMLEngine', 'markdown-it');
+          markdownToHTMLEngine = 'markdown-it';
         } else if (data.markdownToHTMLEngine == 'Showdown') {
-          localStorage.setItem('markdownToHTMLEngine', 'false');
+          localStorage.setItem('markdownToHTMLEngine', 'Showdown');
           markdownToHTMLEngine = 'Showdown';
+        }
+
+        // Change HTML-to-markdown engine depending on preferences
+        if (data.HTMLtoMarkdownEngine == 'Turndown') {
+          localStorage.setItem('HTMLtoMarkdownEngine', 'Turndown');
+          HTMLtoMarkdownEngine = 'Turndown';
+        } else if (data.HTMLtoMarkdownEngine == 'Showdown') {
+          localStorage.setItem('HTMLtoMarkdownEngine', 'Showdown');
+          HTMLtoMarkdownEngine = 'Showdown';
         }
 
         // Change Shift+Enter behavior depending on preferences
@@ -1301,7 +1320,11 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
   }
   
   // Convert markdown to HTML
-  var HTMLfromMarkdown = ShowdownConverter.makeHtml(markdownToConvert);
+  if (markdownToHTMLEngine == 'markdown-it') {
+    var HTMLfromMarkdown = markdownitConverter.render(markdownToConvert);
+  } else if (markdownToHTMLEngine == 'Showdown') {
+    var HTMLfromMarkdown = ShowdownConverter.makeHtml(markdownToConvert);
+  }
 
   // Update main editor HTML with the new HTML
   tinymce.activeEditor.setContent(HTMLfromMarkdown);
@@ -1352,9 +1375,9 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   }
 
   // Convert HTML to markdown
-  if (markdownToHTMLEngine == 'Turndown') {
+  if (HTMLtoMarkdownEngine == 'Turndown') {
     var MarkdownFromHTML = TurndownConverter.turndown(HTMLtoConvert);
-  } else if (markdownToHTMLEngine == 'Showdown') {
+  } else if (HTMLtoMarkdownEngine == 'Showdown') {
     var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
   }
 
@@ -1400,8 +1423,32 @@ var ShowdownOptions = {
 // Create Showdown converter instance with options
 var ShowdownConverter = new showdown.Converter(ShowdownOptions);
 
-// Which markdown engine to use?
+// Define markdown-it options
+var markdownitOptions = {
+  html: true,
+  xhtmlOut: true,
+  breaks: false,
+  linkify: true,
+  typographer: false,
+}
+
+// Create markdown-it converter instance with options
+// markdown-it plugins are loaded automatically (with <script> include)
+var markdownitConverter = window.markdownit(markdownitOptions);
+
+// Configure markdown-it plugins
+var markdownitMultimdTableOptions = {
+  multiline: true,
+  rowspan: true,
+  headerless: true,
+}
+markdownitConverter.use(window.markdownitMultimdTable, markdownitMultimdTableOptions);
+
+// Which markdown-to-HTML engine to use?
 markdownToHTMLEngine = localStorage.getItem('markdownToHTMLEngine');
+
+// Which HTML-to-markdown engine to use?
+HTMLtoMarkdownEngine = localStorage.getItem('HTMLtoMarkdownEngine');
 
 // Define Turndown settings
 var TurndownOptions = {

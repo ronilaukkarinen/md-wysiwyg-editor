@@ -125,5 +125,7 @@ var editorChangeHandler = function() {
 ** https://github.com/pwa-builder/pwa-update
 * Service worker and caching dependencies/etc.
 ** https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/
+* Dynamically load JavaScript dependencies (markdown–HTML engines) to save bandwidth:
+** https://www.kirupa.com/html5/loading_script_files_dynamically.htm
 * Whatever else that's missing...
 

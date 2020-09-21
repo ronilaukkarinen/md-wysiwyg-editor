@@ -158,7 +158,7 @@ button[title="Formats"] {
 	background-color: var(--menu-item-button-hover-color) !important;
 }
 
-/* To alow for lesser/much lesser text for menu items */
+/* To allow for lesser/much lesser text for menu items */
 .tox .tox-collection__item {
 	color: var(--general-text-color) !important;
 }
@@ -166,6 +166,11 @@ button[title="Formats"] {
 /* Lesser text for menu items */
 .tox .tox-collection__item-accessory, .tox .tox-insert-table-picker__label {
 	color: var(--lesser-text-color) !important;
+}
+
+/* Menu icon fill colors */
+.tox-collection__item-icon svg {
+	fill: var(--icon-fill-color) !important;
 }
 
 /* Much lesser color for text and icons in menu items */

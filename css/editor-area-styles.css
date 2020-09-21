@@ -208,7 +208,7 @@ blockquote {
 	}
 }
 
-code, pre {
+pre, code {
 	color: var(--general-text-color);
 	font-size: 14px !important;
 	background: var(--code-background-color) !important;
@@ -216,6 +216,11 @@ code, pre {
 	padding-top: 2px;
 	padding-left: 2px;
 	padding-right: 2px;
+}
+
+/* Disable code block text background highlight when selected/active */
+code {
+	background-color: transparent !important;
 }
 
 pre {
