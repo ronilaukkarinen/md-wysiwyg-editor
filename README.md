@@ -1,6 +1,6 @@
 # Text Editor
 
-"Text Editor" (placeholder name) is a simple web rich-text/WYSIWIG markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), various markdown–HTML conversion engines, and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
+"Text Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), various markdown–HTML conversion engines, and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
 
 Home page and GitHub repository:
 
@@ -43,7 +43,7 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ## Features
 
-* Rich-text/WYSIWIG markdown editor. Can alternatively serve as a constrained rich-text/WYSIWIG HTML editor.
+* Rich-text/WYSIWyG markdown editor. Can alternatively serve as a constrained rich-text/WYSIWYG HTML editor.
 * File handling: open, save, save as, and open with/file association of markdown, HTML, and plain-text files via Native File System API.
 * Bidirectional live editing between rich-text and markdown views (as well as an HTML view).
 * Rich-text is restricted essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically filtered as soon as it enters the editor.
