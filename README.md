@@ -33,9 +33,13 @@ Make sure that your web browser is up to date and you have Native File System en
 
 [![Screenshot](images/screenshot-dark-mode.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-dark-mode.png)
 
+### Dual-Pane Markdown View (Light Mode)
+
+[![Screenshot](images/screenshot-light-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-light-mode-markdown.png)
+
 ### Dual-Pane Markdown View (Dark Mode)
 
-[![Screenshot](images/screenshot-markdown.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-markdown.png)
+[![Screenshot](images/screenshot-dark-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-dark-mode-markdown.png)
 
 ## Features
 
