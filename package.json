@@ -1,10 +1,10 @@
 {
-  "name": "text-editor",
-  "description": "Text Editor - PWA + TinyMCE + NFS.",
+  "name": "md-wysiwyg-editor",
+  "description": "\"Markdown WYSIWYG Editor\" (temporary name) is a simple web rich-text/WYSIWYG markdown editor.",
   "version": "0.0.12",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Alyw234237/text-editor.git"
+    "url": "https://github.com/Alyw234237/md-wysiwyg-editor.git"
   },
   "homepage": "https://github.com/Alyw234237/",
   "browserslist": [
