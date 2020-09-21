@@ -3,13 +3,13 @@
 ## TinyMCE UI
 
 * Code toolbar button needs rework.
-* Format -> Code missing from pop-up toolbar.
+* Format -\> Code missing from pop-up toolbar.
 * Toolbar wrap on narrow width not working.
-* Image insert -> puts URL. Do custom images dialogue menu with both image URL and image file -> blob options.
+* Image insert -\> puts URL. Do custom images dialogue menu with both image URL and image file -\> blob options.
 * Can fix tables with custom dialog menu + insert table (instead of tableInsertDialog menu).
 * Formatting button is non-ideal... change back to heading button/menu?
 * With heading toolbar button and extra formats drop-down buttons the buttons aren't highlighted when formats are active.
-** Option?: addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
+** Option?: addToggleMenuItem() -\> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
 *** https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
 * Preferences option to hide menu bar? (With alternatives for interaction)
 
@@ -42,7 +42,7 @@ var editorChangeHandler = function() {
 
 * p vs. br behavior... option...
 ** Set padding and margin for p, headers, other elements to 0
-** Change Showdown and Turndown conversions for these elements from two linebreaks (\n\n) to one (\n)
+** Change Showdown and Turndown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`)
 ** Adjust line height (default 1.6, maybe change to 1.4)
 ** Reduce empty line height if possible (?)
 * Code blocks in rich-text mode need work.
@@ -50,19 +50,19 @@ var editorChangeHandler = function() {
 * Tabs are converted into `&emsp;` with open .txt file (otherwise tabs removed completely).
 ** Maybe helpful: [https://stackoverflow.com/questions/2237497/](https://stackoverflow.com/questions/2237497/)
 * Code block autocomplete needs work... maybe helpful:
-** addAutocompleter() -> [https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter](https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter)
+** addAutocompleter() -\> [https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter](https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter)
 *** "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
 
 ## User Input
 
 * More keyboard shortcuts?:
-** Ctrl+` -> Code
-** Ctrl+Shift+O -> Open folder (later?)
+** Ctrl+` -\> Code
+** Ctrl+Shift+O -\> Open folder (later?)
 ** Headings: Ctrl+1-6 (?)
 ** Image: Ctrl+Shift+I
 ** Strikethrough: Ctrl+D
 ** Link: Ctrl+L (?)
-** Ctrl+_ (i.e., Ctrl+Shift+-) or Alt+Ctrl+- (Alt+Ctrl+_) -> Horizontal line
+** Ctrl+_ (i.e., Ctrl+Shift+-) or Alt+Ctrl+- (Alt+Ctrl+_) -\> Horizontal line
 * Add Alt + F keyboard shortcut to open File menu if possible.
 * Use Chrome search for Ctrl+F? Disable TinyMCE shortcut?
 ** Tried but couldn't remove/override TinyMCE's Ctrl+F.
@@ -75,21 +75,21 @@ var editorChangeHandler = function() {
 * Markdown front matter is fenced with code block to prevent removal/alteration.
 * Headers are added to headerless tables with Turndown so they aren't removed (although this doesn't always work/happen).
 * Showdown can't handle headerless tables.
-* Showdown escapes various things. Markdown characters (e.g., "~", "|", "0.5" -> 0.\5). Happens even in URLs.
+* Showdown escapes various things. Markdown characters (e.g., "~", "|", "0.5" -\> 0.\5). Happens even in URLs.
 ** Showdown did this escape also:
-*** `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like` -> `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like`
+*** `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like` -\> `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like`
 * Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
-* Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
+* Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` -\>
 ** `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
-*** Breaks after the second parenthesis -> "199605)28" (that parenthesis)
+*** Breaks after the second parenthesis -\> "199605)28" (that parenthesis)
 * Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
 ** https://github.com/breakdance/breakdance
 * Neither Turndown nor Showdown handle Shift+Enter behavior (<br >'s)... both just collapse the newlines.
 * Turndown (but not Showdown) HTML-to-markdown is dropping extra line breaks.
 ** But Showdown markdown-to-HTML is dropping extra line breaks...
-* ``` `...` ``` pattern -> Converts to <span><code></span></code> in markdown with Turndown (but converts correctly with Showdown)
-* ` ```...``` ` pattern -> Converts to <pre></pre> in markdown with Showdown (but converts correctly with Turndown)
+* ``` `...` ``` pattern -\> Converts to <span><code></span></code> in markdown with Turndown (but converts correctly with Showdown)
+* ` ```...``` ` pattern -\> Converts to <pre></pre> in markdown with Showdown (but converts correctly with Turndown)
 * Turndown should drop empty links for headings with copy + paste HTML.
 
 ## File Handling
@@ -104,9 +104,9 @@ var editorChangeHandler = function() {
 
 * Change copy action to copy as HTML (remove the excess formatting and get the pure *intended* rich-text—not the displayed styling).
 ** Special copy button/shortcut code wasn't working in some contexts so had to disable and revert back to original.
-* Copy image in Chrome or copy HTML page contents including image -> converts into image URL instead of blob.
+* Copy image in Chrome or copy HTML page contents including image -\> converts into image URL instead of blob.
 ** Should be applied to cut as well.
-* Image blobs: copy image from paint -> paste + saving and opening files DOES WORK!
+* Image blobs: copy image from paint -\> paste + saving and opening files DOES WORK!
 
 ## Miscellaneous
 
