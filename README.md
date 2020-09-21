@@ -74,7 +74,6 @@ Rich-text HTML editing with the editor is solid. But, as described, the markdown
 
 * Lots of [bug fixes](docs/bugs-and-to-do.md) and minor features.
 * Add more markdown–HTML conversion engine options (e.g., [Marked](https://github.com/markedjs/marked))?
-* Replace the markdown pane editor with a code editor library (for, e.g., markdown syntax highlighting)?
 * Tabs for multiple files at once?
 * Left pane for folder/workspace and tab for file table of contents?
 * Other things...
@@ -90,8 +89,8 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 | [Zettlr](https://github.com/Zettlr/Zettlr) | [Dillinger](https://dillinger.io/) |
 | [Uncolored](https://github.com/n457/Uncolored) | [Editor.md](https://pandao.github.io/editor.md/en.html) |
 | [Abricotine](http://abricotine.brrd.fr/) | [TOAST UI Editor](https://ui.toast.com/tui-editor/) |
-| [ghostwriter](https://wereturtle.github.io/ghostwriter/) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
-| [VNote](https://github.com/tamlok/vnote) |  |
+| [ghostwriter](https://wereturtle.github.io/ghostwriter/) | [HyperMD](https://github.com/laobubu/HyperMD) |
+| [VNote](https://github.com/tamlok/vnote) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
 
 ## Support
