@@ -20,6 +20,7 @@
 * Replace markdown pane textarea with a lightweight code editor library:
 ** https://github.com/kazzkiq/CodeFlask / https://kazzkiq.github.io/CodeFlask/
 ** https://github.com/antonmedv/codejar / https://medv.io/codejar/
+** https://codemirror.net/ / https://github.com/codemirror/CodeMirror
 ** https://ourcodeworld.com/articles/read/309/top-5-best-code-editor-plugins-written-in-javascript
 * Maybe use this instead of saving the info in variable (but would conflict if additional sidebars in future):
 ** tinymce.activeEditor.queryCommandValue('ToggleSidebar');
