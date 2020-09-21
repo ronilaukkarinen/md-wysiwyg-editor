@@ -5,14 +5,13 @@
 * Code toolbar button needs rework.
 * Format -> Code missing from pop-up toolbar.
 * Toolbar wrap on narrow width not working.
-* Image insert -> puts URL. Do custom images dialogue menu with both URL and file -> blob options.
+* Image insert -> puts URL. Do custom images dialogue menu with both image URL and image file -> blob options.
 * Can fix tables with custom dialog menu + insert table (instead of tableInsertDialog menu).
 * Formatting button is non-ideal... change back to heading button/menu?
 * With heading toolbar button and extra formats drop-down buttons the buttons aren't highlighted when formats are active.
 ** Option?: addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
 *** https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
 * Preferences option to hide menu bar? (With alternatives for interaction)
-* Preferences option to disable pop-up/quick toolbar—sometimes annoying/problematic (plus redundant).
 
 ## Custom UI
 
@@ -83,7 +82,7 @@ var editorChangeHandler = function() {
 * Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
 ** `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
 ** ^ Breaks after the second parenthesis -> "199605)28" (that parenthesis)
-* Showdown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`)
+* Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
 ** https://github.com/breakdance/breakdance
 * Neither Turndown nor Showdown handle Shift+Enter behavior... both just collapse the newlines.
@@ -113,9 +112,8 @@ var editorChangeHandler = function() {
 
 ## Miscellaneous
 
-* Service worker bug causing app to eat CPU/RAM?
 * Decide on a name.
-* Move to new repository + username.
+* Move to new repository + username (remember to change links in code).
 * Make new screenshots with shadows.
 * Add app install/add to homescreen prompt stuff.
 ** https://github.com/pwa-builder/pwa-install
@@ -123,9 +121,10 @@ var editorChangeHandler = function() {
 ** https://github.com/docluv/add-to-homescreen
 * Add app update stuff?
 ** https://github.com/pwa-builder/pwa-update
+* Service worker bug causing app to eat CPU/RAM sometimes?
 * Service worker and caching dependencies/etc.
 ** https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/
-* Dynamically load JavaScript dependencies (markdown–HTML engines) to save bandwidth:
+* Dynamically load JavaScript dependencies (markdown–HTML engines) to load faster + save bandwidth:
 ** https://www.kirupa.com/html5/loading_script_files_dynamically.htm
 * Whatever else that's missing...
 

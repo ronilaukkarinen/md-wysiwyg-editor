@@ -713,7 +713,7 @@ tinymce.init({
           {
             type: 'textarea',
             name: 'customCSS',
-            label: 'Custom CSS stylesheet for editing area (default/template <a href="https://github.com/Alyw234237/text-editor/blob/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
+            label: 'Custom CSS stylesheet for editing area (default/template <a href="https://raw.githubusercontent.com/Alyw234237/text-editor/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
             maximized: true,
           }
         ]
