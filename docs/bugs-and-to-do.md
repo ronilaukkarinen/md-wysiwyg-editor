@@ -47,8 +47,8 @@ var editorChangeHandler = function() {
 ** Reduce empty line height if possible (?)
 * Code blocks in rich-text mode need work.
 * Live-typing markdown-to-rich-text conversion of link, image, multi-line code, others not added.
-* Tabs are converted into &emsp; with open .txt file (otherwise tabs removed completely).
-** Maybe helpful: https://stackoverflow.com/questions/2237497/
+* Tabs are converted into `&emsp;` with open .txt file (otherwise tabs removed completely).
+** Maybe helpful: <https://stackoverflow.com/questions/2237497/>
 * Code block autocomplete needs work... maybe helpful:
 ** addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
 *** "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
