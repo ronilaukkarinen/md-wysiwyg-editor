@@ -4,17 +4,17 @@
 
 Home page and GitHub repository:
 
-* [https://github.com/Alyw234237/text-editor/](https://github.com/Alyw234237/text-editor/)
+* [https://github.com/Alyw234237/md-wysiwyg-editor/](https://github.com/Alyw234237/md-wysiwyg-editor/)
 
 ## Launch
 
 Visit this link to launch the application:
 
-* [https://alyw234237.github.io/text-editor/](https://alyw234237.github.io/text-editor/)
+* [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
 
 Or this link to open this README.md file in the editor with the markdown pane open:
 
-* [https://alyw234237.github.io/text-editor/?mdf=README.md&mdv=true](https://alyw234237.github.io/text-editor/?mdf=README.md&mdv=true)
+* [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true)
 
 ### Requirements
 
@@ -27,19 +27,19 @@ Make sure that your web browser is up to date and you have the Native File Syste
 
 ### Light Mode
 
-[![Screenshot](images/screenshot-light-mode.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-light-mode.png)
+[![Screenshot](images/screenshot-light-mode.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode.png)
 
 ### Dark Mode
 
-[![Screenshot](images/screenshot-dark-mode.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-dark-mode.png)
+[![Screenshot](images/screenshot-dark-mode.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode.png)
 
 ### Dual-Pane Markdown View (Light Mode)
 
-[![Screenshot](images/screenshot-light-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-light-mode-markdown.png)
+[![Screenshot](images/screenshot-light-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode-markdown.png)
 
 ### Dual-Pane Markdown View (Dark Mode)
 
-[![Screenshot](images/screenshot-dark-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/text-editor/main/images/screenshot-dark-mode-markdown.png)
+[![Screenshot](images/screenshot-dark-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode-markdown.png)
 
 ## Features
 

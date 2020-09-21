@@ -713,7 +713,7 @@ tinymce.init({
           {
             type: 'textarea',
             name: 'customCSS',
-            label: 'Custom CSS stylesheet for editing area (default/template <a href="https://raw.githubusercontent.com/Alyw234237/text-editor/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
+            label: 'Custom CSS stylesheet for editing area (default/template <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
             maximized: true,
           }
         ]
@@ -815,7 +815,7 @@ tinymce.init({
         if(confirm("This will open the GitHub home page/repository in a new tab. Continue?") == false) {
           return;
         } else {
-          window.open('https://github.com/Alyw234237/text-editor/', '_blank');
+          window.open('https://github.com/Alyw234237/md-wysiwyg-editor/', '_blank');
         }
       }
     });
@@ -1109,7 +1109,7 @@ tinymce.init({
 
       // Open a starting markdown file if the relevant URL parameter is set
       if (openWith == false && startFilename) {
-        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/text-editor/main/' + startFilename;
+        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/' + startFilename;
         // Fetch the file and open it
         async function request() {
           const response = await fetch(startFileURL);

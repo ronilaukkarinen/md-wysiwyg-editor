@@ -1,4 +1,4 @@
-# Text Pattern Conversions
+# Markdown Text Pattern Conversions
 
 | Pattern | Conversion |
 | --- | --- |
@@ -29,5 +29,5 @@
 
 Where `...` is the text that you want to be affected.
 
-Not supported at this time: links, images, task lists, and tables.
+Not supported at this time: markdown links, images, task lists, and tables.
 

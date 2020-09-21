@@ -1,4 +1,4 @@
-# Text Editor Keyboard Shortcuts
+# Keyboard Shortcuts
 
 | Shortcut | Action |
 | --- | --- |
