@@ -43,7 +43,7 @@ var editorChangeHandler = function() {
 * p vs. br behavior... option...
 ** Set padding and margin for p, headers, other elements to 0
 ** Change Showdown and Turndown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`)
-** Adjust line height (default 1.6, maybe change to 1.4)
+** Adjust line height (default 1\.6, maybe change to 1\.4)
 ** Reduce empty line height if possible (?)
 * Code blocks in rich-text mode need work.
 * Live-typing markdown-to-rich-text conversion of link, image, multi-line code, others not added.
