@@ -42,7 +42,7 @@ var editorChangeHandler = function() {
 
 * p vs. br behavior... option...
   * Set padding and margin for p, headers, other elements to 0
-  * Change Showdown and Turndown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`)
+  * Change HTML-to-markdown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`)
   * Adjust line height (default 1.6, maybe change to 1.4)
   * Reduce empty line height if possible (?)
 * Code blocks in rich-text mode need work.
@@ -85,7 +85,7 @@ var editorChangeHandler = function() {
 * Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
   * https://github.com/breakdance/breakdance
-* Neither Turndown nor Showdown handle Shift+Enter behavior (`<br >`'s)... both just collapse the newlines.
+* Neither Turndown nor Showdown HTML-to-markdown handle Shift+Enter behavior right (`<br >`'s)... both just collapse the newlines.
 * Turndown (but not Showdown) HTML-to-markdown is dropping extra line breaks.
   * But Showdown markdown-to-HTML is dropping extra line breaks...
 * ``` `...` ``` pattern -> Converts to `<span><code></span></code>` in markdown with Turndown (but converts correctly with Showdown)
