@@ -262,6 +262,28 @@ button[title="Formats"] {
 	fill: var(--icon-fill-color) !important;
 }
 
+/* Dialogue box dropdown menu styling */
+.tox-checkbox, .tox-form__group {
+  margin-bottom: 20px !important;
+}
+
+/* Dialogue box dropdown menu styling */
+.tox-form__group .tox-label {
+  font-size: 16px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Dialogue box dropdown menu styling */
+.tox-form__group .tox-selectfield select {
+	background-color: var(--text-area-background-color) !important;
+	border-color: var(--general-border-color) !important;
+}
+
+/* Dialogue box dropdown menu styling */
+.tox-form__group .tox-selectfield .tox-selectfield__icon-js svg {
+	fill: var(--icon-fill-color) !important;
+}
+
 /* Text areas (e.g., dialogue boxes, source code view */
 .tox .tox-textarea, .tox .tox-textfield, .tox .tox-toolbar-textfield {
 	color: var(--general-text-color) !important;

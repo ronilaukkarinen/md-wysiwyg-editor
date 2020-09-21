@@ -7,7 +7,7 @@ let disableRightClick = false;
 let reverseShiftEnterBehavior;
 let updateMarkdownLessOften;
 let customCSS;
-let useTurndownInsteadOfShowdown;
+let markdownToHTMLEngine = 'Turndown';
 
 // Create new file
 function newFile() {
@@ -683,10 +683,17 @@ tinymce.init({
             label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter) (may cause bugs)',
           },
           {
-            type: 'checkbox',
-            name: 'useTurndownInsteadOfShowdown',
-            label: 'Use <a href="https://github.com/domchristie/turndown" target="_blank">Turndown</a> instead of <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a> for HTML-to-markdown conversion (less buggy)',
+            type: 'selectbox',
+            name: 'markdownToHTMLEngine',
+            label: 'Change HTML-to-markdown engine (<a href="https://github.com/domchristie/turndown" target="_blank">Turndown</a> is default and is less buggy than <a href="https://github.com/showdownjs/showdown" target="_blank">Showdown</a>):',
+            disabled: false, // disabled state
+            size: 1,
+            items: [
+              { value: 'Turndown', text: 'Turndown' },
+              { value: 'Showdown', text: 'Showdown' }
+            ]
           },
+
           {
             type: 'checkbox',
             name: 'updateMarkdownLessOften',
@@ -695,7 +702,7 @@ tinymce.init({
           {
             type: 'textarea',
             name: 'customCSS',
-            label: '<br /><span style="font-size: 16px !important;">Custom CSS stylesheet for editing area (default/template <a href="https://github.com/Alyw234237/text-editor/blob/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
+            label: 'Custom CSS stylesheet for editing area (default/template <a href="https://github.com/Alyw234237/text-editor/blob/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
             maximized: true,
           }
         ]
@@ -716,7 +723,7 @@ tinymce.init({
       initialData: {
         customCSS: customCSS,
         updateMarkdownLessOften: updateMarkdownLessOften,
-        useTurndownInsteadOfShowdown: useTurndownInsteadOfShowdown,
+        markdownToHTMLEngine: markdownToHTMLEngine,
         reverseShiftEnterBehavior: reverseShiftEnterBehavior
       },
       onSubmit: function (api) {
@@ -744,12 +751,12 @@ tinymce.init({
         }
 
         // Switch between Turndown and Showdown depending on preferences
-        if (data.useTurndownInsteadOfShowdown == true) {
-          localStorage.setItem('useTurndownInsteadOfShowdown', 'true');
-          useTurndownInsteadOfShowdown = true;
-        } else {
-          localStorage.setItem('useTurndownInsteadOfShowdown', 'false');
-          useTurndownInsteadOfShowdown = false;
+        if (data.markdownToHTMLEngine == 'Turndown') {
+          localStorage.setItem('markdownToHTMLEngine', 'Turndown');
+          markdownToHTMLEngine = 'Turndown';
+        } else if (data.markdownToHTMLEngine == 'Showdown') {
+          localStorage.setItem('markdownToHTMLEngine', 'false');
+          markdownToHTMLEngine = 'Showdown';
         }
 
         // Change Shift+Enter behavior depending on preferences
@@ -1345,10 +1352,10 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   }
 
   // Convert HTML to markdown
-  if (useTurndownInsteadOfShowdown == false) {
-    var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
-  } else {
+  if (markdownToHTMLEngine == 'Turndown') {
     var MarkdownFromHTML = TurndownConverter.turndown(HTMLtoConvert);
+  } else if (markdownToHTMLEngine == 'Showdown') {
+    var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
   }
 
   // Update markdown editor text with the new markdown
@@ -1393,13 +1400,8 @@ var ShowdownOptions = {
 // Create Showdown converter instance with options
 var ShowdownConverter = new showdown.Converter(ShowdownOptions);
 
-// Use Turndown instead of Showdown?
-useTurndownInsteadOfShowdown = localStorage.getItem('useTurndownInsteadOfShowdown');
-if (useTurndownInsteadOfShowdown == 'true') {
-  useTurndownInsteadOfShowdown = true;
-} else {
-  useTurndownInsteadOfShowdown = false;
-}
+// Which markdown engine to use?
+markdownToHTMLEngine = localStorage.getItem('markdownToHTMLEngine');
 
 // Define Turndown settings
 var TurndownOptions = {
