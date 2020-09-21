@@ -90,5 +90,5 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 
 ## Support
 
-If you like this project, consider [buying me a cup of boba tea](https://www.buymeacoffee.com/alyw234237). <!-- 🧋 --><img src ="images/bubble-tea.png" alt="Boba tea" width="24px" height="24px" />
+If you like this project, consider [buying me a cup of boba tea](https://www.buymeacoffee.com/alyw234237). <!-- 🧋 --><img src ="images/bubble-tea.png" alt="Boba tea" width="18px" height="18px" />
 
