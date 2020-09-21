@@ -23,7 +23,7 @@
 ** https://codemirror.net/ \/ https://github.com/codemirror/CodeMirror
 ** https://ourcodeworld.com/articles/read/309/top-5-best-code-editor-plugins-written-in-javascript
 * Maybe use this instead of saving the info in variable (but would conflict if additional sidebars in future):
-** tinymce.activeEditor.queryCommandValue('ToggleSidebar');
+** `tinymce.activeEditor.queryCommandValue('ToggleSidebar');`
 ** ^ Returns the current state of sidebar (open or closed).
 * Need to re-implement this maybe (delay before updating):
 ```
