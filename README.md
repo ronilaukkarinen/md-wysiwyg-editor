@@ -1,6 +1,6 @@
 # Text Editor
 
-"Text Editor" (placeholder name) is a simple online constrained-rich-text and markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown), [Turndown](https://github.com/domchristie/turndown), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
+"Text Editor" (placeholder name) is a simple web rich-text/WYSIWIG markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), [Showdown](https://github.com/showdownjs/showdown), [Turndown](https://github.com/domchristie/turndown), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (via Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
 
 Home page and GitHub repository:
 
@@ -39,30 +39,31 @@ Make sure that your web browser is up to date and you have Native File System en
 
 ## Features
 
-* Rich-text/WYSIWIG markdown editor.
-* File handling: open, save, save as, and open with/file association of markdown, HTML, and text files via Native File System API.
+* Rich-text/WYSIWIG markdown editor. Can alternatively serve as a constrained rich-text/WYSIWIG HTML editor.
+* File handling: open, save, save as, and open with/file association of markdown, HTML, and plain-text files via Native File System API.
 * Bidirectional live editing between rich-text and markdown views (as well as an HTML view).
-* Rich-text is constrained essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically filtered as soon as it enters the editor.
+* Rich-text is restricted essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically filtered as soon as it enters the editor.
 * Automatic conversion of typed markdown syntax into rich-text formatting in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `This text is bold.` will give bolded text. In addition to markdown syntax, certain strings will convert to special characters (e.g., `--` to en dash and `---` to em dash). See [pattern-conversions.md](docs/pattern-conversions.md) for a list of conversions.
 * Keyboard shortcuts for editing, formatting, etc. (except where prevented by browser—e.g., Ctrl+N for new file in non-app mode). See [keyboard-shortcuts.md](docs/keyboard-shortcuts.md) for a list.
 * Works offline when installed as a PWA. Mobile-friendly. Light and dark modes.
-* Option to switch between HTML-to-markdown conversion engines (Turndown and Showdown) in preferences. The Turndown engine generally seems better and is set to default. Some plugins for additional markdown syntax (e.g., tables) are included with the engines.
-* Option to switch between markdown-to-HTML conversion engines (markdown-it and Showdown) in preferences. The markdown-it engine seems better and is set to default. Some plugins for additional markdown syntax (e.g., tables) are included with the engines
-* Optional customization of rich-text appearance via CSS in preferences. Make your files look just like they would on your own site.
+* Option to switch between HTML-to-markdown conversion engines (Turndown and Showdown). The Turndown engine generally seems to produce better output and is set to default. Some plugins for additional markdown syntax (e.g., tables) are included with the engines.
+* Option to switch between markdown-to-HTML conversion engines (markdown-it and Showdown). The markdown-it engine is set to default. Some plugins for additional markdown syntax (e.g., tables) are included with the engines
+* Optional customization of rich-text appearance via CSS in preferences. You can make your markdown files render just like they would on your own website.
 
 ## Notes
 
 The editor is still under development and has [many bugs](docs/bugs-and-to-do.md).
 
-Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files—sometimes in undesirable ways. A number of examples are illustrative. Escapes (`\`) may be added to certain markdown syntax characters that aren't part of the markdown (e.g., `~`, `|`). Headerless markdown tables will be escaped and thereby broken with Showdown as the HTML-to-markdown engine. YAML and TOML front matter is automatically put inside of a markdown code block (<code>```</code>) to prevent it from being parsed by the HTML-to-markdown engines. Changes to markdown files will vary depending on whether Turndown or Showdown is selected as the HTML-to-markdown conversion engine. For example, Showdown doesn't handle headerless tables, whereas Turndown does via a plugin although it adds an empty header row to the tables and doesn't always work.
+Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files—sometimes in undesirable ways. A number of examples are illustrative. Escapes (`\`) may be added to certain markdown syntax characters that aren't part of the markdown (e.g., `~`, `|`). Headerless markdown tables will be escaped and thereby broken with Showdown as the HTML-to-markdown engine. YAML and TOML front matter is automatically put inside of a markdown code block (<code>```</code>) to prevent it from being parsed by the HTML-to-markdown engines. Changes to markdown files will vary depending on whether Turndown or Showdown is selected as the HTML-to-markdown conversion engine. For example, Showdown doesn't handle headerless tables, whereas Turndown does thanks to a plugin. For markdown-to-HTML conversion, only markdown-it handles headerless tables.
 
-Rich-text editing is dependable but as described the markdown functionality has issues here and there. Hence, you've been warned—use the markdown features (bidirectional HTML–markdown conversion via markdown pane and open/save files as markdown) at your own risk!
+Rich-text HTML editing is dependable. But, as described the markdown functionality, may have issues here and there. Hence, you've been warned—use the markdown features—specifically bidirectional HTML–markdown conversion via markdown pane and open/save files as markdown—at your own risk!
 
 ### Future
 
 * Lots of [bug fixes](docs/bugs-and-to-do.md) and minor features.
+* Replace the markdown pane editor with a code editor library (for, e.g., syntax highlighting)?
 * Tabs for multiple documents at once?
-* Pane for files and table of contents?
+* Left pane for files and table of contents?
 * Other things...
 
 ## Related
@@ -80,7 +81,7 @@ A number of similar editors exist. These are either rich-text-oriented markdown 
 | [VNote](https://github.com/tamlok/vnote) |  |
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
 
-<!--## Support
+## Support
 
-If you like this application, consider [buying Aly W. a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋-->
+If you like this project, consider [buying me a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋
 
