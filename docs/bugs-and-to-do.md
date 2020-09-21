@@ -24,7 +24,7 @@
 ** https://ourcodeworld.com/articles/read/309/top-5-best-code-editor-plugins-written-in-javascript
 * Maybe use this instead of saving the info in variable (but would conflict if additional sidebars in future):
 ** `tinymce.activeEditor.queryCommandValue('ToggleSidebar');`
-** ^ Returns the current state of sidebar (open or closed).
+*** Returns the current state of sidebar (open or closed).
 * Need to re-implement this maybe (delay before updating):
 ```
 var editorChangeHandler = function() {
@@ -51,7 +51,7 @@ var editorChangeHandler = function() {
 ** Maybe helpful: https://stackoverflow.com/questions/2237497/
 * Code block autocomplete needs work... maybe helpful:
 ** addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
-*** ^ "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
+*** "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
 
 ## User Input
 
@@ -81,7 +81,7 @@ var editorChangeHandler = function() {
 * Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
 * Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
 ** `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
-** ^ Breaks after the second parenthesis -> "199605)28" (that parenthesis)
+*** Breaks after the second parenthesis -> "199605)28" (that parenthesis)
 * Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
 ** https://github.com/breakdance/breakdance
