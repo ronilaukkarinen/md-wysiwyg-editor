@@ -1,3 +1,5 @@
+// From: https://github.com/GoogleChromeLabs/text-editor
+
 /**
  * Copyright 2019 Google LLC
  *
