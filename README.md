@@ -67,7 +67,7 @@ Rich-text HTML editing is dependable. But, as described the markdown functionali
 ### Future
 
 * Lots of [bug fixes](docs/bugs-and-to-do.md) and minor features.
-* Add more markdown–HTML conversion engine options (e.g., [marked](https://github.com/markedjs/marked))?
+* Add more markdown–HTML conversion engine options (e.g., [Marked](https://github.com/markedjs/marked))?
 * Replace the markdown pane editor with a code editor library (for, e.g., markdown syntax highlighting)?
 * Tabs for multiple files at once?
 * Left pane for folder/workspace and tab for file table of contents?
