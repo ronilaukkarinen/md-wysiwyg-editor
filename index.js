@@ -55,7 +55,7 @@ function openFile(filename, data) {
   // Open as markdown
   } else if (extension == "md" || extension == "markdown") {
 
-    // Put YAML/TOML front matter into a markdown code block so it isn't parsed
+    // Put YAML/TOML front matter into a markdown code block so that it isn't parsed
     if (data.match(/^((---)\n)/) != null) {
       data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
         return '```\n' + match + '```';
@@ -191,6 +191,7 @@ function updateFilename(filename, dirty) {
   return;
 }
 
+// Check user preferences for Enter vs. Shift+Enter behavior
 reverseShiftEnterBehavior = localStorage.getItem('reverseShiftEnterBehavior');
 if (reverseShiftEnterBehavior == 'true') {
   reverseShiftEnterBehavior = true;
@@ -290,7 +291,7 @@ tinymce.init({
   statusbar: false,
   // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
   quickbars_insert_toolbar: false,
-  quickbars_selection_toolbar: 'cut copy paste | styleselect bold italic underline strikethrough superscript subscript link blockquote codeformat',
+  quickbars_selection_toolbar: false,
   quickbars_image_toolbar: false,
   fullpage_hide_in_source_view: false,
   // All HTML elements (attributs) except for these will be filtered:
@@ -624,6 +625,7 @@ tinymce.init({
     editor.on('ToggleSidebar', function(event) {
 
       markdownSidebarToggleState = !markdownSidebarToggleState;
+      localStorage.setItem('markdownSidebarToggleState', markdownSidebarToggleState);
 
       // Hack to fix width of the markdown pane
       var width = (window.innerWidth * 0.50).toString() + "px";
@@ -681,7 +683,7 @@ tinymce.init({
           {
             type: 'checkbox',
             name: 'reverseShiftEnterBehavior',
-            label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter) (may cause bugs)',
+            label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter) (may cause problems)',
           },
           {
             type: 'selectbox',
@@ -1125,8 +1127,8 @@ tinymce.init({
         app.openFile(JSON.parse(localStorage.getItem('fileHandle')));
       }*/
 
-      // Open markdown pane if the relevant URL parameter is set
-      if(startMarkdownView) {
+      // Open markdown pane if markdown pane was open last time or if the relevant URL parameter is set
+      if(localStorage.getItem('markdownSidebarToggleState') == 'true' || startMarkdownView) {
         tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
       }
 
