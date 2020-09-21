@@ -7,8 +7,8 @@ let disableRightClick = false;
 let reverseShiftEnterBehavior;
 let updateMarkdownLessOften;
 let customCSS;
-let markdownToHTMLEngine = 'markdown-it';
-let HTMLtoMarkdownEngine = 'Turndown';
+let markdownToHTMLEngine;
+let HTMLtoMarkdownEngine;
 
 // Create new file
 function newFile() {
@@ -1448,9 +1448,15 @@ markdownitConverter.use(window.markdownitMultimdTable, markdownitMultimdTableOpt
 
 // Which markdown-to-HTML engine to use?
 markdownToHTMLEngine = localStorage.getItem('markdownToHTMLEngine');
+if (markdownToHTMLEngine == null) {
+  markdownToHTMLEngine = 'markdown-it';
+}
 
 // Which HTML-to-markdown engine to use?
 HTMLtoMarkdownEngine = localStorage.getItem('HTMLtoMarkdownEngine');
+if (HTMLtoMarkdownEngine == null) {
+  HTMLtoMarkdownEngine = 'Turndown';
+}
 
 // Define Turndown settings
 var TurndownOptions = {
