@@ -75,7 +75,7 @@ Rich-text HTML editing is dependable. But, as described the markdown functionali
 
 ## Related
 
-A number of similar editors exist. These are either rich-text-oriented markdown editors (mostly [Electron](https://www.electronjs.org/)-based desktop applications) or online markdown editors:
+A number of similar WYSIWYG and/or online markdown editors exist:
 
 | Desktop | Web |
 | --- | --- |
