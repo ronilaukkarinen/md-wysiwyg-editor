@@ -55,19 +55,18 @@ var editorChangeHandler = function() {
 ## User Input
 
 * More keyboard shortcuts?:
-** Alt+Ctrl+- -> HR
 ** Ctrl+` -> Code
 ** Ctrl+Shift+O -> Open folder (later?)
 ** Headings: Ctrl+1-6 (?)
 ** Image: Ctrl+Shift+I
 ** Strikethrough: Ctrl+D
 ** Link: Ctrl+L (?)
-** Ctrl+_ -> Horizontal line
+** Ctrl+_ (i.e., Ctrl+Shift+-) or Alt+Ctrl+- (Alt+Ctrl+_) -> Horizontal line
 * Add Alt + F keyboard shortcut to open File menu if possible.
 * Use Chrome search for Ctrl+F? Disable TinyMCE shortcut?
 ** Tried but couldn't remove/override TinyMCE's Ctrl+F.
 * Disable Ctrl+R, dev tools, and other keyboard shortcuts?
-* Encounter this sometimes: "Scripts may only close windows that were opened by them".
+* Encounter this sometimes with quit: "Scripts may only close windows that were opened by them".
 * Fullscreen button and/or keyboard shortcut doesn't work in non-app mode (sometimes?).
 
 ## HTML–Markdown Conversion
@@ -98,9 +97,7 @@ var editorChangeHandler = function() {
 ** Not possible to fix due to current Native File System limitations—not currently supported.
 *** https://github.com/WICG/native-file-system/issues/80
 * Open with doesn't allow use of file handle for subsequent save without prompt at this time.
-* Can't re-open last open file on start due to inability to store file handle.
-* Nice-looking client-side file save library ->
-** https://github.com/eligrey/FileSaver.js
+* Can't automatically load last open file on start due to inability to store file handle.
 
 ## Cut/Copy/Paste Behavior
 
