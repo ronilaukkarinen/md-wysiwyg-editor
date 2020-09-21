@@ -83,8 +83,8 @@ A number of similar editors exist. These are either rich-text-oriented markdown 
 | [Mark Text](https://github.com/marktext/marktext) | [SimpleMDE](https://simplemde.com/) |
 | [Zettlr](https://github.com/Zettlr/Zettlr) | [Dillinger](https://dillinger.io/) |
 | [Uncolored](https://github.com/n457/Uncolored) | [Editor.md](https://pandao.github.io/editor.md/en.html) |
-| [Abricotine](http://abricotine.brrd.fr/) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
-| [ghostwriter](https://wereturtle.github.io/ghostwriter/) |  |
+| [Abricotine](http://abricotine.brrd.fr/) | [TOAST UI Editor](https://ui.toast.com/tui-editor/) |
+| [ghostwriter](https://wereturtle.github.io/ghostwriter/) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
 | [VNote](https://github.com/tamlok/vnote) |  |
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
 
