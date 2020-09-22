@@ -1,5 +1,7 @@
 # Known JavaScript Markdown–HTML Conversion Engines
 
+Last updated September 2020
+
 ## Markdown-to-HTML Engines
 
 | Name | Site | Repo | Last Updated |
