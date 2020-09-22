@@ -88,7 +88,7 @@ var editorChangeHandler = function() {
 * ` ```...``` ` pattern -> Converts to `<pre></pre>` in markdown with Showdown (but converts correctly with Turndown)
 * Turndown should drop empty links for headings with copy + paste HTML.
 * HTML-to-markdown with Turndown converts URLs within Liquid code into autolinked markdown:
-  * `{% include article-header.md %}` -> `{% include [article-header.md](http://article-header.md) %}`
+  * `\{\% include article-header.md \%\}` -> `\{\% include [article-header.md](http://article-header.md) \%\}`
 
 ## File Handling
 
