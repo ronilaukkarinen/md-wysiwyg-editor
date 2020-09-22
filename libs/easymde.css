@@ -533,6 +533,7 @@ span.CodeMirror-selectedtext {
 
 .EasyMDEContainer {
   display: block !important;
+  width: 100% !important; /* Prevent horizontal overflow with some markdown files */
 }
 
 .EasyMDEContainer.sided--no-fullscreen {

@@ -34,7 +34,7 @@ var editorChangeHandler = function() {
 };
 ```
 * Help views for keyboard shortcuts and typed markdown-to-rich-text conversions?
-* If text selection colors for markdown editor (SimpleMDE).
+* If text selection colors for markdown editor (EasyMDE).
 
 ## Editing
 
@@ -92,8 +92,8 @@ var editorChangeHandler = function() {
 * Turndown should drop empty links for headings with copy + paste HTML.
 * HTML-to-markdown with Turndown converts URLs within Liquid code into autolinked markdown:
   * `\{\% include article-header.md \%\}` -> `\{\% include [article-header.md](http://article-header.md) \%\}`
-* HTML-to-markdown (Turndown/Showdown) is unescaping `<` and `>` and breaking syntax highlighting with SimpleMDE.
-** Actually it may be SimpleMDE...?
+* HTML-to-markdown (Turndown/Showdown) is unescaping `<` and `>` and breaking syntax highlighting with EasyMDE (?).
+** Actually it may be EasyMDE...?
 
 ## File Handling
 
