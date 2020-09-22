@@ -722,7 +722,7 @@ tinymce.init({
           {
             type: 'checkbox',
             name: 'EasyMDEMarkdownArea',
-            label: 'Use EasyMDE markdown editor in the markdown pane? (Under development, buggy)',
+            label: 'Use EasyMDE markdown editor in the markdown pane? (Under development, buggy and slow)',
           },
           {
             type: 'selectbox',
