@@ -5,10 +5,46 @@
 * @license MIT
 */
 
+/* Set colors for light theme */
+[data-theme='light'] {
+	--general-background-color: rgb(255, 255, 255);
+	--blockquote-background-color: rgb(27, 31, 35, 0.05);
+	--code-background-color: rgba(27, 31, 35, 0.05);
+
+	--general-text-color: rgb(0, 0, 0);
+	--link-text-color: rgb(8, 122, 204);
+	--link-url-color: rgb(170, 178, 179);
+	--image-alt-color: rgb(8, 163, 8);
+
+  --selected-text-highlight-color: rgb(203, 227, 250);
+
+	--scrollbar-track-color: var(--general-background-color);
+	--scrollbar-thumb-color: rgb(170, 171, 171);
+	--scrollbar-track-hover-color: rgb(242, 242, 242);
+}
+
+/* Set colors for dark theme */
+[data-theme='dark'] {
+	--general-background-color: rgb(44, 44, 44);
+	--blockquote-background-color: rgb(85, 85, 85);
+	--code-background-color: rgb(85, 85, 85);
+
+	--general-text-color: rgb(250, 250, 250);
+	--link-text-color: rgb(150, 215, 255);
+	--link-url-color: rgb(121, 126, 128);
+	--image-alt-color: rgba(8, 255, 8, 0.75);
+
+  --selected-text-highlight-color: rgb(119, 143, 166);
+
+	--scrollbar-track-color: var(--general-background-color);
+	--scrollbar-thumb-color: rgb(33, 33, 33);
+	--scrollbar-track-hover-color: rgb(53, 53, 53);
+}
+
 .CodeMirror {
   font-family: monospace !important;
-  height: 300px !important;
-  color: #000 !important;
+  /*height: 300px !important;*/ /* Conflicts with later definition */
+  color: var(--general-text-color) !important;
   direction: ltr !important;
 }
 
@@ -23,7 +59,7 @@
 
 .CodeMirror-gutter-filler,
 .CodeMirror-scrollbar-filler {
-  background-color: #fff !important;
+  background-color: var(--general-background-color) !important;
 }
 
 .CodeMirror-gutters {
@@ -41,15 +77,15 @@
 }
 
 .CodeMirror-guttermarker {
-  color: #000 !important;
+  color: var(--general-text-color) !important;
 }
 
 .CodeMirror-guttermarker-subtle {
-  color: #999 !important;
+  color: rgb(153, 153, 153) !important;
 }
 
 .CodeMirror-cursor {
-  border-left: 1px solid #000 !important;
+  border-left: 1px solid var(--general-text-color) !important;
   border-right: none !important;
   width: 0 !important;
 }
@@ -256,7 +292,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror {
   position: relative !important;
   overflow: hidden !important;
-  background: #fff !important;
+  background: var(--general-background-color) !important;
 }
 
 .CodeMirror-scroll {
@@ -280,7 +316,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror-vscrollbar {
   position: absolute !important;
   z-index: 6 !important;
-  display: none !important;
+  /*display: none !important;*/ /* This shows vertical scrollbar */
 }
 
 .CodeMirror-vscrollbar {
@@ -435,25 +471,25 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 }
 
 div.CodeMirror-cursors {
-  visibility: hidden !important;
+  visibility: hidden; /* For cursor to blink this must not be important! */
   position: relative !important;
   z-index: 3 !important;
 }
 
 div.CodeMirror-dragcursors {
-  visibility: visible !important;
+  visibility: visible; /* This probably shouldn't be important either */
 }
 
 .CodeMirror-focused div.CodeMirror-cursors {
-  visibility: visible !important;
+  visibility: visible; /* For cursor to blink this must also not be important! */
 }
 
 .CodeMirror-selected {
-  background: #d9d9d9 !important;
+  background: var(--selected-text-highlight-color) !important;
 }
 
 .CodeMirror-focused .CodeMirror-selected {
-  background: #d7d4f0 !important;
+  background: var(--selected-text-highlight-color) !important;
 }
 
 .CodeMirror-crosshair {
@@ -463,13 +499,13 @@ div.CodeMirror-dragcursors {
 .CodeMirror-line::selection,
 .CodeMirror-line>span::selection,
 .CodeMirror-line>span>span::selection {
-  background: #d7d4f0 !important;
+  background: var(--selected-text-highlight-color) !important;
 }
 
 .CodeMirror-line::-moz-selection,
 .CodeMirror-line>span::-moz-selection,
 .CodeMirror-line>span>span::-moz-selection {
-  background: #d7d4f0 !important;
+  background: var(--selected-text-highlight-color) !important;
 }
 
 .cm-searching {
@@ -507,7 +543,7 @@ span.CodeMirror-selectedtext {
 
 .CodeMirror {
   box-sizing: border-box !important;
-  height: auto !important;
+  height: 100% !important; /* Simply changing to this fixed scroll problems */
   border: 1px solid #ddd !important;
   border-bottom-left-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
@@ -522,7 +558,7 @@ span.CodeMirror-selectedtext {
 }
 
 .CodeMirror-fullscreen {
-  background: #fff !important;
+  background: var(--general-background-color) !important;
   position: fixed !important;
   top: 50px !important;
   left: 0 !important;
@@ -550,7 +586,7 @@ span.CodeMirror-selectedtext {
 }
 
 .CodeMirror-focused .CodeMirror-selected {
-  background: #d9d9d9 !important;
+  background: var(--selected-text-highlight-color) !important;
 }
 
 .editor-toolbar {
@@ -589,7 +625,7 @@ span.CodeMirror-selectedtext {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   box-sizing: border-box !important;
-  background: #fff !important;
+  background: var(--general-background-color) !important;
   border: 0 !important;
   position: fixed !important;
   top: 0 !important;
@@ -662,7 +698,7 @@ span.CodeMirror-selectedtext {
   display: inline-block !important;
   width: 0 !important;
   border-left: 1px solid #d9d9d9 !important;
-  border-right: 1px solid #fff !important;
+  border-right: 1px solid var(--general-background-color) !important;
   color: transparent !important;
   text-indent: -10px !important;
   margin: 0 6px !important;
@@ -797,7 +833,8 @@ span.CodeMirror-selectedtext {
 }
 
 .cm-s-easymde .cm-tag {
-  color: #63a35c !important;
+  /*color: #63a35c !important;*/
+  color: var(--image-alt-color) !important;
 }
 
 .cm-s-easymde .cm-attribute {
@@ -829,21 +866,23 @@ span.CodeMirror-selectedtext {
 }
 
 .cm-s-easymde .cm-comment {
-  background: rgba(0, 0, 0, .05) !important;
+  /*background: rgba(0, 0, 0, .05) !important;*/
+  background: var(--code-background-color) !important;
   border-radius: 2px !important;
 }
 
 .cm-s-easymde .cm-link {
-  color: #7f8c8d !important;
+  color: var(--link-text-color) !important;
 }
 
 .cm-s-easymde .cm-url {
-  color: #aab2b3 !important;
+  color: var(--link-url-color) !important;
 }
 
 .cm-s-easymde .cm-quote {
-  color: #7f8c8d !important;
-  font-style: italic !important;
+  background: var(--blockquote-background-color) !important;
+  background-color: var(--blockquote-background-color) !important;
+  /*font-style: italic !important;*/
 }
 
 .editor-toolbar .easymde-dropdown {
