@@ -9,7 +9,7 @@ let updateMarkdownLessOften;
 let customCSS;
 let markdownToHTMLEngine;
 let HTMLtoMarkdownEngine;
-let SimpleMDEMarkdownArea;
+let EasyMDEMarkdownArea;
 
 // Create new file
 function newFile() {
@@ -200,13 +200,13 @@ if (reverseShiftEnterBehavior == 'true') {
   reverseShiftEnterBehavior = false;
 }
 
-// Check user preferences for SimpleMDE markdown editing area or plain-text text area
-SimpleMDEMarkdownArea = localStorage.getItem('SimpleMDEMarkdownArea');
-if (SimpleMDEMarkdownArea == 'true') {
-  SimpleMDEMarkdownArea = true;
-  let SimpleMDEMarkdownEditor;
+// Check user preferences for EasyMDE markdown editing area or plain-text text area
+EasyMDEMarkdownArea = localStorage.getItem('EasyMDEMarkdownArea');
+if (EasyMDEMarkdownArea == 'true') {
+  EasyMDEMarkdownArea = true;
+  let EasyMDEMarkdownEditor;
 } else {
-  SimpleMDEMarkdownArea = false;
+  EasyMDEMarkdownArea = false;
 }
 
 tinymce.baseURL = "libs/tinymce";
@@ -698,8 +698,8 @@ tinymce.init({
 
           {
             type: 'checkbox',
-            name: 'SimpleMDEMarkdownArea',
-            label: 'Use SimpleMDE markdown editor in the markdown pane? (Under development, buggy)',
+            name: 'EasyMDEMarkdownArea',
+            label: 'Use EasyMDE markdown editor in the markdown pane? (Under development, buggy)',
           },
           {
             type: 'selectbox',
@@ -753,7 +753,7 @@ tinymce.init({
         markdownToHTMLEngine: markdownToHTMLEngine,
         HTMLtoMarkdownEngine: HTMLtoMarkdownEngine,
         reverseShiftEnterBehavior: reverseShiftEnterBehavior,
-        SimpleMDEMarkdownArea: SimpleMDEMarkdownArea,
+        EasyMDEMarkdownArea: EasyMDEMarkdownArea,
       },
       onSubmit: function (api) {
 
@@ -806,13 +806,13 @@ tinymce.init({
           reverseShiftEnterBehavior = false;
         }
 
-        // Change SimpleMDE vs. plain-text text area markdown pane depending on preferences
-        if (data.SimpleMDEMarkdownArea == true) {
-          localStorage.setItem('SimpleMDEMarkdownArea', 'true');
-          SimpleMDEMarkdownArea = true;
+        // Change EasyMDE vs. plain-text text area markdown pane depending on preferences
+        if (data.EasyMDEMarkdownArea == true) {
+          localStorage.setItem('EasyMDEMarkdownArea', 'true');
+          EasyMDEMarkdownArea = true;
         } else {
-          localStorage.setItem('SimpleMDEMarkdownArea', 'false');
-          SimpleMDEMarkdownArea = false;
+          localStorage.setItem('EasyMDEMarkdownArea', 'false');
+          EasyMDEMarkdownArea = false;
         }
 
         // Needed as preferences menu otherwise won't have updated initial values for settings if reopened
@@ -1184,7 +1184,7 @@ tinymce.init({
 
       // Synchronize scrolling between editing panes (fix temporary setTimeout() hack)
       setTimeout(function() {
-        if (SimpleMDEMarkdownArea == true ) {
+        if (EasyMDEMarkdownArea == true ) {
           var markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
         } else {
           var markdownEditor = document.getElementById('markdown-editor');
@@ -1215,7 +1215,7 @@ tinymce.init({
         });
 
         // Temporary hack fix (double hack... setTimeout() too)
-        if (SimpleMDEMarkdownArea == true ) {
+        if (EasyMDEMarkdownArea == true ) {
           tinymce.activeEditor.on('ExecCommand', function(event) {
             if (event.command == "UpdateMarkdown") {
               setTimeout(function() {
@@ -1363,8 +1363,8 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
   // Get markdown editor contents if no markdown to convert was passed
   if (!markdownToConvert) {
-    if (SimpleMDEMarkdownArea == true ) {
-      markdownToConvert = SimpleMDEMarkdownEditor.value();
+    if (EasyMDEMarkdownArea == true ) {
+      markdownToConvert = EasyMDEMarkdownEditor.value();
     } else {
       markdownToConvert = document.getElementById("markdown-editor").value;
     }
@@ -1433,8 +1433,8 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   }
 
   // Update markdown editor text with the new markdown
-  if (SimpleMDEMarkdownArea == true ) {
-    SimpleMDEMarkdownEditor.value(MarkdownFromHTML);
+  if (EasyMDEMarkdownArea == true ) {
+    EasyMDEMarkdownEditor.value(MarkdownFromHTML);
   } else {
     markdownTextarea.value = MarkdownFromHTML;
   }
@@ -1546,7 +1546,7 @@ function setupMarkdown(api) {
   // Set the sidebar HTML code
   markdownSidebar = api.element();
 
-  // The oninput won't apply if using SimpleMDE mode
+  // The oninput won't apply if using EasyMDE mode
   var sidebarSetupCode = `<textarea id="markdown-editor" class="markdown-editor" oninput="updateEditorHTMLWithMarkdown();" spellcheck="false"></textarea>`;
   markdownSidebar.innerHTML = sidebarSetupCode;
 
@@ -1558,8 +1558,8 @@ function setupMarkdown(api) {
   markdownTextarea.style.whiteSpace = 'pre-wrap';
   markdownTextarea.style.boxSizing = 'border-box';
 
-  if (SimpleMDEMarkdownArea == true ) {
-    var SimpleMDEOptions = {
+  if (EasyMDEMarkdownArea == true ) {
+    var EasyMDEOptions = {
       element: document.getElementById('markdown-editor'),
       initialValue: markdownTextarea.value,
       renderingConfig: {
@@ -1569,13 +1569,14 @@ function setupMarkdown(api) {
       status: false,
       toolbar: false,
       toolbarTips: false,
+      /*previewImagesInEditor: true,*/
     };
 
     //setTimeout(function() {
-      SimpleMDEMarkdownEditor = new SimpleMDE(SimpleMDEOptions);
+      EasyMDEMarkdownEditor = new EasyMDE(EasyMDEOptions);
     //}, 200);
 
-    SimpleMDEMarkdownEditor.codemirror.on("change", function() {
+    EasyMDEMarkdownEditor.codemirror.on("change", function() {
       updateEditorHTMLWithMarkdown();
     });
   }
