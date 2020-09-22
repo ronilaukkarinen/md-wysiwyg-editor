@@ -1569,7 +1569,7 @@ function setupMarkdown(api) {
       status: false,
       toolbar: false,
       toolbarTips: false,
-      /*previewImagesInEditor: true,*/
+      previewImagesInEditor: false,
     };
 
     //setTimeout(function() {

@@ -14,7 +14,7 @@
 	--general-text-color: rgb(0, 0, 0);
 	--link-text-color: rgb(8, 122, 204);
 	--link-url-color: rgb(170, 178, 179);
-	--image-alt-color: rgb(8, 163, 8);
+	--image-alt-color: rgb(8, 163, 8); /* Not working */
 
   --selected-text-highlight-color: rgb(203, 227, 250);
 
@@ -32,7 +32,7 @@
 	--general-text-color: rgb(250, 250, 250);
 	--link-text-color: rgb(150, 215, 255);
 	--link-url-color: rgb(121, 126, 128);
-	--image-alt-color: rgba(8, 255, 8, 0.75);
+	--image-alt-color: rgba(8, 255, 8, 0.75); /* Not working */
 
   --selected-text-highlight-color: rgb(119, 143, 166);
 
