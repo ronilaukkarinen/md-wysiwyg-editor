@@ -9,6 +9,7 @@ let updateMarkdownLessOften;
 let customCSS;
 let markdownToHTMLEngine;
 let HTMLtoMarkdownEngine;
+let SimpleMDEMarkdownArea;
 
 // Create new file
 function newFile() {
@@ -197,6 +198,15 @@ if (reverseShiftEnterBehavior == 'true') {
   reverseShiftEnterBehavior = true;
 } else {
   reverseShiftEnterBehavior = false;
+}
+
+// Check user preferences for SimpleMDE markdown editing area or plain-text text area
+SimpleMDEMarkdownArea = localStorage.getItem('SimpleMDEMarkdownArea');
+if (SimpleMDEMarkdownArea == 'true') {
+  SimpleMDEMarkdownArea = true;
+  let SimpleMDEMarkdownEditor;
+} else {
+  SimpleMDEMarkdownArea = false;
 }
 
 tinymce.baseURL = "libs/tinymce";
@@ -685,6 +695,12 @@ tinymce.init({
             name: 'reverseShiftEnterBehavior',
             label: 'Swap Enter and Shift+Enter behavior (new line (&lt;br /&gt;) on Enter, new paragraph (&lt;p&gt;) on Shift+Enter) (may cause problems)',
           },
+
+          {
+            type: 'checkbox',
+            name: 'SimpleMDEMarkdownArea',
+            label: 'Use SimpleMDE markdown editor in the markdown pane? (Under development, buggy)',
+          },
           {
             type: 'selectbox',
             name: 'markdownToHTMLEngine',
@@ -736,7 +752,8 @@ tinymce.init({
         updateMarkdownLessOften: updateMarkdownLessOften,
         markdownToHTMLEngine: markdownToHTMLEngine,
         HTMLtoMarkdownEngine: HTMLtoMarkdownEngine,
-        reverseShiftEnterBehavior: reverseShiftEnterBehavior
+        reverseShiftEnterBehavior: reverseShiftEnterBehavior,
+        SimpleMDEMarkdownArea: SimpleMDEMarkdownArea,
       },
       onSubmit: function (api) {
 
@@ -787,6 +804,15 @@ tinymce.init({
         } else {
           localStorage.setItem('reverseShiftEnterBehavior', 'false');
           reverseShiftEnterBehavior = false;
+        }
+
+        // Change SimpleMDE vs. plain-text text area markdown pane depending on preferences
+        if (data.SimpleMDEMarkdownArea == true) {
+          localStorage.setItem('SimpleMDEMarkdownArea', 'true');
+          SimpleMDEMarkdownArea = true;
+        } else {
+          localStorage.setItem('SimpleMDEMarkdownArea', 'false');
+          SimpleMDEMarkdownArea = false;
         }
 
         // Needed as preferences menu otherwise won't have updated initial values for settings if reopened
@@ -1156,32 +1182,51 @@ tinymce.init({
       const observer = new MutationObserver(mutationCallback);
       observer.observe(editorPane, mutationConfig);
 
-      // Synchronize scrolling between editing panes
-      var markdownEditor = document.getElementById('markdown-editor');
-      var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
-
-      let scrolledPane;
-      editorPane.addEventListener("mouseenter", function(event) {
-        scrolledPane = 'editorPane';
-      });
-
-      markdownEditor.addEventListener("mouseenter", function(event) {
-        scrolledPane = 'markdownPane';
-      });
-
-      markdownEditor.addEventListener("scroll", function(event) {
-        if (scrolledPane == 'markdownPane') {
-          var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
-          iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
+      // Synchronize scrolling between editing panes (fix temporary setTimeout() hack)
+      setTimeout(function() {
+        if (SimpleMDEMarkdownArea == true ) {
+          var markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
+        } else {
+          var markdownEditor = document.getElementById('markdown-editor');
         }
-      });
+        var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
 
-      iframe.contentWindow.document.addEventListener("scroll", function(event) {
-        if (scrolledPane == 'editorPane') {
-          var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
-          markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+        let scrolledPane;
+        editorPane.addEventListener("mouseenter", function(event) {
+          scrolledPane = 'editorPane';
+        });
+
+        markdownEditor.addEventListener("mouseenter", function(event) {
+          scrolledPane = 'markdownPane';
+        });
+
+        markdownEditor.addEventListener("scroll", function(event) {
+          if (scrolledPane == 'markdownPane') {
+            var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
+            iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
+          }
+        });
+
+        iframe.contentWindow.document.addEventListener("scroll", function(event) {
+          if (scrolledPane == 'editorPane') {
+            var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
+            markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+          }
+        });
+
+        // Temporary hack fix (double hack... setTimeout() too)
+        if (SimpleMDEMarkdownArea == true ) {
+          tinymce.activeEditor.on('ExecCommand', function(event) {
+            if (event.command == "UpdateMarkdown") {
+              setTimeout(function() {
+                var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
+                markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+              }, 100);
+            }
+          });
         }
-      });
+
+      }, 500);
 
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
@@ -1318,7 +1363,11 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
   // Get markdown editor contents if no markdown to convert was passed
   if (!markdownToConvert) {
-    markdownToConvert = document.getElementById("markdown-editor").value;
+    if (SimpleMDEMarkdownArea == true ) {
+      markdownToConvert = SimpleMDEMarkdownEditor.value();
+    } else {
+      markdownToConvert = document.getElementById("markdown-editor").value;
+    }
   }
   
   // Convert markdown to HTML
@@ -1384,7 +1433,11 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   }
 
   // Update markdown editor text with the new markdown
-  markdownTextarea.value = MarkdownFromHTML;
+  if (SimpleMDEMarkdownArea == true ) {
+    SimpleMDEMarkdownEditor.value(MarkdownFromHTML);
+  } else {
+    markdownTextarea.value = MarkdownFromHTML;
+  }
 
   // For update throttling
   lastHTMLToMarkdownUpdate = currentTime;
@@ -1492,6 +1545,8 @@ var markdownTextarea;
 function setupMarkdown(api) {
   // Set the sidebar HTML code
   markdownSidebar = api.element();
+
+  // The oninput won't apply if using SimpleMDE mode
   var sidebarSetupCode = `<textarea id="markdown-editor" class="markdown-editor" oninput="updateEditorHTMLWithMarkdown();" spellcheck="false"></textarea>`;
   markdownSidebar.innerHTML = sidebarSetupCode;
 
@@ -1503,13 +1558,34 @@ function setupMarkdown(api) {
   markdownTextarea.style.whiteSpace = 'pre-wrap';
   markdownTextarea.style.boxSizing = 'border-box';
 
+  if (SimpleMDEMarkdownArea == true ) {
+    var SimpleMDEOptions = {
+      element: document.getElementById('markdown-editor'),
+      initialValue: markdownTextarea.value,
+      renderingConfig: {
+        codeSyntaxHighlighting: true,
+      },
+      spellChecker: false,
+      status: false,
+      toolbar: false,
+      toolbarTips: false,
+    };
+
+    //setTimeout(function() {
+      SimpleMDEMarkdownEditor = new SimpleMDE(SimpleMDEOptions);
+    //}, 200);
+
+    SimpleMDEMarkdownEditor.codemirror.on("change", function() {
+      updateEditorHTMLWithMarkdown();
+    });
+  }
+
   // For updating more regularly
   tinymce.activeEditor.on('ExecCommand', function(event) {
     if(event.command == "UpdateMarkdown") {
       updateMarkdownWithEditorHTML();
     }
   });
-
 
   tinymce.activeEditor.on("Change", function() {
 

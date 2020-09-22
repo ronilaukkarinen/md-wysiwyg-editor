@@ -1,6 +1,6 @@
 # Markdown WYSIWYG Editor
 
-"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (thanks to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
+"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor. It is a [Progressive Web App](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [SimpleMDE](https://simplemde.com/), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (thanks to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
 
 Home page and GitHub repository:
 
@@ -91,7 +91,8 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 | [Abricotine](http://abricotine.brrd.fr/) | [TOAST UI Editor](https://ui.toast.com/tui-editor/) |
 | [ghostwriter](https://wereturtle.github.io/ghostwriter/) | [HyperMD](https://github.com/laobubu/HyperMD) |
 | [VNote](https://github.com/tamlok/vnote) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
-| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) |
+| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) | |
+| [More...](https://softwarerecs.stackexchange.com/questions/5746/markdown-editor-for-windows-with-live-rendering-in-the-editing-pane-not-in-a-se) | |
 
 ## Support
 

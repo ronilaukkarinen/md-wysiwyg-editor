@@ -11,11 +11,13 @@
 * With heading toolbar button and extra formats drop-down buttons the buttons aren't highlighted when formats are active.
   * Option?: addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
     * https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
-* Preferences option to hide menu bar? (With alternatives for interaction)
+* Preferences option to hide menu bar? (With alternatives for interaction.)
+* Formatting buttons (e.g., bold) don't work with markdown pane.
 
 ## Custom UI
 
 * Scrollbar sync doesn't scroll at bottom completely for the other scrollbar if smaller.
+* Need to make scrollbars sync again after updating panes.
 * Markdown editor isn't updating HTML editor on new lines or spaces... only characters.
 * Maybe use this instead of saving the info in variable (but would conflict if additional sidebars in future):
   * `tinymce.activeEditor.queryCommandValue('ToggleSidebar');`
@@ -32,6 +34,7 @@ var editorChangeHandler = function() {
 };
 ```
 * Help views for keyboard shortcuts and typed markdown-to-rich-text conversions?
+* If text selection colors for markdown editor (SimpleMDE).
 
 ## Editing
 
@@ -89,6 +92,8 @@ var editorChangeHandler = function() {
 * Turndown should drop empty links for headings with copy + paste HTML.
 * HTML-to-markdown with Turndown converts URLs within Liquid code into autolinked markdown:
   * `\{\% include article-header.md \%\}` -> `\{\% include [article-header.md](http://article-header.md) \%\}`
+* HTML-to-markdown (Turndown/Showdown) is unescaping `<` and `>` and breaking syntax highlighting with SimpleMDE.
+** Actually it may be SimpleMDE...?
 
 ## File Handling
 
