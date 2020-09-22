@@ -11,6 +11,29 @@ let markdownToHTMLEngine;
 let HTMLtoMarkdownEngine;
 let EasyMDEMarkdownArea;
 
+// Core editor variables
+var markdownEditor; // Markdown textarea element handle
+var iframe; // WYSIWYG editing area iframe handle
+var iframeHTML; // WYSIWYG editing area iframe HTML tag handle
+var editorPane; // WYSIWYG editing area main div handle (body tag of iframe)
+var scrolledPane; // Which editing pane the mouse cursor is currently in (WYSIWYG or markdown)
+
+// Get core editor handles
+function setupCoreEditorHandles() {
+  // Get necessary HTML element handles
+  if (EasyMDEMarkdownArea == true ) {
+    markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
+  } else {
+    markdownEditor = document.getElementById('markdown-editor');
+  }
+
+  iframe = document.getElementById('textEditor_ifr');
+  iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
+  editorPane = iframe.contentWindow.document.getElementById('tinymce');
+
+  return;
+}
+
 // Create new file
 function newFile() {
 
@@ -1069,6 +1092,9 @@ tinymce.init({
 
     editor.on('Init', function(event) {
 
+      // Get core editor handles
+      setupCoreEditorHandles();
+
       // Apply the theme
       applyTheme();
 
@@ -1159,9 +1185,6 @@ tinymce.init({
       }
 
       // Update markdown pane when the editor area changes
-      var iframe = document.getElementById('textEditor_ifr');
-      var editorPane = iframe.contentWindow.document.getElementById('tinymce'); // body tag of iframe
-
       // Set up configuration for watching changes to the editor area
       const mutationConfig = {
         /*attributes: true,*/
@@ -1182,51 +1205,8 @@ tinymce.init({
       const observer = new MutationObserver(mutationCallback);
       observer.observe(editorPane, mutationConfig);
 
-      // Synchronize scrolling between editing panes (fix temporary setTimeout() hack)
-      setTimeout(function() {
-        if (EasyMDEMarkdownArea == true ) {
-          var markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
-        } else {
-          var markdownEditor = document.getElementById('markdown-editor');
-        }
-        var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
-
-        let scrolledPane;
-        editorPane.addEventListener("mouseenter", function(event) {
-          scrolledPane = 'editorPane';
-        });
-
-        markdownEditor.addEventListener("mouseenter", function(event) {
-          scrolledPane = 'markdownPane';
-        });
-
-        markdownEditor.addEventListener("scroll", function(event) {
-          if (scrolledPane == 'markdownPane') {
-            var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
-            iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
-          }
-        });
-
-        iframe.contentWindow.document.addEventListener("scroll", function(event) {
-          if (scrolledPane == 'editorPane') {
-            var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
-            markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
-          }
-        });
-
-        // Temporary hack fix (double hack... setTimeout() too)
-        if (EasyMDEMarkdownArea == true ) {
-          tinymce.activeEditor.on('ExecCommand', function(event) {
-            if (event.command == "UpdateMarkdown") {
-              setTimeout(function() {
-                var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
-                markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
-              }, 100);
-            }
-          });
-        }
-
-      }, 500);
+      // Set up scroll synchronization
+      setupScrollSync();
 
       // Give edit area focus at start up
       tinyMCE.get('textEditor').getBody().focus();
@@ -1250,8 +1230,6 @@ if (localStorage.getItem('theme')) {
 
 // Apply the theme
 function applyTheme() {
-  var iframe = document.getElementById('textEditor_ifr');
-  var iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
   if (theme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
     localStorage.setItem('theme', 'light');
@@ -1277,9 +1255,6 @@ function switchTheme() {
 
 // Loosen padding/margins if editor pane width is small (e.g., when editor isn't maximized and markdown pane is open)
 function adjustEditorSpacing() {
-
-  var iframe = document.getElementById('textEditor_ifr');
-  var editorPane = iframe.contentWindow.document.getElementById('tinymce'); // body tag of iframe
 
   // Hardcoded... un-hardcode this in the future
   if(editorPane.offsetWidth < 750) {
@@ -1575,9 +1550,11 @@ function setupMarkdown(api) {
       EasyMDEMarkdownEditor = new EasyMDE(EasyMDEOptions);
     //}, 200);
 
+    // Update HTM editor with markdown if changed
     EasyMDEMarkdownEditor.codemirror.on("change", function() {
       updateEditorHTMLWithMarkdown();
     });
+
   }
 
   // For updating more regularly
@@ -1693,4 +1670,58 @@ window.addEventListener('keydown', function(event) {
 
   return;
 });
+
+// Setup scrolling synchronization between editing panes
+function setupScrollSync() {
+
+  // Set up listeners for tracking which editing pane the cursor is in
+  editorPane.addEventListener("mouseover", function(event) {
+    scrolledPane = 'editorPane';
+  });
+  markdownEditor.addEventListener("mouseover", function(event) {
+    scrolledPane = 'markdownPane';
+  });
+
+  // Set up listener for scroll event in markdown editor
+  // Might need setTimeout() on this as temp hack...
+  markdownEditor.addEventListener("scroll", function(event) {
+    updateWYSIWYGScroll();
+  });
+
+  // Set up listener for scroll event in WYSIWYG editor
+  // Might need setTimeout() on this as temp hack...
+  iframe.contentWindow.document.addEventListener("scroll", function(event) {
+    updateMarkdownScroll();
+  });
+
+  // Also set up listener for whenever markdown area is changed (maybe this isn't needed?)
+  // Temporary hack fix (double hack... setTimeout() too)
+  /*if (EasyMDEMarkdownArea == true ) {
+    tinymce.activeEditor.on('ExecCommand', function(event) {
+      if (event.command == "UpdateMarkdown") {
+        setTimeout(function() {
+          var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
+          markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+        }, 100);
+      }
+    });
+  }*/
+
+}
+
+function updateMarkdownScroll() {
+  if (scrolledPane == 'editorPane') {
+    var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
+    markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
+  }
+  return;
+}
+
+function updateWYSIWYGScroll() {
+  if (scrolledPane == 'markdownPane') {
+    var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
+    iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
+  }
+  return;
+}
 

@@ -4262,6 +4262,8 @@
                         var t = Xe(this, this.first, this.first + this.size);
                         return !1 === e ? t : t.join(e || this.lineSeparator())
                     },
+                    /* Patch: The below comment-out fixes the scroll-to-top-after-setvalue problem */
+                    // https://github.com/codemirror/CodeMirror/blob/master/src/model/Doc.js (line 78)
                     setValue: ni((function(e) {
                         var t = et(this.first, 0),
                             n = this.first + this.size - 1;
@@ -4271,7 +4273,7 @@
                             text: this.splitLines(e),
                             origin: "setValue",
                             full: !0
-                        }, !0), this.cm && Er(this.cm, 0, 0), Ji(this, Li(t), j)
+                        }, !0), /*this.cm && Er(this.cm, 0, 0),*/ Ji(this, Li(t), j)
                     })),
                     replaceRange: function(e, t, n, r) {
                         mo(this, e, t = lt(this, t), n = n ? lt(this, n) : t, r)
