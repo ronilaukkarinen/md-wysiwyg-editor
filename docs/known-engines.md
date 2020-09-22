@@ -4,7 +4,7 @@ Last updated September 2020
 
 ## Markdown-to-HTML Engines
 
-| Name | Site | Repo | Last Updated |
+| Name | Website | Repository | Last Updated |
 | --- | --- | --- | --- |
 | CommonMark | https://commonmark.org/ | https://github.com/commonmark/commonmark.js | 2020 |
 | markdown-it | https://markdown-it.github.io/ | https://github.com/markdown-it/markdown-it | 2020 |
@@ -19,7 +19,7 @@ Last updated September 2020
 
 ## HTML-to-Markdown Engines
 
-| Name | Site | Repo | Last Updated |
+| Name | Website | Repository | Last Updated |
 | --- | --- | --- | --- |
 | europa | – | https://github.com/NotNinja/europa | 2017 |
 | html2markdown | – | https://github.com/kates/html2markdown | 2013 |
@@ -30,7 +30,7 @@ Last updated September 2020
 
 ## Markdown Editor Libraries
 
-| Name | Site | Repo | Last Updated |
+| Name | Website | Repository | Last Updated |
 | --- | --- | --- | --- |
 | CKEditor5 (plugin) | https://ckeditor.com/docs/ckeditor5/latest/api/markdown-gfm.html | https://github.com/ckeditor/ckeditor5 | 2020 |
 | EasyMDE | https://easymde.tk/ | https://github.com/Ionaru/easy-markdown-editor | 2020 |
