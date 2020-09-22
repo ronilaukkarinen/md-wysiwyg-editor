@@ -36,7 +36,7 @@ Last updated September 2020
 | EasyMDE | https://easymde.tk/ | https://github.com/Ionaru/easy-markdown-editor | 2020 |
 | Editor.md | https://pandao.github.io/editor.md/en.html | https://github.com/pandao/editor.md | 2016 |
 | Pen Editor | https://sofish.github.io/pen/ | https://github.com/sofish/pen | 2017 |
-| ProseMirror | https://prosemirror.net/ | https://github.com/ProseMirror | 2020 |
+| ProseMirror (module) | https://prosemirror.net/examples/markdown/ | https://github.com/prosemirror/prosemirror-markdown | 2020 |
 | SimpleMDE | https://simplemde.com/ | https://github.com/sparksuite/simplemde-markdown-editor | 2016 |
 | TinyMCE5 (plugin) | https://www.tiny.cloud/labs/markdown/ | https://github.com/tinymce/ | 2020 |
 | Toast UI Editor | https://ui.toast.com/tui-editor/ | https://github.com/nhn/tui.editor | 2020 |
