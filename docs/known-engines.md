@@ -30,7 +30,7 @@
 
 | Name | Site | Repo | Last Updated |
 | --- | --- | --- | --- |
-| CKEditor5 (plugin) | https://ckeditor.com/docs/ckeditor5/latest/api/markdown-gfm.html | 2020 |
+| CKEditor5 (plugin) | https://ckeditor.com/docs/ckeditor5/latest/api/markdown-gfm.html | https://github.com/ckeditor/ckeditor5 | 2020 |
 | EasyMDE | https://easymde.tk/ | https://github.com/Ionaru/easy-markdown-editor | 2020 |
 | Editor.md | https://pandao.github.io/editor.md/en.html | https://github.com/pandao/editor.md | 2016 |
 | Pen Editor | https://sofish.github.io/pen/ | https://github.com/sofish/pen | 2017 |
