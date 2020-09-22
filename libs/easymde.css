@@ -544,7 +544,7 @@ span.CodeMirror-selectedtext {
 .CodeMirror {
   box-sizing: border-box !important;
   height: 100% !important; /* Simply changing to this fixed scroll problems */
-  border: 1px solid #ddd !important;
+  border: 0px solid transparent !important;
   border-bottom-left-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
   padding: 10px !important;
