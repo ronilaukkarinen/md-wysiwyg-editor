@@ -90,8 +90,8 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 | [Uncolored](https://github.com/n457/Uncolored) | [Editor.md](https://pandao.github.io/editor.md/en.html) |
 | [Abricotine](http://abricotine.brrd.fr/) | [TOAST UI Editor](https://ui.toast.com/tui-editor/) |
 | [ghostwriter](https://wereturtle.github.io/ghostwriter/) | [HyperMD](https://github.com/laobubu/HyperMD) |
-| [VNote](https://github.com/tamlok/vnote) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
-| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) | |
+| [VNote](https://github.com/tamlok/vnote) | [muya](https://github.com/MarkText/muya) (WIP)
+| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) ([VSCode](https://github.com/microsoft/vscode) extension) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
 | [More...](https://softwarerecs.stackexchange.com/questions/5746/markdown-editor-for-windows-with-live-rendering-in-the-editing-pane-not-in-a-se) | |
 
 ## Support
