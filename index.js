@@ -229,7 +229,7 @@ if (EasyMDEMarkdownArea == 'false') {
   EasyMDEMarkdownArea = false;
   let EasyMDEMarkdownEditor;
 } else {
-  EasyMDEMarkdownArea = false;
+  EasyMDEMarkdownArea = true;
 }
 
 tinymce.baseURL = "libs/tinymce";
