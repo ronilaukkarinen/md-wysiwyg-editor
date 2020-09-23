@@ -35,6 +35,10 @@ var editorChangeHandler = function() {
 ```
 * Help views for keyboard shortcuts and typed markdown-to-rich-text conversions?
 * CSS styling colors with text selection in markdown editor (EasyMDE) need fixing (especially dark mode).
+* Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., scroll was done first).
+* Do sync scroll based on line number?
+* Transition artifacts when opening/closing markdown sidebar (due to adjust editor spacing).
+* Can't scroll in whitespace margins of markdown editor in full page mode.
 
 ## Editing
 
@@ -51,9 +55,6 @@ var editorChangeHandler = function() {
   * addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
     * "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
 * Link active highlight bug in dark mode.
-* Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., scroll was done first).
-* Do sync scroll based on line number?
-* Transition artifacts when opening/closing markdown sidebar (due to adjust editor spacing).
 
 ## User Input
 
