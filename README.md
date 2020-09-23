@@ -4,9 +4,9 @@
 
 ## Launch
 
-Launch the editor with README.md in split-screen mode: [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=split](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=split)
+### [Launch the editor with README.md in split-screen mode](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=split)
 
-Or launch the editor empty in default configuration: [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
+### [Or launch the editor empty in default configuration](https://alyw234237.github.io/md-wysiwyg-editor/)
 
 ### Requirements
 
