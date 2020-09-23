@@ -4,11 +4,11 @@
 
 ## Launch
 
-### ➡ [Launch with an example file (this README.md)](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md)
+### [➡ Launch with example file](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md)
+
+### [➡ Launch with blank new file](ttps://alyw234237.github.io/md-wysiwyg-editor/)
 
 Click the markdown button in the toolbar for markdown modes.
-
-➡ [Or launch with an empty new file](https://alyw234237.github.io/md-wysiwyg-editor/)
 
 ### Requirements
 
