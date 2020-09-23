@@ -19,27 +19,27 @@ Make sure that your web browser is up to date and that you have the Native File 
 
 ## Screenshots
 
-### WYSIWYG Editor (Light Mode)
+### WYSIWYG Editing Mode (Light Mode)
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode.png"><img src="images/screenshots/screenshot-wysiwyg-light-mode.png" height="600px"></a>
 
-### WYSIWYG Editor (Dark Mode)
+### WYSIWYG Editing Mode (Dark Mode)
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-dark-mode.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode.png" height="600px"></a>
 
-### Markdown Editor (Light Mode)
+### Markdown Editing Mode (Light Mode)
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-markdown-light-mode.png"><img src="images/screenshots/screenshot-markdown-light-mode.png" height="600px"></a>
 
-### Markdown Editor (Dark Mode)
+### Markdown Editing Mode (Dark Mode)
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-markdown-dark-mode.png"><img src="images/screenshots/screenshot-markdown-dark-mode.png" height="600px"></a>
 
-### Split-Screen Editor (Light Mode)
+### Split-Screen Editing Mode (Light Mode)
 
-<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-light-mode.png"><img src="images/screenshots/screenshot-split-screen-light-mode.png.png" height="600px"></a>
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-light-mode.png"><img src="images/screenshots/screenshot-split-screen-light-mode.png" height="600px"></a>
 
-### Split-Screen Editor (Dark Mode)
+### Split-Screen Editing Mode (Dark Mode)
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-dark-mode.png"><img src="images/screenshots/screenshot-split-screen-dark-mode.png" height="600px"></a>
 
