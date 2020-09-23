@@ -225,8 +225,8 @@ if (reverseShiftEnterBehavior == 'true') {
 
 // Check user preferences for EasyMDE markdown editing area or plain-text text area
 EasyMDEMarkdownArea = localStorage.getItem('EasyMDEMarkdownArea');
-if (EasyMDEMarkdownArea == 'true') {
-  EasyMDEMarkdownArea = true;
+if (EasyMDEMarkdownArea == 'false') {
+  EasyMDEMarkdownArea = false;
   let EasyMDEMarkdownEditor;
 } else {
   EasyMDEMarkdownArea = false;
@@ -1537,9 +1537,19 @@ function setupMarkdown(api) {
     var EasyMDEOptions = {
       element: document.getElementById('markdown-editor'),
       initialValue: markdownTextarea.value,
-      renderingConfig: {
-        codeSyntaxHighlighting: true,
-      },
+    	shortcuts: {
+    	  "toggleBlockquote": "Ctrl-]",
+    	  "cleanBlock": null,
+    	  "toggleHeadingSmaller": null,
+    	  "togglePreview": null,
+    	  "toggleCodeBlock": null,
+    	  "toggleOrderedList": "Ctrl-Shift-7",
+    	  "toggleUnorderedList": "Ctrl-Shift-8",
+    	  "drawImage": null,
+    	  "toggleHeadingBigger": null,
+    	  "toggleSideBySide": null,
+    	  "toggleFullScreen": null,
+    	},
       spellChecker: false,
       status: false,
       toolbar: false,
