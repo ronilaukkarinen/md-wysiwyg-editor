@@ -78,7 +78,7 @@ The editor has only been tested on Google Chrome at this time.
 * Lots of [bug fixes](docs/bugs-and-to-do.md) and minor features.
 * Incremental updating for markdown–HTML conversion to make things faster?
 * Tabs for multiple files at once?
-* Left pane for folder/workspace and tab for file table of contents?
+* Left pane with tabs for folder/workspace and document table of contents?
 * Other things...
 
 ## Related
