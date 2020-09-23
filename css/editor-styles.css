@@ -124,6 +124,12 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 	background-color: var(--menu-item-button-hover-color) !important;
 }
 
+
+/* Get rid of border on split-type toolbar buttons */
+.tox .tox-split-button:hover {
+  box-shadow: none !important;
+}
+
 /* Toolbar button icons */
 .tox .tox-tbtn:hover svg {
 	background-color: var(--menu-item-button-hover-color) !important;
