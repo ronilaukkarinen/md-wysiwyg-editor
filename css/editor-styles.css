@@ -321,6 +321,11 @@ button[title="Formats"] {
 	cursor: default !important;
 }
 
+/* Editing area (container for everything below toolbar) */
+.tox-sidebar-wrap {
+	background-color: var(--general-background-color) !important;
+}
+
 /* Markdown sidebar */
 .tox .tox-sidebar {
 	color: var(--general-text-color) !important;
