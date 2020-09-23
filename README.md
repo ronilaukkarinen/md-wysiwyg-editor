@@ -41,7 +41,7 @@ Make sure that your web browser is up to date and you have the Native File Syste
 
 | Light | Dark |
 | --- | --- |
-| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png"><img src="images/screenshot-mobile-light.png" width="200px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png"><img src="images/screenshot-mobile-dark.png" width="200px"></a> |
+| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png"><img src="images/screenshot-mobile-light.png" width="300px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png"><img src="images/screenshot-mobile-dark.png" width="300px"></a> |
 
 ## Features
 
