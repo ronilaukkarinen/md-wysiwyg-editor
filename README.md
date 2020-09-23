@@ -68,12 +68,12 @@ The editor is still under development and has [many bugs](docs/bugs-and-to-do.md
 
 Due to the bidirectional conversion between rich text/HTML and markdown, the editor may alter markdown files—sometimes in undesirable ways. A number of examples are illustrative. Escapes (`\`) may be added to certain markdown syntax characters that aren't part of the markdown (e.g., `~`, `|`). Headerless markdown tables will be escaped and thereby broken with Showdown as the HTML-to-markdown engine. YAML and TOML front matter is automatically put inside of a markdown code block (<code>```</code>) to prevent it from being parsed by the HTML-to-markdown engines. Changes to markdown files will vary depending on whether Turndown or Showdown is selected as the HTML-to-markdown conversion engine. For example, Showdown doesn't handle headerless tables, whereas Turndown does thanks to a plugin. For markdown-to-HTML conversion, only markdown-it handles headerless tables.
 
-Rich-text HTML editing with the editor is solid. But, as described, the markdown functionality may have issues here and there. Hence, you've been warned—use the markdown features—specifically bidirectional HTML–markdown conversion via markdown pane and open/save files as markdown—at your own risk!
+Rich-text HTML editing with the editor is solid. But, as described, the markdown functionality may have issues here and there. Hence, you've been warned—use the markdown features at your own risk! These features are specifically bidirectional HTML–markdown conversion via usage of the markdown pane and open/save files as markdown.
 
 ### Future
 
 * Lots of [bug fixes](docs/bugs-and-to-do.md) and minor features.
-* Add more markdown–HTML conversion engine options (e.g., [Marked](https://github.com/markedjs/marked))?
+* Incremental updating for markdown–HTML conversion to make things faster?
 * Tabs for multiple files at once?
 * Left pane for folder/workspace and tab for file table of contents?
 * Other things...
