@@ -1537,19 +1537,24 @@ function setupMarkdown(api) {
     var EasyMDEOptions = {
       element: document.getElementById('markdown-editor'),
       initialValue: markdownTextarea.value,
-    	shortcuts: {
-    	  "toggleBlockquote": "Ctrl-]",
-    	  "cleanBlock": null,
-    	  "toggleHeadingSmaller": null,
-    	  "togglePreview": null,
-    	  "toggleCodeBlock": null,
-    	  "toggleOrderedList": "Ctrl-Shift-7",
-    	  "toggleUnorderedList": "Ctrl-Shift-8",
-    	  "drawImage": null,
-    	  "toggleHeadingBigger": null,
-    	  "toggleSideBySide": null,
-    	  "toggleFullScreen": null,
-    	},
+      nativeSpellcheck: false,
+      // Not needed so block any possibility of it being used
+      previewRender: function() {
+        return;
+      },
+      shortcuts: {
+        "toggleBlockquote": "Ctrl-]",
+        "cleanBlock": null,
+        "toggleHeadingSmaller": null,
+        "togglePreview": null,
+        "toggleCodeBlock": null,
+        "toggleOrderedList": "Ctrl-Shift-7",
+        "toggleUnorderedList": "Ctrl-Shift-8",
+        "drawImage": null,
+        "toggleHeadingBigger": null,
+        "toggleSideBySide": null,
+        "toggleFullScreen": null,
+      },
       spellChecker: false,
       status: false,
       toolbar: false,
