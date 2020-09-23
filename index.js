@@ -664,13 +664,12 @@ tinymce.init({
         var items = [
           {
             type: 'choiceitem',
-            text: 'Split screen (Ctrl+M)',
-            value: 'splitscreen',
-          },
-          {
-            type: 'choiceitem',
-            text: 'Full page (Shift+Ctrl+M)',
+            text: 'Full page (Ctrl+M)',
             value: 'fullpage',
+          },          {
+            type: 'choiceitem',
+            text: 'Split screen (Shift+Ctrl+M)',
+            value: 'splitscreen',
           },
         ];
         callback(items);
@@ -679,8 +678,6 @@ tinymce.init({
 
     // Set up markdown pane and toolbar button
     editor.ui.registry.addSidebar('markdown', {
-      tooltip: "Markdown (Ctrl+M)",
-      icon: "markdown",
       onSetup: function (api) {
         setupMarkdown(api);
       },
@@ -975,14 +972,14 @@ tinymce.init({
       tinymce.activeEditor.execCommand('SearchReplace');
     });
 
-    editor.addShortcut('Meta+M', 'Markdown', function () {
+    editor.addShortcut('Meta+M', 'Markdown editor (full-page)', function () {
+      toggleMarkdownFullpage();
+    });
+
+    editor.addShortcut('Meta+Shift+M', 'Markdown editor (split-screen)', function () {
       if (markdownFullpageToggleState == false) {
         toggleMarkdownSidebar();
       }
-    });
-
-    editor.addShortcut('Meta+Shift+M', 'Markdown non-dual-pane', function () {
-      toggleMarkdownFullpage();
     });
 
     editor.addShortcut('Meta+W', 'Quit', function () {
@@ -1698,18 +1695,18 @@ window.addEventListener('keydown', function(event) {
     app.saveFileAs();
   }
 
-  // Ctrl/Cmd + M -> Markdown pane toggle
+  // Ctrl/Cmd + Shift + M -> Markdown editor full-page toggle
   if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyM') {
+    event.preventDefault();
+    toggleMarkdownFullpage();
+  }
+
+  // Ctrl/Cmd + Shift + M -> Markdown editor split-screen toggle
+  if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.code === 'KeyM') {
     event.preventDefault();
     if (markdownFullpageToggleState == false) {
       toggleMarkdownSidebar();
     }
-  }
-
-  // Ctrl/Cmd + Shift + M -> Markdown full page toggle
-  if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.code === 'KeyM') {
-    event.preventDefault();
-    toggleMarkdownFullpage();
   }
   
   // Ctrl/Cmd + W -> Quit
