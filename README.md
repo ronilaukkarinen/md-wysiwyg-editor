@@ -44,6 +44,8 @@ Note the web browser [requirements](#Requirements) for the editor to have full f
 | --- | --- |
 | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-light-mode-mobile.png" height="550px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png" height="550px"></a> |
 
+<br />
+
 ## Requirements
 
 The web browser must be up-to-date and have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
