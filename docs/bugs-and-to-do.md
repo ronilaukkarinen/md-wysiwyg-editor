@@ -13,6 +13,7 @@
     * https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
 * Preferences option to hide menu bar? (With alternatives for interaction.)
 * Formatting buttons (e.g., bold) don't work with markdown editor.
+* Dropdown buttons (extra formatting and markdown) aren't showing on mobile due to sliding toolbar...
 
 ## Custom UI
 
