@@ -43,7 +43,7 @@ Make sure that your web browser is up to date and that you have the Native File 
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-dark-mode.png"><img src="images/screenshots/screenshot-split-screen-dark-mode.png" height="600px"></a>
 
-### WYSIWYG Editing Mode (Mobile)
+### WYSIWYG Editing Mode (Mobile—Android 11)
 
 | Light Mode | Dark Mode |
 | --- | --- |
