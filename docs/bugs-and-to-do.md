@@ -55,9 +55,10 @@
   * Ctrl+Shift+O -> Open folder (later?)
   * Headings: Ctrl+1-6 (?)
   * Image: Ctrl+Shift+I
-  * Strikethrough: Ctrl+D
   * Link: Ctrl+L (?)
   * Ctrl+_ (i.e., Ctrl+Shift+-) or Alt+Ctrl+- (Alt+Ctrl+_) -> Horizontal line
+* Need to work on keyboard shortcuts in markdown editor mode.
+  * E.g., Ctrl+D causes line to be deleted instead of strikethrough (CodeMirror default).
 * Add Alt + F keyboard shortcut to open File menu if possible.
 * Use Chrome search for Ctrl+F? Disable TinyMCE shortcut?
   * Tried but couldn't remove/override TinyMCE's Ctrl+F.
@@ -108,8 +109,6 @@
 ## Miscellaneous
 
 * Decide on a name.
-* Move to new repository + username (remember to change links in code).
-* Make new screenshots with shadows.
 * Add app install/add to homescreen prompt stuff.
   * https://github.com/pwa-builder/pwa-install
   * https://love2dev.com/pwa/add-to-homescreen-library/

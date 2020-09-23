@@ -1047,6 +1047,10 @@ tinymce.init({
       tinyMCE.execCommand('mceToggleFormat', false, 'h6');
     });
 
+    editor.addShortcut('Meta+D', 'Strikethrough', function () {
+      tinyMCE.execCommand('Strikethrough');
+    });
+
     editor.addShortcut('Alt+Shift+5', 'Strikethrough', function () {
       tinyMCE.execCommand('Strikethrough');
     });
@@ -1217,8 +1221,10 @@ tinymce.init({
         app.openFile(JSON.parse(localStorage.getItem('fileHandle')));
       }*/
 
-      // Open markdown pane if markdown pane was open last time or if the relevant URL parameter is set
-      if(localStorage.getItem('markdownSidebarToggleState') == 'true' || startMarkdownView) {
+      // Show markdown editor if it was open last time or if the relevant URL parameter is set
+      if (localStorage.getItem('markdownFullpageToggleState') == 'true' || startMarkdownView == 'full') {
+        toggleMarkdownFullpage();
+      } else if (localStorage.getItem('markdownSidebarToggleState') == 'true' || startMarkdownView == 'split') {
         toggleMarkdownSidebar();
       }
 
@@ -1849,6 +1855,8 @@ function toggleMarkdownFullpage() {
 
     toggleMarkdownSidebar();
   }
+
+  localStorage.setItem('markdownFullpageToggleState', markdownFullpageToggleState);
 
   // Unhide everything once transitions are done
   setTimeout(function() {

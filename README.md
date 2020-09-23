@@ -8,9 +8,9 @@ Launch the editor:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
 
-Open this README.md file in the editor with a split-screen markdown editor:
+Open this README.md file in the editor in split-screen editing mode:
 
-* [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true)
+* [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=split](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=split)
 
 Make sure that your web browser is up to date and that you have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
 

@@ -27,6 +27,7 @@
 | Ctrl or Cmd + B | Bold |
 | Ctrl or Cmd + I | Italic |
 | Ctrl or Cmd + U | Underline |
+| Ctrl or Cmd + D | Strikethrough |
 | Alt/Cmd + Shift + 5 | Strikethrough |
 | Ctrl or Cmd + . | Superscript |
 | Ctrl or Cmd + , | Subscript |
