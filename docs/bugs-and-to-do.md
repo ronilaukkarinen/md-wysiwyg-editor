@@ -53,6 +53,7 @@ var editorChangeHandler = function() {
 * Link active highlight bug in dark mode.
 * Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., scroll was done first).
 * Do sync scroll based on line number?
+* Transition artifacts when opening/closing markdown sidebar (due to adjust editor spacing).
 
 ## User Input
 

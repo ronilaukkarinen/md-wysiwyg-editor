@@ -42,7 +42,9 @@
 }
 
 .CodeMirror {
-  font-family: monospace !important;
+  /* Custom font */
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Courier New", monospace !important;
+  font-size: 14px !important;
   /*height: 300px !important;*/ /* Conflicts with later definition */
   color: var(--general-text-color) !important;
   direction: ltr !important;
@@ -314,12 +316,13 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror-hscrollbar,
 .CodeMirror-scrollbar-filler,
 .CodeMirror-vscrollbar {
-  position: absolute !important;
+  position: absolute !important; /* Note: Redefined below */
   z-index: 6 !important;
   /*display: none !important;*/ /* This shows vertical scrollbar */
 }
 
 .CodeMirror-vscrollbar {
+  position: fixed !important; /* This puts vertical scrollbar on far right */
   right: 0 !important;
   top: 0 !important;
   overflow-x: hidden !important;
@@ -549,7 +552,7 @@ span.CodeMirror-selectedtext {
   border-bottom-left-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
   padding: 10px !important;
-  font: inherit !important;
+  /*font: inherit !important;*/
   z-index: 0 !important;
   word-wrap: break-word !important;
 }

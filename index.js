@@ -1,5 +1,6 @@
 let persistFilename = "untitled.md";
 let markdownSidebarToggleState = false;
+let markdownFullpageToggleState = false;
 let fullscreenTracker = false;
 
 let disableRightClick = false;
@@ -12,10 +13,18 @@ let HTMLtoMarkdownEngine;
 let EasyMDEMarkdownArea;
 
 // Core editor variables
-var markdownEditor; // Markdown textarea element handle
 var iframe; // WYSIWYG editing area iframe handle
 var iframeHTML; // WYSIWYG editing area iframe HTML tag handle
+var editingArea; // Full editing area (WYSIWYG and markdown) handle
 var editorPane; // WYSIWYG editing area main div handle (body tag of iframe)
+
+var markdownEditor; // Markdown textarea element handle
+var editorPaneTop; // WYSIWYG editing area highest div handle
+var markdownEditorTop; // Markdown editing area highest div handle
+
+var markdownSidebar; // class = tox-sidebar__pane
+var markdownTextarea; // id = markdown-editor
+
 var scrolledPane; // Which editing pane the mouse cursor is currently in (WYSIWYG or markdown)
 
 // Get core editor handles
@@ -27,6 +36,10 @@ function setupCoreEditorHandles() {
     markdownEditor = document.getElementById('markdown-editor');
   }
 
+  editingArea = document.getElementsByClassName('tox-sidebar-wrap')[0];
+  editorPaneTop = document.getElementsByClassName('tox-edit-area')[0];
+  markdownEditorTop = document.getElementsByClassName('tox-sidebar')[0];
+  markdownSidebar = document.getElementsByClassName('tox-sidebar__pane')[0];
   iframe = document.getElementById('textEditor_ifr');
   iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
   editorPane = iframe.contentWindow.document.getElementById('tinymce');
@@ -271,7 +284,7 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codeformat codesample table image hr searchreplace markdown code fullscreen darkmode preferences github filename', // More: heading, quickimage
+  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codesample hr table image searchreplace markdownButton code fullscreen darkmode preferences github filename', // More: heading, quickimage
   toolbar_mode: 'floating',
   plugins: 'code codesample, link image table lists paste searchreplace autolink hr textpattern quickbars',
   contextmenu_never_use_native: true,
@@ -624,6 +637,44 @@ tinymce.init({
       items: 'underline strikethrough superscript subscript'
     });
 
+    editor.ui.registry.addSplitButton('markdownButton', {
+      icon: "markdown",
+      tooltip: "Markdown (Ctrl+M)",
+
+      // Main button on click
+      onAction: function() {
+        if (markdownFullpageToggleState == false) {
+          toggleMarkdownSidebar();
+        }
+      },
+      // Items on click
+      onItemAction: function(api, value) {
+        if (value == 'splitscreen') {
+          if (markdownFullpageToggleState == false) {
+            toggleMarkdownSidebar();
+          }
+        } else if (value == 'fullpage') {
+          toggleMarkdownFullpage();
+        }
+      },
+
+      fetch: function(callback) {
+        var items = [
+          {
+            type: 'choiceitem',
+            text: 'Split screen (Ctrl+M)',
+            value: 'splitscreen',
+          },
+          {
+            type: 'choiceitem',
+            text: 'Full page (Shift+Ctrl+M)',
+            value: 'fullpage',
+          },
+        ];
+        callback(items);
+      }
+    });
+
     // Set up markdown pane and toolbar button
     editor.ui.registry.addSidebar('markdown', {
       tooltip: "Markdown (Ctrl+M)",
@@ -645,25 +696,7 @@ tinymce.init({
     // Adjust padding if applicable + hack to fix width of the markdown pane
     editor.on('ResizeWindow', function(event) {
 
-      var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + "px";
-      markdownSidebar.style.width = markdownSidebarWidth;
-
-      adjustEditorSpacing();
-      setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
-
-      return;
-    });
-
-    // When markdown pane is opened/closed
-    editor.on('ToggleSidebar', function(event) {
-
-      markdownSidebarToggleState = !markdownSidebarToggleState;
-      localStorage.setItem('markdownSidebarToggleState', markdownSidebarToggleState);
-
-      // Hack to fix width of the markdown pane
-      var width = (window.innerWidth * 0.50).toString() + "px";
-      markdownSidebar.style.width = width;
-
+      adjustMarkdownEditorWidth();
       adjustEditorSpacing();
       setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
 
@@ -722,7 +755,7 @@ tinymce.init({
           {
             type: 'checkbox',
             name: 'EasyMDEMarkdownArea',
-            label: 'Use EasyMDE markdown editor in the markdown pane? (Under development, buggy and slow)',
+            label: 'Syntax highlighting and styling in the markdown editor? (note: slow in split-screen mode with larger files)',
           },
           {
             type: 'selectbox',
@@ -941,7 +974,13 @@ tinymce.init({
     });
 
     editor.addShortcut('Meta+M', 'Markdown', function () {
-      tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+      if (markdownFullpageToggleState == false) {
+        toggleMarkdownSidebar();
+      }
+    });
+
+    editor.addShortcut('Meta+Shift+M', 'Markdown non-dual-pane', function () {
+      toggleMarkdownFullpage();
     });
 
     editor.addShortcut('Meta+W', 'Quit', function () {
@@ -1037,7 +1076,7 @@ tinymce.init({
       if (event.key == 'Escape' && fullscreenTracker == true) {
         toggleFullscreen();
       } else if (event.key == 'Escape' && markdownSidebarToggleState == true) {
-        tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+        toggleMarkdownSidebar();
       }
 
       // Tab key: insert an em dash-sized space and disable normal tab key handling
@@ -1181,7 +1220,7 @@ tinymce.init({
 
       // Open markdown pane if markdown pane was open last time or if the relevant URL parameter is set
       if(localStorage.getItem('markdownSidebarToggleState') == 'true' || startMarkdownView) {
-        tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+        toggleMarkdownSidebar();
       }
 
       // Update markdown pane when the editor area changes
@@ -1253,6 +1292,21 @@ function switchTheme() {
   applyTheme();
 }
 
+// Adjust markdown editor width for split-screen and full page views
+function adjustMarkdownEditorWidth() {
+
+  // If markdown editor is open as a split-screen sidebar
+  if (markdownSidebarToggleState == true && markdownFullpageToggleState == false) {
+    var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + "px";
+    markdownSidebar.style.width = markdownSidebarWidth;
+  // If markdown editor is open full page
+  } else if (markdownFullpageToggleState == true) {
+    markdownSidebar.style.width = getComputedStyle(editorPane).maxWidth;
+  }
+
+  return;
+}
+
 // Loosen padding/margins if editor pane width is small (e.g., when editor isn't maximized and markdown pane is open)
 function adjustEditorSpacing() {
 
@@ -1310,7 +1364,7 @@ var HTMLtoMarkdownPending = false;
 function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
   // Don't update if markdown pane isn't open (unless opening or saving a file)
-  if (markdownSidebarToggleState == false && force != true) {
+  if (markdownSidebarToggleState == false && markdownFullpageToggleState == false && force != true) {
     return;
   }
 
@@ -1369,7 +1423,7 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
 
   // Don't update if markdown pane isn't open (unless opening or saving a file)
-  if (markdownSidebarToggleState == false && force != true) {
+  if (markdownSidebarToggleState == false && markdownFullpageToggleState == false && force != true) {
     return;
   }
 
@@ -1513,10 +1567,6 @@ TurndownConverter.use(TurndownGFM);
 // ^ Adds strikethrough, tables, headerless tables, table col spans, task lists, and bug fixes
 TurndownConverter.keep(TurndownKeepList);
 
-// Markdown pane element handles
-var markdownSidebar;
-var markdownTextarea;
-
 function setupMarkdown(api) {
   // Set the sidebar HTML code
   markdownSidebar = api.element();
@@ -1527,7 +1577,7 @@ function setupMarkdown(api) {
 
   markdownTextarea = document.getElementById('markdown-editor');
   markdownTextarea.style.flexGrow = '1';
-  markdownTextarea.style.padding = '50x !important';
+  markdownTextarea.style.padding = '50px !important';
   markdownTextarea.style.fontSize = '14px';
   markdownTextarea.style.fontFamily = 'monospace';
   markdownTextarea.style.whiteSpace = 'pre-wrap';
@@ -1618,13 +1668,13 @@ if (disableRightClick == true) {
 window.addEventListener('keydown', function(event) {
 
   // Ctrl/Cmd + N -> New file
-  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyN') {
+  if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyN') {
     event.preventDefault();
     newFile();
   }
   
   // Ctrl/Cmd + O -> Open file
-  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyO') {
+  if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyO') {
     event.preventDefault();
     // openFile();
     app.openFile();
@@ -1645,19 +1695,27 @@ window.addEventListener('keydown', function(event) {
   }
 
   // Ctrl/Cmd + M -> Markdown pane toggle
-  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyM') {
+  if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyM') {
     event.preventDefault();
-    tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+    if (markdownFullpageToggleState == false) {
+      toggleMarkdownSidebar();
+    }
+  }
+
+  // Ctrl/Cmd + Shift + M -> Markdown full page toggle
+  if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.code === 'KeyM') {
+    event.preventDefault();
+    toggleMarkdownFullpage();
   }
   
   // Ctrl/Cmd + W -> Quit
-  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyW') {
+  if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyW') {
     event.preventDefault();
     quit();
   }
   
   // Ctrl/Cmd + Q -> Quit
-  if ((event.ctrlKey || event.metaKey) && event.code === 'KeyQ') {
+  if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyQ') {
     event.preventDefault();
     quit();
   }
@@ -1675,12 +1733,12 @@ window.addEventListener('keydown', function(event) {
   }
   
   // Esc -> Exit fullscreen if it's open and if not close markdown sidebar if it's open
-  if (event.key == 'Escape' && fullscreenTracker == true) {
+  if (event.key == 'Escape' && !event.shiftKey && fullscreenTracker == true) {
     event.preventDefault();
     toggleFullscreen();
   } else if (event.key == 'Escape' && markdownSidebarToggleState == true) {
     event.preventDefault();
-    tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+    toggleMarkdownSidebar();
   }
 
   return;
@@ -1724,19 +1782,78 @@ function setupScrollSync() {
 
 }
 
+// Editor pane scrolling synchronization—update markdown pane scroll to match WYSIWYG pane
 function updateMarkdownScroll() {
+
   if (scrolledPane == 'editorPane') {
     var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
     markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
   }
+
   return;
 }
 
+// Editor pane scrolling synchronization—update WYSIWYG pane scroll to match markdown pane
 function updateWYSIWYGScroll() {
+
   if (scrolledPane == 'markdownPane') {
     var scrollRatio = markdownEditor.scrollTop / markdownEditor.scrollHeight;
     iframeHTML.scrollTop = iframeHTML.scrollHeight * scrollRatio;
   }
+
+  return;
+}
+
+// Open/close markdown editor sidebar view
+function toggleMarkdownSidebar() {
+
+  tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
+  markdownSidebarToggleState = !markdownSidebarToggleState;
+  localStorage.setItem('markdownSidebarToggleState', markdownSidebarToggleState);
+
+  adjustMarkdownEditorWidth();
+  adjustEditorSpacing();
+  setTimeout(adjustEditorSpacing, 100); // Do it again if didn't work the first time... (temporary hack)
+
+  return;
+}
+
+// Open/close markdown editor full page view
+function toggleMarkdownFullpage() {
+
+  // Hide everything to get rid of transition artifacts
+  editingArea.style.visibility = 'hidden';
+
+  if (markdownFullpageToggleState == false) {
+    markdownFullpageToggleState = true;
+
+    // Markdown editor sidebar must be open for full page to work
+    if (markdownSidebarToggleState == false) {
+      toggleMarkdownSidebar();
+    // If false, this still needs to be called regardless
+    } else {
+      adjustMarkdownEditorWidth();
+    }
+
+    markdownEditorTop.classList.add("markdownEditorFull");
+    editorPaneTop.classList.add("editorPaneHide");
+
+    EasyMDEMarkdownEditor.codemirror.focus();
+
+  } else {
+    markdownFullpageToggleState = false;
+
+    markdownEditorTop.classList.remove("markdownEditorFull");
+    editorPaneTop.classList.remove("editorPaneHide");
+
+    toggleMarkdownSidebar();
+  }
+
+  // Unhide everything once transitions are done
+  setTimeout(function() {
+    editingArea.style.visibility = 'visible';
+  }, 100);
+
   return;
 }
 

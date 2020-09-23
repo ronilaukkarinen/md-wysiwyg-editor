@@ -41,7 +41,8 @@
 | Ctrl or Cmd + \ | Clear formatting |
 | Ctrl or Cmd + F | Find |
 | Ctrl or Cmd + H | Find and replace |
-| Ctrl or Cmd + M | Markdown pane |
+| Ctrl or Cmd + M | Markdown editor split screen |
+| Ctrl or Cmd + Shift + M | Markdown editor full page |
 | Ctrl or Cmd + Shift + F | Fullscreen |
 | F11 | Fullscreen |
 | Fullscreen key (Chrome OS) | Fullscreen |

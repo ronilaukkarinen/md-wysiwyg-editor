@@ -392,3 +392,14 @@ button[title="Formats"] {
 	height: 3px !important;
 }
 
+/* For dynamically making markdown editing pane full page */
+.markdownEditorFull {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+/* For dynamically hiding WYSIWYG editing area so that markdown editing area can be full page */
+.editorPaneHide {
+  display: none !important;
+}
+
