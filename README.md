@@ -21,25 +21,33 @@ Make sure that your web browser is up to date and that you have the Native File 
 
 ### WYSIWYG Editor (Light Mode)
 
-<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode.png"><img src="images/screenshot-light-mode.png" height="600px"></a>
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode.png"><img src="images/screenshots/screenshot-wysiwyg-light-mode.png" height="600px"></a>
 
 ### WYSIWYG Editor (Dark Mode)
 
-<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode.png"><img src="images/screenshot-dark-mode.png" height="600px"></a>
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-dark-mode.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode.png" height="600px"></a>
+
+### Markdown Editor (Light Mode)
+
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-markdown-light-mode.png"><img src="images/screenshots/screenshot-markdown-light-mode.png" height="600px"></a>
+
+### Markdown Editor (Dark Mode)
+
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-markdown-dark-mode.png"><img src="images/screenshots/screenshot-markdown-dark-mode.png" height="600px"></a>
 
 ### Split-Screen Editor (Light Mode)
 
-<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode-markdown.png"><img src="images/screenshot-light-mode-markdown.png" height="600px"></a>
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-light-mode.png"><img src="images/screenshots/screenshot-split-screen-light-mode.png.png" height="600px"></a>
 
 ### Split-Screen Editor (Dark Mode)
 
-<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode-markdown.png"><img src="images/screenshot-dark-mode-markdown.png" height="600px"></a>
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-dark-mode.png"><img src="images/screenshots/screenshot-split-screen-dark-mode.png" height="600px"></a>
 
 ### WYSIWYG Editor (Mobile)
 
 | Light Mode | Dark Mode |
 | --- | --- |
-| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png"><img src="images/screenshot-mobile-light.png" height="550px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png"><img src="images/screenshot-mobile-dark.png" height="550px"></a> |
+| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode-mobile.png"><img src="images/screenshot-wysiwyg-light-mode-mobile.png" height="550px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-wysiwyg-dark-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png" height="550px"></a> |
 
 ## Features
 
