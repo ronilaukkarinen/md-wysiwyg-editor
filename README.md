@@ -10,12 +10,7 @@
 
 Use the markdown button in the toolbar to enter markdown mode (full-width or split-screen).
 
-### Requirements
-
-Make sure that your web browser is up to date and that you have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
-
-* [chrome://flags/#native-file-system-api](chrome://flags/#native-file-system-api)
-* [chrome://flags/#file-handling-api](chrome://flags/#file-handling-api)
+Note the web browser [requirements](#Requirements) below.
 
 ## Screenshots
 
@@ -48,6 +43,13 @@ Make sure that your web browser is up to date and that you have the Native File 
 | Light Mode | Dark Mode |
 | --- | --- |
 | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-light-mode-mobile.png" height="550px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png" height="550px"></a> |
+
+## Requirements
+
+The web browser must be up-to-date and have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
+
+* [chrome://flags/#native-file-system-api](chrome://flags/#native-file-system-api)
+* [chrome://flags/#file-handling-api](chrome://flags/#file-handling-api)
 
 ## Features
 
