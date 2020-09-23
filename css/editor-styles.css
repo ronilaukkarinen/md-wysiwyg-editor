@@ -65,6 +65,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 
 /* Whole window area border */
 .tox-tinymce {
+	background-color: var(--general-background-color) !important;
 	border: 0px solid var(--general-border-color) !important;
 }
 
@@ -319,11 +320,6 @@ button[title="Formats"] {
 	color: var(--link-color) !important;
 	text-decoration: none !important;
 	cursor: default !important;
-}
-
-/* Editing area (container for everything below toolbar) */
-.tox-sidebar-wrap {
-	background-color: var(--general-background-color) !important;
 }
 
 /* Markdown sidebar */
