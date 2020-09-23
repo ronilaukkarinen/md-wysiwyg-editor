@@ -8,7 +8,7 @@
 
 ### [➡ Launch with blank new file](ttps://alyw234237.github.io/md-wysiwyg-editor/)
 
-Click the markdown button in the toolbar for markdown modes.
+Click the markdown button in the toolbar for markdown modes (full-width and split-screen).
 
 ### Requirements
 
