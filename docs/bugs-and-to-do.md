@@ -14,6 +14,7 @@
 * Preferences option to hide menu bar? (With alternatives for interaction.)
 * Formatting buttons (e.g., bold) don't work with markdown editor.
 * Dropdown buttons (extra formatting and markdown) aren't showing on mobile due to sliding toolbar...
+* Editor doesn't get focus on launch in app mode?
 
 ## Custom UI
 
