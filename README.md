@@ -1,6 +1,6 @@
 # Markdown WYSIWYG Editor
 
-"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor written in HTML5, JavaScript, and CSS. It is a [progressive web app](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce) and [EasyMDE](https://easymde.tk/), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (credit to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
+"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor written in JavaScript, HTML, and CSS. It is a [progressive web app](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce) and [EasyMDE](https://easymde.tk/), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (credit to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
 
 ## Launch
 
@@ -49,7 +49,7 @@ Make sure that your web browser is up to date and that you have the Native File 
 * Automatic conversion of typed markdown syntax into rich-text formatting in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `This text is bold` will give bolded text. In addition to markdown syntax, certain strings will convert to special characters (namely `--` to en dash and `---` to em dash). See [pattern-conversions.md](docs/pattern-conversions.md) for a list of conversions.
 * Extensive keyboard shortcuts. See [keyboard-shortcuts.md](docs/keyboard-shortcuts.md) for a list.
 * Works offline when installed as a PWA.
-* Works on mobile and installable as an app (via add to homescreen).
+* Works on mobile and installable on mobile as an app (via add to homescreen).
 * Light and dark modes.
 * Option to switch between HTML-to-markdown conversion engines ([Turndown](https://github.com/domchristie/turndown) and [Showdown](https://github.com/showdownjs/showdown)). The Turndown engine generally seems to produce better output and is set to default. Some plugins for additional markdown syntax (e.g., headerless tables) are included with the engines.
 * Option to switch between markdown-to-HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it) and [Showdown](https://github.com/showdownjs/showdown)). Some plugins for additional markdown syntax (e.g., headerless tables) are included with the engines.
@@ -63,7 +63,7 @@ Due to the bidirectional conversion between rich text/HTML and markdown, the edi
 
 Rich-text HTML editing with the editor is solid. But, as described, the markdown functionality may have issues here and there. Hence, you've been warned—use the markdown features at your own risk! Specifically, HTML–markdown interconversion via usage of the markdown editing mode as well as opening/saving files as markdown.
 
-The editor is slow with larger files in split-screen mode when markdown syntax highlighting/styling is on.
+The editor is slow with larger files in split-screen mode when markdown syntax highlighting/styling is enabled.
 
 The editor has only been tested on Google Chrome at this time.
 
@@ -91,7 +91,7 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
 | [More...](https://softwarerecs.stackexchange.com/questions/5746/markdown-editor-for-windows-with-live-rendering-in-the-editing-pane-not-in-a-se) | |
 
-None of these editors currently offer a 100% rich-text/WYSIWYG markdown-editing experience like "Markdown WYSIWYG Editor" does (with the notable exception of UNOTES, a [VSCode](https://github.com/microsoft/vscode) extension). In addition, none of the web editors are progressive web apps or have Native File System integration at this time.
+None of these editors currently offer a 100% rich-text/WYSIWYG markdown-editing experience like "Markdown WYSIWYG Editor" does (with the notable exception of UNOTES, a [VS Code](https://github.com/microsoft/vscode) extension). In addition, none of the web editors are progressive web apps or have Native File System integration at this time.
 
 ## Support
 
