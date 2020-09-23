@@ -57,7 +57,6 @@
 * More keyboard shortcuts?:
   * Ctrl+` -> Code
   * Ctrl+Shift+O -> Open folder (later?)
-  * Headings: Ctrl+1-6 (?)
   * Image: Ctrl+Shift+I
   * Link: Ctrl+L (?)
   * Ctrl+_ (i.e., Ctrl+Shift+-) or Alt+Ctrl+- (Alt+Ctrl+_) -> Horizontal line

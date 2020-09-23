@@ -18,6 +18,12 @@
 | Ctrl or Cmd + V | Paste |
 | Ctrl or Cmd + Shift + V | Paste as text |
 | Ctrl or Cmd + A | Select all |
+| Ctrl or Cmd + 1 | H1 |
+| Ctrl or Cmd + 2 | H2 |
+| Ctrl or Cmd + 3 | H3 |
+| Ctrl or Cmd + 4 | H4 |
+| Ctrl or Cmd + 5 | H5 |
+| Ctrl or Cmd + 6 | H6 |
 | Ctrl or Cmd + Alt + 1 | H1 |
 | Ctrl or Cmd + Alt + 2 | H2 |
 | Ctrl or Cmd + Alt + 3 | H3 |

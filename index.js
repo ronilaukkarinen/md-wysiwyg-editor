@@ -1043,6 +1043,30 @@ tinymce.init({
       });
     });
 
+    editor.addShortcut('Meta+1', 'Heading 1', function () {
+      tinyMCE.execCommand('mceToggleFormat', false, 'h1');
+    });
+
+    editor.addShortcut('Meta+2', 'Heading 2', function () {
+      tinyMCE.execCommand('mceToggleFormat', false, 'h2');
+    });
+
+    editor.addShortcut('Meta+3', 'Heading 3', function () {
+      tinyMCE.execCommand('mceToggleFormat', false, 'h3');
+    });
+
+    editor.addShortcut('Meta+4', 'Heading 4', function () {
+      tinyMCE.execCommand('mceToggleFormat', false, 'h4');
+    });
+
+    editor.addShortcut('Meta+5', 'Heading 5', function () {
+      tinyMCE.execCommand('mceToggleFormat', false, 'h5');
+    });
+
+    editor.addShortcut('Meta+6', 'Heading 6', function () {
+      tinyMCE.execCommand('mceToggleFormat', false, 'h6');
+    });
+
     editor.addShortcut('Meta+Alt+1', 'Heading 1', function () {
       tinyMCE.execCommand('mceToggleFormat', false, 'h1');
     });
