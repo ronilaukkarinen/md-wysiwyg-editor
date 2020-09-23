@@ -10,7 +10,7 @@
 
 Use the markdown button in the toolbar to enter markdown mode (full-width or split-screen).
 
-Note the web browser [requirements](#Requirements) below.
+Note the web browser [requirements](#Requirements) for "Markdown WYSIWYG Editor" to have full functionality.
 
 ## Screenshots
 
