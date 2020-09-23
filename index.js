@@ -413,6 +413,11 @@ tinymce.init({
     //{start: '***', replacement: '<hr />'}, // Conflicts with bold + italic above
   ],
 
+  mobile: {
+    menubar: false,
+    toolbar_mode: 'floating',
+  },
+
   // https://www.tiny.cloud/docs/demo/custom-toolbar-button/
   setup: function (editor) {
 
