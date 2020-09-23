@@ -1859,6 +1859,8 @@ function toggleMarkdownFullpage() {
     editorPaneTop.classList.remove("editorPaneHide");
 
     toggleMarkdownSidebar();
+
+    tinyMCE.get('textEditor').getBody().focus();
   }
 
   localStorage.setItem('markdownFullpageToggleState', markdownFullpageToggleState);
