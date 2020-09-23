@@ -284,8 +284,8 @@ table tr th:last-child {
 
 /* Make images always 100% width */
 img {
-	width: 100%;
-	height: auto;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 /* Disable TinyMCE active color outline/background for links, tables, and images */

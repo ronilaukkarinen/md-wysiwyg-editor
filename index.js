@@ -1647,7 +1647,7 @@ TurndownConverter.addRule('strikethrough', {
   },
 });
 
-// Keeps width, height, and other attributes (?)
+// Preserves img tags (including attributes—width, height, etc.)
 // https://github.com/domchristie/turndown/issues/179
 /*TurndownConverter.addRule('img', {
   filter: ['img'],
