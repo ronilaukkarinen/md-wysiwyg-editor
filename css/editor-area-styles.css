@@ -289,9 +289,11 @@ img {
 }
 
 /* Disable TinyMCE active color outline/background for links, tables, and images */
-/*.mce-content-body [data-mce-selected=inline-boundary] {
+.mce-content-body a[data-mce-selected=inline-boundary], 
+.mce-content-body table[data-mce-selected=inline-boundary],
+.mce-content-body img[data-mce-selected=inline-boundary] {
 	background-color: transparent !important;
-}*/
+}
 .mce-content-body img[data-mce-selected], .mce-content-body table[data-mce-selected] {
 	outline: 0px solid transparent;
 	border: 0px solid transparent;
