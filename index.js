@@ -1350,7 +1350,7 @@ function applyTheme() {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', 'dark');
     iframeHTML.setAttribute('data-theme', 'dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#212121');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#2C2C2C');
   }
 }
 
