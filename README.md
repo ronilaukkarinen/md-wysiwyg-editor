@@ -1,51 +1,47 @@
 # Markdown WYSIWYG Editor
 
-"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor. It is a [progressive web app](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce) and [EasyMDE](https://easymde.tk/), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (credit to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
-
-Home page and GitHub repository:
-
-* [https://github.com/Alyw234237/md-wysiwyg-editor/](https://github.com/Alyw234237/md-wysiwyg-editor/)
+"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor written in HTML5, JavaScript, and CSS. It is a [progressive web app](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce) and [EasyMDE](https://easymde.tk/), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (credit to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
 
 ## Launch
 
-Visit this link to launch the application:
+Launch the application:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
 
-Or this link to open this README.md file in the editor with the markdown pane open:
+Open this README.md file in the editor with the markdown editor in split-screen mode:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true)
 
 ### Requirements
 
-Make sure that your web browser is up to date and you have the Native File System API enabled (e.g., in Google Chrome flags—not enabled by default at this time):
+Make sure that your web browser is up to date and you have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
 
 * [chrome://flags/#native-file-system-api](chrome://flags/#native-file-system-api)
 * [chrome://flags/#file-handling-api](chrome://flags/#file-handling-api)
 
 ## Screenshots
 
-### Light Mode
+### WYSIWYG Editor (Light Mode)
 
 [![Screenshot](images/screenshot-light-mode.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode.png)
 
-### Dark Mode
+### WYSIWYG Editor (Dark Mode)
 
 [![Screenshot](images/screenshot-dark-mode.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode.png)
 
-### Dual-Pane Markdown View (Light Mode)
+### Split-Screen Editor (Light Mode)
 
 [![Screenshot](images/screenshot-light-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode-markdown.png)
 
-### Dual-Pane Markdown View (Dark Mode)
+### Split-Screen Editor (Dark Mode)
 
 [![Screenshot](images/screenshot-dark-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode-markdown.png)
 
-### Mobile
+### WYSIWYG Editor (Mobile)
 
 | Light | Dark |
 | --- | --- |
-| [![Screenshot](images/screenshot-mobile-light.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png) | [![Screenshot](images/screenshot-mobile-dark.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png) |
+| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png"><img src="images/screenshot-mobile-light.png" width="200px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png"><img src="images/screenshot-mobile-dark.png" width="200px"></a> |
 
 ## Features
 
