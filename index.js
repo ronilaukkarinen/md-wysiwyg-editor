@@ -1144,7 +1144,6 @@ tinymce.init({
       // https://www.tiny.cloud/docs/plugins/nonbreaking/#nonbreaking_force_tab
       if (event.key === 'Tab') {
         // Are we currently in a table? If so, don't continue
-        console.log('mceTableRowType:' + tinymce.activeEditor.queryCommandValue('mceTableRowType'));
         if (tinymce.activeEditor.queryCommandValue('mceTableRowType')) {
           return;
         }
