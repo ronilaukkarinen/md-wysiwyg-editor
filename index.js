@@ -415,7 +415,7 @@ tinymce.init({
 
   mobile: {
     menubar: false,
-    toolbar_mode: 'wrap',
+    toolbar_mode: 'floating',
   },
 
   // https://www.tiny.cloud/docs/demo/custom-toolbar-button/
