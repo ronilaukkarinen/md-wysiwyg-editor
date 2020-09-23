@@ -55,3 +55,5 @@
 | F11 | Fullscreen |
 | Fullscreen key (Chrome OS) | Fullscreen |
 
+Note that some of these keyboard shortcuts are reserved by the browser and only work in app mode.
+
