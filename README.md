@@ -8,13 +8,11 @@ Launch the editor:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
 
-Open this README.md file in the editor with the markdown view in split-screen mode:
+Open this README.md file in the editor with a split-screen markdown editor:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true)
 
-### Requirements
-
-Make sure that your web browser is up to date and you have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
+Make sure that your web browser is up to date and that you have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
 
 * [chrome://flags/#native-file-system-api](chrome://flags/#native-file-system-api)
 * [chrome://flags/#file-handling-api](chrome://flags/#file-handling-api)
@@ -45,11 +43,11 @@ Make sure that your web browser is up to date and you have the Native File Syste
 
 ## Features
 
-* Rich-text/WYSIWYG markdown editor. WYSIWYG, markdown, and split-screen editing modes. Bidrectional live updating between views.
-* Open and save files as markdown, HTML, or plain text. File association / "open with" support for these file formats. This functionality is implemented via the new Native File System API. The web browser must support this API and it must be enabled.
-* Rich-text editing mode is restricted essentially to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically filtered and discarded as soon as it enters the editor.
+* Rich-text/WYSIWYG markdown editor. WYSIWYG, markdown, and split-screen editing modes.
+* Open and save files as markdown, HTML, or plain text. File association / "open with" support in the native file manager for these formats. The file handling functionality is implemented via the Native File System API. The web browser must support this API and it must be enabled.
+* Rich-text editing mode is restricted to the formatting options of markdown and a small amount more. The rich-text features that are supported include headings, bold, italics, underline, strikethrough, superscript, subscript, bulleted lists, numbered lists, links, block quotes, code, tables, images, and horizontal lines. Everything else—e.g. font size, colors, alignment, positioning, etc.—is automatically filtered as soon as it enters the editor.
 * Automatic conversion of typed markdown syntax into rich-text formatting in rich-text editing mode. For example, typing `# Header title` will make an H1 header and typing `This text is bold` will give bolded text. In addition to markdown syntax, certain strings will convert to special characters (namely `--` to en dash and `---` to em dash). See [pattern-conversions.md](docs/pattern-conversions.md) for a list of conversions.
-* Keyboard shortcuts for editing, formatting, and so forth. (except where prevented by browser—e.g., Ctrl+N for new file in non-app mode). See [keyboard-shortcuts.md](docs/keyboard-shortcuts.md) for a list.
+* Extensive keyboard shortcuts. See [keyboard-shortcuts.md](docs/keyboard-shortcuts.md) for a list.
 * Works offline when installed as a PWA.
 * Works on mobile and installable as an app (via add to homescreen).
 * Light and dark modes.
