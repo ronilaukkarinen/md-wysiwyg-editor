@@ -645,6 +645,8 @@ tinymce.init({
       onAction: function() {
         if (markdownFullpageToggleState == false) {
           toggleMarkdownSidebar();
+        } else {
+          toggleMarkdownFullpage();
         }
       },
       // Items on click
