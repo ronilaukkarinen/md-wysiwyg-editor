@@ -1099,12 +1099,28 @@ tinymce.init({
       tinyMCE.execCommand('Strikethrough');
     });
 
+    editor.addShortcut('Ctrl+L', 'Link', function () {
+      tinyMCE.execCommand('mceLink');
+    });
+
     editor.addShortcut('Meta+Shift+7', 'Numbered list', function () {
       tinyMCE.execCommand('InsertOrderedList');
     });
 
     editor.addShortcut('Meta+Shift+8', 'Bullet list', function () {
       tinyMCE.execCommand('InsertUnorderedList');
+    });
+
+    editor.addShortcut('Ctrl+Shift+T', 'Table', function () {
+      tinyMCE.execCommand('mceInsertTable');
+    });
+
+    editor.addShortcut('Ctrl+Shift+I', 'Image', function () {
+      tinyMCE.execCommand('mceImage');
+    });
+
+    editor.addShortcut('Ctrl+Shift+L', 'Horizontal line', function () {
+      tinyMCE.execCommand('InsertHorizontalRule');
     });
 
     editor.addShortcut('Meta+Shift+F', 'Fullscreen', function () {

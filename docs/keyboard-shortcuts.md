@@ -40,11 +40,12 @@
 | Ctrl or Cmd + Shift + 8 | Bulleted list |
 | Ctrl or Cmd + Shift + 7 | Numbered list |
 | Ctrl or Cmd + K | Link |
+| Ctrl or Cmd + L | Link |
 | Ctrl or Cmd + ] | Block quote |
 | Shift + Enter | Insert `<br />`-type new line |
-| None | Table |
-| None | Image |
-| None | Horizontal line |
+| Ctrl+Shift+T | Table |
+| Ctrl+Shift+I | Image |
+| Ctrl+Shift+L | Horizontal line |
 | Ctrl or Cmd + \ | Clear formatting |
 | Ctrl or Cmd + F | Find |
 | Ctrl or Cmd + H | Find and replace |

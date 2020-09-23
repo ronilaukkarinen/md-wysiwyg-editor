@@ -56,10 +56,10 @@
 
 * More keyboard shortcuts?:
   * Ctrl+` -> Code
+    * Doesn't work...
   * Ctrl+Shift+O -> Open folder (later?)
-  * Image: Ctrl+Shift+I
-  * Link: Ctrl+L (?)
-  * Ctrl+_ (i.e., Ctrl+Shift+-) or Alt+Ctrl+- (Alt+Ctrl+_) -> Horizontal line
+  * Ctrl+Shift+I for insert image conflicts with Developer Tools in Chrome (but does work in browser).
+  * Ctrl+Shift+T for insert table conflicts with undo close tab (and doesn't work in browser).
 * Need to work on keyboard shortcuts in markdown editor mode.
   * E.g., Ctrl+D causes line to be deleted instead of strikethrough (CodeMirror default).
 * Add Alt + F keyboard shortcut to open File menu if possible.
