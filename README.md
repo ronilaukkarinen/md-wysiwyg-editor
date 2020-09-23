@@ -4,11 +4,11 @@
 
 ## Launch
 
-Launch the application:
+Launch the editor:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
 
-Open this README.md file in the editor with the markdown editor in split-screen mode:
+Open this README.md file in the editor with the markdown view in split-screen mode:
 
 * [https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=true)
 
@@ -31,11 +31,11 @@ Make sure that your web browser is up to date and you have the Native File Syste
 
 ### Split-Screen Editor (Light Mode)
 
-[![Screenshot](images/screenshot-light-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode-markdown.png)
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode-markdown.png"><img src="images/screenshot-light-mode-markdown.png" height="600px"></a>
 
 ### Split-Screen Editor (Dark Mode)
 
-[![Screenshot](images/screenshot-dark-mode-markdown.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode-markdown.png)
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode-markdown.png"><img src="images/screenshot-dark-mode-markdown.png" height="600px"></a>
 
 ### WYSIWYG Editor (Mobile)
 
