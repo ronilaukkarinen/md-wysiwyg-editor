@@ -54,6 +54,8 @@
 | Ctrl or Cmd + Shift + F | Fullscreen |
 | F11 | Fullscreen |
 | Fullscreen key (Chrome OS) | Fullscreen |
+| Ctrl or Cmd + + | Zoom in |
+| Ctrl or Cmd + - | Zoom out |
 
 Note that some of these keyboard shortcuts are reserved by the browser and only work in app mode.
 
