@@ -1083,8 +1083,6 @@ tinymce.init({
       // Escape key: exit fullscreen or hide markdown sidebar if it's open
       if (event.key == 'Escape' && fullscreenTracker == true) {
         toggleFullscreen();
-      } else if (event.key == 'Escape' && markdownSidebarToggleState == true) {
-        toggleMarkdownSidebar();
       }
 
       // Tab key: insert an em dash-sized space and disable normal tab key handling
@@ -1753,9 +1751,6 @@ window.addEventListener('keydown', function(event) {
   if (event.key == 'Escape' && !event.shiftKey && fullscreenTracker == true) {
     event.preventDefault();
     toggleFullscreen();
-  } else if (event.key == 'Escape' && markdownSidebarToggleState == true) {
-    event.preventDefault();
-    toggleMarkdownSidebar();
   }
 
   return;
