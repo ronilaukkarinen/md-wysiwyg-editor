@@ -1365,12 +1365,12 @@ var HTMLtoMarkdownPending = false;
 
 function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
-  // Don't update if markdown pane isn't open (unless opening or saving a file)
+  // Don't update if markdown editor isn't open (unless opening or saving a file)
   if (markdownSidebarToggleState == false && markdownFullpageToggleState == false && force != true) {
     return;
   }
 
-  // Don't update the pane if we're editing within it (unless opening or saving a file)
+  // Don't update the editor if we're currently editing within it (unless opening or saving a file)
   if (tinymce.activeEditor.hasFocus() == true && force != true) {
     return;
   }
@@ -1408,7 +1408,7 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
     var HTMLfromMarkdown = ShowdownConverter.makeHtml(markdownToConvert);
   }
 
-  // Update main editor HTML with the new HTML
+  // Update WYSIWYG editor HTML with the new HTML from markdown
   tinymce.activeEditor.setContent(HTMLfromMarkdown);
 
   // Fix spacing after update
@@ -1424,12 +1424,12 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
 function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
 
-  // Don't update if markdown pane isn't open (unless opening or saving a file)
+  // Don't update if markdown editor isn't open (unless opening or saving a file)
   if (markdownSidebarToggleState == false && markdownFullpageToggleState == false && force != true) {
     return;
   }
 
-  // Don't update the pane if we're editing within it (unless opening or saving a file)
+  // Don't update the editor if we're currently editing within it (unless opening or saving a file)
   if (tinymce.activeEditor.hasFocus() == false && force != true) {
     return;
   }
@@ -1451,7 +1451,7 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
     }
   }
 
-  // Get main editor HTML contents if no HTML to convert was passed
+  // Get WYSIWYG editor HTML contents if no HTML to convert was passed
   if (!HTMLtoConvert) {
     HTMLtoConvert = tinymce.activeEditor.getContent({format: 'html'});
   }
@@ -1463,7 +1463,7 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
     var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
   }
 
-  // Update markdown editor text with the new markdown
+  // Update markdown editor text with the new markdown from HTML
   if (EasyMDEMarkdownArea == true ) {
     EasyMDEMarkdownEditor.value(MarkdownFromHTML);
   } else {
@@ -1569,7 +1569,9 @@ TurndownConverter.use(TurndownGFM);
 // ^ Adds strikethrough, tables, headerless tables, table col spans, task lists, and bug fixes
 TurndownConverter.keep(TurndownKeepList);
 
+// Set up the markdown editor
 function setupMarkdown(api) {
+
   // Set the sidebar HTML code
   markdownSidebar = api.element();
 
@@ -1746,7 +1748,7 @@ window.addEventListener('keydown', function(event) {
   return;
 });
 
-// Setup scrolling synchronization between editing panes
+// Set up scrolling synchronization between editing panes
 function setupScrollSync() {
 
   // Set up listeners for tracking which editing pane the cursor is in
@@ -1784,7 +1786,7 @@ function setupScrollSync() {
 
 }
 
-// Editor pane scrolling synchronization—update markdown pane scroll to match WYSIWYG pane
+// Update markdown pane scroll to match WYSIWYG pane scroll
 function updateMarkdownScroll() {
 
   if (scrolledPane == 'editorPane') {
@@ -1795,7 +1797,7 @@ function updateMarkdownScroll() {
   return;
 }
 
-// Editor pane scrolling synchronization—update WYSIWYG pane scroll to match markdown pane
+// Update WYSIWYG pane scroll to match markdown pane scroll
 function updateWYSIWYGScroll() {
 
   if (scrolledPane == 'markdownPane') {
@@ -1806,7 +1808,7 @@ function updateWYSIWYGScroll() {
   return;
 }
 
-// Open/close markdown editor sidebar view
+// Open/close sidebar markdown editor
 function toggleMarkdownSidebar() {
 
   tinymce.activeEditor.execCommand('ToggleSidebar', false, 'markdown');
@@ -1820,7 +1822,7 @@ function toggleMarkdownSidebar() {
   return;
 }
 
-// Open/close markdown editor full page view
+// Open/close full-page markdown editor
 function toggleMarkdownFullpage() {
 
   // Hide everything to get rid of transition artifacts
