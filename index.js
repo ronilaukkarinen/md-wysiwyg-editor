@@ -343,18 +343,18 @@ tinymce.init({
   // All HTML elements (attributs) except for these will be filtered:
   valid_elements:
     'html,head,title,body,meta[name|content|charset],' +
-    'span[style],p,a[href],br,strong,b,i,em,u,strike,s,del,sup,sub,small,' +
+    'p,a[href],br,strong,b,i,em,u,ins,strike,s,del,sup,sub,small,' +
     'h1,h2,h3,h4,h5,h6,' +
     'ul,ol,li,dl,dt,dd,' +
-    'figure,figcaption,img[src|alt],video[*],source[*],audio[*],' +
-    'blockquote,code,pre[class],samp,var,tt,kbd,dfn,cite,mark,q,ins,' +
+    'figure,figcaption,img[src|alt|width|height],video[*],source[*],audio[*],' +
+    'blockquote,code,pre[class],samp,var,tt,kbd,dfn,cite,mark,q,' +
     'table[colspan|rowspan],thead[colspan|rowspan],tbody[colspan|rowspan],tfoot[colspan|rowspan],th[colspan|rowspan],tr[colspan|rowspan],td[colspan|rowspan],colgroup[span],col[span],caption,' +
     'hr,math[*],',
   // ^ More: https://stackoverflow.com/questions/21281161/tinymce-4-valid-elements-default-rule-set
-  valid_styles: {
+  /*valid_styles: {
     'p': 'text-decoration,text-decoration-line',
     'span': 'text-decoration,text-decoration-line',
-  },
+  },*/
 
   style_formats_merge: false,
   style_formats_autohide: true,
@@ -369,11 +369,26 @@ tinymce.init({
     {title: 'H6', block: 'h6'},
   ],
 
-  // For "remove formatting" keyboard shortcut (I think)
+  // Modify TinyMCE's default internal formats
+  // https://www.tiny.cloud/docs/configure/content-formatting/
+  // https://www.tiny.cloud/docs/demo/format-custom/
   formats: {
+    bold: {
+      inline: 'b',
+    },
+    italic: {
+      inine: 'i',
+    },
+    underline: {
+      inline: 'ins',
+    },
+    strikethrough: {
+      inline: 'del',
+    },
+    // For "remove formatting" keyboard shortcut (I think)
     removeformat: [
       {
-        selector: 'b,strong,em,i,font,u,strike,sub,sup,dfn,blockquote,code,samp,kbd,var,cite,mark,q,del,ins',
+        selector: 'b,strong,em,i,font,ins,u,s,strike,del,sub,sup,dfn,blockquote,code,samp,kbd,var,cite,mark,q,',
         remove: 'all',
         split: true,
         block_expand: true,
@@ -1567,7 +1582,7 @@ var TurndownOptions = {
 // Define Turndown HTML tags to not be removed
 var TurndownKeepList = [
   'html','head','title','body','meta',
-  'span','strike','s','del','sup','sub','small',
+  'ins','strike','s','del','sup','sub','small',
   'figure','figcaption','video','source','audio','math'
 ];
 
@@ -1579,6 +1594,21 @@ TurndownConverter.use(TurndownGFM);
 // https://github.com/laurent22/joplin-turndown-plugin-gfm ^
 // ^ Adds strikethrough, tables, headerless tables, table col spans, task lists, and bug fixes
 TurndownConverter.keep(TurndownKeepList);
+
+// Make strikethrough double tilde rather than single
+TurndownConverter.addRule('strikethrough', {
+  filter: ['del', 's', 'strike'],
+  replacement: function (content) {
+    return '~~' + content + '~~';
+  },
+});
+
+// Keeps width, height, and other attributes (?)
+// https://github.com/domchristie/turndown/issues/179
+/*TurndownConverter.addRule('img', {
+  filter: ['img'],
+  replacement: (content, node) => node.outerHTML,
+});*/
 
 // Set up the markdown editor
 function setupMarkdown(api) {
