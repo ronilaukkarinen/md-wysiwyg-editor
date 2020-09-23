@@ -66,6 +66,7 @@
 * Use Chrome search for Ctrl+F? Disable TinyMCE shortcut?
   * Tried but couldn't remove/override TinyMCE's Ctrl+F.
 * Disable Ctrl+R, dev tools, and other keyboard shortcuts?
+  * Dev tools already disabled via insert image shorcut.
 * Encounter this sometimes with quit: "Scripts may only close windows that were opened by them".
 * Fullscreen button and/or keyboard shortcut doesn't work in non-app mode (sometimes?).
 
