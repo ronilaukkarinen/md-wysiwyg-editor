@@ -6,7 +6,7 @@
 
 ### ➡ [Launch with example file](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md)
 
-### ➡ [Launch with blank new file](https://alyw234237.github.io/md-wysiwyg-editor/)
+### ➡ [Launch with new blank file](https://alyw234237.github.io/md-wysiwyg-editor/)
 
 Use the markdown button in the toolbar to enter markdown mode (full-width or split-screen).
 
