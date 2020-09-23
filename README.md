@@ -43,11 +43,11 @@ Make sure that your web browser is up to date and that you have the Native File 
 
 <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-split-screen-dark-mode.png"><img src="images/screenshots/screenshot-split-screen-dark-mode.png" height="600px"></a>
 
-### WYSIWYG Editor (Mobile)
+### WYSIWYG Editing Mode (Mobile)
 
 | Light Mode | Dark Mode |
 | --- | --- |
-| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode-mobile.png"><img src="images/screenshot-wysiwyg-light-mode-mobile.png" height="550px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-wysiwyg-dark-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png" height="550px"></a> |
+| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-light-mode-mobile.png"><img src="images/screenshot-wysiwyg-light-mode-mobile.png" height="550px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png"><img src="images/screenshots/screenshot-wysiwyg-dark-mode-mobile.png" height="550px"></a> |
 
 ## Features
 
