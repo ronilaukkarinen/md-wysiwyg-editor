@@ -29,20 +29,19 @@
 * Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., if scroll was done first).
 * Do sync scroll based on line number?
 * Transition artifacts when opening/closing markdown sidebar with adjust editor spacing.
-* Can't scroll in whitespace margins of markdown editor in full page mode.
 * Markdown editor vertical scrollbar scrolls above the editing area in split-screen mode.
 * Can currently only enter markdown editor split-screen mode via WYSIWYG editor full-page mode.
 ** Button and keyboard shortcuts don't work otherwise (i.e., if in markdown editor full-page mode).
-* Focus doesn't go back to WYSIWYG or markdown editor after switching markdown views via button or keyboard shortcut.
-** There's a CodeMirror function cal for this for the markdown editor but it doesn't seem to be working.
 
 ## Editing
 
 * p vs. br behavior... option...
-  * Set padding and margin for p, headers, other elements to 0
-  * Change HTML-to-markdown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`)
-  * Adjust line height (default 1.6, maybe change to 1.4)
-  * Reduce empty line height if possible (?)
+  * How to mimic Notepad-style in wYSIWYG editor:
+    * Set padding and margin for p, headers, other elements to 0.
+    * Change HTML-to-markdown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`).
+    * Adjust line height (default 1.6, maybe change to 1.4).
+    * Reduce empty line height if possible (?).
+    * But causes problems with markdown conversion.
 * Code blocks in rich-text mode need work.
 * Live-typing markdown-to-rich-text conversion of link, image, multi-line code, others not added.
 * Tabs are converted into `&emsp;` with open .txt file (otherwise tabs removed completely).

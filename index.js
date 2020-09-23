@@ -319,7 +319,7 @@ tinymce.init({
   ],
   table_toolbar: 'tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | tabledelete',
   table_appearance_options: false,
-  table_tab_navigation: false,
+  table_tab_navigation: true,
   table_advtab: false,
   table_cell_advtab: false,
   table_row_advtab: false,
@@ -1143,6 +1143,11 @@ tinymce.init({
       // Tab key: insert an em dash-sized space and disable normal tab key handling
       // https://www.tiny.cloud/docs/plugins/nonbreaking/#nonbreaking_force_tab
       if (event.key === 'Tab') {
+        // Are we currently in a table? If so, don't continue
+        console.log('mceTableCellType:' + tinymce.activeEditor.queryCommandValue('mceTableCellType'));
+        if (tinymce.activeEditor.queryCommandValue('mceTableCellType')) {
+          return;
+        }
         editor.insertContent('&emsp;');
         // On to something with this but not working right...
         //tinyMCE.execCommand('mceInsertRawHTML', false, '<pre>&#09;TABS&#09;</pre>'); // Or \t instead of &#09;

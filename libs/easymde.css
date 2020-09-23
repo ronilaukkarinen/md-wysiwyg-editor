@@ -327,6 +327,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   top: 0 !important;
   overflow-x: hidden !important;
   overflow-y: scroll !important;
+  width: 100% !important; /* This allows scrolling in whitespace left/right margins */
 }
 
 .CodeMirror-hscrollbar {
