@@ -6,7 +6,7 @@
 
 ### ➡ [Launch with README.md in split-screen mode](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md&mdv=split)
 
-#### ➡ [Or launch with a blank file in default WYSIWYG mode](https://alyw234237.github.io/md-wysiwyg-editor/)
+#### ➡ [Or launch with an empty new file in default WYSIWYG mode](https://alyw234237.github.io/md-wysiwyg-editor/)
 
 ### Requirements
 
