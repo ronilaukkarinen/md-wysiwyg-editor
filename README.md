@@ -23,11 +23,11 @@ Make sure that your web browser is up to date and you have the Native File Syste
 
 ### WYSIWYG Editor (Light Mode)
 
-[![Screenshot](images/screenshot-light-mode.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode.png)
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-light-mode.png"><img src="images/screenshot-light-mode.png" height="550px"></a>
 
 ### WYSIWYG Editor (Dark Mode)
 
-[![Screenshot](images/screenshot-dark-mode.png)](https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode.png)
+<a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-dark-mode.png"><img src="images/screenshot-dark-mode.png" height="550px"></a>
 
 ### Split-Screen Editor (Light Mode)
 
