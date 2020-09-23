@@ -643,7 +643,7 @@ tinymce.init({
 
       // Main button on click
       onAction: function() {
-        if (markdownFullpageToggleState == false) {
+        if (markdownFullpageToggleState == false && markdownSidebarToggleState == true) {
           toggleMarkdownSidebar();
         } else {
           toggleMarkdownFullpage();
