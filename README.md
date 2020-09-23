@@ -6,7 +6,7 @@
 
 ### ➡ [Launch with README.md in WYSIWYG mode](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=README.md)
 
-Click the **M<small>⬇</small>** button in the toolbar for markdown modes.
+Click the **M<sub>⬇</sub>** button in the toolbar for markdown modes.
 
 ➡ Alternatively, launch with an empty new file: [https://alyw234237.github.io/md-wysiwyg-editor/](https://alyw234237.github.io/md-wysiwyg-editor/)
 
