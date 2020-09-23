@@ -669,7 +669,7 @@ tinymce.init({
         var items = [
           {
             type: 'choiceitem',
-            text: 'Full page (Ctrl+M)',
+            text: 'Full view (Ctrl+M)',
             value: 'fullpage',
           },          {
             type: 'choiceitem',
