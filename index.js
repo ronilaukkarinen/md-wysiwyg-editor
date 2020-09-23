@@ -1852,6 +1852,11 @@ function toggleMarkdownFullpage() {
 
     EasyMDEMarkdownEditor.codemirror.focus();
 
+    // Do it again if it didn't work the first time (hack)
+    setTimeout(function() {
+      EasyMDEMarkdownEditor.codemirror.focus();
+    }, 200);
+
   } else {
     markdownFullpageToggleState = false;
 
