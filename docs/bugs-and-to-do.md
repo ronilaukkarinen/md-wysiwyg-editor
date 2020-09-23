@@ -28,6 +28,7 @@
 * Do sync scroll based on line number?
 * Transition artifacts when opening/closing markdown sidebar with adjust editor spacing.
 * Can't scroll in whitespace margins of markdown editor in full page mode.
+* Markdown editor vertical scrollbar scrolls above the editing area in split-screen mode.
 
 ## Editing
 
