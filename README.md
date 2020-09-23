@@ -39,9 +39,9 @@ Make sure that your web browser is up to date and you have the Native File Syste
 
 ### WYSIWYG Editor (Mobile)
 
-| Light | Dark |
+| Light Mode | Dark Mode |
 | --- | --- |
-| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png"><img src="images/screenshot-mobile-light.png" height="500px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png"><img src="images/screenshot-mobile-dark.png" height="500px"></a> |
+| <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-light.png"><img src="images/screenshot-mobile-light.png" height="600px"></a> | <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/images/screenshot-mobile-dark.png"><img src="images/screenshot-mobile-dark.png" height="600px"></a> |
 
 ## Features
 
