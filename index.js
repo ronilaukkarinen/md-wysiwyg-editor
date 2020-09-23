@@ -1311,11 +1311,12 @@ function adjustMarkdownEditorWidth() {
 
   // If markdown editor is open as a split-screen sidebar
   if (markdownSidebarToggleState == true && markdownFullpageToggleState == false) {
-    var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + "px";
+    var markdownSidebarWidth = (window.innerWidth * 0.50).toString() + 'px';
     markdownSidebar.style.width = markdownSidebarWidth;
   // If markdown editor is open full page
   } else if (markdownFullpageToggleState == true) {
-    markdownSidebar.style.width = getComputedStyle(editorPane).maxWidth;
+    markdownSidebar.style.width = (parseInt(getComputedStyle(editorPane).maxWidth) + 45).toString() + 'px';
+    // ^ Add 45px of extra width to match the WYSIWYG mode width more closely
   }
 
   return;
