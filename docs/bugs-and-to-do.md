@@ -12,7 +12,7 @@
   * Option?: addToggleMenuItem() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addtogglemenuitem
     * https://www.tiny.cloud/docs/ui-components/menuitems/#togglemenuitems
 * Preferences option to hide menu bar? (With alternatives for interaction.)
-* Formatting buttons (e.g., bold) don't work with markdown pane.
+* Formatting buttons (e.g., bold) don't work with markdown editor.
 
 ## Custom UI
 
@@ -22,22 +22,11 @@
 * Maybe use this instead of saving the info in variable (but would conflict if additional sidebars in future):
   * `tinymce.activeEditor.queryCommandValue('ToggleSidebar');`
     * Returns the current state of sidebar (open or closed).
-* Need to re-implement this maybe (delay before updating):
-```
-var editorChangeHandler = function() {
-  // Wait 200 ms before updating...
-  setTimeout(function () {
-    var content = editor.getContent();
-    updateMarkdown(converter, editor, content);
-    Decoration.forHtml(converter, node_Element.fromDom(editor.getBody()));
-  }, 200);
-};
-```
 * Help views for keyboard shortcuts and typed markdown-to-rich-text conversions?
-* CSS styling colors with text selection in markdown editor (EasyMDE) need fixing (especially dark mode).
-* Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., scroll was done first).
+* CSS styling colors with text selection in markdown editor need fixing (especially dark mode).
+* Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., if scroll was done first).
 * Do sync scroll based on line number?
-* Transition artifacts when opening/closing markdown sidebar (due to adjust editor spacing).
+* Transition artifacts when opening/closing markdown sidebar with adjust editor spacing.
 * Can't scroll in whitespace margins of markdown editor in full page mode.
 
 ## Editing
