@@ -1222,9 +1222,13 @@ tinymce.init({
       }*/
 
       // Show markdown editor if it was open last time or if the relevant URL parameter is set
-      if (localStorage.getItem('markdownFullpageToggleState') == 'true' || startMarkdownView == 'full') {
+      if (startMarkdownView == 'full') {
         toggleMarkdownFullpage();
-      } else if (localStorage.getItem('markdownSidebarToggleState') == 'true' || startMarkdownView == 'split') {
+      } else if (startMarkdownView == 'split') {
+        toggleMarkdownSidebar();
+      } else if (localStorage.getItem('markdownFullpageToggleState') == 'true') {
+        toggleMarkdownFullpage();        
+      } else if (localStorage.getItem('markdownSidebarToggleState') == 'true') {
         toggleMarkdownSidebar();
       }
 
