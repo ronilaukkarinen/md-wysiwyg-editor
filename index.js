@@ -1939,6 +1939,8 @@ function toggleMarkdownFullpage() {
 
     toggleMarkdownSidebar();
 
+    tinyMCE.get('textEditor').getBody().focus();
+
     // Do it again if it didn't work the first time (temp hack)
     setTimeout(function() {
       tinyMCE.get('textEditor').getBody().focus();
