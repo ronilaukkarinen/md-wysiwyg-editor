@@ -294,7 +294,8 @@ img {
 .mce-content-body img[data-mce-selected=inline-boundary] {
 	background-color: transparent !important;
 }
-.mce-content-body img[data-mce-selected], .mce-content-body table[data-mce-selected] {
+.mce-content-body table[data-mce-selected],
+.mce-content-body img[data-mce-selected] {
 	outline: 0px solid transparent;
 	border: 0px solid transparent;
 }
