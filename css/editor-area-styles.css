@@ -283,8 +283,8 @@ table tr th:last-child {
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  width: 100%;
+  height: auto;
 }
 
 /* Disable TinyMCE active color outline/background for links, tables, and images */
