@@ -282,7 +282,6 @@ table tr th:last-child {
 	border-right: 0;
 }
 
-/* Make images always 100% width */
 img {
 	max-width: 100%;
 	height: auto;
