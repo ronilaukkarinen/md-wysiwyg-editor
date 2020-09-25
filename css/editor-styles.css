@@ -329,6 +329,12 @@ button[title="Formats"] {
 	border-left: 1px solid var(--general-border-color) !important;
 }
 
+/* Markdown sidebar */
+.tox-sidebar__slider, .tox-sidebar--sliding-open, .tox-sidebar__pane-container, .tox-sidebar__pane {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
 /* Markdown editing area */
 #markdown-editor {
 	padding-top: 10px !important;

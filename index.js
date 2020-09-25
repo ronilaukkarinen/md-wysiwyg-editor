@@ -43,7 +43,7 @@ function setupCoreEditorHandles() {
   // Markdown editor area (right pane)
   markdownEditorTop = document.getElementsByClassName('tox-sidebar')[0];
   markdownSidebar = document.getElementsByClassName('tox-sidebar__pane')[0];
-  if (EasyMDEMarkdownArea == true ) {
+  if (EasyMDEMarkdownArea == true) {
     markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
   } else {
     markdownEditor = document.getElementById('markdown-editor');
@@ -1465,7 +1465,7 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
   // Get markdown editor contents if no markdown to convert was passed
   if (!markdownToConvert) {
-    if (EasyMDEMarkdownArea == true ) {
+    if (EasyMDEMarkdownArea == true) {
       markdownToConvert = EasyMDEMarkdownEditor.value();
     } else {
       markdownToConvert = markdownEditor.value;
@@ -1535,7 +1535,7 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   }
 
   // Update markdown editor text with the new markdown from HTML
-  if (EasyMDEMarkdownArea == true ) {
+  if (EasyMDEMarkdownArea == true) {
     EasyMDEMarkdownEditor.value(MarkdownFromHTML);
   } else {
     markdownEditor.value = MarkdownFromHTML;
@@ -1674,7 +1674,7 @@ function setupMarkdown(api) {
   markdownEditor.style.boxSizing = 'border-box';
   markdownEditor.style.width = '800px'; // Temp fix...
 
-  if (EasyMDEMarkdownArea == true ) {
+  if (EasyMDEMarkdownArea == true) {
     var EasyMDEOptions = {
       element: markdownEditor,
       initialValue: markdownEditor.value,
@@ -1857,7 +1857,7 @@ function setupScrollSync() {
 
   // Also set up listener for whenever markdown area is changed (maybe this isn't needed?)
   // Temporary hack fix (double hack... setTimeout() too)
-  /*if (EasyMDEMarkdownArea == true ) {
+  /*if (EasyMDEMarkdownArea == true) {
     tinymce.activeEditor.on('ExecCommand', function(event) {
       if (event.command == "UpdateMarkdown") {
         setTimeout(function() {
@@ -1926,7 +1926,7 @@ function toggleMarkdownFullpage() {
     markdownEditorTop.classList.add("markdownEditorFull");
     editorPaneTop.classList.add("editorPaneHide");
 
-    if (EasyMDEMarkdownArea == true ) {
+    if (EasyMDEMarkdownArea == true) {
       EasyMDEMarkdownEditor.codemirror.focus();
 
       // Do it again if it didn't work the first time (temp hack)
