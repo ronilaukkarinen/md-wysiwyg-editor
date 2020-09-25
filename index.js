@@ -1385,8 +1385,8 @@ function adjustMarkdownEditorWidth() {
     // If wide window width
     var markdownEditorWidth = WYSIWYGEditorDefinedWidth;
     if (markdownEditorWidth < window.innerWidth) {
-      // Add 45px of extra width to match the WYSIWYG mode width more closely
-      markdownSidebar.style.width = (markdownEditorWidth + 45).toString() + 'px';
+      // Add 80px of extra width to match the WYSIWYG mode width more closely
+      markdownSidebar.style.width = (markdownEditorWidth + 80).toString() + 'px';
     // If narrow window width (e.g., mobile)
     } else {
       markdownSidebar.style.width = window.innerWidth.toString() + 'px';
