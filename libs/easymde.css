@@ -327,8 +327,9 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   top: 0 !important;
   overflow-x: hidden !important;
   overflow-y: scroll !important;
-  /*width: 100% !important;*/ /* This allows scrolling in whitespace left/right margins... */
+  width: 100% !important; /* This allows scrolling in whitespace left/right margins... */
   /* ^ But also completely breaks mouse cursor interaction with the editor... */
+  z-index: 0 !important; /* And adding this ficks mouse cursor interaction... hopefully with no consequences */
 }
 
 .CodeMirror-hscrollbar {
