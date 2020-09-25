@@ -52,6 +52,7 @@
   * addAutocompleter() -> https://www.tiny.cloud/docs/api/tinymce.editor.ui/tinymce.editor.ui.registry/#addautocompleter
     * "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
 * Link active highlight bug in dark mode.
+* Can't click to move caret in margins in markdown editor full-width mode.
 
 ## User Input
 
