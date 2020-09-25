@@ -13,36 +13,44 @@ let HTMLtoMarkdownEngine;
 let EasyMDEMarkdownArea;
 
 // Core editor variables
-var iframe; // WYSIWYG editing area iframe handle
-var iframeHTML; // WYSIWYG editing area iframe HTML tag handle
+var editorHandle; // // Topmost editor div handle (in body tag)
 var editingArea; // Full editing area (WYSIWYG and markdown) handle
+
+var editorPaneTop; // WYSIWYG editing area highest div handle
+var iframe; // WYSIWYG editing area iframe handle
+var iframeDocument;
+var iframeHTML; // WYSIWYG editing area iframe HTML tag handle
 var editorPane; // WYSIWYG editing area main div handle (body tag of iframe)
 
-var markdownEditor; // Markdown textarea element handle
-var editorPaneTop; // WYSIWYG editing area highest div handle
 var markdownEditorTop; // Markdown editing area highest div handle
-
 var markdownSidebar; // class = tox-sidebar__pane
-var markdownTextarea; // id = markdown-editor
+var markdownEditor; // Markdown textarea element handle; id = markdown-editor or CodeMirror-scroll
+var markdownTextarea; // id = markdown-editor (same as above?)
 
 var scrolledPane; // Which editing pane the mouse cursor is currently in (WYSIWYG or markdown)
 
-// Get core editor handles
+// Get important editor element handles
 function setupCoreEditorHandles() {
-  // Get necessary HTML element handles
+
+  // Full editor area (both panes)
+  editorHandle = document.getElementsByClassName('tox')[0];
+  editingArea = document.getElementsByClassName('tox-sidebar-wrap')[0];
+
+  // WYSIWYG editor area (left pane)
+  editorPaneTop = document.getElementsByClassName('tox-edit-area')[0];
+  iframe = document.getElementById('textEditor_ifr');
+  iframeDocument = document.getElementById('textEditor_ifr').contentWindow.document;
+  iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
+  editorPane = iframe.contentWindow.document.getElementById('tinymce');
+
+  // Markdown editor area (right pane)
+  markdownEditorTop = document.getElementsByClassName('tox-sidebar')[0];
+  markdownSidebar = document.getElementsByClassName('tox-sidebar__pane')[0];
   if (EasyMDEMarkdownArea == true) {
     markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
   } else {
     markdownEditor = document.getElementById('markdown-editor');
   }
-
-  editingArea = document.getElementsByClassName('tox-sidebar-wrap')[0];
-  editorPaneTop = document.getElementsByClassName('tox-edit-area')[0];
-  markdownEditorTop = document.getElementsByClassName('tox-sidebar')[0];
-  markdownSidebar = document.getElementsByClassName('tox-sidebar__pane')[0];
-  iframe = document.getElementById('textEditor_ifr');
-  iframeHTML = iframe.contentWindow.document.getElementsByTagName('html')[0];
-  editorPane = iframe.contentWindow.document.getElementById('tinymce');
 
   return;
 }
@@ -183,8 +191,6 @@ function toggleFullscreen() {
 
   // If not fullscreen, try to enter fullscreen
   if (document.fullscreenElement == null) {
-    // Get the element that we want to fullscreen
-    var editorHandle = document.getElementsByClassName("tox")[0];
     // Request fullscreen for different platforms
     if (editorHandle.requestFullscreen) {
       editorHandle.requestFullscreen();
@@ -1402,7 +1408,6 @@ function adjustEditorSpacing() {
 function customEditorAreaCSS(apply, customCSS) {
   
   if (apply == true) {
-    var iframeDocument = document.getElementById('textEditor_ifr').contentWindow.document;
     var style = iframeDocument.getElementById('customCSS');
     if (!style) {
       style = iframeDocument.createElement('style');
