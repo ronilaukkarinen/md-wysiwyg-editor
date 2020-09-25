@@ -27,7 +27,7 @@ var markdownSidebar; // class = tox-sidebar__pane
 var markdownEditor; // Markdown textarea element handle; id = markdown-editor or CodeMirror-scroll
 var markdownTextarea; // id = markdown-editor (same as above?)
 
-var WYSIWYGEditorWidth;
+var WYSIWYGEditorDefinedWidth;
 var scrolledPane; // Which editing pane the mouse cursor is currently in (WYSIWYG or markdown)
 
 // Get important editor element handles
@@ -1215,7 +1215,7 @@ tinymce.init({
       }
 
       // Get WYSIWYG editor width
-      WYSIWYGEditorWidth = parseInt(getComputedStyle(editorPane).width);
+      WYSIWYGEditorDefinedWidth = parseInt(getComputedStyle(editorPane).width);
 
       // Adjust editor spacing if narrow window width
       adjustEditorSpacing();
@@ -1383,8 +1383,8 @@ function adjustMarkdownEditorWidth() {
   // If markdown editor is open full page
   } else if (markdownFullpageToggleState == true) {
     // If wide window width
-    var markdownEditorWidth = WYSIWYGEditorWidth;
-    if (markdownEditorWidth < window.innerWidth) {
+    var markdownEditorWidth = WYSIWYGEditorDefinedWidth;
+    if ((markdownEditorWidth + 45) < window.innerWidth) {
       // Add 45px of extra width to match the WYSIWYG mode width more closely
       markdownSidebar.style.width = (markdownEditorWidth + 45).toString() + 'px';
     // If narrow window width (e.g., mobile)
@@ -1400,7 +1400,7 @@ function adjustMarkdownEditorWidth() {
 function adjustEditorSpacing() {
 
   // If narrow window width (e.g., split-screen or mobile)
-  if (parseInt(getComputedStyle(editorPane).width) < WYSIWYGEditorWidth) {
+  if (parseInt(getComputedStyle(editorPane).width) < WYSIWYGEditorDefinedWidth) {
     editorPane.style.paddingTop = "10px";
     editorPane.style.paddingBottom = "10px";
     editorPane.style.paddingLeft = "10px";
