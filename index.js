@@ -27,6 +27,7 @@ var markdownSidebar; // class = tox-sidebar__pane
 var markdownEditor; // Markdown textarea element handle; id = markdown-editor or CodeMirror-scroll
 var markdownTextarea; // id = markdown-editor (same as above?)
 
+var WYSIWYGEditorWidth;
 var scrolledPane; // Which editing pane the mouse cursor is currently in (WYSIWYG or markdown)
 
 // Get important editor element handles
@@ -1213,6 +1214,9 @@ tinymce.init({
         customEditorAreaCSS(true, customCSS);
       }
 
+      // Get WYSIWYG editor width
+      WYSIWYGEditorWidth = parseInt(getComputedStyle(editorPane).width);
+
       // Adjust editor spacing if narrow window width
       adjustEditorSpacing();
 
@@ -1379,11 +1383,11 @@ function adjustMarkdownEditorWidth() {
   // If markdown editor is open full page
   } else if (markdownFullpageToggleState == true) {
     // If wide window width
-    var markdownEditorWidth = (parseInt(getComputedStyle(editorPane).width) + 45);
-    // ^ Add 45px of extra width to match the WYSIWYG mode width more closely
+    var markdownEditorWidth = WYSIWYGEditorWidth;
     if (markdownEditorWidth < window.innerWidth) {
-      markdownSidebar.style.width = markdownEditorWidth.toString() + 'px';
-    // If very narrow window width (e.g., smartphone)
+      // Add 45px of extra width to match the WYSIWYG mode width more closely
+      markdownSidebar.style.width = (markdownEditorWidth + 45).toString() + 'px';
+    // If narrow window width (e.g., mobile)
     } else {
       markdownSidebar.style.width = window.innerWidth.toString() + 'px';
     }
@@ -1395,8 +1399,8 @@ function adjustMarkdownEditorWidth() {
 // Loosen padding/margins if editor pane width is small (e.g., when editor isn't maximized and markdown pane is open)
 function adjustEditorSpacing() {
 
-  // Hardcoded... un-hardcode this in the future
-  if (editorPane.offsetWidth < 750) {
+  // If narrow window width (e.g., split-screen or mobile)
+  if (parseInt(getComputedStyle(editorPane).width) < WYSIWYGEditorWidth) {
     editorPane.style.paddingTop = "10px";
     editorPane.style.paddingBottom = "10px";
     editorPane.style.paddingLeft = "10px";
