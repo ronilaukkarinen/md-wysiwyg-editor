@@ -32,8 +32,6 @@
 * Markdown editor vertical scrollbar scrolls above the editing area in split-screen mode.
 * Can currently only enter markdown editor split-screen mode via WYSIWYG editor full-page mode.
 ** Button and keyboard shortcuts don't work otherwise (i.e., if in markdown editor full-page mode).
-* Non-EasyMDE markdown editor scrollbar should be on far right.
-* Non-EasyMDE markdown editor scroll goes to end on launch.
 
 ## Editing
 
