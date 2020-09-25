@@ -30,7 +30,7 @@ var scrolledPane; // Which editing pane the mouse cursor is currently in (WYSIWY
 // Get core editor handles
 function setupCoreEditorHandles() {
   // Get necessary HTML element handles
-  if (EasyMDEMarkdownArea == true ) {
+  if (EasyMDEMarkdownArea == true) {
     markdownEditor = document.getElementsByClassName('CodeMirror-scroll')[0];
   } else {
     markdownEditor = document.getElementById('markdown-editor');
@@ -52,12 +52,12 @@ function newFile() {
 
   // Is there any change/undo history?
   if (tinymce.editors[0].isDirty()) {
-    if(confirm("Unsaved changes. Continue without saving?") == false) {
+    if (confirm("Unsaved changes. Continue without saving?") == false) {
       return;
     }
   // Are we sure we want to exit out of the current file?
   } else {
-    if(confirm("Close the current file and create a new one?") == false) {
+    if (confirm("Close the current file and create a new one?") == false) {
       return;
     }
   }
@@ -79,7 +79,7 @@ function openFile(filename, data) {
 
   // Is there any change/undo history?
   if (tinymce.editors[0].isDirty()) {
-    if(confirm("Unsaved changes. Continue without saving?") == false) {
+    if (confirm("Unsaved changes. Continue without saving?") == false) {
       return;
     }
   }
@@ -136,10 +136,10 @@ function saveFile(filename) {
   // Get file extension/type from filename
   var extension = filename.split('.').pop();
   // Save as text
-  if(extension == "txt" || extension == "text") {
+  if (extension == "txt" || extension == "text") {
     var content = tinymce.editors[0].getContent({format: 'text'});
   // Save as markdown
-  } else if(extension == "md" || extension == "markdown") {
+  } else if (extension == "md" || extension == "markdown") {
     var content = tinymce.editors[0].getContent({format: 'markdown'});
   // Save as HTML (HTML or other extension)
   } else {
@@ -176,13 +176,13 @@ function quit() {
 function toggleFullscreen() {
 
   // Is fullscreen supported for this browser?
-  if(document.fullscreenEnabled == false) {
+  if (document.fullscreenEnabled == false) {
     alert("Fullscreen not supported for this browser.");
     return;
   }
 
   // If not fullscreen, try to enter fullscreen
-  if(document.fullscreenElement == null) {
+  if (document.fullscreenElement == null) {
     // Get the element that we want to fullscreen
     var editorHandle = document.getElementsByClassName("tox")[0];
     // Request fullscreen for different platforms
@@ -913,7 +913,7 @@ tinymce.init({
       tooltip: 'GitHub',
       icon: 'github',
       onAction: function () {
-        if(confirm("This will open the GitHub home page/repository in a new tab. Continue?") == false) {
+        if (confirm("This will open the GitHub home page/repository in a new tab. Continue?") == false) {
           return;
         } else {
           window.open('https://github.com/Alyw234237/md-wysiwyg-editor/', '_blank');
@@ -1383,7 +1383,7 @@ function adjustMarkdownEditorWidth() {
 function adjustEditorSpacing() {
 
   // Hardcoded... un-hardcode this in the future
-  if(editorPane.offsetWidth < 750) {
+  if (editorPane.offsetWidth < 750) {
     editorPane.style.paddingTop = "10px";
     editorPane.style.paddingBottom = "10px";
     editorPane.style.paddingLeft = "10px";
@@ -1464,7 +1464,7 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
   // Get markdown editor contents if no markdown to convert was passed
   if (!markdownToConvert) {
-    if (EasyMDEMarkdownArea == true ) {
+    if (EasyMDEMarkdownArea == true) {
       markdownToConvert = EasyMDEMarkdownEditor.value();
     } else {
       markdownToConvert = document.getElementById("markdown-editor").value;
@@ -1534,7 +1534,7 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   }
 
   // Update markdown editor text with the new markdown from HTML
-  if (EasyMDEMarkdownArea == true ) {
+  if (EasyMDEMarkdownArea == true) {
     EasyMDEMarkdownEditor.value(MarkdownFromHTML);
   } else {
     markdownTextarea.value = MarkdownFromHTML;
@@ -1647,7 +1647,7 @@ TurndownConverter.addRule('strikethrough', {
   },
 });
 
-// Preserves img tags (including attributes—width, height, etc.)
+// Don't convert img tags (preserves attributes—width, height, etc.)
 // https://github.com/domchristie/turndown/issues/179
 /*TurndownConverter.addRule('img', {
   filter: ['img'],
@@ -1665,14 +1665,18 @@ function setupMarkdown(api) {
   markdownSidebar.innerHTML = sidebarSetupCode;
 
   markdownTextarea = document.getElementById('markdown-editor');
-  markdownTextarea.style.flexGrow = '1';
-  markdownTextarea.style.padding = '50px !important';
-  markdownTextarea.style.fontSize = '14px';
-  markdownTextarea.style.fontFamily = 'monospace';
-  markdownTextarea.style.whiteSpace = 'pre-wrap';
-  markdownTextarea.style.boxSizing = 'border-box';
 
-  if (EasyMDEMarkdownArea == true ) {
+  if (EasyMDEMarkdownArea == false) {
+    markdownTextarea.style.flexGrow = '1';
+    markdownTextarea.style.padding = '50px !important';
+    markdownTextarea.style.fontSize = '14px';
+    markdownTextarea.style.fontFamily = 'monospace';
+    markdownTextarea.style.whiteSpace = 'pre-wrap';
+    markdownTextarea.style.boxSizing = 'border-box';
+    markdownTextarea.style.width = '800px'; // Temp fix
+  }
+
+  if (EasyMDEMarkdownArea == true) {
     var EasyMDEOptions = {
       element: document.getElementById('markdown-editor'),
       initialValue: markdownTextarea.value,
@@ -1713,7 +1717,7 @@ function setupMarkdown(api) {
 
   // For updating more regularly
   tinymce.activeEditor.on('ExecCommand', function(event) {
-    if(event.command == "UpdateMarkdown") {
+    if (event.command == "UpdateMarkdown") {
       updateMarkdownWithEditorHTML();
     }
   });
@@ -1855,7 +1859,7 @@ function setupScrollSync() {
 
   // Also set up listener for whenever markdown area is changed (maybe this isn't needed?)
   // Temporary hack fix (double hack... setTimeout() too)
-  /*if (EasyMDEMarkdownArea == true ) {
+  /*if (EasyMDEMarkdownArea == true) {
     tinymce.activeEditor.on('ExecCommand', function(event) {
       if (event.command == "UpdateMarkdown") {
         setTimeout(function() {
@@ -1924,12 +1928,23 @@ function toggleMarkdownFullpage() {
     markdownEditorTop.classList.add("markdownEditorFull");
     editorPaneTop.classList.add("editorPaneHide");
 
-    EasyMDEMarkdownEditor.codemirror.focus();
-
-    // Do it again if it didn't work the first time (temp hack)
-    setTimeout(function() {
+    if (EasyMDEMarkdownArea == true) {
       EasyMDEMarkdownEditor.codemirror.focus();
-    }, 200);
+
+      // Do it again if it didn't work the first time (temp hack)
+      setTimeout(function() {
+        EasyMDEMarkdownEditor.codemirror.focus();
+      }, 200);
+    } else {
+      markdownEditor.focus();
+      markdownEditor.setSelectionRange(0,0); // Put caret at start (defaults to end)
+
+      // Do it again if it didn't work the first time (temp hack)
+      setTimeout(function() {
+        markdownEditor.focus();
+        markdownEditor.setSelectionRange(0,0); // Put caret at start (defaults to end)
+      }, 200);
+    }
 
   } else {
     markdownFullpageToggleState = false;
