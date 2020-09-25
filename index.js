@@ -1270,12 +1270,12 @@ tinymce.init({
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const startFilename = urlParams.get('mdf');
+      const startFileURL = urlParams.get('mdf');
       const startMarkdownView = urlParams.get('mdv');
 
       // Open a starting markdown file if the relevant URL parameter is set
-      if (openWith == false && startFilename) {
-        var startFileURL = 'https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/' + startFilename;
+      if (openWith == false && startFileURL) {
+        var startFilename = startFileURL.split('/').pop();
         // Fetch the file and open it
         async function request() {
           const response = await fetch(startFileURL);
