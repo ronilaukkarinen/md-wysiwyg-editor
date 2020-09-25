@@ -4,7 +4,7 @@
 
 ## Launch
 
-### ➡ [Launch with example file](https://alyw234237.github.io/md-wysiwyg-editor/?mdf=https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/README.md)
+### ➡ [Launch with example file](https://alyw234237.github.io/md-wysiwyg-editor/?file=https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/README.md)
 
 ### ➡ [Launch with new/blank file](https://alyw234237.github.io/md-wysiwyg-editor/)
 

@@ -1270,8 +1270,8 @@ tinymce.init({
       // Retrieve relevant URL parameters if any
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const startFileURL = urlParams.get('mdf');
-      const startMarkdownView = urlParams.get('mdv');
+      const startFileURL = urlParams.get('file');
+      const startMarkdownView = urlParams.get('view');
 
       // Open a starting markdown file if the relevant URL parameter is set
       if (openWith == false && startFileURL) {
