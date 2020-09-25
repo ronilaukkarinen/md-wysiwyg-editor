@@ -1215,7 +1215,7 @@ tinymce.init({
       }
 
       // Get WYSIWYG editor width
-      WYSIWYGEditorDefinedWidth = parseInt(getComputedStyle(editorPane).width);
+      WYSIWYGEditorDefinedWidth = parseInt(getComputedStyle(editorPane).maxWidth);
 
       // Adjust editor spacing if narrow window width
       adjustEditorSpacing();
@@ -1384,7 +1384,7 @@ function adjustMarkdownEditorWidth() {
   } else if (markdownFullpageToggleState == true) {
     // If wide window width
     var markdownEditorWidth = WYSIWYGEditorDefinedWidth;
-    if ((markdownEditorWidth + 45) < window.innerWidth) {
+    if (markdownEditorWidth < window.innerWidth) {
       // Add 45px of extra width to match the WYSIWYG mode width more closely
       markdownSidebar.style.width = (markdownEditorWidth + 45).toString() + 'px';
     // If narrow window width (e.g., mobile)
@@ -1400,7 +1400,7 @@ function adjustMarkdownEditorWidth() {
 function adjustEditorSpacing() {
 
   // If narrow window width (e.g., split-screen or mobile)
-  if (parseInt(getComputedStyle(editorPane).width) < WYSIWYGEditorDefinedWidth) {
+  if (editorPane.offsetWidth < WYSIWYGEditorDefinedWidth) {
     editorPane.style.paddingTop = "10px";
     editorPane.style.paddingBottom = "10px";
     editorPane.style.paddingLeft = "10px";
