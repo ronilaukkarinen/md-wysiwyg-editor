@@ -107,5 +107,5 @@ None of these editors currently offer a 100% WYSIWYG markdown-editing experience
 
 ## Support
 
-If you like this project, consider [buying me a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋 <!--<img src ="images/bubble-tea.png" alt="Boba tea" width="22px" height="22px" />-->
+If you like this project, consider [buying me a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋
 
