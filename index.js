@@ -102,7 +102,7 @@ function openFile(filename, data) {
   } else if (extension == "md" || extension == "markdown") {
 
     // Put YAML/TOML front matter into a markdown code block so that it isn't parsed
-    if (data.match(/^((---)\n)/) != null) {
+    /*if (data.match(/^((---)\n)/) != null) {
       data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
         return '```\n' + match + '```';
       });
@@ -110,7 +110,7 @@ function openFile(filename, data) {
       data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
         return '```\n' + match + '```';
       });
-    }
+    }*/
 
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
@@ -1508,13 +1508,20 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
       markdownToConvert = markdownTextarea.value;
     }
   }
+
+  // console.log("markdownToConvert: " + markdownToConvert);
+
   
+
   // Convert markdown to HTML
   if (markdownToHTMLEngine == 'markdown-it') {
     var HTMLfromMarkdown = markdownitConverter.render(markdownToConvert);
   } else if (markdownToHTMLEngine == 'Showdown') {
     var HTMLfromMarkdown = ShowdownConverter.makeHtml(markdownToConvert);
   }
+
+  // console.log("HTMLfromMarkdown: " + HTMLfromMarkdown);
+
 
   // Update WYSIWYG editor HTML with the new HTML from markdown
   tinymce.activeEditor.setContent(HTMLfromMarkdown);
