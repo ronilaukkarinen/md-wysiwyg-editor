@@ -1415,7 +1415,6 @@ function adjustEditorSpacing() {
   // Temporary fix for markdown editor padding... make dependent on actual screen size rather than split-screen vs. full-view
   if (markdownSidebarToggleState == true && markdownFullpageToggleState == false) {
     if (EasyMDEMarkdownArea == true) {
-      console.log("Was here #1");
       var CodeMirrorContainer = document.getElementsByClassName('CodeMirror')[0];
       CodeMirrorContainer.style.paddingTop = "10px";
       CodeMirrorContainer.style.paddingBottom = "10px";
@@ -1426,7 +1425,6 @@ function adjustEditorSpacing() {
     }
   } else {
     if (EasyMDEMarkdownArea == true) {
-      console.log("Was here #2");
       var CodeMirrorContainer = document.getElementsByClassName('CodeMirror')[0];
       CodeMirrorContainer.style.paddingTop = "30px";
       CodeMirrorContainer.style.paddingBottom = "30px";
