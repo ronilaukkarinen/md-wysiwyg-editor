@@ -554,10 +554,10 @@ span.CodeMirror-selectedtext {
   border: 0px solid transparent !important;
   border-bottom-left-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
-  padding-top: 30px !important;
-  padding-bottom: 30px !important;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   /*font: inherit !important;*/
   z-index: 0 !important;
   word-wrap: break-word !important;
