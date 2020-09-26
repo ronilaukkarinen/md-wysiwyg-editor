@@ -410,3 +410,7 @@ button[title="Formats"] {
   display: none !important;
 }
 
+/* For CodeMirror split-screen mode (higher than vscrollbar) */
+.tox-edit-area {
+  z-index: 1 !important;
+}
