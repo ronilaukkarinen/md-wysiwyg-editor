@@ -77,8 +77,8 @@ function newFile() {
   tinymce.activeEditor.resetContent();
   updateFilename("untitled.md", false);
 
-  tinyMCE.execCommand("UpdateMarkdown", false, undefined, true);
-  setTimeout(tinyMCE.execCommand("UpdateMarkdown"), 100); // Do it again if didn't work the first time... (temporary hack)
+  tinyMCE.execCommand('UpdateMarkdown', false, undefined, true);
+  setTimeout(tinyMCE.execCommand('UpdateMarkdown'), 100); // Do it again if didn't work the first time... (temporary hack)
 
   return;
 }
@@ -131,8 +131,8 @@ function openFile(filename, data) {
   tinymce.activeEditor.undoManager.clear();
   tinymce.editors[0].setDirty(false);
 
-  tinyMCE.execCommand("UpdateMarkdown", false, undefined, true);
-  setTimeout(tinyMCE.execCommand("UpdateMarkdown", false, undefined, true), 100); // Do it again if didn't work the first time... (temporary hack)
+  tinyMCE.execCommand('UpdateMarkdown', false, undefined, true);
+  setTimeout(tinyMCE.execCommand('UpdateMarkdown', false, undefined, true), 100); // Do it again if didn't work the first time... (temporary hack)
 
   // cacheFileHandle();
 
@@ -1316,7 +1316,7 @@ tinymce.init({
       const mutationCallback = function(mutationsList, observer) {
         // Don't update markdown if we're editing in the markdown pane
         if (tinymce.activeEditor.hasFocus() == true) {
-          tinyMCE.execCommand("UpdateMarkdown");
+          tinyMCE.execCommand('UpdateMarkdown');
         }
       };
       
@@ -1755,7 +1755,7 @@ function setupMarkdown(api) {
 
   // For updating more regularly
   tinymce.activeEditor.on('ExecCommand', function(event) {
-    if (event.command == "UpdateMarkdown") {
+    if (event.command == 'UpdateMarkdown') {
       updateMarkdownWithEditorHTML();
     }
   });
@@ -1899,7 +1899,7 @@ function setupScrollSync() {
   // Temporary hack fix (double hack... setTimeout() too)
   /*if (EasyMDEMarkdownArea == true) {
     tinymce.activeEditor.on('ExecCommand', function(event) {
-      if (event.command == "UpdateMarkdown") {
+      if (event.command == 'UpdateMarkdown') {
         setTimeout(function() {
           var scrollRatio = iframeHTML.scrollTop / iframeHTML.scrollHeight;
           markdownEditor.scrollTop = markdownEditor.scrollHeight * scrollRatio;
