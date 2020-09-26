@@ -225,7 +225,6 @@ function updateFilename(filename, dirty) {
     }
   }
 
-  // Doesn't work the first time on save for some reason... fix [to-do]
   if (dirty == false) {
     filenameElement.style.fontStyle = "";
   } else {
@@ -384,7 +383,7 @@ tinymce.init({
       inline: 'b',
     },
     italic: {
-      inine: 'i',
+      inline: 'i',
     },
     underline: {
       inline: 'ins',
@@ -395,7 +394,7 @@ tinymce.init({
     // For "remove formatting" keyboard shortcut (I think)
     removeformat: [
       {
-        selector: 'b,strong,em,i,font,ins,u,s,strike,del,sub,sup,dfn,blockquote,code,samp,kbd,var,cite,mark,q,',
+        selector: 'b,strong,em,i,font,ins,u,s,strike,del,sub,sup,dfn,blockquote,code,samp,kbd,var,cite,mark,q',
         remove: 'all',
         split: true,
         block_expand: true,
