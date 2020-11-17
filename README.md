@@ -104,8 +104,3 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 | [More...](https://softwarerecs.stackexchange.com/questions/5746/markdown-editor-for-windows-with-live-rendering-in-the-editing-pane-not-in-a-se) | |
 
 None of these editors currently offer a 100% WYSIWYG markdown-editing experience like "Markdown WYSIWYG Editor" does (with the notable exception of UNOTES, a [VS Code](https://github.com/microsoft/vscode) extension). In addition, none of the web editors are progressive web apps or have Native File System integration at this time.
-
-## Support
-
-If you like this project, consider [buying me a cup of boba tea](https://www.buymeacoffee.com/alyw234237). 🧋
-
