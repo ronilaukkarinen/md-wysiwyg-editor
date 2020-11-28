@@ -121,7 +121,6 @@
   * https://github.com/docluv/add-to-homescreen
 * Add app update stuff?
   * https://github.com/pwa-builder/pwa-update
-* Service worker bug causing app to eat CPU/RAM sometimes?
 * Service worker and caching dependencies/etc.
   * https://www.smashingmagazine.com/2016/08/a-beginners-guide-to-progressive-web-apps/
 * Dynamically load JavaScript dependencies (markdown–HTML engines) to load faster + save bandwidth:
