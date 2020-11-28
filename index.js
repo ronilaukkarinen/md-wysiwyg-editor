@@ -217,7 +217,7 @@ function updateFilename(filename, dirty) {
 
   if (filename != null) {
     persistFilename = filename;
-    document.title = persistFilename + " - Text Editor";
+    document.title = persistFilename + " - Markdown WYSIWYG Editor";
     if (persistFilename.length <= 20) {
       filenameElement.innerHTML = persistFilename;
     } else {
