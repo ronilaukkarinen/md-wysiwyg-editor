@@ -128,7 +128,7 @@
 ## Unsorted
 
 * Markdown front matter fix works for default use case (MD, YAML) but need to test other use cases (e.g., HTML, TOML, etc.).
-* Markdown front matter is hidden while editing in WYSIWYG editing view. Make it show? TinyMCE might be finicky though.
+* Markdown front matter is hidden in WYSIWYG editing view. Make it display in a code block. TinyMCE might be finicky though...
 * EasyMDE needs to ignore front matter in markdown (i.e., disable EasyMDE syntax-to-appearance parsing and transformation there).
 * Write the undoPutFrontMatterInCodeBlock() function. Might be useful for supporting front matter display/editing in WYSIWYG mode.
 * HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
