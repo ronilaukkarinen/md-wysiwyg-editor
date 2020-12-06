@@ -54,6 +54,7 @@
     * "When a configured string pattern is matched in the content while typing, the autocompleter will be triggered."
 * Link active highlight bug in dark mode.
 * Can't click to move caret in margins in markdown editor full-width mode.
+* Local images don't display... possible to fix or remedy somehow?
 
 ## User Input
 
