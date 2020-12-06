@@ -83,3 +83,19 @@ function addFrontMatter(data, frontMatter, format) {
   return data;
 }
 
+// Put front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
+function putFrontMatterInCodeBlock(data) {
+
+  if (data.match(/^((---)\n)/) != null) {
+    data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
+      return '```\n' + match + '```';
+    });
+  } else if (data.match(/^((\+\+\+)\n)/) != null) {
+    data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
+      return '```\n' + match + '```';
+    });
+  }
+
+  return data;
+}
+

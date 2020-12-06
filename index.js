@@ -110,16 +110,8 @@ function openFile(filename, data) {
     // Remove front matter from markdown while editing so that it doesn't get parsed and altered
     data = removeFrontMatter(data, 'markdown');
 
-    // Put YAML/TOML front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
-    /*if (data.match(/^((---)\n)/) != null) {
-      data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
-        return '```\n' + match + '```';
-      });
-    } else if (data.match(/^((\+\+\+)\n)/) != null) {
-      data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
-        return '```\n' + match + '```';
-      });
-    }*/
+    // Put front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
+    // data = putFrontMatterInCodeBlock(data);
 
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
