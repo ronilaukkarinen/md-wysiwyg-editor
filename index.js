@@ -1644,7 +1644,7 @@ var markdownitOptions = {
   html: true,
   xhtmlOut: true,
   breaks: false,
-  linkify: true,
+  linkify: false,
   typographer: false,
 }
 

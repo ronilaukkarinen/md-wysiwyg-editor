@@ -82,7 +82,7 @@
 * Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
 * Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
   * `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
-    * Breaks after the second parenthesis -> "199605)28" (that parenthesis)
+    * Breaks after the second closing parenthesis -> "199605)28" (that parenthesis)
 * Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
   * https://github.com/breakdance/breakdance
@@ -92,9 +92,6 @@
 * ``` `...` ``` pattern -> Converts to `<span><code></span></code>` in markdown with Turndown (but converts correctly with Showdown)
 * ` ```...``` ` pattern -> Converts to `<pre></pre>` in markdown with Showdown (but converts correctly with Turndown)
 * Turndown should drop empty links for headings with copy + paste HTML.
-* HTML-to-markdown with Turndown (?) converts URLs within Liquid code into autolinked markdown:
-  * `\{\% include article-header.md \%\}` -> `\{\% include [article-header.md](http://article-header.md) \%\}`
-  * Need to ignore/not modify Liquide code. Quick/temp part-fix would be to disable the Turndown autolink behavior.
 
 ## File Handling
 
@@ -132,4 +129,6 @@
 * Markdown front matter fix works for default use case (MD, YAML) but need to test other use cases (e.g., HTML, TOML, etc.).
 * Markdown front matter is hidden while editing... make it show in markdown editing view.
   * Maybe also in WYSIWYG editing view... display in a code block? (If possible with TinyMCE...)
+* HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
+  * Previously markdown-it autolink was breaking Liquid code in markdown but disabled autolink and this fixed that issue.
 
