@@ -181,13 +181,13 @@ function getNewFileHandle() {
     const opts = {
       types: [{ // Added
         description: 'Markdown file',
-        accept: {'text/markdown': ['md', 'markdown']},
+        accept: {'text/markdown': ['.md', '.markdown']},
       },{ // Added
         description: 'HTML file',
-        accept: {'text/html': ['html', 'htm']},
+        accept: {'text/html': ['.html', '.htm']},
       },{
         description: 'Text file',
-        accept: {'text/plain': ['txt']},
+        accept: {'text/plain': ['.txt']},
       }],
     };
     return window.showSaveFilePicker(opts);

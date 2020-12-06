@@ -1249,7 +1249,7 @@ tinymce.init({
           var getFileBlob = await fileHandle.getFile();
           getFileBlob.text().then(getFileText => {
             openFile(getFileName, getFileText);
-            // Breaks save... not compatible file handle type probably
+            // Breaks save... likely not a compatible file handle type
             // app.file.handle = launchParams.files[0];
             // app.file.name = getFileName;
             openWith = true;
@@ -1810,7 +1810,7 @@ window.addEventListener('keydown', function(event) {
     event.preventDefault();
     newFile();
   }
-  
+
   // Ctrl/Cmd + O -> Open file
   if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyO') {
     event.preventDefault();
@@ -1824,7 +1824,7 @@ window.addEventListener('keydown', function(event) {
     // saveFile();
     app.saveFile();
   }
-  
+
   // Shift + Ctrl/Cmd + S -> Save file as
   if (event.shiftKey && (event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
     event.preventDefault();
@@ -1845,19 +1845,19 @@ window.addEventListener('keydown', function(event) {
       toggleMarkdownSidebar();
     }
   }
-  
+
   // Ctrl/Cmd + W -> Quit
   if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyW') {
     event.preventDefault();
     quit();
   }
-  
+
   // Ctrl/Cmd + Q -> Quit
   if ((event.ctrlKey || event.metaKey) && !event.shiftKey && event.code === 'KeyQ') {
     event.preventDefault();
     quit();
   }
-  
+
   // Shift + Ctrl/Cmd + F -> Fullscreen toggle
   if (event.shiftKey && (event.ctrlKey || event.metaKey) && event.code === 'KeyF') {
     event.preventDefault();
@@ -1869,7 +1869,7 @@ window.addEventListener('keydown', function(event) {
     event.preventDefault();
     toggleFullscreen();
   }
-  
+
   // Esc -> Exit fullscreen if it's open and if not close markdown sidebar if it's open
   if (event.key == 'Escape' && !event.shiftKey && fullscreenTracker == true) {
     event.preventDefault();
