@@ -13,7 +13,7 @@ let HTMLtoMarkdownEngine;
 let EasyMDEMarkdownArea;
 
 // Save front matter here while editing
-var frontMatter;
+var frontMatter = '';
 
 // Core editor variables
 var editorHandle; // // Topmost editor div handle (in body tag)
@@ -107,7 +107,7 @@ function openFile(filename, data) {
     // Get and save front matter
     frontMatter = getFrontMatter(data, 'markdown');
     
-    // Remove front matter from markdown while editing so that it doesn't get messed up
+    // Remove front matter from markdown while editing so that it doesn't get parsed and altered
     data = removeFrontMatter(data, 'markdown');
 
     // Put YAML/TOML front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
@@ -1525,8 +1525,6 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
   }
 
   // console.log("markdownToConvert: " + markdownToConvert);
-
-  
 
   // Convert markdown to HTML
   if (markdownToHTMLEngine == 'markdown-it') {

@@ -127,7 +127,7 @@
 ## Unsorted
 
 * Markdown front matter fix works for default use case (MD, YAML) but need to test other use cases (e.g., HTML, TOML, etc.).
-* Markdown front matter is hidden while editing... make it show in markdown editing view.
+* Markdown front matter is hidden while editing... make it show in markdown editing view. EasyMDE might not like this though...
   * Maybe also in WYSIWYG editing view... display in a code block? (If possible with TinyMCE...)
 * HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
   * Previously markdown-it autolink was breaking Liquid code in markdown but disabled autolink and this fixed that issue.
