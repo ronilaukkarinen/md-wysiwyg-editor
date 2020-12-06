@@ -103,16 +103,6 @@ function openFile(filename, data) {
     tinymce.editors[0].setContent(data, {format: 'html'});
   // Open as markdown
   } else if (extension == "md" || extension == "markdown") {
-
-    // Get and save front matter
-    frontMatter = getFrontMatter(data, 'markdown');
-    
-    // Remove front matter from markdown while editing so that it doesn't get parsed and altered
-    data = removeFrontMatter(data, 'markdown');
-
-    // Put front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
-    // data = putFrontMatterInCodeBlock(data);
-
     tinymce.editors[0].setContent(data, {format: 'markdown'});
   // Open as plain text (TXT or other extension)
   } else {
@@ -148,15 +138,9 @@ function saveFile(filename) {
   // Save as text
   if (extension == "txt" || extension == "text") {
     var content = tinymce.editors[0].getContent({format: 'text'});
-
-    // Add/restore front matter to file before saving
-    content = addFrontMatter(content, frontMatter, 'text');
   // Save as markdown
   } else if (extension == "md" || extension == "markdown") {
     var content = tinymce.editors[0].getContent({format: 'markdown'});
-    
-    // Add/restore front matter to file before saving
-    content = addFrontMatter(content, frontMatter, 'markdown');
   // Save as HTML (HTML or other extension)
   } else {
     var content = tinymce.editors[0].getContent({format: 'html'});
@@ -1518,6 +1502,17 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
 
   // console.log("markdownToConvert: " + markdownToConvert);
 
+  // Remove front matter
+
+  // Get and save front matter
+  frontMatter = getFrontMatter(markdownToConvert, 'markdown');
+
+  // Remove front matter from markdown while editing so that it doesn't get parsed and altered
+  markdownToConvert = removeFrontMatter(markdownToConvert, 'markdown');
+
+  // Put front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
+  // markdownToConvert = putFrontMatterInCodeBlock(markdownToConvert);
+
   // Convert markdown to HTML
   if (markdownToHTMLEngine == 'markdown-it') {
     var HTMLfromMarkdown = markdownitConverter.render(markdownToConvert);
@@ -1526,7 +1521,6 @@ function updateEditorHTMLWithMarkdown(markdownToConvert, force) {
   }
 
   // console.log("HTMLfromMarkdown: " + HTMLfromMarkdown);
-
 
   // Update WYSIWYG editor HTML with the new HTML from markdown
   tinymce.activeEditor.setContent(HTMLfromMarkdown);
@@ -1582,6 +1576,12 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   } else if (HTMLtoMarkdownEngine == 'Showdown') {
     var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
   }
+
+  // Add trailing new lines (Turndown and Showdown remove these) (temp fix)
+  MarkdownFromHTML = MarkdownFromHTML + '\n\n';
+
+  // Add/restore front matter to file
+  MarkdownFromHTML = addFrontMatter(MarkdownFromHTML, frontMatter, 'markdown');
 
   // Update markdown editor text with the new markdown from HTML
   if (EasyMDEMarkdownArea == true) {

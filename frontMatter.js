@@ -86,17 +86,25 @@ function addFrontMatter(data, frontMatter, format) {
 // Put front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
 function putFrontMatterInCodeBlock(data) {
 
-    // YAML front matter (---)
+  // YAML front matter (---)
   if (data.match(/^((---)\n)/) != null) {
     data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
       return '```\n' + match + '```';
     });
-    // TOML front matter (---)
+  // TOML front matter (---)
   } else if (data.match(/^((\+\+\+)\n)/) != null) {
     data = data.replace(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m, function(match) {
       return '```\n' + match + '```';
     });
   }
+
+  return data;
+}
+
+// Undo put front matter into a markdown code block
+function undoPutFrontMatterInCodeBlock(data) {
+
+  // To-do...
 
   return data;
 }

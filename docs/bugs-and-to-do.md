@@ -80,6 +80,7 @@
   * Showdown did this escape also:
     * `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like` -> `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like`
 * Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
+  * Update: Added two new lines after HTML-to-markdown conversion as a temp fix. Needs more work though. And need WYSIWYG mode fix.
 * Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
   * `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
     * Breaks after the second closing parenthesis -> "199605)28" (that parenthesis)
@@ -127,8 +128,10 @@
 ## Unsorted
 
 * Markdown front matter fix works for default use case (MD, YAML) but need to test other use cases (e.g., HTML, TOML, etc.).
-* Markdown front matter is hidden while editing... make it show in markdown editing view. EasyMDE might not like this though...
-  * Maybe also in WYSIWYG editing view... display in a code block? (If possible with TinyMCE...)
+* Markdown front matter is hidden while editing in WYSIWYG editing view. Make it show? TinyMCE might be finicky though.
+* EasyMDE needs to ignore front matter in markdown (i.e., disable EasyMDE syntax-to-appearance parsing and transformation there).
+* Write the undoPutFrontMatterInCodeBlock() function. Might be useful for supporting front matter display/editing in WYSIWYG mode.
 * HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
   * Previously markdown-it autolink was breaking Liquid code in markdown but disabled autolink and this fixed that issue.
+* Padding 30px has made markdown editor border a little wonky... (e.g., with scroll). Needs fix.
 
