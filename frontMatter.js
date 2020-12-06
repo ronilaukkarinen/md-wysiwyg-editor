@@ -4,27 +4,29 @@
 // where format = 'markdown' or 'HTML'
 function getFrontMatter(data, format) {
 
+  var frontMatter = '';
+
   // If data format is markdown
   if (format == 'markdown') {
     // YAML front matter (---)
     if (data.match(/^((---)\n)/) != null) {
       // var frontMatter = data.match(/^(---\n)(.|\n)*(\n---\n)$/m); // For some reason this returns phantom extra chars at the end
-      var frontMatter = data.match(/^(---\n)(.|\n)*(\n---\n)$/gm)[0]; // And this fixes it (only take first match)
+      frontMatter = data.match(/^(---\n)(.|\n)*(\n---\n)$/gm)[0]; // And this fixes it (only take first match)
     // TOML front matter (+++)
     } else if (data.match(/^((\+\+\+)\n)/) != null) {
       // var frontMatter = data.match(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/m); // Phantom extra chars
-      var frontMatter = data.match(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/gm[0]); // Fix
+      frontMatter = data.match(/^(\+\+\+\n)(.|\n)*(\n\+\+\+\n)$/gm[0]); // Fix
     }
   // If data format is HTML
   } else if (format == 'html') {
     // YAML front matter (---)
     if (data.match(/^((<pre><code>---)\n)/) != null) {
       //var frontMatter = data.match(/^(<pre><code>---\n)(.|\n)*(\n---\n<\/code><\/pre>)$/m); // Phantom extra chars
-      var frontMatter = data.match(/^(<pre><code>---\n)(.|\n)*(\n---\n<\/code><\/pre>)$/gm[0]); // Fix
+      frontMatter = data.match(/^(<pre><code>---\n)(.|\n)*(\n---\n<\/code><\/pre>)$/gm[0]); // Fix
     // TOML front matter (+++)
     } else if (data.match(/^((<pre><code>\+\+\+)\n)/) != null) {
       //var frontMatter = data.match(/^(<pre><code>\+\+\+\n)(.|\n)*(\n\+\+\+\n<\/code><\/pre>)$/m); // Phantom extra chars
-      var frontMatter = data.match(/^(<pre><code>\+\+\+\n)(.|\n)*(\n\+\+\+\n<\/code><\/pre>)$/gm[0]); // Fix
+      frontMatter = data.match(/^(<pre><code>\+\+\+\n)(.|\n)*(\n\+\+\+\n<\/code><\/pre>)$/gm[0]); // Fix
     }
   }
 
@@ -72,10 +74,10 @@ function addFrontMatter(data, frontMatter, format) {
 
   // If data format is markdown
   if (format == 'markdown') {
-    data = frontMatter + data;
+    data = frontMatter + '\n' + data;
   // If data format is HTML
   } else if (format == 'html') {
-    data = '<pre><code>' + frontMatter + '</code></pre>';
+    data = '<pre><code>' + frontMatter + '</code></pre>' + '\n' + data;
   }
 
   return data;

@@ -12,6 +12,9 @@ let markdownToHTMLEngine;
 let HTMLtoMarkdownEngine;
 let EasyMDEMarkdownArea;
 
+// Save front matter here while editing
+var frontMatter;
+
 // Core editor variables
 var editorHandle; // // Topmost editor div handle (in body tag)
 var editingArea; // Full editing area (WYSIWYG and markdown) handle
@@ -101,7 +104,13 @@ function openFile(filename, data) {
   // Open as markdown
   } else if (extension == "md" || extension == "markdown") {
 
-    // Put YAML/TOML front matter into a markdown code block so that it isn't parsed
+    // Get and save front matter
+    frontMatter = getFrontMatter(data, 'markdown');
+    
+    // Remove front matter from markdown while editing so that it doesn't get messed up
+    data = removeFrontMatter(data, 'markdown');
+
+    // Put YAML/TOML front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
     /*if (data.match(/^((---)\n)/) != null) {
       data = data.replace(/^(---\n)(.|\n)*(\n---\n)$/m, function(match) {
         return '```\n' + match + '```';
@@ -147,9 +156,15 @@ function saveFile(filename) {
   // Save as text
   if (extension == "txt" || extension == "text") {
     var content = tinymce.editors[0].getContent({format: 'text'});
+
+    // Add/restore front matter to file before saving
+    content = addFrontMatter(content, frontMatter, 'text');
   // Save as markdown
   } else if (extension == "md" || extension == "markdown") {
     var content = tinymce.editors[0].getContent({format: 'markdown'});
+    
+    // Add/restore front matter to file before saving
+    content = addFrontMatter(content, frontMatter, 'markdown');
   // Save as HTML (HTML or other extension)
   } else {
     var content = tinymce.editors[0].getContent({format: 'html'});

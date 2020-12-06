@@ -74,7 +74,6 @@
 
 ## HTML–Markdown Conversion
 
-* Markdown front matter is fenced with code block to prevent removal/alteration.
 * Headers are added to headerless tables with Turndown so they aren't removed (although this doesn't always work/happen).
 * Showdown can't handle headerless tables.
 * Showdown escapes various things. Markdown characters (e.g., "~", "|", "0.5" -> 0.5). Happens even in URLs.
@@ -93,8 +92,9 @@
 * ``` `...` ``` pattern -> Converts to `<span><code></span></code>` in markdown with Turndown (but converts correctly with Showdown)
 * ` ```...``` ` pattern -> Converts to `<pre></pre>` in markdown with Showdown (but converts correctly with Turndown)
 * Turndown should drop empty links for headings with copy + paste HTML.
-* HTML-to-markdown with Turndown converts URLs within Liquid code into autolinked markdown:
+* HTML-to-markdown with Turndown (?) converts URLs within Liquid code into autolinked markdown:
   * `\{\% include article-header.md \%\}` -> `\{\% include [article-header.md](http://article-header.md) \%\}`
+  * Need to ignore/not modify Liquide code. Quick/temp part-fix would be to disable the Turndown autolink behavior.
 
 ## File Handling
 
@@ -126,4 +126,10 @@
 * Dynamically load JavaScript dependencies (markdown–HTML engines) to load faster + save bandwidth:
   * https://www.kirupa.com/html5/loading_script_files_dynamically.htm
 * Whatever else that's missing...
+
+## Unsorted
+
+* Markdown front matter fix works for default use case (MD, YAML) but need to test other use cases (e.g., HTML, TOML, etc.).
+* Markdown front matter is hidden while editing... make it show in markdown editing view.
+  * Maybe also in WYSIWYG editing view... display in a code block? (If possible with TinyMCE...)
 
