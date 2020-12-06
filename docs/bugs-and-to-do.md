@@ -34,6 +34,7 @@
 ** Button and keyboard shortcuts don't work otherwise (i.e., if in markdown editor full-page mode).
 * Non-EasyMDE markdown editor scrollbar should be on far right.
 * Non-EasyMDE markdown editor scroll goes to end on launch.
+* Padding 30px has made markdown editor border a little wonky... (e.g., with scroll). Needs fix.
 
 ## Editing
 
@@ -133,5 +134,4 @@
 * Write the undoPutFrontMatterInCodeBlock() function. Might be useful for supporting front matter display/editing in WYSIWYG mode.
 * HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
   * Previously markdown-it autolink was breaking Liquid code in markdown but disabled autolink and this fixed that issue.
-* Padding 30px has made markdown editor border a little wonky... (e.g., with scroll). Needs fix.
 
