@@ -281,9 +281,9 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codesample hr table image searchreplace markdownButton code fullscreen darkmode preferences github filename', // More: heading, quickimage
+  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codesample hr table image markdownButton code fullscreen darkmode preferences github filename', // More: heading, quickimage, searchreplace
   toolbar_mode: 'floating',
-  plugins: 'code codesample, link image table lists paste searchreplace autolink hr textpattern quickbars',
+  plugins: 'code codesample, link image table lists paste autolink hr textpattern quickbars', // More: searchreplace
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
   icons: 'custom',
@@ -984,10 +984,11 @@ tinymce.init({
       app.saveFileAs();
     });
 
+    // DISABLED FOR NOW...
     // Ctrl+F also triggers find and replace
-    editor.addShortcut('Meta+H', 'Find and replace', function () {
+    /*editor.addShortcut('Meta+H', 'Find and replace', function () {
       tinymce.activeEditor.execCommand('SearchReplace');
-    });
+    });*/
 
     editor.addShortcut('Meta+M', 'Markdown editor (full-page)', function () {
       toggleMarkdownFullpage();
