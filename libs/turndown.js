@@ -56,7 +56,8 @@ var TurndownService = (function () {
     filter: 'br',
 
     replacement: function (content, node, options) {
-      return options.br
+      //return options.br + '\n'
+      return options.br // Fix bug that causes to add extra '<br>' tag
     }
   };
 
