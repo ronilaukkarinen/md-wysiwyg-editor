@@ -1637,6 +1637,7 @@ var markdownitOptions = {
   breaks: false,
   linkify: false,
   typographer: false,
+  br: '',
 }
 
 // Create markdown-it converter instance with options
