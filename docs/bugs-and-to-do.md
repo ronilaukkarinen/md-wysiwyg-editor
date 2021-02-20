@@ -39,7 +39,7 @@
 ## Editing
 
 * p vs. br behavior... option...
-  * How to mimic Notepad-style in wYSIWYG editor:
+  * How to mimic Notepad-style in WYSIWYG editor:
     * Set padding and margin for p, headers, other elements to 0.
     * Change HTML-to-markdown conversions for these elements from two linebreaks (`\n\n`) to one (`\n`).
     * Adjust line height (default 1.6, maybe change to 1.4).
@@ -86,7 +86,7 @@
 * Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
   * `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
     * Breaks after the second closing parenthesis -> "199605)28" (that parenthesis)
-* Showdown/Turndown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
+* Showdown HTML-to-markdown replaces markdown within HTML tags with HTML (changed `**` to `<em></em>` and `[]()` to `<a...`).
 * Another JS HTML-to-markdown converter to look at (but node.js):
   * https://github.com/breakdance/breakdance
 * Neither Turndown nor Showdown HTML-to-markdown handle Shift+Enter behavior right (`<br >`'s)... both just collapse the newlines.
@@ -151,4 +151,6 @@
 * Converts HTML tables... (and breaks them badly)
 
 * It's inserting a new line at top in markdown view?
+
+* **Need to test editor on all site pages now**
 
