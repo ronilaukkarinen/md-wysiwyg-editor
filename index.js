@@ -1699,7 +1699,7 @@ TurndownConverter.addRule('strikethrough', {
   },
 });
 
-// Keep <small> tags
+// Hack to convert HTML into markdown within <small></small> tags
 TurndownConverter.addRule('small', {
   filter: ['small'],
   replacement: function (content) {
