@@ -117,7 +117,7 @@ var TurndownService = (function () {
       if (parent.nodeName === 'OL') {
         var start = parent.getAttribute('start');
         var index = Array.prototype.indexOf.call(parent.children, node);
-        prefix = (start ? Number(start) + index : index + 1) + '.';
+        prefix = (start ? Number(start) + index : index + 1) + '. ';
       }
       return (
         prefix + content + (node.nextSibling && !/\n$/.test(content) ? '\n' : '')
