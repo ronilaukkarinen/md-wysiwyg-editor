@@ -1678,7 +1678,7 @@ var TurndownOptions = {
 // Define Turndown HTML tags to not be removed
 var TurndownKeepList = [
   'html','head','title','body','meta',
-  'ins','strike','s','del','sup','sub','small',
+  'ins','strike','s','del','sup','sub',
   'figure','figcaption','video','source','audio','math'
 ];
 
@@ -1698,6 +1698,15 @@ TurndownConverter.addRule('strikethrough', {
     return '~~' + content + '~~';
   },
 });
+
+// Keep <small> tags
+TurndownConverter.addRule('small', {
+  filter: ['small'],
+  replacement: function (content) {
+    return '<small>' + content + '</small>';
+  },
+});
+
 
 // Don't convert img tags (preserves attributes—width, height, etc.)
 // https://github.com/domchristie/turndown/issues/179
