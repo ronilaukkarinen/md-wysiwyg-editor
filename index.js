@@ -1637,7 +1637,6 @@ var markdownitOptions = {
   breaks: false,
   linkify: false,
   typographer: false,
-  br: '<br />',
 }
 
 // Create markdown-it converter instance with options
@@ -1673,6 +1672,7 @@ var TurndownOptions = {
   fence: '```',
   emDelimiter: '*',
   strongDelimiter: '**',
+  br: '<br />',
 }
 
 // Define Turndown HTML tags to not be removed
