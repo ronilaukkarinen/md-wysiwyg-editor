@@ -136,3 +136,19 @@
 * HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
   * Previously markdown-it autolink was breaking Liquid code in markdown but disabled autolink and this fixed that issue.
 
+## New (2021/02/20)
+
+* For tables, changes '| |' to '|  |' (maybe fine?)
+* For tables, changes '|  Blah' to '| Blah' (maybe fine?)
+* Converts markdown inside of HTML tags into HTML
+* Changes '\<50 ng/dL' to '<50 ng/dL' (maybe fine?)
+* Changes '10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8' to '10.1002/(SICI)1097-0045(199605)28:5%3C307::AID-PROS6%3E3.0.CO;2-8' (maybe fine? -> Update: Doesn't break links!)
+* Changes '[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)-based' to '[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)\-based test' (maybe okay?)
+* Removes trailing spaces from paragraphs (maybe fine)
+
+* Bug (SHBG article): Changes '\n| --- |' to '| \--- '
+  * When two tables in a row
+* Converts HTML tables... (and breaks them badly)
+
+* It's inserting a new line at top in markdown view?
+
