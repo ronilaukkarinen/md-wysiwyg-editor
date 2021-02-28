@@ -1,6 +1,6 @@
 # Markdown WYSIWYG Editor
 
-"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor written in JavaScript, HTML, and CSS. It is a [progressive web app](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce) and [EasyMDE](https://easymde.tk/), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (credit to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously!](#Notes)
+"Markdown WYSIWYG Editor" (placeholder name) is a simple web rich-text/WYSIWYG markdown editor written in JavaScript, HTML, and CSS. It is a [progressive web app](https://web.dev/progressive-web-apps/) (PWA) made with [TinyMCE 5](https://github.com/tinymce/tinymce) and [EasyMDE](https://easymde.tk/), various markdown–HTML conversion engines ([markdown-it](https://github.com/markdown-it/markdown-it), [Turndown](https://github.com/domchristie/turndown), and [Showdown](https://github.com/showdownjs/showdown)), and the new [Native File System](https://web.dev/native-file-system/) (NFS) API (credit to Google's demo [Text Editor](https://github.com/GoogleChromeLabs/text-editor) code). Currently in a developmental stage—[use cautiously if at all!](#Notes)
 
 ## Launch
 
@@ -103,5 +103,5 @@ A number of similar WYSIWYG and/or online markdown editors exist:
 | [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) | |
 | [More...](https://softwarerecs.stackexchange.com/questions/5746/markdown-editor-for-windows-with-live-rendering-in-the-editing-pane-not-in-a-se) | |
 
-"Markdown WYSIWYG Editor" is unique among these editors in that it offers a 100% WYSIWYG markdown-editing experience (with the notable exception of UNOTES, a [VS Code](https://github.com/microsoft/vscode) extension which can also do this). "Markdown WYSIWYG Editor" is also unique in being the only progressive web app and editor with Native File System integration among the web editors.
+"Markdown WYSIWYG Editor" is unique among these editors in that it offers a 100% WYSIWYG markdown-editing experience (with the notable exception of UNOTES, a [VS Code](https://github.com/microsoft/vscode) extension which can also do this). "Markdown WYSIWYG Editor" is also unique in being the only progressive web app and editor with Native File System integration among the web markdown editors.
 
