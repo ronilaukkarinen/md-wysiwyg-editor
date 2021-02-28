@@ -156,3 +156,7 @@
 
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
 
+## New (2021/02/28)
+
+* Open directory + save file handles + permissions with re-launch: [https://web.dev/file-system-access/](https://web.dev/file-system-access/)
+
