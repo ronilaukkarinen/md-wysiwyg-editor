@@ -281,7 +281,7 @@ tinymce.init({
   theme: 'silver',
   content_css: ['css/editor-area-styles.css'],
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
-  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codesample hr table image markdownButton code fullscreen darkmode preferences github filename', // More: heading, quickimage, searchreplace
+  toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codesample hr table image quickimage markdownButton code fullscreen darkmode preferences github filename', // More: heading, searchreplace
   toolbar_mode: 'floating',
   plugins: 'code codesample, link image table lists paste autolink hr textpattern quickbars', // More: searchreplace
   contextmenu_never_use_native: true,
