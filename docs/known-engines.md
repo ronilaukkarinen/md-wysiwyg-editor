@@ -1,6 +1,6 @@
 # Known JavaScript Markdown–HTML Conversion Engines
 
-Last updated September 2020
+Last updated May 2021
 
 ## Markdown-to-HTML Engines
 
@@ -9,6 +9,7 @@ Last updated September 2020
 | CommonMark | https://commonmark.org/ | https://github.com/commonmark/commonmark.js | 2020 |
 | markdown-it | https://markdown-it.github.io/ | https://github.com/markdown-it/markdown-it | 2020 |
 | markdown-js | – | https://github.com/evilstreak/markdown-js | 2014 |
+| Markdown-Wasm | https://rsms.me/markdown-wasm/ | https://github.com/rsms/markdown-wasm | 2020 |
 | Marked | https://marked.js.org/| https://github.com/markedjs/marked | 2020 |
 | micromarkdown.js | http://simonwaldherr.github.io/micromarkdown.js/ | https://github.com/SimonWaldherr/micromarkdown.js | 2015 |
 | pagedown | https://code.google.com/archive/p/pagedown/ | https://github.com/StackExchange/pagedown | 2017 |
@@ -26,7 +27,6 @@ Last updated September 2020
 | reMarked.js | http://leeoniya.github.io/reMarked.js/ | https://github.com/leeoniya/reMarked.js | 2014 |
 | Showdown | http://showdownjs.com/ | https://github.com/showdownjs/showdown | 2019 |
 | Turndown (to-markdown) | http://domchristie.github.io/turndown/ | https://github.com/domchristie/turndown | 2020 |
-
 
 ## Markdown Editor Libraries
 
