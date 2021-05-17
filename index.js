@@ -808,7 +808,7 @@ tinymce.init({
             name: 'customCSS',
             label: 'Custom CSS stylesheet for editing area (default/template <a href="https://raw.githubusercontent.com/Alyw234237/md-wysiwyg-editor/main/css/editor-area-styles.css">here</a>—copy here and modify as desired</span>):',
             maximized: true,
-          }
+          },
         ]
       },
       buttons: [
