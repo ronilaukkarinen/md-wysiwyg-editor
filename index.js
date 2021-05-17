@@ -182,7 +182,7 @@ function toggleFullscreen() {
   }
 
   // If not fullscreen, try to enter fullscreen
-  if (document.fullscreenElement == null) {
+  if (isFullScreen() == true) {
     // Request fullscreen for different platforms
     if (editorHandle.requestFullscreen) {
       editorHandle.requestFullscreen();
@@ -199,6 +199,11 @@ function toggleFullscreen() {
   }
 
   return;
+}
+
+// Check if fullscreen
+function isFullScreen() {
+  return !!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
 }
 
 // Update filename
@@ -1170,12 +1175,25 @@ tinymce.init({
       return;
     });
 
-    // Track fullscreen
-    // Doesn't fire in Chrome if fullscreen was entered with fullscreen key or via Chrome hamburger menu...
-    // This would work though: https://stackoverflow.com/questions/34422052/how-to-detect-browser-has-gone-to-full-screen
-    document.addEventListener("fullscreenchange", function () {
-      fullscreenTracker = !fullscreenTracker;
-    }, false);
+    // Track fullscreen (fullscreenchange event is not reliable as doesn't fire in Chrome if 
+    // fullscreen was entered with fullscreen key or via Chrome hamburger menu so need this instead)
+    // From: https://stackoverflow.com/questions/34422052/how-to-detect-browser-has-gone-to-full-screen/52160506#52160506
+    // May not work properly if dev console is open in window...
+    window.addEventListener("resize", () => {
+      setTimeout(() => {
+        const windowWidth = window.innerWidth * window.devicePixelRatio;
+        const windowHeight = window.innerHeight * window.devicePixelRatio;
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+        // If fullscreen
+        if (((windowWidth / screenWidth) >= 0.95) && ((windowHeight / screenHeight) >= 0.95)) {
+          fullscreenTracker = true;
+        // If not fullscreen
+        } else {
+          fullscreenTracker = false;
+        }
+      }, 100);
+    });
 
     // Update to unsaved changes filename if editor becomes dirty
     editor.on('Dirty', function(event) {
