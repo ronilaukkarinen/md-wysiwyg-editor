@@ -64,12 +64,12 @@ html {
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif;
 	color: var(--general-text-color);
-	max-width: 750px;
+	max-width: 745px;
 	margin: 0 auto;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
 	line-height: 1.6;
 	/*line-height: 1.4;*/
 	/*margin-bottom: 2.0em;*/
