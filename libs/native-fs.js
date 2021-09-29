@@ -179,6 +179,7 @@ function getNewFileHandle() {
   // For Chrome 86 and later...
   if ('showSaveFilePicker' in window) {
     const opts = {
+      suggestedName: persistFilename,
       types: [{ // Added
         description: 'Markdown file',
         accept: {'text/markdown': ['.md', '.markdown']},
