@@ -143,11 +143,10 @@
 
 * Bug (SHBG article): Changes '\n| --- |' to '| \--- '
   * When two tables in a row
+* Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
 * Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
 
 * **Need to test editor on all site pages now**
-
-* Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
 
 ## New (2021/09/29)
 
@@ -156,4 +155,7 @@
 * TinyMCE still does filters inside of \<htmlprotect\> (so can't use e.g. text-align: center; or font-weight: strong; CSS tags in table headers, have to use \<th\> and \<b\>
 * Editor removes line breaks/white space inside of \<htmlprotect\>
 * TinyMCE doesn't do markdown table headers right (does bold and puts under header row)
+* "To-do: Change this so more foolproof (i.e., "untitled.md" check)"
+* Fix: "Disable this for now as will double in the case of Ctrl + W"
+* Fix Ctrl+W exit so when empty but dirty it won't prompt about saving changes?
 
