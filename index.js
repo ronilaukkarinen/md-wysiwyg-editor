@@ -342,7 +342,7 @@ tinymce.init({
   quickbars_selection_toolbar: false,
   quickbars_image_toolbar: false,
   fullpage_hide_in_source_view: false,
-  // All HTML elements (attributs) except for these will be filtered:
+  // All HTML elements (attributes) except for these will be filtered:
   valid_elements:
     'html,head,title,body,meta[name|content|charset],' +
     'p,a[href],br,strong,b,i,em,u,ins,strike,s,del,sup,sub,small,' +
@@ -357,6 +357,7 @@ tinymce.init({
     'p': 'text-decoration,text-decoration-line',
     'span': 'text-decoration,text-decoration-line',
   },*/
+  custom_elements: 'htmlprotect',
 
   style_formats_merge: false,
   style_formats_autohide: true,
@@ -1699,7 +1700,8 @@ var TurndownOptions = {
 var TurndownKeepList = [
   'html','head','title','body','meta',
   'ins','strike','s','del','sup','sub',
-  'figure','figcaption','video','source','audio','math'
+  'figure','figcaption','video','source','audio','math',
+  'htmlprotect', // htmlprotect is custom tag
 ];
 
 // Create Turndown converter instance with options and plugins
