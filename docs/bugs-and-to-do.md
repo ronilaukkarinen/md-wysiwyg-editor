@@ -145,7 +145,7 @@
 
 * Bug (SHBG article): Changes '\n| --- |' to '| \--- '
   * When two tables in a row
-* Converts HTML tables... (and breaks them badly)
+* Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
 
 * It's inserting a new line at top in markdown view?
 
