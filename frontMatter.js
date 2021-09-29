@@ -20,6 +20,11 @@ function getLineEndingType(data) {
 // where format = 'markdown' or 'HTML'
 function getFrontMatter(data, format) {
 
+  // If nothing to do, don't proceed
+  if (data == "") {
+    return data;
+  }
+
   var frontMatter = '';
 
   // If data format is markdown
@@ -52,6 +57,11 @@ function getFrontMatter(data, format) {
 // Usage: data = removeFrontMatter(data, format);
 // where format = 'markdown' or 'HTML'
 function removeFrontMatter(data, format) {
+
+  // If nothing to do, don't proceed
+  if (data == "") {
+    return data;
+  }
 
   // If data format is markdown
   if (format == 'markdown') {
@@ -88,6 +98,11 @@ function removeFrontMatter(data, format) {
 // where format = 'markdown' or 'HTML'
 function addFrontMatter(data, frontMatter, format) {
 
+  // If nothing to do, don't proceed
+  if (frontMatter == "") {
+    return data;
+  }
+
   // Get the correct line ending type
   var lineEndingType = getLineEndingType(data);
 
@@ -104,6 +119,11 @@ function addFrontMatter(data, frontMatter, format) {
 
 // Put front matter into a markdown code block so that it isn't parsed (old method of handling front matter)
 function putFrontMatterInCodeBlock(data) {
+
+  // If nothing to do, don't proceed
+  if (data == "") {
+    return data;
+  }
 
   // Get the correct line ending type
   var lineEndingType = getLineEndingType(data);
@@ -125,6 +145,11 @@ function putFrontMatterInCodeBlock(data) {
 
 // Undo put front matter into a markdown code block
 function undoPutFrontMatterInCodeBlock(data) {
+
+  // If nothing to do, don't proceed
+  if (data == "") {
+    return data;
+  }
 
   // To-do...
 

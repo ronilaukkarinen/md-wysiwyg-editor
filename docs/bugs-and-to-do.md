@@ -145,8 +145,6 @@
   * When two tables in a row
 * Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
 
-* It's inserting a new line at top in markdown view?
-
 * **Need to test editor on all site pages now**
 
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
