@@ -182,6 +182,10 @@ h6 {
 	color: var(--heading-text-color);
 }
 
+small {
+	font-size: 80%;
+}
+
 hr {
 	height: 2px;
 	padding: 0;
