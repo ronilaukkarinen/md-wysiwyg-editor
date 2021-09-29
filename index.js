@@ -342,6 +342,7 @@ tinymce.init({
     /* /^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/gm, */ // YAML front matter (not working)
     /* /^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm, */ // TOML front matter (not working)
     /* /\{%.+%\}/,  // Liquid (untested) */
+    /* /\{\{.+\}\}/,  // Liquid (untested) */
   ],
   quickbars_insert_toolbar: false,
   quickbars_selection_toolbar: false,
