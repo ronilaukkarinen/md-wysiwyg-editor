@@ -164,7 +164,10 @@ app.saveFileAs = async () => {
 function getFileHandle() {
   // For Chrome 86 and later...
   if ('showOpenFilePicker' in window) {
-    return window.showOpenFilePicker().then((handles) => handles[0]);
+    return window.showOpenFilePicker({
+      // https://web.dev/file-system-access/#specifying-a-suggested-file-name-and-start-directory
+      //startIn: directoryHandle,app.file.name,
+    }).then((handles) => handles[0]);
   }
   // For Chrome 85 and earlier...
   return window.chooseFileSystemEntries();

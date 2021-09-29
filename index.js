@@ -1272,10 +1272,11 @@ tinymce.init({
           }
 
           // Doesn't work due to permission error
-          // app.openFile(launchParams.files[0]);
+          app.openFile(launchParams.files[0]);
+          openWith = true;
 
           // Instead, do the following to open ->
-          var fileHandle = launchParams.files[0];
+          /*var fileHandle = launchParams.files[0];
           var getFileName = launchParams.files[0].name;
           var getFileBlob = await fileHandle.getFile();
           getFileBlob.text().then(getFileText => {
@@ -1284,7 +1285,7 @@ tinymce.init({
             // app.file.handle = launchParams.files[0];
             // app.file.name = getFileName;
             openWith = true;
-          });
+          });*/
         });
       // Alert if native file handling API isn't enabled
       } else {

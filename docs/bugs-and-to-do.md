@@ -98,7 +98,6 @@
 ## File Handling
 
 * Open with doesn't allow use of file handle for subsequent save without prompt at this time. Need to fix.
-  * Actually this might be a security thing... need to get permission for both read and write...
 * Can't automatically load last open file on start due to inability to store file handle. Possible to fix?
 
 ## Cut/Copy/Paste Behavior
