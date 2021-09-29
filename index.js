@@ -337,12 +337,12 @@ tinymce.init({
   toolbar_sticky: true,
   resize: false,
   statusbar: false,
-  // Protect markdown front matter/metadata (doesn't work right)
+  // Protect certain kinds of text
   protect: [
-    /* /^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/gm, */ // YAML front matter (not working)
-    /* /^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm, */ // TOML front matter (not working)
-    /* /\{%.+%\}/,  // Liquid (untested) */
-    /* /\{\{.+\}\}/,  // Liquid (untested) */
+    /* /^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/gm, */ // YAML front matter
+    /* /^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm, */ // TOML front matter
+    /* /\{%\-? .+ \-?%\}/, */ // Liquid (works but hides text and probably not advisable) */
+    /* /\{\{ .+ \}\}/, */ // Liquid (works but hides text and probably not advisable) */
   ],
   quickbars_insert_toolbar: false,
   quickbars_selection_toolbar: false,
