@@ -48,7 +48,7 @@ Note the web browser [requirements](#Requirements) for the editor to have full f
 
 ## Requirements
 
-The web browser must be up-to-date and have the Native File System API enabled (e.g., in Google Chrome flags—these flags are not enabled by default at this time):
+The web browser must be up-to-date and have the Native File System API enabled (e.g., in Google Chrome flags—one or both of these flags may not be enabled by default at this time):
 
 * [chrome://flags/#native-file-system-api](chrome://flags/#native-file-system-api)
 * [chrome://flags/#file-handling-api](chrome://flags/#file-handling-api)
