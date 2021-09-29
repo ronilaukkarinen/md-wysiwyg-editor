@@ -163,4 +163,6 @@
 
 * TinyMCE converts &nbsp; to regular spaces...
   * https://stackoverflow.com/questions/61221847/prevent-tinymce-from-replacing-nbsp-to-regular-space
+* TinyMCE still does filters inside of <htmlprotect> (so can't use e.g. text-align: center; or font-weight: strong; CSS tags in table headers, have to use <th> and <b>
+* Editor removes line breaks/white space inside of <htmlprotect>
 

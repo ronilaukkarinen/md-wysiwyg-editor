@@ -337,7 +337,12 @@ tinymce.init({
   toolbar_sticky: true,
   resize: false,
   statusbar: false,
-  // protect: "/^---[.\r\n]*---/", // Protect markdown front matter/metadata (doesn't work right)
+  // Protect markdown front matter/metadata (doesn't work right)
+  protect: [
+    /* /^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/gm, */ // YAML front matter (not working)
+    /* /^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm, */ // TOML front matter (not working)
+    /* /\{%.+%\}/,  // Liquid (untested) */
+  ],
   quickbars_insert_toolbar: false,
   quickbars_selection_toolbar: false,
   quickbars_image_toolbar: false,
@@ -1598,9 +1603,6 @@ function updateMarkdownWithEditorHTML(HTMLtoConvert, force) {
   } else if (HTMLtoMarkdownEngine == 'Showdown') {
     var MarkdownFromHTML = ShowdownConverter.makeMarkdown(HTMLtoConvert);
   }
-
-  // Add trailing new lines (Turndown and Showdown remove these) (temp fix)
-  MarkdownFromHTML = MarkdownFromHTML + '\n\n';
 
   // Add/restore front matter to file
   MarkdownFromHTML = addFrontMatter(MarkdownFromHTML, frontMatter, 'markdown');

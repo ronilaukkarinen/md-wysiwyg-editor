@@ -31,18 +31,18 @@ function getFrontMatter(data, format) {
     // TOML front matter (+++)
     } else if (data.match(/^((\+\+\+)(?:\r\n|\n))/) != null) {
       // var frontMatter = data.match(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/m); // Phantom extra chars
-      frontMatter = data.match(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm[0]); // Fix
+      frontMatter = data.match(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm)[0]; // Fix
     }
   // If data format is HTML
   } else if (format == 'html') {
     // YAML front matter (---)
     if (data.match(/^((<pre><code>---)(?:\r\n|\n))/) != null) {
       //var frontMatter = data.match(/^(<pre><code>---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n)<\/code><\/pre>)$/m); // Phantom extra chars
-      frontMatter = data.match(/^(<pre><code>---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n)<\/code><\/pre>)$/gm[0]); // Fix
+      frontMatter = data.match(/^(<pre><code>---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n)<\/code><\/pre>)$/gm)[0]; // Fix
     // TOML front matter (+++)
     } else if (data.match(/^((<pre><code>\+\+\+)(?:\r\n|\n))/) != null) {
       //var frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n)<\/code><\/pre>)$/m); // Phantom extra chars
-      frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n)<\/code><\/pre>)$/gm[0]); // Fix
+      frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n)<\/code><\/pre>)$/gm)[0]; // Fix
     }
   }
 
