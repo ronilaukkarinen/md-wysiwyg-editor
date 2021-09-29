@@ -1272,7 +1272,8 @@ tinymce.init({
           }
 
           // New way of opening files
-          app.handleFile(launchParams.files[0]);
+          var fileHandle = launchParams.files[0];
+          app.handleFile(fileHandle);
           openWith = true;
 
           // Old way of opening files

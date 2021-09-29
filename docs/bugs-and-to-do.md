@@ -97,7 +97,6 @@
 
 ## File Handling
 
-* Open with doesn't allow use of file handle for subsequent save without prompt at this time. Need to fix.
 * Can't automatically load last open file on start due to inability to store file handle. Possible to fix?
 
 ## Cut/Copy/Paste Behavior
@@ -151,10 +150,6 @@
 * **Need to test editor on all site pages now**
 
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
-
-## New (2021/02/28)
-
-* Open directory + save file handles + permissions with re-launch: [https://web.dev/file-system-access/](https://web.dev/file-system-access/)
 
 ## New (2021/09/29)
 

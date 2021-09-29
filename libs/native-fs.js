@@ -189,7 +189,7 @@ function getFileHandle() {
   if ('showOpenFilePicker' in window) {
     return window.showOpenFilePicker({
       // https://web.dev/file-system-access/#specifying-a-suggested-file-name-and-start-directory
-      //startIn: directoryHandle,app.file.name,
+      //startIn: directoryHandle,
     }).then((handles) => handles[0]);
   }
   // For Chrome 85 and earlier...
@@ -204,8 +204,14 @@ function getFileHandle() {
 function getNewFileHandle() {
   // For Chrome 86 and later...
   if ('showSaveFilePicker' in window) {
+    if (app.file.handle) {
+      var saveAsFileHandle = app.file.handle;
+    } else {
+      saveAsFileHandle = null;
+    }
     const opts = {
       suggestedName: persistFilename,
+      startIn: saveAsFileHandle,
       types: [{ // Added
         description: 'Markdown file',
         accept: {'text/markdown': ['.md', '.markdown']},
