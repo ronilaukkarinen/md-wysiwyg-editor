@@ -109,12 +109,12 @@ function openFile(filename, data) {
     // Replace newlines with HTML so read correctly by TinyMCE
     //data = data.replace(/(\n)/g, '<br />');
     data = data.replace(/\n.*\n/g, function(match) {
-        return '<p>' + match + '</p>';
-      });
+      return '<p>' + match + '</p>';
+    });
     // Replace tabs with em spaces (otherwise will be dropped)
     data = data.replace(/\t/g, function(match) {
-        return '&emsp;';
-      });
+      return '&emsp;';
+    });
     tinymce.editors[0].setContent(data, {format: 'text'});
   }
 
