@@ -29,12 +29,11 @@
 * Scroll sync doesn't work on startup if mouse cursor hasn't been moved yet (i.e., if scroll was done first).
 * Do sync scroll based on line number?
 * Transition artifacts when opening/closing markdown sidebar with adjust editor spacing.
-* Markdown editor vertical scrollbar scrolls above the editing area in split-screen mode.
+* Markdown editor vertical scrollbar scrolls above the editing area in markdown mode and split-screen mode.
 * Can currently only enter markdown editor split-screen mode via WYSIWYG editor full-page mode.
 ** Button and keyboard shortcuts don't work otherwise (i.e., if in markdown editor full-page mode).
 * Non-EasyMDE markdown editor scrollbar should be on far right.
 * Non-EasyMDE markdown editor scroll goes to end on launch.
-* Padding 30px has made markdown editor border a little wonky... (e.g., with scroll). Needs fix.
 
 ## Editing
 

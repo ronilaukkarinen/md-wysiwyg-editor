@@ -1451,7 +1451,8 @@ function adjustEditorSpacing() {
 
 // Apply or remove custom styles
 function customEditorAreaCSS(apply, customCSS) {
-  
+
+  var iframeDocument = document.getElementById('textEditor_ifr').contentWindow.document;
   if (apply == true) {
     var style = iframeDocument.getElementById('customCSS');
     if (!style) {
@@ -1466,7 +1467,6 @@ function customEditorAreaCSS(apply, customCSS) {
     }
     iframeDocument.getElementById('u1').disabled = true;
   } else {
-    var iframeDocument = document.getElementById('textEditor_ifr').contentWindow.document;
     if (iframeDocument.getElementById('customCSS')) {
       iframeDocument.getElementById('customCSS').disabled = true;
     }
