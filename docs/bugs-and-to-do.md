@@ -159,3 +159,8 @@
 
 * Open directory + save file handles + permissions with re-launch: [https://web.dev/file-system-access/](https://web.dev/file-system-access/)
 
+## New (2021/09/29)
+
+* TinyMCE converts &nbsp; to regular spaces...
+  * https://stackoverflow.com/questions/61221847/prevent-tinymce-from-replacing-nbsp-to-regular-space
+

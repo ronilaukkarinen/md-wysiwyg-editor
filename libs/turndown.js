@@ -674,6 +674,8 @@ var TurndownService = (function () {
   var reduce = Array.prototype.reduce;
   var leadingNewLinesRegExp = /^\n*/;
   var trailingNewLinesRegExp = /\n*$/;
+  /* Note: Disabling/commenting these out will remove all escapes */
+  /* That's probably not a good idea though (markdown syntax/standards) so left them enabled */
   var escapes = [
     [/\\/g, '\\\\'],
     [/\*/g, '\\*'],
