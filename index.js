@@ -1745,7 +1745,6 @@ TurndownConverter.addRule('small', {
   },
 });
 
-
 // Don't convert img tags (preserves attributes—width, height, etc.)
 // https://github.com/domchristie/turndown/issues/179
 /*TurndownConverter.addRule('img', {

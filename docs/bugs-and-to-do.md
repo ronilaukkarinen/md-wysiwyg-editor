@@ -135,7 +135,7 @@
 
 * For tables, changes '| |' to '|  |' (maybe fine?)
 * For tables, changes '|  Blah' to '| Blah' (maybe fine?)
-* Converts markdown inside of HTML tags into HTML
+* Converts markdown inside of HTML tags into HTML (fixed for `<small>` tag)
 * Changes '\<50 ng/dL' to '<50 ng/dL' (maybe fine?)
 * Changes '10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8' to '10.1002/(SICI)1097-0045(199605)28:5%3C307::AID-PROS6%3E3.0.CO;2-8' (maybe fine? -> Update: Doesn't break links!)
 * Changes '[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)-based' to '[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)\-based test' (maybe okay?)
