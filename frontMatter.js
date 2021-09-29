@@ -25,24 +25,24 @@ function getFrontMatter(data, format) {
   // If data format is markdown
   if (format == 'markdown') {
     // YAML front matter (---)
-    if (data.match(/^((---)(?:\r\n|\r))/) != null) {
-      // var frontMatter = data.match(/^(---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r))$/m); // For some reason this returns phantom extra chars at the end
-      frontMatter = data.match(/^(---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r))$/gm)[0]; // And this fixes it (only take first match)
+    if (data.match(/^((---)(?:\r\n|\n))/) != null) {
+      // var frontMatter = data.match(/^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/m); // For some reason this returns phantom extra chars at the end
+      frontMatter = data.match(/^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/gm)[0]; // And this fixes it (only take first match)
     // TOML front matter (+++)
-    } else if (data.match(/^((\+\+\+)(?:\r\n|\r))/) != null) {
-      // var frontMatter = data.match(/^(\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r))$/m); // Phantom extra chars
-      frontMatter = data.match(/^(\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r))$/gm[0]); // Fix
+    } else if (data.match(/^((\+\+\+)(?:\r\n|\n))/) != null) {
+      // var frontMatter = data.match(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/m); // Phantom extra chars
+      frontMatter = data.match(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/gm[0]); // Fix
     }
   // If data format is HTML
   } else if (format == 'html') {
     // YAML front matter (---)
-    if (data.match(/^((<pre><code>---)(?:\r\n|\r))/) != null) {
-      //var frontMatter = data.match(/^(<pre><code>---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r)<\/code><\/pre>)$/m); // Phantom extra chars
-      frontMatter = data.match(/^(<pre><code>---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r)<\/code><\/pre>)$/gm[0]); // Fix
+    if (data.match(/^((<pre><code>---)(?:\r\n|\n))/) != null) {
+      //var frontMatter = data.match(/^(<pre><code>---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n)<\/code><\/pre>)$/m); // Phantom extra chars
+      frontMatter = data.match(/^(<pre><code>---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n)<\/code><\/pre>)$/gm[0]); // Fix
     // TOML front matter (+++)
-    } else if (data.match(/^((<pre><code>\+\+\+)(?:\r\n|\r))/) != null) {
-      //var frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r)<\/code><\/pre>)$/m); // Phantom extra chars
-      frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r)<\/code><\/pre>)$/gm[0]); // Fix
+    } else if (data.match(/^((<pre><code>\+\+\+)(?:\r\n|\n))/) != null) {
+      //var frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n)<\/code><\/pre>)$/m); // Phantom extra chars
+      frontMatter = data.match(/^(<pre><code>\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n)<\/code><\/pre>)$/gm[0]); // Fix
     }
   }
 
@@ -56,26 +56,26 @@ function removeFrontMatter(data, format) {
   // If data format is markdown
   if (format == 'markdown') {
     // YAML front matter (---)
-    if (data.match(/^((---)(?:\r\n|\r))/) != null) {
-      data = data.replace(/^(---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r))$/m, function(match) {
+    if (data.match(/^((---)(?:\r\n|\n))/) != null) {
+      data = data.replace(/^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/m, function(match) {
         return '';
       });
     // TOML front matter (+++)
-    } else if (data.match(/^((\+\+\+)(?:\r\n|\r))/) != null) {
-      data = data.replace(/^(\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r))$/m, function(match) {
+    } else if (data.match(/^((\+\+\+)(?:\r\n|\n))/) != null) {
+      data = data.replace(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/m, function(match) {
         return '';
       });
     }
   // If data format is HTML
   } else if (format == 'html') {
     // YAML front matter (---)
-    if (data.match(/^((<pre><code>---)(?:\r\n|\r))/) != null) {
-      data = data.replace(/^(<pre><code>---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r)<\/code><\/pre>)$/m, function(match) {
+    if (data.match(/^((<pre><code>---)(?:\r\n|\n))/) != null) {
+      data = data.replace(/^(<pre><code>---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n)<\/code><\/pre>)$/m, function(match) {
         return '';
       });
     // TOML front matter (+++)
-    } else if (data.match(/^((<pre><code>\+\+\+)(?:\r\n|\r))/) != null) {
-      data = data.replace(/^(<pre><code>\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r)<\/code><\/pre>)$/m, function(match) {
+    } else if (data.match(/^((<pre><code>\+\+\+)(?:\r\n|\n))/) != null) {
+      data = data.replace(/^(<pre><code>\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n)<\/code><\/pre>)$/m, function(match) {
         return '';
       });
     }
@@ -109,13 +109,13 @@ function putFrontMatterInCodeBlock(data) {
   var lineEndingType = getLineEndingType(data);
 
   // YAML front matter (---)
-  if (data.match(/^((---)(?:\r\n|\r))/) != null) {
-    data = data.replace(/^(---(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)---(?:\r\n|\r))$/m, function(match) {
+  if (data.match(/^((---)(?:\r\n|\n))/) != null) {
+    data = data.replace(/^(---(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)---(?:\r\n|\n))$/m, function(match) {
       return '```' + lineEndingType + match + '```';
     });
   // TOML front matter (---)
-  } else if (data.match(/^((\+\+\+)(?:\r\n|\r))/) != null) {
-    data = data.replace(/^(\+\+\+(?:\r\n|\r))(.|(?:\r\n|\r))*((?:\r\n|\r)\+\+\+(?:\r\n|\r))$/m, function(match) {
+  } else if (data.match(/^((\+\+\+)(?:\r\n|\n))/) != null) {
+    data = data.replace(/^(\+\+\+(?:\r\n|\n))(.|(?:\r\n|\n))*((?:\r\n|\n)\+\+\+(?:\r\n|\n))$/m, function(match) {
       return '```' + lineEndingType + match + '```';
     });
   }
