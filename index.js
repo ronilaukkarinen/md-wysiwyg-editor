@@ -1281,9 +1281,6 @@ tinymce.init({
           var getFileBlob = await fileHandle.getFile();
           getFileBlob.text().then(getFileText => {
             openFile(getFileName, getFileText);
-            // Breaks save... likely not a compatible file handle type
-            // app.file.handle = launchParams.files[0];
-            // app.file.name = getFileName;
             openWith = true;
           });*/
         });
