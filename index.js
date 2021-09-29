@@ -167,6 +167,20 @@ function saveFile(filename) {
 // Quit
 function quit() {
 
+  // Note/To-do: This doesn't actually work right now
+  // Skip/prevent unsaved work warning if editor is dirty but no file and text is empty
+  // To-do: Change this so more foolproof (i.e., "untitled.md" check)
+  if (persistFilename == 'untitled.md' && tinymce.editors[0].isDirty()) {
+    var content = tinymce.editors[0].getContent({format: 'text'});
+    if (!content || content == "") {
+      tinymce.editors[0].undoManager.clear();
+      tinymce.editors[0].setDirty(false);
+    }
+  }/* else if (confirm("Unsaved changes. Continue without saving?") == false) {
+    return;
+  }*/
+
+  // Close the window
   window.close();
 
   return;
