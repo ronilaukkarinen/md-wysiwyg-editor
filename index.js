@@ -1425,8 +1425,9 @@ function adjustEditorSpacing() {
   if (markdownSidebarToggleState == true && markdownFullpageToggleState == false) {
     if (EasyMDEMarkdownArea == true) {
       var CodeMirrorContainer = document.getElementsByClassName('CodeMirror')[0];
-      CodeMirrorContainer.style.paddingTop = "10px";
-      CodeMirrorContainer.style.paddingBottom = "10px";
+      var CodeMirrorCodeContainer = document.getElementsByClassName('CodeMirror-code')[0];
+      CodeMirrorCodeContainer.style.marginTop = "10px";
+      CCodeMirrorCodeContainer.style.marginBottom = "10px";
       CodeMirrorContainer.style.paddingLeft = "10px";
       CodeMirrorContainer.style.paddingRight = "10px";
     } else {
@@ -1435,8 +1436,9 @@ function adjustEditorSpacing() {
   } else {
     if (EasyMDEMarkdownArea == true) {
       var CodeMirrorContainer = document.getElementsByClassName('CodeMirror')[0];
-      CodeMirrorContainer.style.paddingTop = "30px";
-      CodeMirrorContainer.style.paddingBottom = "30px";
+      var CodeMirrorCodeContainer = document.getElementsByClassName('CodeMirror-code')[0];
+      CodeMirrorCodeContainer.style.marginTop = "30px";
+      CCodeMirrorCodeContainer.style.marginBottom = "30px";
       CodeMirrorContainer.style.paddingLeft = "30px";
       CodeMirrorContainer.style.paddingRight = "30px";
     } else {

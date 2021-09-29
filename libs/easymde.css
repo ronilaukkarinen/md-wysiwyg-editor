@@ -337,6 +337,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   left: 0 !important;
   overflow-y: hidden !important;
   overflow-x: scroll !important;
+  visibility: hidden; /* This hides it... removes white space at bottom */
 }
 
 .CodeMirror-scrollbar-filler {
@@ -554,8 +555,8 @@ span.CodeMirror-selectedtext {
   border: 0px solid transparent !important;
   border-bottom-left-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 30px;
   padding-right: 30px;
   /*font: inherit !important;*/
