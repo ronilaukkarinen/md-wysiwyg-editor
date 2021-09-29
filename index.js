@@ -1272,7 +1272,9 @@ tinymce.init({
           }
 
           // Doesn't work due to permission error
-          app.openFile(launchParams.files[0]);
+          //app.openFile(launchParams.files[0]);
+          const file = await fileHandle.getFile();
+          app.readFile(file, fileHandle);
           openWith = true;
 
           // Instead, do the following to open ->
