@@ -88,6 +88,29 @@ app.openFile = async (fileHandle) => {
 };
 
 /**
+ * Handle a file for reading (same as openFile() but for file handling/open with—don't check for permissions).
+ *
+ * @param {FileSystemFileHandle} fileHandle File handle to read from.
+ */
+ app.handleFile = async (fileHandle) => {
+
+  // If the Native File System API is not supported, use the legacy file apis.
+  if (!app.hasNativeFS) {
+    const file = await app.getFileLegacy();
+    if (file) {
+      app.readFile(file);
+    }
+    return;
+  }
+
+  if (!fileHandle) {
+    return;
+  }
+  const file = await fileHandle.getFile();
+  app.readFile(file, fileHandle);
+};
+
+/**
  * Read the file from disk.
  *
  *  @param {File} file File to read from.
