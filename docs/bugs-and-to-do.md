@@ -142,7 +142,7 @@
 * Removes trailing spaces from paragraphs (maybe fine)
 
 * Bug (SHBG article): Changes '\n| --- |' to '| \--- '
-  * When two tables in a row
+  * When two tables in a row (maybe only headerless?)
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
 * Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
 
@@ -158,4 +158,6 @@
 * "To-do: Change this so more foolproof (i.e., "untitled.md" check)"
 * Fix: "Disable this for now as will double in the case of Ctrl + W"
 * Fix Ctrl+W exit so when empty but dirty it won't prompt about saving changes?
+* No newline at end of file (Turndown likely culprit)
+* Seems to remove comments (e.g., `<!-- ... -->`)
 
