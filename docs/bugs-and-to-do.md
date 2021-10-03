@@ -167,7 +167,7 @@
 
 ## Major to-do items (2021/10/03)
 
-* These are largely adapted or copied from above.
+These are largely adapted or copied from above.
 
 ### More fixable and important
 
