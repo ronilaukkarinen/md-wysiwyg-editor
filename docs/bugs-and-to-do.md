@@ -135,7 +135,7 @@
 ### Less important
 
 * For tables, changes `| |` to `|  |` (maybe fine?)
-* For tables, changes `|  Blah` to `| Blah` (maybe fine?)
+* For tables, changes `|  Blah` (two spaces) to `| Blah` (one space) (maybe fine?)
 * Converts markdown inside of HTML tags into HTML (fixed for `<small>` tag)
 * Changes `\<50 ng/dL` to `<50 ng/dL` (maybe fine?)
 * Changes `10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8` to `10.1002/(SICI)1097-0045(199605)28:5%3C307::AID-PROS6%3E3.0.CO;2-8` (maybe fine? -> Update: Doesn't break links!)
@@ -144,10 +144,9 @@
 
 ### More important
 
-* Bug (SHBG article): Changes `\n| --- |` to `| \--- `
-  * When two tables in a row (maybe only headerless?)
-* Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
-* Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
+* When two (or more?) tables in a row, changes `\n| --- |` to `| \--- ` (e.g., SHBG article)
+* Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see)
+* ~~Converts fancier HTML tables (and breaks them badly)~~ -> update: use `<htmlprotect>` to protect them where needed
 * **Need to test editor on all site pages now**
 
 ## New (2021/09/29)
