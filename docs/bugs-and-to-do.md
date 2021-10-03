@@ -164,6 +164,7 @@
   * https://github.com/mixmark-io/turndown/issues/234
   * Maybe convert to `<comment>...</comment>` before and after like with front matter
 * Editor is converting all CRLF line endings to LF. What's causing it?
+* Restore table / image highlight on selection... doesn't look right currently.
 
 ## Major to-do items (2021/10/03)
 
