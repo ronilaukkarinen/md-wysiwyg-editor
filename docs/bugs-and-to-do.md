@@ -153,7 +153,7 @@
 
 * TinyMCE (or something) is converting `&nbsp;` to regular spaces...
   * https://stackoverflow.com/questions/61221847/prevent-tinymce-from-replacing-nbsp-to-regular-space
-* TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. text-align: center; or font-weight: strong; CSS tags in table headers, have to use `<th>` and `<b>`
+* TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. `text-align: center;` or `font-weight: strong;` CSS tags in table headers, have to use `<th>` and `<b>`
 * Editor removes line breaks/white space inside of `<htmlprotect>`
 * TinyMCE doesn't do markdown table headers right (does bold and puts under header row)
 * In code -> "To-do: Change this so more foolproof (i.e., "untitled.md" check)"
@@ -164,4 +164,31 @@
   * https://github.com/mixmark-io/turndown/issues/234
   * Maybe convert to `<comment>...</comment>` before and after like with front matter
 * Editor is converting all CRLF line endings to LF. What's causing it?
+
+## Major to-do items (2021/10/03)
+
+* These are largely adapted or copied from above.
+
+### More fixable and important
+
+* Removes HTML comments (needs to keep them). Probably Turndown.
+	* Maybe convert to `<comment>...</comment>` before and after like with front matter.
+* Messing up markdown tables when two or more in a row.
+* Messing up markdown bullet-point lists when two or more in a row.
+* Messing up markdown indented bullet points in bullet-point lists.
+* Removes trailing endlines (should preserve / keep two ('\n\n')).
+* Ctrl+Z removes one character at a time in TinyMCE... increase to whole-word or something else higher.
+* TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. `text-align: center;` or `font-weight: strong;` CSS tags in table headers, have to use `<th>` and `<b>`. Needs to not apply filters to those tags.
+* TinyMCE (or something) is converting `&nbsp;` to regular spaces... needs to leave them unchanged.
+* Something is removing line breaks/white space inside of `<htmlprotect>`. Needs to leave unchanged.
+
+### Less easily fixable and/or less important
+
+* Converting all line endings to LF and shouldn't be (should use original line endings).
+* Markdown front matter is hidden in WYSIWYG editing view. Make it display in an editable code block.
+  * May be able to put a second editor element above TinyMCE for editing that.
+* EasyMDE needs to ignore front matter in markdown (i.e., disable EasyMDE syntax-to-styling there).
+* HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
+* TinyMCE doesn't do markdown table headers right (does bold and puts under header row). Possible to fix?
+* Some way to load and display local images possibly? Probably not possible. (Or maybe option to set a URL to load relative-path images from URL instead -- i.e., tranfsemscience.org.)
 
