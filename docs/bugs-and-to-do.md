@@ -146,7 +146,7 @@
 
 * When two (or more?) tables in a row, changes `\n| --- |` to `| \--- ` (e.g., SHBG article)
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see)
-* ~~Converts fancier HTML tables (and breaks them badly)~~ -> update: use `<htmlprotect>` to protect them where needed
+* ~~Converts fancier HTML tables (and breaks them badly)~~ -> update: use custom `<htmlprotect>` tag to protect them where needed
 * **Need to test editor on all site pages now**
 
 ## New (2021/09/29)
