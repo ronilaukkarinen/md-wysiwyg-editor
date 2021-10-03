@@ -132,6 +132,8 @@
 
 ## New (2021/02/20)
 
+### Less important
+
 * For tables, changes `| |` to `|  |` (maybe fine?)
 * For tables, changes `|  Blah` to `| Blah` (maybe fine?)
 * Converts markdown inside of HTML tags into HTML (fixed for `<small>` tag)
@@ -140,11 +142,12 @@
 * Changes `[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)-based` to `[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)\-based test` (maybe okay?)
 * Removes trailing spaces from paragraphs (maybe fine)
 
+### More important
+
 * Bug (SHBG article): Changes `\n| --- |` to `| \--- `
   * When two tables in a row (maybe only headerless?)
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
 * Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
-
 * **Need to test editor on all site pages now**
 
 ## New (2021/09/29)
