@@ -31,7 +31,7 @@
 * Transition artifacts when opening/closing markdown sidebar with adjust editor spacing.
 * Markdown editor vertical scrollbar scrolls above the editing area in markdown mode and split-screen mode.
 * Can currently only enter markdown editor split-screen mode via WYSIWYG editor full-page mode.
-** Button and keyboard shortcuts don't work otherwise (i.e., if in markdown editor full-page mode).
+  * Button and keyboard shortcuts don't work otherwise (i.e., if in markdown editor full-page mode).
 * Non-EasyMDE markdown editor scrollbar should be on far right.
 * Non-EasyMDE markdown editor scroll goes to end on launch.
 
@@ -81,7 +81,6 @@
   * Showdown did this escape also:
     * `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))-like` -> `[alcohol](https://en.wikipedia.org/wiki/Alcohol_(drug))\-like`
 * Turndown and/or Showdown remove extra lines at end of files. Same with markdown-to-HTML conversion (or maybe that's TinyMCE).
-  * Update: Added two new lines after HTML-to-markdown conversion as a temp fix. Needs more work though. And need WYSIWYG mode fix.
 * Both Turndown and Showdown don't parse this URL right: `Stege et al., 199628:5%3C307::AID-PROS6%3E3.0.CO;2-8` ->
   * `([Stege et al., 1996](https://doi.org/10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8)).`
     * Breaks after the second closing parenthesis -> "199605)28" (that parenthesis)
@@ -133,15 +132,15 @@
 
 ## New (2021/02/20)
 
-* For tables, changes '| |' to '|  |' (maybe fine?)
-* For tables, changes '|  Blah' to '| Blah' (maybe fine?)
+* For tables, changes `| |` to `|  |` (maybe fine?)
+* For tables, changes `|  Blah` to `| Blah` (maybe fine?)
 * Converts markdown inside of HTML tags into HTML (fixed for `<small>` tag)
-* Changes '\<50 ng/dL' to '<50 ng/dL' (maybe fine?)
-* Changes '10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8' to '10.1002/(SICI)1097-0045(199605)28:5%3C307::AID-PROS6%3E3.0.CO;2-8' (maybe fine? -> Update: Doesn't break links!)
-* Changes '[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)-based' to '[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)\-based test' (maybe okay?)
+* Changes `\<50 ng/dL` to `<50 ng/dL` (maybe fine?)
+* Changes `10.1002/(SICI)1097-0045(199605)28:5<307::AID-PROS6>3.0.CO;2-8` to `10.1002/(SICI)1097-0045(199605)28:5%3C307::AID-PROS6%3E3.0.CO;2-8` (maybe fine? -> Update: Doesn't break links!)
+* Changes `[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)-based` to `[mass spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)\-based test` (maybe okay?)
 * Removes trailing spaces from paragraphs (maybe fine)
 
-* Bug (SHBG article): Changes '\n| --- |' to '| \--- '
+* Bug (SHBG article): Changes `\n| --- |` to `| \--- `
   * When two tables in a row (maybe only headerless?)
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see).
 * Converts fancier HTML tables (and breaks them badly) -> update: use \<htmlprotect\> to protect them where needed
@@ -152,7 +151,7 @@
 
 * TinyMCE converts `&nbsp;` to regular spaces...
   * https://stackoverflow.com/questions/61221847/prevent-tinymce-from-replacing-nbsp-to-regular-space
-* TinyMCE still does filters inside of \<htmlprotect\> (so can't use e.g. text-align: center; or font-weight: strong; CSS tags in table headers, have to use \<th\> and \<b\>
+* TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. text-align: center; or font-weight: strong; CSS tags in table headers, have to use `<th>` and `<b>`
 * Editor removes line breaks/white space inside of \<htmlprotect\>
 * TinyMCE doesn't do markdown table headers right (does bold and puts under header row)
 * "To-do: Change this so more foolproof (i.e., "untitled.md" check)"
@@ -160,4 +159,5 @@
 * Fix Ctrl+W exit so when empty but dirty it won't prompt about saving changes?
 * No newline at end of file (Turndown likely culprit)
 * Seems to remove comments (e.g., `<!-- ... -->`)
+* Editor is converting all CRLF line endings to LF. What's causing it?
 
