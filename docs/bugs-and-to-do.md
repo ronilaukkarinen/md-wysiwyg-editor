@@ -176,7 +176,7 @@
 * Messing up markdown tables when two or more in a row.
 * Messing up markdown bullet-point lists when two or more in a row.
 * Messing up markdown indented bullet points in bullet-point lists.
-* Removes trailing endlines (should preserve / keep two ('\n\n')).
+* Removes trailing endlines (should preserve / keep two (`\n\n`)).
 * Ctrl+Z removes one character at a time in TinyMCE... increase to whole-word or something else higher.
 * TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. `text-align: center;` or `font-weight: strong;` CSS tags in table headers, have to use `<th>` and `<b>`. Needs to not apply filters to those tags.
 * TinyMCE (or something) is converting `&nbsp;` to regular spaces... needs to leave them unchanged.
