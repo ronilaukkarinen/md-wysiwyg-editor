@@ -151,15 +151,17 @@
 
 ## New (2021/09/29)
 
-* TinyMCE converts `&nbsp;` to regular spaces...
+* TinyMCE (or something) is converting `&nbsp;` to regular spaces...
   * https://stackoverflow.com/questions/61221847/prevent-tinymce-from-replacing-nbsp-to-regular-space
 * TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. text-align: center; or font-weight: strong; CSS tags in table headers, have to use `<th>` and `<b>`
-* Editor removes line breaks/white space inside of \<htmlprotect\>
+* Editor removes line breaks/white space inside of `<htmlprotect>`
 * TinyMCE doesn't do markdown table headers right (does bold and puts under header row)
-* "To-do: Change this so more foolproof (i.e., "untitled.md" check)"
-* Fix: "Disable this for now as will double in the case of Ctrl + W"
+* In code -> "To-do: Change this so more foolproof (i.e., "untitled.md" check)"
+* In code -> "Disable this for now as will double in the case of Ctrl + W"
 * Fix Ctrl+W exit so when empty but dirty it won't prompt about saving changes?
 * No newline at end of file (Turndown likely culprit)
 * Seems to remove comments (e.g., `<!-- ... -->`)
+  * https://github.com/mixmark-io/turndown/issues/234
+  * Maybe convert to `<comment>...</comment>` before and after like with front matter
 * Editor is converting all CRLF line endings to LF. What's causing it?
 
