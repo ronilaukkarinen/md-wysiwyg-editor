@@ -7,7 +7,7 @@
 
 /* Set colors for light theme */
 [data-theme='light'] {
-	--general-background-color: rgb(255, 255, 255);
+	--general-background-color_: rgb(255, 255, 255);
 	--blockquote-background-color: rgb(27, 31, 35, 0.05);
 	--code-background-color: rgba(27, 31, 35, 0.05);
 
@@ -18,14 +18,14 @@
 
   --selected-text-highlight-color: rgb(203, 227, 250);
 
-	--scrollbar-track-color: var(--general-background-color);
+	--scrollbar-track-color: var(--general-background-color_);
 	--scrollbar-thumb-color: rgb(170, 171, 171);
 	--scrollbar-track-hover-color: rgb(242, 242, 242);
 }
 
 /* Set colors for dark theme */
 [data-theme='dark'] {
-	--general-background-color: rgb(44, 44, 44);
+	--general-background-color_: rgb(44, 44, 44);
 	--blockquote-background-color: rgb(85, 85, 85);
 	--code-background-color: rgb(85, 85, 85);
 
@@ -36,7 +36,7 @@
 
   --selected-text-highlight-color: rgb(119, 143, 166);
 
-	--scrollbar-track-color: var(--general-background-color);
+	--scrollbar-track-color: var(--general-background-color_);
 	--scrollbar-thumb-color: rgb(33, 33, 33);
 	--scrollbar-track-hover-color: rgb(53, 53, 53);
 }
@@ -61,7 +61,7 @@
 
 .CodeMirror-gutter-filler,
 .CodeMirror-scrollbar-filler {
-  background-color: var(--general-background-color) !important;
+  background-color: var(--general-background-color_) !important;
 }
 
 .CodeMirror-gutters {
@@ -294,7 +294,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .CodeMirror {
   position: relative !important;
   overflow: hidden !important;
-  background: var(--general-background-color) !important;
+  background: var(--general-background-color_) !important;
 }
 
 .CodeMirror-scroll {
@@ -569,7 +569,7 @@ span.CodeMirror-selectedtext {
 }
 
 .CodeMirror-fullscreen {
-  background: var(--general-background-color) !important;
+  background: var(--general-background-color_) !important;
   position: fixed !important;
   top: 50px !important;
   left: 0 !important;
@@ -636,7 +636,7 @@ span.CodeMirror-selectedtext {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   box-sizing: border-box !important;
-  background: var(--general-background-color) !important;
+  background: var(--general-background-color_) !important;
   border: 0 !important;
   position: fixed !important;
   top: 0 !important;
@@ -709,7 +709,7 @@ span.CodeMirror-selectedtext {
   display: inline-block !important;
   width: 0 !important;
   border-left: 1px solid #d9d9d9 !important;
-  border-right: 1px solid var(--general-background-color) !important;
+  border-right: 1px solid var(--general-background-color_) !important;
   color: transparent !important;
   text-indent: -10px !important;
   margin: 0 6px !important;
