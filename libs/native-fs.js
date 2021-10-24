@@ -207,7 +207,7 @@ function getNewFileHandle() {
     if (app.file.handle) {
       var saveAsFileHandle = app.file.handle;
     } else {
-      saveAsFileHandle = null;
+      var saveAsFileHandle = undefined;
     }
     const opts = {
       suggestedName: persistFilename,
