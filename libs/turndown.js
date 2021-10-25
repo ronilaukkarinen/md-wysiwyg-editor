@@ -313,6 +313,7 @@ var TurndownService = (function () {
   };
 
   /* Aly added keep comments */
+  /* https://github.com/mixmark-io/turndown/issues/234 */
   rules.comment = {
     filter: function (node) {
       return node.nodeType === 8; // Comment node
