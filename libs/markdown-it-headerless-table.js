@@ -190,3 +190,4 @@
     md.block.ruler.after('table', 'headerless-table', table);
   };
 });
+

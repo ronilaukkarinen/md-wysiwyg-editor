@@ -152,7 +152,7 @@
 ### More important
 
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see)
-* ~~Converts fancier HTML tables (and breaks them badly)~~ -> update: use custom `<htmlprotect>` tag to protect them where needed
+* ~~Converts fancier (colspan/rowspan) HTML tables (and breaks them badly)~~ -> update: use custom `<htmlprotect>` tag to protect them where needed
   * Optionally... don't convert table to markdown if colspan or rowspan attributes?
 * **Need to test editor on all site pages now**
 
@@ -177,6 +177,7 @@
   * https://github.com/GitbookIO/markup-it
 * TinyMCE CSS styling not enough vertical space after table when next element is e.g. heading.
 * No image dialogue/toolbar popping up on click image.
+* Remove Showdown.
 
 ## Major to-do items (2021/10/03)
 
