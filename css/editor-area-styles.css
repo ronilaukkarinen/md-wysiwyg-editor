@@ -287,13 +287,18 @@ table tr th:last-child {
 	border-right: 0;
 }
 
+/* Add spacing between consecutive tables */
+table + table {
+	margin-top: 2.5em;
+}
+
 img {
   width: 100%;
   height: auto;
 }
 
 /* Disable TinyMCE active color outline/background for links, tables, and images */
-.mce-content-body a[data-mce-selected=inline-boundary], 
+/*.mce-content-body a[data-mce-selected=inline-boundary],
 .mce-content-body table[data-mce-selected=inline-boundary],
 .mce-content-body img[data-mce-selected=inline-boundary] {
 	background-color: transparent !important;
@@ -302,7 +307,7 @@ img {
 .mce-content-body img[data-mce-selected] {
 	outline: 0px solid transparent;
 	border: 0px solid transparent;
-}
+}*/
 
 /* Customize scrollbar appearance (for main text editor area) */
 ::-webkit-scrollbar {

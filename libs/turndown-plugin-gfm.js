@@ -273,7 +273,8 @@ function nodeContainsTable(node) {
 function tableShouldBeSkipped(tableNode) {
   if (!tableNode) return true;
   if (!tableNode.rows) return true;
-  if (tableNode.rows.length === 1 && tableNode.rows[0].childNodes.length <= 1) return true; // Table with only one cell
+  // Aly patch to fix single-cell headerless tables being removed
+  //if (tableNode.rows.length === 1 && tableNode.rows[0].childNodes.length <= 1) return true; // Table with only one cell
   if (nodeContainsTable(tableNode)) return true;
   return false;
 }

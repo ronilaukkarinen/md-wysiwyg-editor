@@ -75,7 +75,6 @@
 
 ## HTML–Markdown Conversion
 
-* Headers are added to headerless tables with Turndown so they aren't removed (although this doesn't always work/happen).
 * Showdown can't handle headerless tables.
 * Showdown escapes various things. Markdown characters (e.g., "~", "|", "0.5" -> 0.5). Happens even in URLs.
   * Showdown did this escape also:
@@ -152,9 +151,10 @@
 
 ### More important
 
-* When two (or more?) tables in a row, changes `\n| --- |` to `| \--- ` (e.g., SHBG article)
+* When two (or more?) tables in a row, changes `\n| --- |` to `| \--- ` (e.g., SHBG article). markdown-it multimd table plugin is doing this.
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see)
 * ~~Converts fancier HTML tables (and breaks them badly)~~ -> update: use custom `<htmlprotect>` tag to protect them where needed
+  * Optionally... don't convert table to markdown if colspan or rowspan attributes?
 * **Need to test editor on all site pages now**
 
 ## New (2021/09/29)
@@ -169,7 +169,6 @@
 * Fix Ctrl+W exit so when empty but dirty it won't prompt about saving changes?
 * No newline at end of file (Turndown likely culprit)
 * Editor is converting all CRLF line endings to LF. What's causing it?
-* Restore table / image highlight on selection... doesn't look right currently.
 
 ## New (2021/10/25)
 
