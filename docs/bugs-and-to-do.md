@@ -176,6 +176,8 @@
   * https://github.com/GitbookIO/kramed
 * And:
   * https://github.com/GitbookIO/markup-it
+* TinyMCE CSS styling not enough vertical space after table when next element is e.g. heading.
+* No image dialogue/toolbar popping up on click image.
 
 ## Major to-do items (2021/10/03)
 
