@@ -1682,12 +1682,17 @@ var markdownitOptions = {
 var markdownitConverter = window.markdownit(markdownitOptions);
 
 // Configure markdown-it plugins
-var markdownitMultimdTableOptions = {
+// Disabled because it breaks consecutive tables
+// https://github.com/redbug312/markdown-it-multimd-table/issues/34
+/*var markdownitMultimdTableOptions = {
   multiline: true,
   rowspan: true,
   headerless: true,
 }
-markdownitConverter.use(window.markdownitMultimdTable, markdownitMultimdTableOptions);
+markdownitConverter.use(window.markdownitMultimdTable, markdownitMultimdTableOptions);*/
+
+// Use this plugin instead of markdownitMultimdTable as it doesn't break consecutive tables
+markdownitConverter.use(window.MarkdownItHeaderlessTable);
 
 // Which markdown-to-HTML engine to use?
 markdownToHTMLEngine = localStorage.getItem('markdownToHTMLEngine');

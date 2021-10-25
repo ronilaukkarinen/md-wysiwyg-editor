@@ -151,7 +151,6 @@
 
 ### More important
 
-* When two (or more?) tables in a row, changes `\n| --- |` to `| \--- ` (e.g., SHBG article). markdown-it multimd table plugin is doing this.
 * Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see)
 * ~~Converts fancier HTML tables (and breaks them badly)~~ -> update: use custom `<htmlprotect>` tag to protect them where needed
   * Optionally... don't convert table to markdown if colspan or rowspan attributes?
@@ -185,7 +184,6 @@ Note that these are largely adapted or copied from above.
 
 ### More fixable and important
 
-* Messing up markdown tables when two or more in a row.
 * Messing up markdown bullet-point lists when two or more in a row.
 * Messing up markdown indented bullet points in bullet-point lists.
 * Removes trailing endlines (should preserve / keep two (`\n\n`)).
