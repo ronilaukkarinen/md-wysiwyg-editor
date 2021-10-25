@@ -125,6 +125,14 @@
 
 * Markdown front matter fix works for default use case (MD, YAML) but need to test other use cases (e.g., HTML, TOML, etc.).
 * Markdown front matter is hidden in WYSIWYG editing view. Make it display in a code block. TinyMCE might be finicky though...
+  * Can put this in the WYSIWYG editor iFrame above the `<body></body>` tag:
+    * ```
+      <div id="front-matter-wysiwyg" style="padding: 30px 30px 0px 30px; max-width: 745px; margin: 0 auto;">
+        <div style=" background-color: #f2f2f2; border-radius: 5px; padding: 5px; width: 100%; border: none; resize: none; font-size: 16px; font-family: Consolas, Menlo, Monaco, &quot;Lucida Console&quot;, &quot;Courier New&quot;, monospace;" spellcheck="false" contenteditable>
+          <p>---</p><p>adsfasdfadsfadf</p><p>sdfasdfas</p><p>sdfasdfafd</p><p>---</p>
+        </div>
+      </div>
+      ```
 * Disabled 'asfdasdf\n---' heading styling for EasyMDE markdown editing mode so doesn't mess up front matter display as a hack fix. But should style these headings and instead needs to just ignore front matter there. Search for ` //` in `easymde.js` for fix.
 * Write the undoPutFrontMatterInCodeBlock() function. Might be useful for supporting front matter display/editing in WYSIWYG mode.
 * HTML-to-markdown with Turndown needs to ignore Liquid code... will break Liquid code if markdown parser happens to modify it.
