@@ -112,7 +112,6 @@ var TurndownService = (function () {
     replacement: function (content, node, options) {
       content = content
         .replace(/^\n+/, '') // remove leading newlines
-        // Aly this is likely causing consecutive lists to be broken but disabling it causes lots of extra newlines
         .replace(/\n+$/, '\n') // replace trailing newlines with just a single one
         /* Aly reduce indent for indented list items (2 spaces instead of 4 spaces) */
         //.replace(/\n/gm, '\n    '); // indent
