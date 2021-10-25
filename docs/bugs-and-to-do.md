@@ -174,6 +174,11 @@
 * Editor is converting all CRLF line endings to LF. What's causing it?
 * Restore table / image highlight on selection... doesn't look right currently.
 
+## New (2021/10/25)
+
+* Another markdown parser—for Kramdown (has client version also):
+  * https://github.com/GitbookIO/kramed
+
 ## Major to-do items (2021/10/03)
 
 Note that these are largely adapted or copied from above.
