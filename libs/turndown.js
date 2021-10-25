@@ -42,6 +42,11 @@ var TurndownService = (function () {
     return node.querySelector && node.querySelector(voidSelector)
   }
 
+  /* Aly added comment detection */
+  function isComment (node) {
+    return node.nodeName === '#comment';
+  }
+
   var rules = {};
 
   rules.paragraph = {
@@ -307,6 +312,17 @@ var TurndownService = (function () {
     }
   };
 
+  /* Aly added keep comments */
+  rules.comment = {
+    filter: function (node) {
+      return node.nodeType === 8; // Comment node
+    },
+
+    replacement: function (content, node) {
+      return '<!--' + node.nodeValue + '-->';
+    }
+  };
+
   /**
    * Manages a collection of rules used to convert HTML to Markdown
    */
@@ -454,7 +470,8 @@ var TurndownService = (function () {
         node.data = text;
 
         prevText = node;
-      } else if (node.nodeType === 1) { // Node.ELEMENT_NODE
+      /* Aly added comment node */
+      } else if (node.nodeType === 1 || node.nodeType === 8) { // Node.ELEMENT_NODE or Node.COMMENT_NODE
         if (isBlock(node) || node.nodeName === 'BR') {
           if (prevText) {
             prevText.data = prevText.data.replace(/ $/, '');
@@ -462,7 +479,8 @@ var TurndownService = (function () {
 
           prevText = null;
           prevVoid = false;
-        } else if (isVoid(node)) {
+        /* Aly added comment node */
+        } else if (isVoid(node) || isComment(node)) {
           // Avoid trimming space around non-block, non-BR void elements.
           prevText = null;
           prevVoid = true;
@@ -598,7 +616,9 @@ var TurndownService = (function () {
     collapseWhitespace({
       element: root,
       isBlock: isBlock,
-      isVoid: isVoid
+      isVoid: isVoid,
+      /* Aly added */
+      isComment: isComment
     });
 
     return root
@@ -614,6 +634,8 @@ var TurndownService = (function () {
     node.isBlock = isBlock(node);
     node.isCode = node.nodeName.toLowerCase() === 'code' || node.parentNode.isCode;
     node.isBlank = isBlank(node);
+    /* Aly added */
+    node.isComment = isComment(node);
     node.flankingWhitespace = flankingWhitespace(node);
     return node
   }
@@ -623,7 +645,9 @@ var TurndownService = (function () {
       ['A', 'TH', 'TD', 'IFRAME', 'SCRIPT', 'AUDIO', 'VIDEO'].indexOf(node.nodeName) === -1 &&
       /^\s*$/i.test(node.textContent) &&
       !isVoid(node) &&
-      !hasVoid(node)
+      !hasVoid(node) &&
+      /* Aly added comment */
+      !isComment(node)
     )
   }
 
@@ -631,7 +655,8 @@ var TurndownService = (function () {
     var leading = '';
     var trailing = '';
 
-    if (!node.isBlock) {
+    /* Aly added comment */
+    if (!node.isBlock && !node.isComment) {
       var hasLeading = /^\s/.test(node.textContent);
       var hasTrailing = /\s$/.test(node.textContent);
       var blankWithSpaces = node.isBlank && hasLeading && hasTrailing;
@@ -662,9 +687,11 @@ var TurndownService = (function () {
     }
 
     if (sibling) {
-      if (sibling.nodeType === 3) {
+      if (sibling.nodeType === 3) { // Node.TEXT_NODE
         isFlanked = regExp.test(sibling.nodeValue);
-      } else if (sibling.nodeType === 1 && !isBlock(sibling)) {
+      /* Aly added comment node */
+      // Node.ELEMENT_NODE and Node.COMMENT_NODE
+      } else if ((sibling.nodeType === 1 || sibling.nodeType === 8) && !isBlock(sibling)) {
         isFlanked = regExp.test(sibling.textContent);
       }
     }
@@ -831,9 +858,10 @@ var TurndownService = (function () {
       node = new Node(node);
 
       var replacement = '';
-      if (node.nodeType === 3) {
+      if (node.nodeType === 3) { // Text node
         replacement = node.isCode ? node.nodeValue : self.escape(node.nodeValue);
-      } else if (node.nodeType === 1) {
+      /* Aly added comment node */
+      } else if (node.nodeType === 1 || node.nodeType == 8) { // Element or comment node
         replacement = replacementForNode.call(self, node);
       }
 

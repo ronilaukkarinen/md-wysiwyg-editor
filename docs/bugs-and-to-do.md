@@ -187,8 +187,6 @@ Note that these are largely adapted or copied from above.
 
 ### More fixable and important
 
-* Removes HTML comments (needs to keep them). Probably Turndown that's responsible ([link](https://github.com/mixmark-io/turndown/issues/234)).
-	* Maybe convert to `<comment>...</comment>` before and after like with front matter?
 * Messing up markdown tables when two or more in a row.
 * Messing up markdown bullet-point lists when two or more in a row.
 * Messing up markdown indented bullet points in bullet-point lists.
