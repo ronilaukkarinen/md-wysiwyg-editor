@@ -158,7 +158,7 @@
 
 ## New (2021/09/29)
 
-* TinyMCE (or something) is converting `&nbsp;` to regular spaces...
+* TinyMCE *might* cause problems with `&nbsp;`... test and make sure it doesn't
   * https://stackoverflow.com/questions/61221847/prevent-tinymce-from-replacing-nbsp-to-regular-space
 * TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. `text-align: center;` or `font-weight: strong;` CSS tags in table headers, have to use `<th>` and `<b>`
 * Editor removes line breaks/white space inside of `<htmlprotect>`
@@ -190,7 +190,6 @@ Note that these are largely adapted or copied from above.
 * Removes trailing endlines (should preserve / keep two (`\n\n`)).
 * Ctrl+Z removes one character at a time in TinyMCE... increase to whole-word or something else higher.
 * TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. `text-align: center;` or `font-weight: strong;` CSS tags in table headers, have to use `<th>` and `<b>`. Needs to not apply filters to those tags.
-* TinyMCE (or something) is converting `&nbsp;` to regular spaces... needs to leave them unchanged.
 * Something is removing line breaks/white space inside of `<htmlprotect>`. Needs to leave unchanged.
 
 ### Less easily fixable and/or less important

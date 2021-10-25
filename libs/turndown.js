@@ -717,7 +717,11 @@ var TurndownService = (function () {
     [/\]/g, '\\]'],
     [/^>/g, '\\>'],
     [/_/g, '\\_'],
-    [/^(\d+)\. /g, '$1\\. ']
+    [/^(\d+)\. /g, '$1\\. '],
+    /* Aly add preserve '&nbsp;' */
+    /* https://github.com/mixmark-io/turndown/issues/102 */
+    [/[\u00A0]/g, '&nbsp;'],
+
   ];
 
   function TurndownService (options) {
