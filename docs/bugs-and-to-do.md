@@ -178,6 +178,8 @@
 
 * Another markdown parser—for Kramdown (has client version also):
   * https://github.com/GitbookIO/kramed
+* And:
+  * https://github.com/GitbookIO/markup-it
 
 ## Major to-do items (2021/10/03)
 
