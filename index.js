@@ -1166,12 +1166,17 @@ tinymce.init({
       }
 
       // Tab key: insert an em dash-sized space and disable normal tab key handling
+      // Make sure no modifier keys (Ctrl, Shift, Meta)
       // https://www.tiny.cloud/docs/plugins/nonbreaking/#nonbreaking_force_tab
-      if (event.key === 'Tab') {
-        // Are we currently in a table? If so, don't continue
-        if (tinymce.activeEditor.queryCommandValue('mceTableRowType')) {
+      if (event.key === 'Tab' && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+        // Are we currently in a table or list? If so, don't continue
+        if (tinymce.activeEditor.queryCommandValue('mceTableRowType') || 
+            tinymce.activeEditor.queryCommandState('InsertDefinitionList') || 
+            tinymce.activeEditor.queryCommandState('InsertOrderedList') || 
+            tinymce.activeEditor.queryCommandState('InsertUnorderedList')) {
           return;
         }
+
         editor.insertContent('&emsp;');
         // On to something with this but not working right...
         //tinyMCE.execCommand('mceInsertRawHTML', false, '<pre>&#09;TABS&#09;</pre>'); // Or \t instead of &#09;

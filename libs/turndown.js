@@ -112,17 +112,19 @@ var TurndownService = (function () {
     replacement: function (content, node, options) {
       content = content
         .replace(/^\n+/, '') // remove leading newlines
+        // Aly this is likely causing consecutive lists to be broken but disabling it causes lots of extra newlines
         .replace(/\n+$/, '\n') // replace trailing newlines with just a single one
-      // Remove indent...
-      //  .replace(/\n/gm, '\n    '); // indent
-        .replace(/\n/gm, '\n '); // indent
+        /* Aly reduce indent for indented list items (2 spaces instead of 4 spaces) */
+        //.replace(/\n/gm, '\n    '); // indent
+        .replace(/\n/gm, '\n  '); // indent
+      /* Aly reduce list item prefix (e.g., `*   Text`) from 3 spaces to 1 space (`* Text`) */
       //var prefix = options.bulletListMarker + '   ';
       var prefix = options.bulletListMarker + ' ';
       var parent = node.parentNode;
       if (parent.nodeName === 'OL') {
         var start = parent.getAttribute('start');
         var index = Array.prototype.indexOf.call(parent.children, node);
-        // Fix lists (changed text from '1. Blah' to '1.Blah' before, now stays '1. Blah'
+        // Aly fix lists (changed text from `1. Blah` to `1.Blah` before, now stays '1. Blah'
         //prefix = (start ? Number(start) + index : index + 1) + '.';
         prefix = (start ? Number(start) + index : index + 1) + '. ';
       }

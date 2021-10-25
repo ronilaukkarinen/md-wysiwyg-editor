@@ -151,7 +151,6 @@
 
 ### More important
 
-* Seems to be breaking indented bullets... (try editing this bugs-and-to-do.md file to see)
 * ~~Converts fancier (colspan/rowspan) HTML tables (and breaks them badly)~~ -> update: use custom `<htmlprotect>` tag to protect them where needed
   * Optionally... don't convert table to markdown if colspan or rowspan attributes?
 * **Need to test editor on all site pages now**
@@ -186,7 +185,6 @@ Note that these are largely adapted or copied from above.
 ### More fixable and important
 
 * Messing up markdown bullet-point lists when two or more in a row.
-* Messing up markdown indented bullet points in bullet-point lists.
 * Removes trailing endlines (should preserve / keep two (`\n\n`)).
 * Ctrl+Z removes one character at a time in TinyMCE... increase to whole-word or something else higher.
 * TinyMCE still does filters inside of `<htmlprotect>` (so can't use e.g. `text-align: center;` or `font-weight: strong;` CSS tags in table headers, have to use `<th>` and `<b>`. Needs to not apply filters to those tags.
