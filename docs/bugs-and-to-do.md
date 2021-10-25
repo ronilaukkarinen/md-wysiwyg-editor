@@ -168,9 +168,6 @@
 * In code -> "Disable this for now as will double in the case of Ctrl + W"
 * Fix Ctrl+W exit so when empty but dirty it won't prompt about saving changes?
 * No newline at end of file (Turndown likely culprit)
-* Seems to remove comments (e.g., `<!-- ... -->`)
-  * https://github.com/mixmark-io/turndown/issues/234
-  * Maybe convert to `<comment>...</comment>` before and after like with front matter
 * Editor is converting all CRLF line endings to LF. What's causing it?
 * Restore table / image highlight on selection... doesn't look right currently.
 
