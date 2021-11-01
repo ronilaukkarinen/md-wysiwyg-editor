@@ -107,7 +107,6 @@
 
 ## Miscellaneous
 
-* Decide on a name.
 * Add app install/add to homescreen prompt stuff.
   * https://github.com/pwa-builder/pwa-install
   * https://love2dev.com/pwa/add-to-homescreen-library/
