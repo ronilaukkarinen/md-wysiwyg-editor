@@ -303,7 +303,10 @@ tinymce.init({
   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px; }',
   toolbar: 'file undo redo styleselect bold italic extraformat bullist numlist link blockquote codesample hr table image quickimage markdownButton code fullscreen darkmode preferences github filename', // More: heading, searchreplace
   toolbar_mode: 'floating',
-  plugins: 'code codesample, link image table lists paste autolink hr textpattern quickbars', // More: searchreplace
+  plugins: 'code codesample, link image table lists paste autolink hr quickbars', // More: searchreplace, textpattern
+  external_plugins: {
+    'textpattern_mod': '../../libs/tinymce-custom-plugins/textpattern_mod.js',
+  },
   contextmenu_never_use_native: true,
   contextmenu: 'undo redo | cut copy copyasmarkdown paste pasteastext selectall',
   icons: 'custom',
@@ -441,8 +444,8 @@ tinymce.init({
     {start: '^', end: '^', format: 'superscript'}, // Non-standard
     {start: '1. ', cmd: 'InsertOrderedList'},
     {start: '* ', cmd: 'InsertUnorderedList'},
-    {start: '+ ', cmd: 'InsertUnorderedList' },
-    {start: '- ', cmd: 'InsertUnorderedList' },
+    {start: '+ ', cmd: 'InsertUnorderedList'},
+    {start: '- ', cmd: 'InsertUnorderedList'},
     {start: '> ', cmd: 'mceBlockQuote'},
     {start: '`', end: '`', format: 'code'},
     {start: '```', end: '```', format: 'pre'}, // Different from intended behavior...
