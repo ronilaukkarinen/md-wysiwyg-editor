@@ -993,7 +993,9 @@
       } else if (pattern.type === 'block-command') {
         editor.undoManager.transact(function () {
           stripPattern(editor.dom, block, pattern);
-          editor.execCommand(pattern.cmd, false, pattern.value);
+          // AlyCustom
+          //editor.execCommand(pattern.cmd, false, pattern.value);
+          editor.execCommand(pattern.cmd, false, '');
         });
       }
     });
@@ -1020,12 +1022,13 @@
       var matchedPattern = findPattern(patterns, blockText);
       return matchedPattern.map(function (pattern) {
         if (global$3.trim(blockText).length === pattern.start.length) {
-          return [];
+          // AlyCustom
+          // return [];
         }
         return [{
             pattern: pattern,
             range: generatePathRange(dom.getRoot(), block, 0, block, 0)
-          }];
+        }];
       });
     }).getOr([]);
   };
@@ -1256,6 +1259,7 @@
   };
   var findPatterns$1 = function (editor, patterns, space) {
     var rng = editor.selection.getRng();
+
     if (rng.collapsed === false) {
       return [];
     }
@@ -1297,8 +1301,33 @@
     }
     var inlineMatches = findPatterns$1(editor, patternSet.inlinePatterns, false);
     var blockMatches = findPatterns(editor, patternSet.blockPatterns);
+
+    // AlyCustom
+    if (inlineMatches.length > 0) {
+      inlineMatches.forEach(function (element) {
+        console.log(element);
+        if (element.pattern.type == 'inline-format') {
+          editor.undoManager.extra(function () {
+            editor.execCommand('mceInsertNewLine');
+          }, function () {
+            editor.execCommand('mceInsertNewLine');
+          });
+          //return;
+        }
+      });
+    }
+    // End AlyCustom
+
     if (blockMatches.length > 0 || inlineMatches.length > 0) {
       editor.undoManager.add();
+
+      // AlyCustom (taken from below)
+      editor.insertContent(zeroWidth);
+      applyMatches$1(editor, inlineMatches);
+      applyMatches(editor, blockMatches);
+      return true;
+      // End AlyCustom
+
       editor.undoManager.extra(function () {
         editor.execCommand('mceInsertNewLine');
       }, function () {
@@ -1307,11 +1336,13 @@
         applyMatches(editor, blockMatches);
         var range = editor.selection.getRng();
         var spot = textBefore(range.startContainer, range.startOffset, editor.dom.getRoot());
-        editor.execCommand('mceInsertNewLine');
+        // AlyCustom
+        //editor.execCommand('mceInsertNewLine');
         spot.each(function (s) {
           var node = s.container;
           if (node.data.charAt(s.offset - 1) === zeroWidth) {
-            node.deleteData(s.offset - 1, 1);
+            // AlyCustom
+            //node.deleteData(s.offset - 1, 1);
             cleanEmptyNodes(editor.dom, node.parentNode, function (e) {
               return e === editor.dom.getRoot();
             });
@@ -1368,6 +1399,10 @@
     editor.on('keyup', function (e) {
       if (checkKeyCode(keyCodes, e)) {
         handleInlineKey(editor, patternsState.get());
+        // AlyCustom
+        if (handleEnter(editor, patternsState.get())) {
+          e.preventDefault();
+        }
       }
     });
     editor.on('keypress', function (e) {
@@ -1380,7 +1415,7 @@
   };
 
   function Plugin () {
-    global.add('textpattern', function (editor) {
+    global.add('textpattern_mod', function (editor) {
       var patternsState = Cell(getPatternSet(editor));
       setup(editor, patternsState);
       return get(patternsState);
