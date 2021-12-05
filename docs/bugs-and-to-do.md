@@ -96,6 +96,8 @@
 ## File Handling
 
 * Can't automatically load last open file on start due to inability to store file handle. Possible to fix?
+  * Update: Can fix; can store native file system file handles in indexedDB for persisting across sessions:
+    * https://stackoverflow.com/questions/65928613/file-system-access-api-is-it-possible-to-store-the-filehandle-of-a-saved-or-loa
 
 ## Cut/Copy/Paste Behavior
 
