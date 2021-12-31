@@ -201,3 +201,44 @@ Note that these are largely adapted or copied from above.
 * TinyMCE doesn't do markdown table headers right (does bold and puts under header row). Possible to fix?
 * Some way to load and display local images possibly? Probably not possible. (Or maybe option to set a URL to load relative-path images from URL instead -- i.e., tranfsemscience.org.)
 
+## New (2021/12/31)
+
+### Consecutive lists bug
+
+TinyMCE HTML handling of consecutive lists (correct/acceptable):
+
+```
+<ul>
+<li>asdfasdfasdf</li>
+<li>asdfasdfasdfasdf</li>
+</ul>
+<p></p>
+<ul>
+<li>asdfasdfasdf</li>
+<li>sadfasdfasdfasdf</li>
+</ul>
+```
+
+markdown-it (markdown to HTML) handling of consecutive lists (puts line between every list item):
+
+```
+<ul>
+<li>
+<p>asdfasdfasdf</p>
+</li>
+<li>
+<p>asdfasdfasdfasdf</p>
+</li>
+<li>
+<p>asdfasdfasdf</p>
+</li>
+<li>
+<p>sadfasdfasdfasdf</p>
+</li>
+</ul>
+```
+
+Turndown (HTML to markdown) handling of consecutive lists:
+
+- Handles the above original TinyMCE HTML perfectly (as well as variations like no `<p></p>` and replacing `<p></p>` with `<br />`) -> it's markdown-it that's the problem apparently
+
