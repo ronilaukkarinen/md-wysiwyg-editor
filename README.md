@@ -87,21 +87,3 @@ The editor has only been tested on Google Chrome at this time.
 * Left pane with tabs for folder/workspace and document table of contents?
 * Other things...
 
-## Related
-
-A number of similar WYSIWYG and/or online markdown editors exist:
-
-| Desktop | Web |
-| --- | --- |
-| [Typora](https://typora.io/) | [StackEdit](https://stackedit.io/) |
-| [Mark Text](https://github.com/marktext/marktext) | [Dillinger](https://dillinger.io/) |
-| [Zettlr](https://github.com/Zettlr/Zettlr) | [Editor.md](https://pandao.github.io/editor.md/en.html) |
-| [Uncolored](https://github.com/n457/Uncolored) | [TOAST UI Editor](https://ui.toast.com/tui-editor/) |
-| [Abricotine](http://abricotine.brrd.fr/) | [HyperMD](https://github.com/laobubu/HyperMD) |
-| [ghostwriter](https://wereturtle.github.io/ghostwriter/) | [muya](https://github.com/MarkText/muya) (WIP) |
-| [VNote](https://github.com/tamlok/vnote) | [More...](https://www.webfx.com/blog/web-design/online-markdown-editors/) |
-| [UNOTES](https://marketplace.visualstudio.com/items?itemName=ryanmcalister.Unotes) | |
-| [More...](https://softwarerecs.stackexchange.com/questions/5746/markdown-editor-for-windows-with-live-rendering-in-the-editing-pane-not-in-a-se) | |
-
-Markdown WYSIWYG Editor is unique among these editors in that it has a 100% WYSIWYG markdown-editing experience (with the notable exception of UNOTES, a [VS Code](https://github.com/microsoft/vscode) extension which also does this). Among the web markdown editors, it is also unique in that it is the only progressive web app and editor with Native File System integration.
-
