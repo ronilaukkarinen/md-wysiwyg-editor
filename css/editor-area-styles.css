@@ -290,8 +290,14 @@ body h6 {
 	font-weight: 600 !important;
 }
 
-/* Select and style only the first child element of every body tag (remove top spacing) */
+/* Lists */
+ol,
+ul {
+	padding-left: 0;
+	list-style: inside decimal;
+}
 
+/* Select and style only the first child element of every body tag (remove top spacing) */
 body > :first-child {
 	margin-top: 0em !important;
 	padding-top: 0px !important;
@@ -861,15 +867,19 @@ body #filename {
 
 body code:first-child,
 body pre:first-child,
- pre code {
-	 padding-top: var(--code-block-padding-vertical) !important;
-	 padding-bottom: var(--code-block-padding-vertical) !important;
-	 padding-left: var(--code-block-padding-horizontal) !important;
-	 padding-right: var(--code-block-padding-horizontal) !important;
- }
+pre code {
+	padding-top: var(--code-block-padding-vertical) !important;
+	padding-bottom: var(--code-block-padding-vertical) !important;
+	padding-left: var(--code-block-padding-horizontal) !important;
+	padding-right: var(--code-block-padding-horizontal) !important;
+}
+
+body p > code:not([class]) {
+	padding: 5px 6px !important;
+}
  
- body code[class*="language-"],
- body pre[class*="language-"] {
+body code[class*="language-"],
+body pre[class*="language-"] {
 	 background-color: var(--code-blocks);
 	 color: var(--black);
 	 font-size: var(--font-size);
