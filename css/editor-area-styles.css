@@ -772,7 +772,20 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 	* @author Luke Askew http://github.com/lukeaskew
 	*/
  :root {
-	--color-paragraphs: #f8f8f8;
+   --color-white: #fff;
+   --color-white-rgb: 255, 255, 255;
+   --color-black: #222;
+   --color-black-rgb: 22, 22, 22;
+   --color-shadows: #b8bbb3;
+   --color-darkgrey: #545773;
+   --color-lightgrey: #f5f5f5;
+   --color-white-smoke: var(--color-lightgrey);
+   --color-faded: #757684;
+   --color-alt-grey: #333;
+   --color-toggled: #fff;
+   --color-pattens-blue: #eaf1f8;
+   --color-lynch: #677287;
+	 --color-paragraphs: #f8f8f8;
 	 --code-blocks: #f6f8fa;
 	 --code-block-padding-vertical: 20px;
 	 --code-block-padding-horizontal: 26px;
