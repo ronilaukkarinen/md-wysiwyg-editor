@@ -303,7 +303,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 /* For centering filename toolbar button */
 .tox-editor-header .tox-toolbar__group button[title="Filename"] {
 	margin-left: auto !important;
-	margin-right: auto !important;
+	margin-right: 0 !important;
 	background-color: transparent !important;
 }
 
@@ -316,7 +316,7 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 
 /* Style the filename toolbar button text */
 #filename {
-  font-family: var(--font-family-code) !important;
+  font-family: var(--font-family) !important;
 	color: var(--lesser-text-color) !important;
 
   text-overflow: ellipsis !important;
