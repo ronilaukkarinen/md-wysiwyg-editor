@@ -337,11 +337,11 @@ a:not([class]) {
 	background-repeat: repeat-x;
 	background-position: 0 100%;
 	background-size: 1px 1px;
-	/* This isn't working -> */
-	&:hover {
-		background-image: linear-gradient( rgba(129, 83, 237, 0.45) 0%, rgba(129, 83, 237, 0.45) 100%);
-		background-size: 1px 1px;
-	}
+}
+
+a:not([class]):hover {
+	background-image: linear-gradient( rgba(129, 83, 237, 0.45) 0%, rgba(129, 83, 237, 0.45) 100%);
+	background-size: 1px 1px;
 }
 
 h1,
