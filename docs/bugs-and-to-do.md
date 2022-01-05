@@ -242,3 +242,14 @@ Turndown (HTML to markdown) handling of consecutive lists:
 
 - Handles the above original TinyMCE HTML perfectly (as well as variations like no `<p></p>` and replacing `<p></p>` with `<br />`) -> it's markdown-it that's the problem apparently
 
+## New (2022/01/04)
+
+- Markdown editor toolbar doesn't match title bar color in PWA mode -> fixed but now flashes with Ctrl+R due to JS switch.
+- MD Editor: Seems to remove comments (e.g., `<!-- ... -->`). Not sure what part is causing it (TinyMCE or markdown<->HTML conversion engines).
+
+- Code Mirror fix top and bottom markdown editor
+^ Update: I might have done this
+- Code Mirror fix padding splitscreen
+- Unbold not working TinyMCE
+- Scrolling and mouse broken WYSIWYG split screen
+
