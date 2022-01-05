@@ -25,7 +25,8 @@
 
 /* Set colors for dark theme */
 [data-theme='dark'] {
-	--general-background-color_: rgb(44, 44, 44);
+	--general-background-color: rgb(13, 17, 23) !important;
+	--lesser-background-color: rgb(22, 27, 34);
 	--blockquote-background-color: rgb(85, 85, 85);
 	--code-background-color: rgb(85, 85, 85);
 

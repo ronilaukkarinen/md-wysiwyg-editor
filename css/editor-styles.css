@@ -27,10 +27,10 @@
 
 /* Set colors for dark theme */
 [data-theme='dark'] {
-	--general-background-color: rgb(38, 38, 38) !important;
-	--lesser-background-color: rgb(44, 44, 44);
+	--general-background-color: rgb(13, 17, 23) !important;
+	--lesser-background-color: rgb(22, 27, 34);
 	--backdrop-background-color: rgb(33, 33, 33, 0.95);
-	--dialogue-box-background-color: rgb(38, 38, 38);
+	--dialogue-box-background-color: rgb(13, 17, 23);
 	--text-area-background-color: rgb(53, 53, 53);
 
 	--general-text-color: rgb(250, 250, 250) !important;
