@@ -218,11 +218,6 @@
 	--icon-fill-color: rgb(95, 100, 105);
 
 	--general-border-color: rgb(235, 235, 235);
-	--toolbar-background-color: #262626;
-	--toolbar-bottom-color: #262626;
-
-
-	--general-border-color: rgb(235, 235, 235);
 	--toolbar-bottom-color: rgb(235, 235, 235);
 	--toolbar-background-color: rgb(235, 235, 235);
 
@@ -251,8 +246,8 @@
 
 	--general-border-color: rgb(22, 22, 22);
 
-	--toolbar-background-color: #262626;
-	--toolbar-bottom-color: #262626;
+	--toolbar-background-color: var(--general-background-color);
+	--toolbar-bottom-color: var(--general-background-color);
 
 	--inline-pop-top-color: var(--general-background-color);
 

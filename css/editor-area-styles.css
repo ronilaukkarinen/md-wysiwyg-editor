@@ -576,6 +576,10 @@ outline: 0px solid transparent;
 border: 0px solid transparent;
 }*/
 
+.mce-content-body {
+	padding-top: 60px !important;
+	padding-bottom: 60px !important;
+}
 
 /* Customize scrollbar appearance (for main text editor area) */
 
