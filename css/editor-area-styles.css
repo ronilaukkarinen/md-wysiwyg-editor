@@ -871,6 +871,7 @@ pre code {
 	padding-right: var(--code-block-padding-horizontal) !important;
 }
 
+body li > code:not([class]),
 body p > code:not([class]) {
 	background: #343942 !important;
 	color: #c9d1d9 !important;
