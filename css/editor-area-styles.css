@@ -198,7 +198,7 @@
 }
 
 :root {
-	--font-family: "SuisseIntl", -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif;
+	--font-family: -apple-system, BlinkMacSystemFont, "SuisseIntl", "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif;
 	--font-family-code: "SF Mono", "Inconsolata", "Menlo", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
 }
 
