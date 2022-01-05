@@ -872,7 +872,9 @@ pre code {
 }
 
 body p > code:not([class]) {
-	padding: 5px 6px !important;
+	background: #343942 !important;
+	color: #c9d1d9 !important;
+	padding: 0.2em 0.4em !important;
 }
  
 body code[class*="language-"],
