@@ -1,52 +1,254 @@
+/* Typography */
+@font-face {
+  font-display: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inter-Regular.woff") format("woff"), url("../fonts/Inter-Regular.woff2") format("woff2"), url("../fonts/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/Inter-Italic.woff") format("woff"), url("../fonts/Inter-Italic.woff2") format("woff2"), url("../fonts/Inter-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inter-Bold.woff") format("woff"), url("../fonts/Inter-Bold.woff2") format("woff2"), url("../fonts/Inter-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/Inter-Medium.woff") format("woff"), url("../fonts/Inter-Medium.woff2") format("woff2"), url("../fonts/Inter-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Inter-SemiBold.woff") format("woff"), url("../fonts/Inter-SemiBold.woff2") format("woff2"), url("../fonts/Inter-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Inter-Bold.woff") format("woff"), url("../fonts/Inter-Bold.woff2") format("woff2"), url("../fonts/Inter-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "SF Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/LigaSFMonoNerdFont-Regular.woff") format("woff"), url("../fonts/LigaSFMonoNerdFont-Regular.woff2") format("woff2"), url("../fonts/LigaSFMonoNerdFont-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "SF Mono";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/LigaSFMonoNerdFont-Regularitalic.woff") format("woff"), url("../fonts/LigaSFMonoNerdFont-Regularitalic.woff2") format("woff2"), url("../fonts/LigaSFMonoNerdFont-Regularitalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: auto;
+  font-family: "SF Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/LigaSFMonoNerdFont-Bold.woff") format("woff"), url("../fonts/LigaSFMonoNerdFont-Bold.woff2") format("woff2"), url("../fonts/LigaSFMonoNerdFont-Bold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-BookItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-BookItalic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url(require('../fonts/SuisseIntl-Light.woff2')) format('woff2'), src: url('../fonts/SuisseIntl-Light.woff2') format('woff2'), url('../fonts/SuisseIntl-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Bold.woff2') format('woff2'), url('../fonts/SuisseIntl-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Regular.woff2') format('woff2'), url('../fonts/SuisseIntl-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-SemiBold.woff2') format('woff2'), url('../fonts/SuisseIntl-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-BlackItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-BlackItalic.woff') format('woff');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-ThinItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-ThinItalic.woff') format('woff');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-LightItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-LightItalic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Medium.woff2') format('woff2'), url('../fonts/SuisseIntl-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-UltraLightItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-UltraLightItalic.woff') format('woff');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-UltraLight.woff2') format('woff2'), url('../fonts/SuisseIntl-UltraLight.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-SemiBoldItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-SemiBoldItalic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-BoldItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-BoldItalic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Thin.woff2') format('woff2'), url('../fonts/SuisseIntl-Thin.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Book.woff2') format('woff2'), url('../fonts/SuisseIntl-Book.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Black.woff2') format('woff2'), url('../fonts/SuisseIntl-Black.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-Italic.woff2') format('woff2'), url('../fonts/SuisseIntl-Italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SuisseIntl';
+	src: url('../fonts/SuisseIntl-MediumItalic.woff2') format('woff2'), url('../fonts/SuisseIntl-MediumItalic.woff') format('woff');
+	font-weight: 500;
+	font-style: italic;
+}
+
+:root {
+	--font-family: "SuisseIntl", -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif;
+	--font-family-code: "SF Mono", "Inconsolata", "Menlo", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
 /* Set colors for light theme */
+
 [data-theme='light'] {
 	--general-background-color: rgb(255, 255, 255);
 	--blockquote-background-color: rgb(252, 252, 252);
 	--blockquote-left-border-color: rgb(221, 221, 221);
 	--code-background-color: rgba(27, 31, 35, 0.05);
-
 	/*--general-text-color: rgb(92, 89, 98);*/
 	--general-text-color: rgb(50, 50, 50);
-	/* --link-color: rgb(129, 83, 237) */ /* Purple */
+	/* --link-color: rgb(129, 83, 237) */
+	/* Purple */
 	--link-color: rgb(8, 122, 204);
 	--link-underline-gradient-color: rgb(238, 235, 238);
 	--heading-text-color: rgb(39, 38, 43);
 	--heading-bottom-color: rgb(238, 238, 238);
 	--horizontal-line-color: rgb(231, 231, 231);
-
 	--table-background-color: var(--general-background-color);
 	--table-border-color: rgb(223, 226, 229);
 	--table-shadow-color-1: rgba(0, 0, 0, 0.12);
 	--table-shadow-color-2: rgba(0, 0, 0, 0.08);
-
-	--active-link-table-image-color: rgb(180, 215, 255); /* Disabled */
-
+	--active-link-table-image-color: rgb(180, 215, 255);
+	/* Disabled */
 	--scrollbar-track-color: var(--general-background-color);
 	--scrollbar-thumb-color: rgb(170, 171, 171);
 	--scrollbar-track-hover-color: rgb(242, 242, 242);
 }
 
+
 /* Set colors for dark theme */
+
 [data-theme='dark'] {
 	--general-background-color: rgb(13, 17, 23) !important;
 	--blockquote-background-color: rgb(65, 65, 65);
 	--blockquote-left-border-color: rgb(39, 39, 39);
 	--code-background-color: rgb(85, 85, 85);
-
 	--general-text-color: rgb(250, 250, 250);
 	--link-color: rgb(150, 215, 255);
 	--link-underline-gradient-color: rgb(50, 50, 50);
 	--heading-text-color: var(--general-text-color);
 	--heading-bottom-color: rgba(238, 238, 238, 0.5);
-
 	--horizontal-line-color: rgb(115, 115, 115);
 	--table-background-color: rgb(38, 38, 38);
 	--table-border-color: rgb(22, 22, 22);
 	--table-shadow-color-1: rgba(0, 0, 0, 0.32);
 	--table-shadow-color-2: rgba(0, 0, 0, 0.24);
-
-	--active-link-table-image-color: rgb(64, 160, 255); /* Disabled */
-
+	--active-link-table-image-color: rgb(64, 160, 255);
+	/* Disabled */
 	--scrollbar-track-color: var(--general-background-color);
 	--scrollbar-thumb-color: rgb(33, 33, 33);
 	--scrollbar-track-hover-color: rgb(53, 53, 53);
@@ -55,14 +257,14 @@
 html {
 	font-size: 16px;
 	background-color: var(--general-background-color);
-	
 	/* Prevent white flicker when scrolling */
-	-webkit-backface-visibility: hidden; /* Safari */
+	-webkit-backface-visibility: hidden;
+	/* Safari */
 	backface-visibility: hidden;
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "helvetica neue", helvetica, roboto, noto, "segoe ui", arial, sans-serif;
+	font-family: var(--font-family) !important;
 	color: var(--general-text-color);
 	max-width: 745px;
 	margin: 0 auto;
@@ -75,29 +277,42 @@ body {
 	/*margin-bottom: 2.0em;*/
 }
 
+body * {
+	font-family: var(--font-family) !important;
+}
+
 /* Select and style only the first child element of every body tag (remove top spacing) */
-body > :first-child {
+
+body> :first-child {
 	margin-top: 0em !important;
 	padding-top: 0px !important;
 }
 
+
 /* Select and style only the last child element of every body tag (remove bottom spacing) */
-body > :last-child {
+
+body> :last-child {
 	margin-bottom: 0em !important;
 	padding-bottom: 0px !important;
 }
 
+
 /* For no space between lines */
+
+
 /*p {
-	padding: 0px;
-	margin: 0px;
+padding: 0px;
+margin: 0px;
 }*/
 
 a {
 	color: var(--link-color);
 	text-decoration: none;
 }
-a:visited, a:hover, a:active {
+
+a:visited,
+a:hover,
+a:active {
 	color: var(--link-color);
 }
 
@@ -107,18 +322,19 @@ a:not([class]) {
 	background-repeat: repeat-x;
 	background-position: 0 100%;
 	background-size: 1px 1px;
-
 	/* This isn't working -> */
 	&:hover {
-		background-image: linear-gradient(
-			rgba(129, 83, 237, 0.45) 0%,
-			rgba(129, 83, 237, 0.45) 100%
-		);
+		background-image: linear-gradient( rgba(129, 83, 237, 0.45) 0%, rgba(129, 83, 237, 0.45) 100%);
 		background-size: 1px 1px;
 	}
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	position: relative;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -129,26 +345,42 @@ h1, h2, h3, h4, h5, h6 {
 	color: var(--general-text-color);
 }
 
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
 	text-decoration: none;
 }
 
-h1 tt, h1 code {
+h1 tt,
+h1 code {
 	font-size: inherit;
 }
-h2 tt, h2 code {
+
+h2 tt,
+h2 code {
 	font-size: inherit;
 }
-h3 tt, h3 code {
+
+h3 tt,
+h3 code {
 	font-size: inherit;
 }
-h4 tt, h4 code {
+
+h4 tt,
+h4 code {
 	font-size: inherit;
 }
-h5 tt, h5 code {
+
+h5 tt,
+h5 code {
 	font-size: inherit;
 }
-h6 tt, h6 code {
+
+h6 tt,
+h6 code {
 	font-size: inherit;
 }
 
@@ -158,27 +390,32 @@ h1 {
 	color: var(--heading-text-color);
 	border-bottom: 1px var(--heading-bottom-color);
 }
+
 h2 {
 	font-size: 1.75em;
 	line-height: 1.225;
 	color: var(--heading-text-color);
 	border-bottom: 1px var(--heading-bottom-color);
 }
+
 h3 {
 	font-size: 1.5em;
 	line-height: 1.43;
 	color: var(--heading-text-color);
 }
+
 h4 {
 	font-size: 1.25em;
 	color: var(--heading-text-color);
 }
+
 h5 {
 	color: var(--heading-text-color);
 	font-size: 1em;
 }
+
 h6 {
- font-size: 0.75em;
+	font-size: 0.75em;
 	color: var(--heading-text-color);
 }
 
@@ -189,8 +426,10 @@ small {
 hr {
 	height: 2px;
 	padding: 0;
-	margin-top: 1.6em; /* This will give same line height as regular lines for above line */
-	margin-bottom: 1.86em; /* This will give same line height as regular lines for below line */
+	margin-top: 1.6em;
+	/* This will give same line height as regular lines for above line */
+	margin-bottom: 1.86em;
+	/* This will give same line height as regular lines for below line */
 	background-color: var(--horizontal-line-color);
 	border: 0 none;
 	overflow: hidden;
@@ -206,14 +445,14 @@ blockquote {
 	padding-top: 1px;
 	padding-bottom: 1px;
 	background: var(--blockquote-background-color);
-
-	> p {
+	>p {
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
 }
 
-pre, code {
+pre,
+code {
 	color: var(--general-text-color);
 	font-size: 14px !important;
 	text-shadow: 0 0px transparent !important;
@@ -224,19 +463,21 @@ pre, code {
 
 pre {
 	background-color: transparent !important;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
 }
 
 code {
 	background: var(--code-background-color) !important;
 }
 
+
 /* Tables */
+
 table {
 	padding: 0;
 	word-break: initial;
@@ -246,33 +487,43 @@ table {
 	font-size: 14px;
 	/*width: 100%;*/
 }
+
 table tr {
 	margin: 0;
 	padding: 0;
 }
+
 table tr th {
 	font-weight: bold;
 	margin: 0;
 	padding: 6px 13px;
 }
+
 table tr td {
 	margin: 0;
 	padding: 6px 13px;
 }
 
+
 /* Remove outer borders on tables */
-table td, table th {
+
+table td,
+table th {
 	border: 1px solid var(--table-border-color);
 }
+
 table tr:first-child td {
 	border-top: 0;
 }
+
 table tr td:first-child {
 	border-left: 0;
 }
+
 table tr:last-child td {
 	border-bottom: 0;
 }
+
 table tr td:last-child {
 	border-right: 0;
 }
@@ -280,49 +531,449 @@ table tr td:last-child {
 table tr:first-child th {
 	border-top: 0;
 }
+
 table tr th:first-child {
 	border-left: 0;
 }
+
 table tr th:last-child {
 	border-right: 0;
 }
 
+
 /* Add spacing between consecutive tables */
-table + table {
+
+table+table {
 	margin-top: 2.5em;
 }
 
 img {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
+
 /* Disable TinyMCE active color outline/background for links, tables, and images */
+
+
 /*.mce-content-body a[data-mce-selected=inline-boundary],
 .mce-content-body table[data-mce-selected=inline-boundary],
 .mce-content-body img[data-mce-selected=inline-boundary] {
-	background-color: transparent !important;
+background-color: transparent !important;
 }
 .mce-content-body table[data-mce-selected],
 .mce-content-body img[data-mce-selected] {
-	outline: 0px solid transparent;
-	border: 0px solid transparent;
+outline: 0px solid transparent;
+border: 0px solid transparent;
 }*/
 
+
 /* Customize scrollbar appearance (for main text editor area) */
+
 ::-webkit-scrollbar {
 	width: 7px;
 }
+
 ::-webkit-scrollbar-track {
 	background: var(--scrollbar-track-color);
 }
+
 ::-webkit-scrollbar-thumb {
 	background: var(--scrollbar-thumb-color);
 }
+
 ::-webkit-scrollbar-track:hover {
 	background: var(--scrollbar-track-hover-color);
 }
+
 ::-webkit-scrollbar-corner {
 	background: var(--scrollbar-thumb-color);
 }
 
+/* PrismJS 1.16.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+abap+abnf+actionscript+ada+apacheconf+apl+applescript+c+arff+asciidoc+asm6502+csharp+autohotkey+autoit+bash+basic+batch+bison+bnf+brainfuck+bro+cpp+aspnet+arduino+cil+coffeescript+cmake+clojure+ruby+csp+css-extras+d+dart+diff+markup-templating+docker+ebnf+eiffel+ejs+elixir+elm+erb+erlang+fsharp+flow+fortran+gcode+gedcom+gherkin+git+glsl+gml+go+graphql+groovy+less+handlebars+haskell+haxe+hcl+http+hpkp+hsts+ichigojam+icon+inform7+ini+io+j+java+scala+php+javastacktrace+jolie+javadoclike+n4js+json+jsonp+json5+julia+keyman+kotlin+latex+markdown+liquid+lisp+livescript+lolcode+lua+makefile+crystal+django+matlab+mel+mizar+monkey+n1ql+typescript+nand2tetris-hdl+nasm+nginx+nim+nix+nsis+objectivec+ocaml+opencl+oz+parigp+parser+pascal+perl+jsdoc+phpdoc+php-extras+sql+powershell+processing+prolog+properties+protobuf+scss+puppet+pure+python+q+qore+r+js-extras+jsx+renpy+reason+vala+rest+rip+roboconf+textile+rust+sas+sass+stylus+javadoc+scheme+smalltalk+smarty+plsql+soy+twig+swift+yaml+tcl+haml+toml+tt2+pug+tsx+t4-templating+visual-basic+t4-cs+regex+vbnet+velocity+verilog+vhdl+vim+t4-vb+wasm+wiki+xeora+xojo+xquery+tap */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+ code[class*="language-"],
+ pre[class*="language-"] {
+	 background: none;
+	 border-radius: 4px;
+	 color: #000;
+	 display: block;
+	 font-size: 1em;
+	 -webkit-hyphens: none;
+					 hyphens: none;
+	 line-height: 1.55;
+	 overflow: auto;
+	 -webkit-overflow-scrolling: touch;
+	 -ms-overflow-style: -ms-autohiding-scrollbar;
+	 overflow-x: auto;
+	 -moz-tab-size: 4;
+		 -o-tab-size: 4;
+				tab-size: 4;
+	 text-align: left;
+	 white-space: pre;
+	 word-break: normal;
+	 word-spacing: normal;
+	 word-wrap: normal;
+ }
+ 
+ code[class*="language-"]::-webkit-scrollbar,
+ pre[class*="language-"]::-webkit-scrollbar {
+	 display: none;
+ }
+ 
+ pre[class*="language-"] {
+	 background-color: transparent;
+	 overflow-x: auto;
+	 transition: all .66s;
+	 width: 100%;
+ }
+ 
+ pre[class*="language-"]::-webkit-scrollbar {
+	 height: 4px;
+ }
+ 
+ pre[class*="language-"]::-webkit-scrollbar-track {
+	 border-radius: 4px;
+ }
+ 
+ pre[class*="language-"]::-webkit-scrollbar-thumb {
+	 border-radius: 4px;
+ }
+ 
+ pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection, code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	 background: #b3d4fc;
+	 text-shadow: none;
+ }
+ 
+ pre[class*="language-"]::selection,
+ pre[class*="language-"] ::selection,
+ code[class*="language-"]::selection,
+ code[class*="language-"] ::selection {
+	 background: #b3d4fc;
+	 text-shadow: none;
+ }
+ 
+ @media print {
+	 code[class*="language-"],
+	 pre[class*="language-"] {
+		 text-shadow: none;
+	 }
+ }
+ 
+ /* Code blocks */
+ pre[class*="language-"] {
+	 overflow: auto;
+	 padding: 1em;
+ }
+ 
+ /* Inline code */
+ :not(pre) > code[class*="language-"] {
+	 border-radius: 4px;
+	 padding: .1em;
+	 white-space: normal;
+ }
+ 
+ .token.comment,
+ .token.prolog,
+ .token.doctype,
+ .token.cdata {
+	 color: #708090;
+ }
+ 
+ .token.punctuation {
+	 color: #999;
+ }
+ 
+ .namespace {
+	 opacity: .7;
+ }
+ 
+ .token.property,
+ .token.tag,
+ .token.boolean,
+ .token.number,
+ .token.constant,
+ .token.symbol,
+ .token.deleted {
+	 color: #905;
+ }
+ 
+ .token.selector,
+ .token.attr-name,
+ .token.string,
+ .token.char,
+ .token.builtin,
+ .token.inserted {
+	 color: #690;
+ }
+ 
+ .token.operator,
+ .token.entity,
+ .token.url,
+ .language-css .token.string,
+ .style .token.string {
+	 color: #9a6e3a;
+ }
+ 
+ .token.atrule,
+ .token.attr-value,
+ .token.keyword {
+	 color: #07a;
+ }
+ 
+ .token.function,
+ .token.class-name {
+	 color: #d73a49;
+ }
+ 
+ .token.regex,
+ .token.important,
+ .token.variable {
+	 color: #d73a49;
+ }
+ 
+ .token.important,
+ .token.bold {
+	 font-weight: bold;
+ }
+ 
+ .token.italic {
+	 font-style: italic;
+ }
+ 
+ .token.entity {
+	 cursor: help;
+ }
+ 
+ /* stylelint-disable */
+ /**
+	* Github-like theme for Prism.js
+	* @author Luke Askew http://github.com/lukeaskew
+	*/
+ :root {
+	--color-paragraphs: #f8f8f8;
+	 --code-blocks: #f6f8fa;
+	 --code-block-padding-vertical: 20px;
+	 --code-block-padding-horizontal: 26px;
+	 --blue: #005cc5;
+	 --teal: #005cc5;
+	 --black: #c7254e;
+	 --purple: #d73a49;
+	 --maroon: #6f42c1;
+	 --green: #005cc5;
+	 --light-gray: #c7254e;
+	 --dark-gray: var(--color-lynch);
+	 --radius: 4px;
+	 --font-size: 1em;
+	 --vars: var(--color-paragraphs);
+
+	 /* dark theme for prism */
+	 --maroon: #8bd89e;
+	 --code-blocks: #090b0f;
+	 --blue: #bd93f9;
+	 --teal: #bd93f9;
+	 --light-gray: #bd93f9;
+	 --purple: #50fa7b;
+	 --black: #ff79c6;
+	 --green: #8be9fd;
+	 --vars: var(--color-paragraphs);
+ }
+ 
+ code {
+	 background-color: var(--code-blocks);
+	 border: 0;
+	 border-radius: var(--radius);
+	 color: var(--blue);
+	 font-family: "SF Mono", "Inconsolata", "Menlo", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+	 font-size: var(--font-size);
+	 padding: .5rem 1rem;
+ }
+ 
+ .copy {
+	 background: var(--code-blocks);
+	 border-top-left-radius: var(--radius);
+	 border-top-right-radius: var(--radius);
+	 color: rgba(var(--color-black-rgb), 0.5);
+	 content: 'kopioi';
+	 cursor: pointer;
+	 font-family: "SF Mono", "Inconsolata", "Menlo", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+	 font-size: 18px;
+	 font-weight: 400;
+	 padding-left: var(--code-block-padding-horizontal);
+	 padding-right: var(--code-block-padding-horizontal);
+	 padding-bottom: var(--code-block-padding-vertical);
+	 padding-top: var(--code-block-padding-vertical);
+	 position: absolute;
+	 right: 0;
+	 top: 0;
+	 transform: none;
+	 transition: color 200ms ease;
+ }
+ 
+ .copy svg {
+	 height: 16px;
+	 width: 16px;
+ }
+ 
+ .copy:hover .copy,
+ .copy:focus .copy {
+	 transform: translate(-10px, -100%);
+ }
+ 
+ .copy:hover, .copy:focus {
+	 color: var(--color-black);
+ }
+ 
+ code {
+	 border-radius: var(--radius);
+ }
+ 
+ code, pre[class*=language-] code {
+	background-color: var(--code-blocks) !important;
+}
+
+body pre span,
+body pre,
+body code,
+body .CodeMirror,
+body #filename {
+	font-family: var(--font-family-code) !important;
+	background-color: var(--code-blocks) !important;
+}
+
+body code:first-child,
+body pre:first-child,
+ pre code {
+	 padding-top: var(--code-block-padding-vertical) !important;
+	 padding-bottom: var(--code-block-padding-vertical) !important;
+	 padding-left: var(--code-block-padding-horizontal) !important;
+	 padding-right: var(--code-block-padding-horizontal) !important;
+ }
+ 
+ body code[class*="language-"],
+ body pre[class*="language-"] {
+	 background-color: var(--code-blocks);
+	 color: var(--black);
+	 font-size: var(--font-size);
+	 cursor: text;
+	 direction: ltr;
+	 font-family: var(--font-family-code);
+	 -webkit-hyphens: none;
+					 hyphens: none;
+	 line-height: 1.4;
+	 -moz-tab-size: 4;
+		 -o-tab-size: 4;
+				tab-size: 4;
+	 text-align: left;
+	 white-space: pre;
+	 word-spacing: normal;
+ }
+ 
+ pre[class*="language-"] {
+	 border-radius: var(--radius);
+	 overflow: hidden;
+	 border: 0;
+ }
+ 
+ pre[class*='language-'] code {
+	 max-width: 100%;
+	 background-color: var(--code-blocks);
+ }
+ 
+ .token.comment,
+ .token.prolog,
+ .token.doctype,
+ .token.cdata {
+	 color: var(--dark-gray);
+ }
+ 
+ .token.punctuation, .token.string, .token.atrule, .token.attr-value {
+	 color: var(--blue);
+ }
+ 
+ .token.property, .token.tag {
+	 color: var(--green);
+ }
+ 
+ .token.boolean, .token.number {
+	 color: var(--teal);
+ }
+ 
+ .token.variable {
+	 color: var(--vars);
+ }
+ 
+ .token.selector, .token.attr-name,
+ .token.attr-value .punctuation:first-child, .token.regex, .token.important {
+	 color: var(--maroon);
+ }
+ 
+ .token.token.keyword {
+	 color: var(--black);
+ }
+ 
+ .token.token.selector {
+	 color: var(--maroon);
+ }
+ 
+ .token.operator, .token.entity, .token.url,
+ .language-css .token.string {
+	 color: var(--purple);
+ }
+ 
+ .token.function {
+	 color: var(--green);
+ }
+ 
+ .token.class-name {
+	 color: var(--purple);
+ }
+ 
+ .token.entity {
+	 cursor: help;
+ }
+ 
+ .namespace {
+	 opacity: .7;
+ }
+ 
+ span.inline-color-wrapper {
+	 /*
+		* The background image is the following SVG inline in base 64:
+		*
+		* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2">
+		*     <path fill="gray" d="M0 0h2v2H0z"/>
+		*     <path fill="white" d="M0 0h1v1H0zM1 1h1v1H1z"/>
+		* </svg>
+		*
+		* SVG-inlining explained:
+		* https://stackoverflow.com/a/21626701/7595472
+		*/
+	 /* stylelint-disable-next-line */
+	 background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyIDIiPjxwYXRoIGZpbGw9ImdyYXkiIGQ9Ik0wIDBoMnYySDB6Ii8+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0wIDBoMXYxSDB6TTEgMWgxdjFIMXoiLz48L3N2Zz4=");
+	 /* This is to prevent visual glitches where one pixel from the repeating pattern could be seen. */
+	 background-position: center;
+	 background-size: 110%;
+	 border: 1px solid white;
+	 box-sizing: border-box;
+	 display: inline-block;
+	 height: 1.333ch;
+	 margin: 0 .333ch;
+	 margin-right: 6px;
+	 outline: 1px solid rgba(0, 0, 0, 0.5);
+	 overflow: hidden;
+	 top: 1px;
+	 width: 1.333ch;
+ }
+ 
+ span.inline-color {
+	 display: block;
+	 /* To prevent visual glitches again */
+	 height: 120%;
+	 width: 120%;
+ }

@@ -44,7 +44,7 @@
 
 .CodeMirror {
   /* Custom font */
-  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Courier New", monospace !important;
+  font-family: var(--font-family-code);
   font-size: 14px !important;
   /*height: 300px !important;*/ /* Conflicts with later definition */
   color: var(--general-text-color) !important;
@@ -717,7 +717,7 @@ span.CodeMirror-selectedtext {
 }
 
 .editor-toolbar button:after {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-family: var(--font-family) !important;
   font-size: 65% !important;
   vertical-align: text-bottom !important;
   position: relative !important;
