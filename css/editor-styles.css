@@ -218,7 +218,13 @@
 	--icon-fill-color: rgb(95, 100, 105);
 
 	--general-border-color: rgb(235, 235, 235);
+	--toolbar-background-color: #262626;
+	--toolbar-bottom-color: #262626;
+
+
+	--general-border-color: rgb(235, 235, 235);
 	--toolbar-bottom-color: rgb(235, 235, 235);
+	--toolbar-background-color: rgb(235, 235, 235);
 
 	--menu-item-button-hover-color: rgb(222, 224, 226);
 
@@ -244,7 +250,10 @@
 	--icon-fill-color: var(--general-text-color);
 
 	--general-border-color: rgb(22, 22, 22);
-	--toolbar-bottom-color: rgb(22, 22, 22);
+
+	--toolbar-background-color: #262626;
+	--toolbar-bottom-color: #262626;
+
 	--inline-pop-top-color: var(--general-background-color);
 
 	--menu-item-button-hover-color: rgb(73, 73, 73);
@@ -283,12 +292,12 @@ html, body, #textEditor { height: 100%; margin: 0px; }
 
 /* Toolbar (default mode) */
 .tox-toolbar__primary, .tox .tox-toolbar-overlord {
-	background-color: var(--general-background-color) !important;
+	background-color: var(--toolbar-background-color) !important;
 }
 
 /* Toolbar (scrolling mode) */
 .tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
-	background-color: var(--general-background-color) !important;
+	background-color: var(--toolbar-background-color) !important;
 }
 
 /* Toolbar (for centering filename toolbar button) */

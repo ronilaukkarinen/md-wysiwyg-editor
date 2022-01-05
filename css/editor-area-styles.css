@@ -281,9 +281,18 @@ body * {
 	font-family: var(--font-family) !important;
 }
 
+body h1,
+body h2,
+body h3,
+body h4,
+body h5
+body h6 {
+	font-weight: 600 !important;
+}
+
 /* Select and style only the first child element of every body tag (remove top spacing) */
 
-body> :first-child {
+body > :first-child {
 	margin-top: 0em !important;
 	padding-top: 0px !important;
 }
@@ -291,7 +300,7 @@ body> :first-child {
 
 /* Select and style only the last child element of every body tag (remove bottom spacing) */
 
-body> :last-child {
+body > :last-child {
 	margin-bottom: 0em !important;
 	padding-bottom: 0px !important;
 }
